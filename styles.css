@@ -95,4 +95,108 @@ nav a:hover {
   background-color: #fff; /* Beyaz arka plan */
   margin: 1rem auto;
   max-width: 1200px;
-  border-radius: 10
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  max-width: 1200px; /* Sabit genişlik */
+  margin: 0 auto; /* Ortala */
+}
+
+.product {
+  border: none;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 220px; /* Sabit genişlik */
+  background-color: #f9f9f9; /* Çok açık gri kutu */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* İçeriği ortala */
+}
+
+.product:hover {
+  transform: translateY(-5px); /* Hafif yükselme efekti */
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3); /* Mavi gölge */
+}
+
+.product img {
+  width: 100%;
+  height: 150px; /* Sabit yükseklik */
+  object-fit: cover; /* Resmi kutuya sığdır */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.product h3 {
+  color: #007bff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  background-color: #007bff;
+  color: #fff;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 300;
+  max-width: 100%; /* Taşmayı engelle */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 50px 10px;
+  }
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .products {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product {
+    width: 100%;
+    max-width: 300px; /* Mobilde daha geniş */
+  }
+  .section {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+}
