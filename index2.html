@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BKLed - LED Tabela Sistemleri</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #222;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background-image: url('https://via.placeholder.com/1200x400?text=BKLed+Tan%C4%B1t%C4%B1m+Banner');
+      background-color: #111;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+    .section {
+      padding: 2rem;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #f4f4f4;
+    }
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 200px;
+      background-color: #fff;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+    }
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 24px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .hero {
+        padding: 50px 10px;
+      }
+      .products {
+        flex-direction: column;
+        align-items: center;
+      }
+      .product {
+        width: 100%;
+        max-width: 300px;
+      }
+      .section {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BKLed</h1>
+    <p>Profesyonel LED Tabela Sistemleri</p>
+  </header>
+
+  <nav>
+    <a href="#urunler">Ürünler</a>
+    <a href="#hakkimizda">Hakkımızda</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Işıklı Tabelada Güvenilir Çözüm Ortağınız</h2>
+    <p>Kayan yazı, pleksi kesim, kutu harf ve dış panel çözümleri</p>
+  </section>
+
+  <section id="urunler" class="section">
+    <h2>Ürünlerimiz</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/Kayanyazi.jpeg" alt="Kayan Yazı">
+        <h3>Kayan Yazı</h3>
+      </div>
+      <div class="product">
+        <img src="images/Pleksiled.jpeg" alt="Pleksi">
+        <h3>Pleksi</h3>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200x150?text=Kutu+Harf" alt="Kutu Harf">
+        <h3>Kutu Harf</h3>
+      </div>
+      <div class="product">
+        <img src="images/dismekanled.jpeg" alt="Dış Panel">
+        <h3>Dış Panel</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="hakkimizda" class="section">
+    <h2>Hakkımızda</h2>
+    <p>BKLed olarak uzun yıllardır LED tabela, pleksi kesim, kutu harf ve dış cephe panel uygulamalarıyla müşterilerimize kaliteli ve güvenilir çözümler sunuyoruz.</p>
+  </section>
+
+  <section id="iletisim" class="section">
+    <h2>İletişim</h2>
+    <p>Bize her zaman WhatsApp üzerinden ulaşabilirsiniz.</p>
+  </section>
+
+  <a class="whatsapp-button" href="https://wa.me/905438610057" target="_blank" title="WhatsApp ile İletişime Geç">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>© 2025 BKLed. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>
