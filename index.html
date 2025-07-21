@@ -40,71 +40,145 @@
         </script><!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BKLED - LED Tabela Sistemleri</title>
-    <link rel="stylesheet" href="styles.css?v=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK LED - Led Ekran Sistemleri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    .card {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .card:hover {
+      background-color: #2d3748;
+      transform: scale(1.05);
+    }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .whatsapp img {
+      width: 60px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #1e40af, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-bottom: 1.5rem;
+    }
+    .section-title:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(to right, #3b82f6, #1e40af);
+      -webkit-text-fill-color: white;
+    }
+  </style>
 </head>
-<body>
-    <header>
-        <h1>BKLED</h1>
-        <p>LED Tabela Sistemleri</p>
-    </header>
+<body class="bg-gray-100 font-sans">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white text-center py-12">
+    <h1 class="text-5xl font-bold">BK LED</h1>
+    <p class="text-2xl mt-2 text-blue-200">LED Ekran Sistemleri</p>
+  </header>
 
-    <nav>
-        <a href="#urunler">Ürünler</a>
-        <a href="#referanslar">Referanslar</a>
-        <a href="#iletisim">İletişim</a>
-    </nav>
+  <!-- Navigation -->
+  <nav class="bg-gray-800 py-4">
+    <ul class="flex justify-center space-x-8 text-white">
+      <li><a href="#products" class="hover:text-blue-400 font-semibold">Ürünler</a></li>
+      <li><a href="#references" class="hover:text-blue-400 font-semibold">Referanslar</a></li>
+      <li><a href="#contact" class="hover:text-blue-400 font-semibold">İletişim</a></li>
+    </ul>
+  </nav>
 
-    <section class="hero">
-        <h2>Hoş Geldiniz</h2>
-        <p>Yenilikçi LED Çözümleri</p>
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-12">
+    <!-- Products Section -->
+    <section id="products" class="mb-12">
+      <h2 class="section-title">Ürünler</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a href="indoor-led.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/indoor-led.jpeg" alt="İç Mekan LED Ekran" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">İç Mekan LED Ekran</h3>
+            <p class="text-gray-600">Yüksek çözünürlüklü iç mekan LED ekranlar, mağazalar ve ofisler için ideal.</p>
+          </div>
+        </a>
+        <a href="outdoor-led.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/outdoor-led.jpeg" alt="Dış Mekan LED Ekran" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">Dış Mekan LED Ekran</h3>
+            <p class="text-gray-600">Hava koşullarına dayanıklı dış mekan LED ekranlar, reklam için mükemmel.</p>
+          </div>
+        </a>
+      </div>
     </section>
 
-    <section class="section" id="urunler">
-        <h2>Ürünlerimiz</h2>
-        <div class="products">
-            <div class="product">
-                <img src="images/icmekanled.jpeg" alt="İç Mekan LED Ekran">
-                <h3>İç Mekan LED Ekran</h3>
-            </div>
-            <div class="product">
-                <img src="images/dismekanled.jpeg" alt="Dış Mekan LED Ekran">
-                <h3>Dış Mekan LED Ekran</h3>
-            </div>
-            <div class="product">
-                <img src="images/Kayanyazi.jpeg" alt="Kayan Yazı">
-                <h3>Kayan Yazı</h3>
-            </div>
-            <div class="product">
-                <img src="images/Pleksiled.jpeg" alt="Plekksi">
-                <h3>Plekksi</h3>
-            </div>
+    <!-- References Section -->
+    <section id="references" class="mb-12">
+      <h2 class="section-title">Referanslar</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/reference1.jpeg" alt="Referans 1" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">Referans 1</h3>
+            <p class="text-gray-600">Örnek bir referans projesi, detaylı bilgi için iletişime geçin.</p>
+          </div>
         </div>
-    </section>
-
-    <section class="section" id="referanslar">
-        <h2>Referanslar</h2>
-        <div class="references">
-            <div class="reference">
-                <img src="images/referans1.jpg" alt="Referans 1">
-                <h3>Referans 1</h3>
-            </div>
-            <div class="reference">
-                <img src="images/referans2.jpg" alt="Referans 2">
-                <h3>Referans 2</h3>
-            </div>
-            <div class="reference">
-                <img src="images/referans3.jpg" alt="Referans 3">
-                <h3>Referans 3</h3>
-            </div>
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/reference2.jpeg" alt="Referans 2" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">Referans 2</h3>
+            <p class="text-gray-600">Başka bir başarılı LED ekran uygulaması.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="section" id="iletisim">
-        <h2>İletişim</h2>
-        <p>Bizimle iletişime geçmek için lütfen bizimle iletişime geçin!</p>
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">İletişim</h2>
+      <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+        <div class="space-y-4">
+          <div>
+            <label for="name" class="block text-gray-700 font-semibold">İsim</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border rounded-md" required>
+          </div>
+          <div>
+            <label for="email" class="block text-gray-700 font-semibold">E-posta</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border rounded-md" required>
+          </div>
+          <div>
+            <label for="message" class="block text-gray-700 font-semibold">Mesaj</label>
+            <textarea id="message" name="message" rows="5" class="w-full p-2 border rounded-md" required></textarea>
+          </div>
+          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Gönder</button>
+        </div>
+      </div>
     </section>
+  </div>
+
+  <!-- WhatsApp Icon -->
+  <div class="whatsapp">
+    <a href="https://wa.me/905123456789" target="_blank">
+      <img src="images/whatsapp.png" alt="WhatsApp">
+    </a>
+  </div>
 </body>
 </html>
