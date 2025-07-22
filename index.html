@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -46,60 +7,147 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <style>
+    /* Temel stil ayarları */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #FFA500; /* Turuncu arka plan */
+        color: #333;
+        overflow-x: hidden;
+        line-height: 1.6;
+    }
+
+    header {
+        background: linear-gradient(135deg, #FFA500, #FF8C00); /* Turuncu gradient */
+        color: #fff;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    header p {
+        margin: 0.5rem 0;
+    }
+
+    /* Navigasyon için turuncu uyum */
+    nav {
+        background-color: #FF8C00; /* Daha koyu turuncu */
+    }
+
+    nav a:hover {
+        color: #FF4500; /* Hover'da oranj ton */
+    }
+
+    /* Kartlar için stil */
     .card {
-      transition: background-color 0.3s ease, transform 0.2s ease;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
     .card:hover {
-      background-color: #2d3748;
-      transform: scale(1.05);
+        background-color: #FF8C00; /* Turuncu tonlu hover */
+        transform: scale(1.05);
     }
+
+    /* WhatsApp ikon stili */
     .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
     }
     .whatsapp img {
-      width: 60px;
-      animation: pulse 2s infinite;
+        width: 60px;
+        animation: pulse 2s infinite;
     }
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
     }
+
+    /* Bölüm başlıkları için stil */
     .section-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.25rem;
-      font-weight: 600;
-      background: linear-gradient(to right, #1e40af, #3b82f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      margin-bottom: 1.5rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.25rem;
+        font-weight: 600;
+        background: linear-gradient(to right, #FF8C00, #FFA500); /* Turuncu gradient */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 1.5rem;
     }
     .section-title:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      background: linear-gradient(to right, #3b82f6, #1e40af);
-      -webkit-text-fill-color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(to right, #FFA500, #FF8C00);
+        -webkit-text-fill-color: white;
+    }
+
+    /* Container stil */
+    .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background-color: rgba(255, 165, 0, 0.1); /* Hafif turuncu arka plan */
+        border-radius: 10px;
+    }
+
+    /* Bağlantılar için stil */
+    a {
+        color: #FF4500; /* Turuncu tonlu bağlantı */
+        text-decoration: none;
+    }
+    a:hover {
+        color: #FF6347; /* Hover'da daha açık turuncu */
+    }
+
+    /* Butonlar için stil */
+    button {
+        background-color: #FF8C00;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #FF4500;
+    }
+
+    /* Animasyon tanımı */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
   </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body>
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white text-center py-12">
+  <header>
     <h1 class="text-5xl font-bold">BK LED</h1>
-    <p class="text-2xl mt-2 text-blue-200">LED Ekran Sistemleri</p>
+    <p class="text-2xl mt-2 text-white">LED Ekran Sistemleri</p>
   </header>
 
   <!-- Navigation -->
-  <nav class="bg-gray-800 py-4">
+  <nav class="py-4">
     <ul class="flex justify-center space-x-8 text-white">
       <li><a href="#products" class="hover:text-blue-400 font-semibold">Ürünler</a></li>
       <li><a href="#references" class="hover:text-blue-400 font-semibold">Referanslar</a></li>
@@ -151,34 +199,72 @@
       </div>
     </section>
 
-<!-- Contact Section -->
-<section id="contact">
-  <h2 class="section-title">İletişim</h2>
-  <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
-    <form action="https://formspree.io/f/mzzvdgyv" method="POST" class="space-y-4">
-      <div>
-        <label for="name" class="block text-gray-700 font-semibold">İsim</label>
-        <input type="text" id="name" name="name" class="w-full p-2 border rounded-md" required>
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">İletişim</h2>
+      <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+        <form action="https://formspree.io/f/mzzvdgyv" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block text-gray-700 font-semibold">İsim</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border rounded-md" required>
+          </div>
+          <div>
+            <label for="email" class="block text-gray-700 font-semibold">E-posta</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border rounded-md" required>
+          </div>
+          <div>
+            <label for="message" class="block text-gray-700 font-semibold">Mesaj</label>
+            <textarea id="message" name="message" rows="5" class="w-full p-2 border rounded-md" required></textarea>
+          </div>
+          <input type="hidden" name="_next" value="https://bkled.github.io/tesekkur.html">
+          <button type="submit" class="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700">Gönder</button>
+        </form>
       </div>
-      <div>
-        <label for="email" class="block text-gray-700 font-semibold">E-posta</label>
-        <input type="email" id="email" name="email" class="w-full p-2 border rounded-md" required>
-      </div>
-      <div>
-        <label for="message" class="block text-gray-700 font-semibold">Mesaj</label>
-        <textarea id="message" name="message" rows="5" class="w-full p-2 border rounded-md" required></textarea>
-      </div>
-      <!-- Yönlendirme için gizli input -->
-      <input type="hidden" name="_next" value="https://bkled.github.io/tesekkur.html">
-      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Gönder</button>
-    </form>
+    </section>
   </div>
-</section>
+
   <!-- WhatsApp Icon -->
   <div class="whatsapp">
     <a href="https://wa.me/5438610057" target="_blank">
       <img src="images/whatsapp.png" alt="WhatsApp">
     </a>
   </div>
+
+  <!-- JavaScript -->
+  <script type="text/javascript">
+    var gk_isXlsx = false;
+    var gk_xlsxFileLookup = {};
+    var gk_fileData = {};
+    function filledCell(cell) {
+      return cell !== '' && cell != null;
+    }
+    function loadFileData(filename) {
+      if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+        try {
+          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+          var firstSheetName = workbook.SheetNames[0];
+          var worksheet = workbook.Sheets[firstSheetName];
+
+          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+          var filteredData = jsonData.filter(row => row.some(filledCell));
+
+          var headerRowIndex = filteredData.findIndex((row, index) =>
+            row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+          );
+          if (headerRowIndex === -1 || headerRowIndex > 25) {
+            headerRowIndex = 0;
+          }
+
+          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+          return csv;
+        } catch (e) {
+          console.error(e);
+          return "";
+        }
+      }
+      return gk_fileData[filename] || "";
+    }
+  </script>
 </body>
 </html>
