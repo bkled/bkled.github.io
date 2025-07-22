@@ -43,9 +43,25 @@
         margin: 0.5rem 0;
     }
 
-    /* Navigasyon için turuncu uyum */
+    /* Navigasyon menüsü için stil */
     nav {
-        background-color: #FF8C00; /* Daha koyu turuncu */
+        background-color: #FFB300; /* Daha açık turuncu ton */
+        padding: 0.5rem 0;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem; /* Daha düzenli aralık */
+    }
+
+    nav a {
+        color: #fff; /* Varsayılan beyaz yazı rengi */
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s ease;
     }
 
     nav a:hover {
@@ -78,17 +94,15 @@
         100% { transform: scale(1); }
     }
 
-    /* Bölüm başlıkları için stil */
+    /* Bölüm başlıkları için güncellenmiş stil */
     .section-title {
         font-family: 'Poppins', sans-serif;
         font-size: 2.25rem;
         font-weight: 600;
-        background: linear-gradient(to right, #FF8C00, #FFA500); /* Turuncu gradient */
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #FFFFFF; /* Beyaz yazı rengi */
         display: inline-block;
         padding: 0.5rem 1.5rem;
-        background-color: #ffffff;
+        background-color: #FF8C00; /* Arka planı turuncu ton */
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -97,8 +111,7 @@
     .section-title:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        background: linear-gradient(to right, #FFA500, #FF8C00);
-        -webkit-text-fill-color: white;
+        background-color: #FF4500; /* Hover'da daha koyu turuncu */
     }
 
     /* Container stil */
@@ -147,11 +160,11 @@
   </header>
 
   <!-- Navigation -->
-  <nav class="py-4">
-    <ul class="flex justify-center space-x-8 text-white">
-      <li><a href="#products" class="hover:text-blue-400 font-semibold">Ürünler</a></li>
-      <li><a href="#references" class="hover:text-blue-400 font-semibold">Referanslar</a></li>
-      <li><a href="#contact" class="hover:text-blue-400 font-semibold">İletişim</a></li>
+  <nav>
+    <ul>
+      <li><a href="#products">Ürünler</a></li>
+      <li><a href="#references">Referanslar</a></li>
+      <li><a href="#contact">İletişim</a></li>
     </ul>
   </nav>
 
