@@ -1,35 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
 
-   * {
-       margin: 0;
-       padding: 0;
-       box-sizing: border-box;
-   }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-   body {
-       font-family: 'Poppins', sans-serif;
-       background-color: #FFA500;
-       color: #333;
-       overflow-x: hidden;
-       line-height: 1.6;
-   }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFA500; /* Turuncu arka plan */
+    color: #333;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
 
-   header {
-       background: linear-gradient(135deg, #4A90E2, #9B59B6);
-       color: #fff;
-       padding: 2rem;
-       text-align: center;
-       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-       animation: fadeIn 1s ease-in-out;
-   }
+header {
+    background: linear-gradient(135deg, #FFA500, #FF8C00); /* Turuncu gradient */
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
 
-   header h1 {
-       margin: 0;
-       font-size: 3rem;
-       font-weight: 800;
-       text-transform: uppercase;
-       letter-spacing: 2px;
-   }
+header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-   header p {
-       margin: 0.5rem 0
+header p {
+    margin: 0.5rem 0;
+}
+
+/* Bağlantılar için turuncu ton */
+a {
+    color: #FF4500; /* Turuncu tonlu bağlantı rengi */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF6347; /* Hover'da daha açık turuncu */
+}
+
+/* Butonlar veya diğer elementler için örnek stil */
+button {
+    background-color: #FF8C00;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FF4500;
+}
+
+/* Animasyon tanımı */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Genel turuncu tema için ek stiller */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: rgba(255, 165, 0, 0.1); /* Hafif turuncu arka plan */
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #FF8C00;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
