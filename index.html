@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
- <header class="flex flex-col items-center justify-center bg-gradient-to-r from-orange-500 to-orange-600 text-white p-8 shadow-lg animate-fadeIn">
-  <img src="images/logo3.png" alt="BK LED Logo" class="w-48 h-auto mb-4 md:w-64">
-  <div class="text-center">
-    <h1 class="text-5xl font-bold">BK LED</h1>
-    <p class="text-2xl mt-2 text-white">LED Ekran Sistemleri</p>
-  </div>
-</header>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FFFFFF"> <!-- Navigasyon çubuğu için beyaz renk -->
- <img src="images/logo3.png" alt="BK LED Logo" class="w-48 h-auto mb-4 md:w-64">
- <title>BK LED - Led Ekran Sistemleri</title>
+  <title>BK LED - Led Ekran Sistemleri</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <style>
@@ -25,19 +17,18 @@
 
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #FFA500; /* Turuncu arka plan */
+        background-color: #FF6D00; /* Turuncu arka plan */
         color: #333;
         overflow-x: hidden;
         line-height: 1.6;
     }
 
     header {
-        background: linear-gradient(135deg, #FFA500, #FF8C00); /* Turuncu gradient */
+        background-color: #FF6D00; /* Yeni header arka plan rengi */
         color: #fff;
         padding: 2rem;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        animation: fadeIn 1s ease-in-out;
     }
 
     header h1 {
@@ -54,7 +45,7 @@
 
     /* Navigasyon menüsü için stil */
     nav {
-        background-color: #FFB300; /* Daha açık turuncu ton */
+        background-color: #E65100; /* Yeni navigasyon arka plan rengi */
         padding: 0.5rem 0;
     }
 
@@ -113,7 +104,7 @@
         color: #FFFFFF; /* Beyaz yazı rengi */
         display: inline-block;
         padding: 0.5rem 1.5rem;
-        background-color: #FF8C00; /* Arka planı turuncu ton */
+        background-color: #FF6D00; /* Yeni bölüm başlık arka plan rengi */
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -145,7 +136,7 @@
 
     /* Butonlar için stil */
     button {
-        background-color: #FF8C00;
+        background-color: #FF6D00; /* Yeni buton arka plan rengi */
         color: #fff;
         border: none;
         padding: 0.5rem 1rem;
@@ -153,7 +144,7 @@
         cursor: pointer;
     }
     button:hover {
-        background-color: #FF4500;
+        background-color: #FF4500; /* Hover'da daha koyu turuncu */
     }
 
     /* Animasyon tanımı */
@@ -165,9 +156,12 @@
 </head>
 <body>
   <!-- Header -->
-    <header>
-    <h1 class="text-5xl font-bold">BK LED</h1>
-    <p class="text-2xl mt-2 text-white">LED Ekran Sistemleri</p>
+  <header class="flex flex-col items-center justify-center bg-orange-600 text-white p-8 shadow-lg">
+    <img src="images/logo3.png" alt="BK LED Logo" class="w-64 h-auto mb-4 md:w-80">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold">BK LED</h1>
+      <p class="text-2xl mt-2 text-white">LED Ekran Sistemleri</p>
+    </div>
   </header>
 
   <!-- Navigation -->
@@ -290,3 +284,5 @@
       return gk_fileData[filename] || "";
     }
   </script>
+</body>
+</html>
