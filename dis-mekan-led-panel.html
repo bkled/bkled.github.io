@@ -3,100 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta name="theme-color" content="#FF6D00">
   <title>BK LED - İç Mekan LED Ekranlar</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* index.html'deki gömülü stiller */
+    /* Stil düzenlemeleri */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F9FAFB; /* Hafif gri arka plan */
+    }
+
     nav {
-        background-color: #E65100;
-        padding: 0.5rem 0;
+      background-color: #FF6D00; /* Ana renk */
+      padding: 0.5rem 0;
     }
 
     nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
     }
 
     nav a {
-        color: #fff;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        transition: color 0.3s ease;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
-        color: #FF4500;
+      color: #E65100; /* Daha koyu turuncu */
     }
 
     .card {
-        background-color: #FFFFFF;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        border-radius: 8px;
+      background-color: #FFFFFF;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border-radius: 8px;
     }
     .card:hover {
-        background-color: #FFF5E6;
-        transform: scale(1.05);
+      background-color: #FFE5CC; /* #FF6D00 ile uyumlu açık turuncu */
+      transform: scale(1.05);
     }
 
     .whatsapp {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
     }
     .whatsapp img {
-        width: 60px;
-        animation: pulse 2s infinite;
+      width: 60px;
+      animation: pulse 2s infinite;
     }
     @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
 
     .section-title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2rem; /* Başlık boyutunu biraz küçülttüm */
-        font-weight: 600;
-        color: #FFFFFF;
-        display: inline-block;
-        padding: 0.5rem 1.5rem;
-        background-color: #FF6D00;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        margin-bottom: 1.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background-color: #FF6D00; /* Ana renk */
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      margin-bottom: 1.5rem;
     }
     .section-title:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        background-color: #FF4500;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background-color: #E65100; /* Hover için koyu turuncu */
     }
 
-    /* Özellikler için yeni stil */
     .features-list {
-        list-style: none;
-        padding-left: 0;
+      list-style: none;
+      padding-left: 0;
     }
     .features-list li {
-        position: relative;
-        padding-left: 1.5rem;
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem; /* Yazı boyutunu küçülttüm */
-        color: #4B5563; /* Daha yumuşak gri ton */
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #4B5563;
     }
     .features-list li::before {
-        content: '✔';
-        position: absolute;
-        left: 0;
-        color: #FF6D00; /* Turuncu tik işareti */
-        font-weight: bold;
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #FF6D00; /* Ana renk */
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #FF6D00; /* Ana renk */
+      color: #FFFFFF;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -106,7 +118,7 @@
     <img src="images/logo3.png" alt="BK LED Logo" class="w-44 h-auto mb-4 md:w-64">
     <div class="text-center">
       <h1 class="text-5xl font-bold">BK LED</h1>
-      <p class="text-xl mt-2 text-white">İç Mekan LED Ekranlar</p> <!-- Başlık yazısını küçülttüm -->
+      <p class="text-xl mt-2 text-white">İç Mekan LED Ekranlar</p>
     </div>
   </header>
 
@@ -127,9 +139,9 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Ürün 1 -->
         <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/p5-dis-mekan-led-panel.png" alt="P5 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <img src="p5-dis-mekan-led-panel.png" alt="P5 Dış Mekan LED Panel" class="w-full h-48 object-cover">
           <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800">P5 Dış Mekan LED Panel</h3> <!-- Başlık yazısını küçülttüm -->
+            <h3 class="text-lg font-semibold text-gray-800">P5 Dış Mekan LED Panel</h3>
             <ul class="features-list">
               <li>Piksel Aralığı: 1.86 mm</li>
               <li>Çözünürlük: Yüksek piksel yoğunluğu, yakın mesafede net görüntü</li>
@@ -142,7 +154,7 @@
         </div>
         <!-- Ürün 2 -->
         <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/p4-dis-mekan-led-panel.png" alt="P4 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <img src="p4-dis-mekan-led-panel.png" alt="P4 Dış Mekan LED Panel" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800">P4 Dış Mekan LED Panel</h3>
             <ul class="features-list">
@@ -157,7 +169,7 @@
         </div>
         <!-- Ürün 3 -->
         <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/p3-dis-mekan-led-panel.png" alt="P3 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <img src="p3-dis-mekan-led-panel.png" alt="P3 Dış Mekan LED Panel" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800">P3 Dış Mekan LED Panel</h3>
             <ul class="features-list">
@@ -172,7 +184,7 @@
         </div>
         <!-- Ürün 4 -->
         <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/p2.5-dis-mekan-led-panel.png" alt="P2.5 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <img src="p2.5-dis-mekan-led-panel.png" alt="P2.5 Dış Mekan LED Panel" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800">P2.5 Dış Mekan LED Panel</h3>
             <ul class="features-list">
