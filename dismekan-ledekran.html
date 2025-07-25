@@ -1,0 +1,292 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>BK LED - Dış Mekan LED Ekran</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #FF6D00;
+        color: #333;
+        overflow-x: hidden;
+        line-height: 1.6;
+    }
+
+    header {
+        background-color: #FF6D00;
+        color: #fff;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    header p {
+        margin: 0.5rem 0;
+    }
+
+    nav {
+        background-color: #E65100;
+        padding: 0.5rem 0;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    nav a {
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #FF4500;
+    }
+
+    .card {
+        background-color: #FFFFFF;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        border-radius: 8px;
+        cursor: default;
+    }
+    .card:hover {
+        background-color: #FFF5E6;
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    .whatsapp img {
+        width: 60px;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    .section-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.25rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background-color: #FF6D00;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 1.5rem;
+    }
+    .section-title:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        background-color: #FF4500;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+    }
+
+    a {
+        color: #FF4500;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #FF6347;
+    }
+
+    button {
+        background-color: #FF6D00;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #FF4500;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="flex flex-col items-center justify-center bg-orange-600 text-white p-8 shadow-lg">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold">BK LED</h1>
+      <p class="text-2xl mt-2 text-white">Dış Mekan LED Ekran</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html#products">Ürünler</a></li>
+      <li><a href="index.html#references">Referanslar</a></li>
+      <li><a href="index.html#contact">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-12">
+    <!-- Product Section -->
+    <section id="product-details" class="mb-12">
+      <h2 class="section-title">Dış Mekan LED Ekranlar</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Product 1 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/dismekanled1.jpg" alt="Dış Mekan LED Ekran P4" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Dış Mekan LED Ekran P4</h3>
+            <p class="text-gray-600 mb-4">Yüksek çözünürlüklü P4 dış mekan LED ekran, küçük alanlar için ideal.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Ürün Özellikleri</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 4mm</li>
+              <li>Parlaklık: 6000 nit</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>Enerji verimli tasarım</li>
+              <li>Ömür: 100.000 saat</li>
+              <li>Kolay kurulum</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/dismekanled2.jpg" alt="Dış Mekan LED Ekran P6" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Dış Mekan LED Ekran P6</h3>
+            <p class="text-gray-600 mb-4">Orta ölçekli alanlar için P6 dış mekan LED ekran, net görüntü sunar.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Ürün Özellikleri</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 6mm</li>
+              <li>Parlaklık: 6500 nit</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>Enerji verimli tasarım</li>
+              <li>Ömür: 100.000 saat</li>
+              <li>Kolay bakım</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/dismekanled3.jpg" alt="Dış Mekan LED Ekran P8" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Dış Mekan LED Ekran P8</h3>
+            <p class="text-gray-600 mb-4">Geniş alanlar için P8 dış mekan LED ekran, yüksek parlaklık sağlar.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Ürün Özellikleri</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 8mm</li>
+              <li>Parlaklık: 7000 nit</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>Enerji verimli tasarım</li>
+              <li>Ömür: 100.000 saat</li>
+              <li>Hızlı kurulum</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/dismekanled4.jpg" alt="Dış Mekan LED Ekran P10" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Dış Mekan LED Ekran P10</h3>
+            <p class="text-gray-600 mb-4">Uzak mesafeden görünürlük için P10 dış mekan LED ekran.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Ürün Özellikleri</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 10mm</li>
+              <li>Parlaklık: 7500 nit</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>Enerji verimli tasarım</li>
+              <li>Ömür: 100.000 saat</li>
+              <li>Kolay bakım</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- WhatsApp Icon -->
+  <div class="whatsapp">
+    <a href="https://wa.me/5438610057" target="_blank">
+      <img src="images/whatsapp.png" alt="WhatsApp">
+    </a>
+  </div>
+</body>
+</html>
