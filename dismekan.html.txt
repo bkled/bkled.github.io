@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FF6D00">
+  <title>BK LED - İç Mekan LED Ekranlar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Stil düzenlemeleri */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F9FAFB; /* Hafif gri arka plan */
+    }
+
+    nav {
+      background-color: #FF6D00; /* Ana renk */
+      padding: 0.5rem 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #FF6D00; /* Daha koyu turuncu */
+    }
+
+    .card {
+      background-color: #FF6D00;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border-radius: 8px;
+    }
+    .card:hover {
+      background-color: #FFE5CC; /* #FF6D00 ile uyumlu açık turuncu */
+      transform: scale(1.05);
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .whatsapp img {
+      width: 60px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background-color: #FF6D00; /* Ana renk */
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      margin-bottom: 1.5rem;
+    }
+    .section-title:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background-color: #E65100; /* Hover için koyu turuncu */
+    }
+
+    .features-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .features-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #4B5563;
+    }
+    .features-list li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #FF6D00; /* Ana renk */
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #FF6D00; /* Ana renk */
+      color: #FF6D00;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="flex flex-col items-center justify-center bg-orange-600 text-white p-8 shadow-lg">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold">BK LED</h1>
+      <p class="text-xl mt-2 text-white">İç Mekan LED Ekranlar</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html#products">Ürünler</a></li>
+      <li><a href="index.html#references">Referanslar</a></li>
+      <li><a href="index.html#contact">İletişim</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-12">
+    <!-- Dış Mekan LED Paneller Section -->
+    <section id="icmekanled" class="mb-12">
+      <h2 class="section-title">Dış Mekan Led Paneller</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Ürün 1 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="p5-dis-mekan-led-panel.png" alt="P5 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800">P5 Dış Mekan LED Panel</h3>
+            <ul class="features-list">
+              <li>Piksel Aralığı: 1.86 mm</li>
+              <li>Çözünürlük: Yüksek piksel yoğunluğu, yakın mesafede net görüntü</li>
+              <li>Kullanım Alanı: Konferans salonları, sergi alanları, premium sunumlar</li>
+              <li>Parlaklık: 800-1000 cd/m²</li>
+              <li>Yenileme Hızı: 3840 Hz</li>
+              <li>Bağlantı: Wi-Fi veya CAT-6 ile anlık içerik güncelleme</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Ürün 2 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="p4-dis-mekan-led-panel.png" alt="P4 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800">P4 Dış Mekan LED Panel</h3>
+            <ul class="features-list">
+              <li>Piksel Aralığı: 2 mm</li>
+              <li>Çözünürlük: 128x64 piksel (16x32 cm modül)</li>
+              <li>Kullanım Alanı: Toplantı odaları, fuar stantları, mağaza vitrinleri</li>
+              <li>Parlaklık: 1000 cd/m²</li>
+              <li>Yenileme Hızı: 3840 Hz</li>
+              <li>Özellik: Yüksek renk doğruluğu, enerji tasarrufu</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Ürün 3 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="p3-dis-mekan-led-panel.png" alt="P3 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800">P3 Dış Mekan LED Panel</h3>
+            <ul class="features-list">
+              <li>Piksel Aralığı: 4 mm</li>
+              <li>Çözünürlük: 64x32 piksel (16x32 cm modül)</li>
+              <li>Kullanım Alanı: Konferans salonları, konser alanları, kurumsal firmalar</li>
+              <li>Parlaklık: 1200 cd/m²</li>
+              <li>Yenileme Hızı: 1920 Hz</li>
+              <li>Özellik: Uzaktan kontrol, HD görüntü kalitesi</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Ürün 4 -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="p2.5-dis-mekan-led-panel.png" alt="P2.5 Dış Mekan LED Panel" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800">P2.5 Dış Mekan LED Panel</h3>
+            <ul class="features-list">
+              <li>Piksel Aralığı: 5 mm</li>
+              <li>Çözünürlük: 32x32 piksel (16x16 cm modül)</li>
+              <li>Kullanım Alanı: Fuar stantları, podyumlar, mağaza içi bilgilendirme</li>
+              <li>Parlaklık: 1200 cd/m²</li>
+              <li>Yenileme Hızı: 1920 Hz</li>
+              <li>Özellik: Kolay kurulum, düşük enerji tüketimi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- WhatsApp Icon -->
+  <div class="whatsapp">
+    <a href="https://wa.me/5438610057" target="_blank">
+      <img src="images/whatsapp.png" alt="WhatsApp">
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 BK LED. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>
