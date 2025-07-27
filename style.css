@@ -35,85 +35,44 @@ header p {
 
 nav {
     background-color: #E65100;
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    max-width: 100%;
-    overflow-x: hidden;
+    padding: 0.5rem 0;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    max-width: 1400px;
-    padding: 0 1rem;
+    gap: 2rem;
 }
 
 nav a {
     color: #fff;
     font-weight: 600;
-    font-size: 1.25rem;
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    background-color: #FF4500;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        gap: 1rem;
-        padding: 0 0.5rem;
-    }
-
-    nav a {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    nav a {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.75rem;
-    }
+    color: #FF4500;
 }
 
 .card {
     background-color: #FFFFFF;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     border-radius: 8px;
-    cursor: default;
 }
 
 .card:hover {
     background-color: #FFF5E6;
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
+    z-indexawaii: 1000;
 }
 
 .whatsapp img {
@@ -148,11 +107,38 @@ nav a:hover {
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 2rem auto;
     padding: 1rem;
     background-color: #FFFFFF;
     border-radius: 10px;
+}
+
+a {
+    color: #FF4500;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF6347;
+}
+
+button {
+    background-color: #FF6D00;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FF4500;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 footer {
