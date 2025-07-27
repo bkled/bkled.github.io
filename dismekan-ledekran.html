@@ -1,51 +1,11 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FFFFFF">
-  <title>BK LED - Dış Mekan LED Ekran Özellikleri</title>
+  <title>BK LED - Led Ekran Sistemleri</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <style>
     * {
         margin: 0;
@@ -61,6 +21,50 @@
         line-height: 1.6;
     }
 
+    header {
+        background-color: #FF6D00;
+        color: #fff;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    header p {
+        margin: 0.5rem 0;
+    }
+
+    nav {
+        background-color: #E65100;
+        padding: 0.5rem 0;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    nav a {
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #FF4500;
+    }
+
     .card {
         background-color: #FFFFFF;
         transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -71,6 +75,22 @@
         background-color: #FFF5E6;
         transform: scale(1.05);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    .whatsapp img {
+        width: 60px;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
     }
 
     .section-title {
@@ -99,29 +119,30 @@
         background-color: #FFFFFF;
         border-radius: 10px;
     }
-
-    .whatsapp {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-    }
-    .whatsapp img {
-        width: 60px;
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
   </style>
 </head>
 <body>
+  <!-- Header -->
+  <header class="flex flex-col items-center justify-center bg-orange-600 text-white p-8 shadow-lg">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold">BK LED</h1>
+      <p class="text-2xl mt-2 text-white">LED Ekran Sistemleri</p>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#products">Ürünler</a></li>
+      <li><a href="#references">Referanslar</a></li>
+      <li><a href="#contact">İletişim</a></li>
+    </ul>
+  </nav>
+
   <!-- Main Content -->
   <div class="container mx-auto px-4 py-12">
-    <!-- Product Section -->
-    <section id="product-details" class="mb-12">
+    <!-- Dış Mekan LED Ekran Özellikleri -->
+    <section id="outdoor-led" class="mb-12">
       <h2 class="section-title">Dış Mekan LED Ekran Özellikleri</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- P2.5 Dış Mekan LED Ekran -->
