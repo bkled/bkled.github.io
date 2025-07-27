@@ -36,25 +36,61 @@ header p {
 nav {
     background-color: #E65100;
     padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
 }
 
 nav a {
     color: #fff;
     font-weight: 600;
+    font-size: 1.1rem;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
 }
 
 nav a:hover {
-    color: #FF4500;
+    background-color: #FF4500;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+    }
 }
 
 .card {
@@ -72,11 +108,11 @@ nav a:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-indexawaii: 1000;
+    z-index: 1000;
 }
 
 .whatsapp img {
-    width: 60px;
+    width: 50px; /* Boyutu küçülttüm */
     animation: pulse 2s infinite;
 }
 
