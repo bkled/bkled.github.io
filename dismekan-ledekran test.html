@@ -1,48 +1,8 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FFFFFF">
   <title>BK LED - Led Ekran Sistemleri</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
@@ -159,31 +119,6 @@
         background-color: #FFFFFF;
         border-radius: 10px;
     }
-
-    a {
-        color: #FF4500;
-        text-decoration: none;
-    }
-    a:hover {
-        color: #FF6347;
-    }
-
-    button {
-        background-color: #FF6D00;
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #FF4500;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
   </style>
 </head>
 <body>
@@ -206,151 +141,86 @@
 
   <!-- Main Content -->
   <div class="container mx-auto px-4 py-12">
-    <!-- Products Section -->
-    <section id="products" class="mb-12">
-      <h2 class="section-title">Ürünler</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <a href="icmekanled.html" class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/icmekanled.jpg" alt="İç Mekan LED Ekran" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold text-gray-800">İç Mekan LED Ekran</h3>
-            <p class="text-gray-600">Yüksek çözünürlüklü iç mekan LED ekranlar, mağazalar ve ofisler için ideal.</p>
-          </div>
-        </a>
-        <a href="#outdoor-led" class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/dismekanled.jpg" alt="Dış Mekan LED Ekran" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold text-gray-800">Dış Mekan LED Ekran</h3>
-            <p class="text-gray-600">Hava koşullarına dayanıklı dış mekan LED ekranlar, reklam için mükemmel.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Dış Mekan LED Ekran Özellikleri -->
-      <div id="outdoor-led" class="mt-12">
-        <h2 class="section-title">Dış Mekan LED Ekran Özellikleri</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- P2.5 Dış Mekan LED Ekran -->
-          <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-            <img src="images/p2.5dismekan.jpg" alt="P2.5 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">P2.5 Dış Mekan LED Ekran</h3>
-              <p class="text-gray-600 mb-4">Yakın mesafelerde yüksek çözünürlük sunan P2.5, premium dış mekan reklamcılığı için idealdir.</p>
-              <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
-              <ul class="list-disc pl-5 text-gray-600">
-                <li>Piksel Aralığı: 2.5mm</li>
-                <li>Piksel Yoğunluğu: 160,000 nokta/m²</li>
-                <li>Parlaklık: ≥7000 cd/m²</li>
-                <li>IP65 su ve toz geçirmezlik</li>
-                <li>En İyi İzleme Mesafesi: 2.5-50m</li>
-                <li>Tarama Modu: 1/16 tarama</li>
-                <li>Ömür: 100,000 saat</li>
-                <li>LED Çipi: Nationstar SMD</li>
-              </ul>
-            </div>
-          </div>
-          <!-- P3 Dış Mekan LED Ekran -->
-          <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-            <img src="images/p3dismekan.jpg" alt="P3 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">P3 Dış Mekan LED Ekran</h3>
-              <p class="text-gray-600 mb-4">P3, yüksek çözünürlük ve net görüntüyle dış mekanlarda dikkat çeker.</p>
-              <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
-              <ul class="list-disc pl-5 text-gray-600">
-                <li>Piksel Aralığı: 3mm</li>
-                <li>Piksel Yoğunluğu: 111,111 nokta/m²</li>
-                <li>Parlaklık: ≥6500 cd/m²</li>
-                <li>IP65 su ve toz geçirmezlik</li>
-                <li>En İyi İzleme Mesafesi: 3-6m</li>
-                <li>Tarama Modu: 1/16 tarama</li>
-                <li>Ömür: 100,000 saat</li>
-                <li>LED Çipi: Nationstar SMD</li>
-              </ul>
-            </div>
-          </div>
-          <!-- P4 Dış Mekan LED Ekran -->
-          <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-            <img src="images/p4dismekan.jpg" alt="P4 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">P4 Dış Mekan LED Ekran</h3>
-              <p class="text-gray-600 mb-4">P4, uygun maliyet ve yüksek görüntü kalitesiyle dış mekanlar için idealdir.</p>
-              <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
-              <ul class="list-disc pl-5 text-gray-600">
-                <li>Piksel Aralığı: 4mm</li>
-                <li>Piksel Yoğunluğu: 62,500 nokta/m²</li>
-                <li>Parlaklık: ≥6000 cd/m²</li>
-                <li>IP65 su ve toz geçirmezlik</li>
-                <li>En İyi İzleme Mesafesi: 4-8m</li>
-                <li>Tarama Modu: 1/10 tarama</li>
-                <li>Ömür: 100,000 saat</li>
-                <li>LED Çipi: Nationstar SMD</li>
-              </ul>
-            </div>
-          </div>
-          <!-- P5 Dış Mekan LED Ekran -->
-          <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-            <img src="images/p5dismekan.jpg" alt="P5 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">P5 Dış Mekan LED Ekran</h3>
-              <p class="text-gray-600 mb-4">P5, daha uzun mesafelerde net görüntü sunar ve uygun bütçeli projeler için uygundur.</p>
-              <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
-              <ul class="list-disc pl-5 text-gray-600">
-                <li>Piksel Aralığı: 5mm</li>
-                <li>Piksel Yoğunluğu: 40,000 nokta/m²</li>
-                <li>Parlaklık: ≥6500 cd/m²</li>
-                <li>IP65 su ve toz geçirmezlik</li>
-                <li>En İyi İzleme Mesafesi: 5-12m</li>
-                <li>Tarama Modu: 1/8 tarama</li>
-                <li>Ömür: 100,000 saat</li>
-                <li>LED Çipi: Nationstar SMD</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- References Section -->
-    <section id="references" class="mb-12">
-      <h2 class="section-title">Referanslar</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Dış Mekan LED Ekran Özellikleri -->
+    <section id="outdoor-led" class="mb-12">
+      <h2 class="section-title">Dış Mekan LED Ekran Özellikleri</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- P2.5 Dış Mekan LED Ekran -->
         <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/icmekanled.jpg" alt="Referans 1" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold text-gray-800">Referans 1</h3>
-            <p class="text-gray-600">Örnek bir referans projesi, detaylı bilgi için iletişime geçin.</p>
+          <img src="images/p2.5dismekan.jpg" alt="P2.5 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">P2.5 Dış Mekan LED Ekran</h3>
+            <p class="text-gray-600 mb-4">Yakın mesafelerde yüksek çözünürlük sunan P2.5, premium dış mekan reklamcılığı için idealdir.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 2.5mm</li>
+              <li>Piksel Yoğunluğu: 160,000 nokta/m²</li>
+              <li>Parlaklık: ≥7000 cd/m²</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>En İyi İzleme Mesafesi: 2.5-50m</li>
+              <li>Tarama Modu: 1/16 tarama</li>
+              <li>Ömür: 100,000 saat</li>
+              <li>LED Çipi: Nationstar SMD</li>
+            </ul>
           </div>
         </div>
+        <!-- P3 Dış Mekan LED Ekran -->
         <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/icmekanled.jpg" alt="Referans 2" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold text-gray-800">Referans 2</h3>
-            <p class="text-gray-600">Başka bir başarılı LED ekran uygulaması.</p>
+          <img src="images/p3dismekan.jpg" alt="P3 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">P3 Dış Mekan LED Ekran</h3>
+            <p class="text-gray-600 mb-4">P3, yüksek çözünürlük ve net görüntüyle dış mekanlarda dikkat çeker.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 3mm</li>
+              <li>Piksel Yoğunluğu: 111,111 nokta/m²</li>
+              <li>Parlaklık: ≥6500 cd/m²</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>En İyi İzleme Mesafesi: 3-6m</li>
+              <li>Tarama Modu: 1/16 tarama</li>
+              <li>Ömür: 100,000 saat</li>
+              <li>LED Çipi: Nationstar SMD</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2 class="section-title">İletişim</h2>
-      <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
-        <form action="https://formspree.io/f/mzzvdgyv" method="POST" class="space-y-4">
-          <div>
-            <label for="name" class="block text-gray-700 font-semibold">İsim</label>
-            <input type="text" id="name" name="name" class="w-full p-2 border rounded-md" required>
+        <!-- P4 Dış Mekan LED Ekran -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/p4dismekan.jpg" alt="P4 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">P4 Dış Mekan LED Ekran</h3>
+            <p class="text-gray-600 mb-4">P4, uygun maliyet ve yüksek görüntü kalitesiyle dış mekanlar için idealdir.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 4mm</li>
+              <li>Piksel Yoğunluğu: 62,500 nokta/m²</li>
+              <li>Parlaklık: ≥6000 cd/m²</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>En İyi İzleme Mesafesi: 4-8m</li>
+              <li>Tarama Modu: 1/10 tarama</li>
+              <li>Ömür: 100,000 saat</li>
+              <li>LED Çipi: Nationstar SMD</li>
+            </ul>
           </div>
-          <div>
-            <label for="email" class="block text-gray-700 font-semibold">E-posta</label>
-            <input type="email" id="email" name="email" class="w-full p-2 border rounded-md" required>
+        </div>
+        <!-- P5 Dış Mekan LED Ekran -->
+        <div class="card bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="images/p5dismekan.jpg" alt="P5 Dış Mekan LED Ekran" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">P5 Dış Mekan LED Ekran</h3>
+            <p class="text-gray-600 mb-4">P5, daha uzun mesafelerde net görüntü sunar ve uygun bütçeli projeler için uygundur.</p>
+            <h4 class="text-lg font-semibold text-gray-800 mb-2">Teknik Özellikler</h4>
+            <ul class="list-disc pl-5 text-gray-600">
+              <li>Piksel Aralığı: 5mm</li>
+              <li>Piksel Yoğunluğu: 40,000 nokta/m²</li>
+              <li>Parlaklık: ≥6500 cd/m²</li>
+              <li>IP65 su ve toz geçirmezlik</li>
+              <li>En İyi İzleme Mesafesi: 5-12m</li>
+              <li>Tarama Modu: 1/8 tarama</li>
+              <li>Ömür: 100,000 saat</li>
+              <li>LED Çipi: Nationstar SMD</li>
+            </ul>
           </div>
-          <div>
-            <label for="message" class="block text-gray-700 font-semibold">Mesaj</label>
-            <textarea id="message" name="message" rows="5" class="w-full p-2 border rounded-md" required></textarea>
-          </div>
-          <input type="hidden" name="_next" value="https://bkled.github.io/tesekkur.html">
-          <button type="submit" class="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700">Gönder</button>
-        </form>
+        </div>
       </div>
     </section>
   </div>
@@ -361,42 +231,5 @@
       <img src="images/whatsapp.png" alt="WhatsApp">
     </a>
   </div>
-
-  <!-- JavaScript -->
-  <script type="text/javascript">
-    var gk_isXlsx = false;
-    var gk_xlsxFileLookup = {};
-    var gk_fileData = {};
-    function filledCell(cell) {
-      return cell !== '' && cell != null;
-    }
-    function loadFileData(filename) {
-      if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-        try {
-          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-          var firstSheetName = workbook.SheetNames[0];
-          var worksheet = workbook.Sheets[firstSheetName];
-
-          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-          var filteredData = jsonData.filter(row => row.some(filledCell));
-
-          var headerRowIndex = filteredData.findIndex((row, index) =>
-            row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-          );
-          if (headerRowIndex === -1 || headerRowIndex > 25) {
-            headerRowIndex = 0;
-          }
-
-          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-          return csv;
-        } catch (e) {
-          console.error(e);
-          return "";
-        }
-      }
-      return gk_fileData[filename] || "";
-    }
-  </script>
 </body>
 </html>
