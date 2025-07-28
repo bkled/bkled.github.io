@@ -105,6 +105,29 @@ nav a:hover {
     transform: scale(1.05);
 }
 
+.slider-container {
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.slider {
+    display: flex;
+    width: calc(100% * 2); /* Kartların iki katı genişlik */
+    animation: slide 20s linear infinite; /* Yavaş kayma, 20 saniye */
+}
+
+.slider a.card {
+    flex: 0 0 300px; /* Her kart 300px genişlikte */
+    margin-right: 1rem;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* İlk 3 kart kaydıktan sonra tekrar başa döner */
+}
+
 .whatsapp {
     position: fixed;
     bottom: 20px;
