@@ -3,34 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>İletişim</title>
-  <!-- Tailwind CSS CDN -->
+  <meta name="theme-color" content="#FFFFFF">
+  <title>BK LED - İletişim</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Kendi CSS dosyan (isteğe bağlı) -->
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100">
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2 class="section-title text-2xl font-semibold text-center mt-10">İletişim</h2>
-    <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto mt-6">
-      <form action="https://formspree.io/f/mzzvdgyv" method="POST" class="space-y-4">
-        <div>
-          <label for="name" class="block text-gray-700 font-semibold">İsim</label>
-          <input type="text" id="name" name="name" class="w-full p-2 border rounded-md" required>
-        </div>
-        <div>
-          <label for="email" class="block text-gray-700 font-semibold">E-posta</label>
-          <input type="email" id="email" name="email" class="w-full p-2 border rounded-md" required>
-        </div>
-        <div>
-          <label for="message" class="block text-gray-700 font-semibold">Mesaj</label>
-          <textarea id="message" name="message" rows="5" class="w-full p-2 border rounded-md" required></textarea>
-        </div>
-        <input type="hidden" name="_next" value="https://bkled.github.io/tesekkur.html">
-        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Gönder</button>
-      </form>
-    </div>
-  </section>
-</body>
-</html>
+<body>
+  <!-- Header'ı dahil et -->
+  <div id="header"></div>
+
+  <!-- Ana içerik -->
+  <div class="container mx-auto px-4 py-12">
+    <!-- Contact Section -->
+    <section id="contact" class="mb-12">
+      <h2 class="section-title">İletişim</h2>
+      <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+        <form action="https://formspree.io/f/mzzvdgyv" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block text-gray-700 font-semibold">İsim</label>
+            <input type="text" id="name" name="name" class="w-full p-2 border rounded-md" required>
+          </div>
+          <div>
+            <label for="email" class="block text-gray-700 font-semibold">E-posta</label>
+            <input type="email" id="email" name="email" class="w-full p-2 border rounded-md" required>
+          </div>
+          <div>
+            <label for="message" class="block text-gray-700 font-semibold">Mesaj</label>
+            <textarea id="message" name="message" rows="5" class="w-full p-2 border rounded-md" required></textarea>
+          </div>
+          <input type="hidden" name="_next" value="https://bkled.github.io/tesekkur.html">
+          <button type="submit" class="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700">Gönder</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer'ı dahil et -->
+  <div id="footer"></div>
+
+  <!-- JavaScript ile header ve footer'ı yükle -->
+  <script>
+    fetch('header.html')
+      .then(response => {
+        if (!response.ok) throw new Error('header.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('header').innerHTML = data)
+      .catch(error => console.error('Hata:', error));
+    fetch('footer.html')
+      .then(response => {
+        if (!response.ok) throw new Error('footer.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('footer').innerHTML = data)
