@@ -41,20 +41,17 @@
     <!-- References Section -->
     <section id="references" class="mb-12">
       <h2 class="section-title">Referanslar</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <a href="#" class="card bg-white rounded-lg shadow-lg overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+        <a href="#contact" class="card bg-white rounded-lg shadow-lg overflow-hidden">
           <img src="images/referans1.jpg" alt="Referans 1" class="w-full h-48 object-cover">
           <div class="p-4">
-            <h3 class="text-xl font-semibold text-gray-800">Referans 1</h3>
             <p class="text-gray-600">Örnek bir referans projesi, detaylı bilgi için iletişime geçin.</p>
           </div>
         </a>
-        <a href="#" class="card bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="images/referans2.jpg" alt="Referans 2" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold text-gray-800">Referans 2</h3>
-            <p class="text-gray-600">Başka bir başarılı LED ekran uygulaması.</p>
-          </div>
+      </div>
+      <div class="text-center mt-6">
+        <a href="#contact" class="button bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700">
+          Daha fazla referanslar
         </a>
       </div>
     </section>
@@ -89,11 +86,19 @@
   <!-- JavaScript ile header ve footer'ı yükle -->
   <script>
     fetch('header.html')
-      .then(response => response.text())
-      .then(data => document.getElementById('header').innerHTML = data);
+      .then(response => {
+        if (!response.ok) throw new Error('header.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('header').innerHTML = data)
+      .catch(error => console.error('Hata:', error));
     fetch('footer.html')
-      .then(response => response.text())
-      .then(data => document.getElementById('footer').innerHTML = data);
+      .then(response => {
+        if (!response.ok) throw new Error('footer.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('footer').innerHTML = data)
+      .catch(error => console.error('Hata:', error));
   </script>
 </body>
 </html>
