@@ -207,3 +207,26 @@ footer {
     padding: 1rem;
     text-align: center;
 }
+
+/* styles.css (sadece eklenen kısım) */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.contact-info a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #FF6347;
+}
+
+.contact-info span {
+    color: #fff;
+}
