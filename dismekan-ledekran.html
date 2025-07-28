@@ -3,143 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BK LED - Led Ekran Sistemleri</title>
+  <meta name="theme-color" content="#FFFFFF">
+  <title>BK LED - Dış Mekan LED Ekran</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-  <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #FF6D00;
-        color: #333;
-        overflow-x: hidden;
-        line-height: 1.6;
-    }
-
-    header {
-        background-color: #FF6D00;
-        color: #fff;
-        padding: 2rem;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    header h1 {
-        margin: 0;
-        font-size: 3rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    header p {
-        margin: 0.5rem 0;
-    }
-
-    nav {
-        background-color: #E65100;
-        padding: 0.5rem 0;
-    }
-
-    nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-    }
-
-    nav a {
-        color: #fff;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-        color: #FF4500;
-    }
-
-    .card {
-        background-color: #FFFFFF;
-        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        border-radius: 8px;
-        cursor: default;
-    }
-    .card:hover {
-        background-color: #FFF5E6;
-        transform: scale(1.05);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .whatsapp {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-    }
-    .whatsapp img {
-        width: 60px;
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
-
-    .section-title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.25rem;
-        font-weight: 600;
-        color: #FFFFFF;
-        display: inline-block;
-        padding: 0.5rem 1.5rem;
-        background-color: #FF6D00;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        margin-bottom: 1.5rem;
-    }
-    .section-title:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        background-color: #FF4500;
-    }
-
-    .container {
-        max-width: 1400px;
-        margin: 2rem auto;
-        padding: 1rem;
-        background-color: #FFFFFF;
-        border-radius: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="flex flex-col items-center justify-center bg-orange-600 text-white p-8 shadow-lg">
-    <div class="text-center">
-      <h1 class="text-5xl font-bold">BK LED</h1>
-      <p class="text-2xl mt-2 text-white">LED Ekran Sistemleri</p>
-    </div>
-  </header>
+  <!-- Header'ı dahil et -->
+  <div id="header"></div>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#products">Ürünler</a></li>
-      <li><a href="#references">Referanslar</a></li>
-      <li><a href="#contact">İletişim</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content -->
+  <!-- Ana içerik -->
   <div class="container mx-auto px-4 py-12">
     <!-- Dış Mekan LED Ekran Özellikleri -->
     <section id="outdoor-led" class="mb-12">
@@ -225,11 +100,25 @@
     </section>
   </div>
 
-  <!-- WhatsApp Icon -->
-  <div class="whatsapp">
-    <a href="https://wa.me/5438610057" target="_blank">
-      <img src="images/whatsapp.png" alt="WhatsApp">
-    </a>
-  </div>
+  <!-- Footer'ı dahil et -->
+  <div id="footer"></div>
+
+  <!-- JavaScript ile header ve footer'ı yükle -->
+  <script>
+    fetch('header.html')
+      .then(response => {
+        if (!response.ok) throw new Error('header.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('header').innerHTML = data)
+      .catch(error => console.error('Hata:', error));
+    fetch('footer.html')
+      .then(response => {
+        if (!response.ok) throw new Error('footer.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('footer').innerHTML = data)
+      .catch(error => console.error('Hata:', error));
+  </script>
 </body>
 </html>
