@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>BK LED - Referanslar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header'ı dahil et -->
+  <div id="header"></div>
+
+  <!-- Ana içerik -->
+  <div class="container mx-auto px-4 py-12">
+    <!-- Referanslar Section -->
+    <section id="references" class="mb-12">
+      <h2 class="section-title">Referanslar</h2>
+      <div id="references-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Kayan kutular buraya dinamik olarak eklenecek -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer'ı dahil et -->
+  <div id="footer"></div>
+
+  <!-- JavaScript ile header, footer ve kayan kutuları yükle -->
+  <script>
+    // Header'ı yükle
+    fetch('header.html')
+      .then(response => {
+        if (!response.ok) throw new Error('header.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('header').innerHTML = data)
+      .catch(error => console.error('Hata:', error));
+
+    // Footer'ı yükle
+    fetch('footer.html')
+      .then(response => {
+        if (!response.ok) throw new Error('footer.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => document.getElementById('footer').innerHTML = data)
+      .catch(error => console.error('Hata:', error));
+
+    // index.html'deki kayan kutuları yükle
+    fetch('index.html')
+      .then(response => {
+        if (!response.ok) throw new Error('index.html yüklenemedi');
+        return response.text();
+      })
+      .then(data => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, 'text/html');
+        const sliderCards = doc.querySelectorAll('.slider .card');
+        const referencesGrid = document.getElementById('references-grid');
+        sliderCards.forEach(card => {
+          const img = card.querySelector('img');
+          const title = card.querySelector('h3');
+          if (img && title) {
+            const newCard = document.createElement('div');
+            newCard.className = 'card bg-white rounded-lg shadow-lg overflow-hidden';
+            newCard.innerHTML = `
+              <img src="${img.src}" alt="${img.alt}" class="w-full max-h-64 object-contain">
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">${title.textContent}</h3>
+              </div>
+            `;
+            referencesGrid.appendChild(newCard);
+          }
+        });
+      })
+      .catch(error => console.error('Hata:', error));
+  </script>
+</body>
+</html>
