@@ -1,14 +1,45 @@
-<!-- header.html -->
-<header class="flex flex-col items-center justify-center bg-orange-600 text-white p-8 shadow-lg">
-  <div class="text-center">
-    <h1 class="text-5xl font-bold">BK LED</h1>
-    <p class="text-2xl mt-2 text-white">LED Ekran Sistemleri</p>
+<header>
+  <div class="header-content">
+    <h1>
+      <img src="images/bklogo.png" alt="BK LED Logo" class="logo">
+    </h1>
+    <p>Led Ekran Çözümleri</p>
   </div>
 </header>
-<nav class="nav-container">
-  <ul>
-    <li><a href="index.html"><i class="fas fa-tv"></i> Ürünler</a></li>
-    <li><a href="referanslar.html"><i class="fas fa-star"></i> Referanslar</a></li>
-    <li><a href="iletisim.html"><i class="fas fa-phone"></i> İletişim</a></li>
-  </ul>
-</nav>
+
+<style>
+  .header-content {
+    background-color: #FF6D00;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    max-height: 100px; /* Logo boyutu, gerektiğinde ayarlanabilir */
+    width: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      padding: 1.5rem;
+    }
+    .logo {
+      max-height: 80px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-content {
+      padding: 1rem;
+    }
+    .logo {
+      max-height: 60px;
+    }
+  }
+</style>
