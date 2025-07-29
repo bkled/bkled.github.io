@@ -1,45 +1,53 @@
 <header>
   <div class="header-content">
-    <h1>
-      <img src="images/bklogo.png" alt="BK LED Logo" class="logo">
-    </h1>
-    <p>Led Ekran Çözümleri</p>
+    <p class="slogan">Led Ekran Çözümleri</p>
   </div>
 </header>
 
 <style>
   .header-content {
-    background-color: #FF6D00;
+    background-color: #FF6D00; /* Varsayılan arka plan, resim yüklenmezse */
+    background-image: url('images/bklogo.png');
+    background-size: cover; /* Resmi header’a sığdırır */
+    background-position: center; /* Merkezi hizalama */
+    background-repeat: no-repeat; /* Tekrar önleme */
     color: #fff;
     padding: 2rem;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 1400px;
     margin: 0 auto;
+    min-height: 250px; /* Minimum yükseklik, resme göre ayarlanabilir */
+    position: relative;
   }
 
-  .logo {
-    max-height: 250px; /* Artırıldı */
-    width: auto;
-    display: block;
-    margin: 0 auto;
+  .slogan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   }
 
   @media (max-width: 768px) {
     .header-content {
       padding: 1.5rem;
+      min-height: 200px; /* Küçültüldü */
     }
-    .logo {
-      max-height: 200px; /* Güncellendi */
+    .slogan {
+      font-size: 1.2rem;
     }
   }
 
   @media (max-width: 480px) {
     .header-content {
       padding: 1rem;
+      min-height: 150px; /* Daha küçük ekranlar için */
     }
-    .logo {
-      max-height: 150px; /* Güncellendi */
+    .slogan {
+      font-size: 1rem;
     }
   }
 </style>
