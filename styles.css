@@ -1,4 +1,4 @@
-/* styles.css (sadece eklenen veya değişen kısım) */
+/* styles.css (sadece değişen veya ilgili kısım) */
 
 /* Mevcut stiller (önceki mesajlardan) */
 * {
@@ -121,8 +121,8 @@ nav a:hover {
 
 .slider {
     display: flex;
-    width: calc(100% * 2);
-    animation: slide 20s linear infinite;
+    width: calc(100% * 3); /* 18 kart için güncellendi (9 benzersiz + 9 tekrar) */
+    animation: slide 36s linear infinite; /* Süre 36s’ye artırıldı */
 }
 
 .slider a.card {
@@ -237,7 +237,6 @@ footer {
     color: #fff;
 }
 
-/* Yeni eklenen stil */
 .form-contact-info {
     display: flex;
     justify-content: center;
