@@ -1,6 +1,6 @@
-/* styles.css (sadece değişen veya ilgili kısım) */
+/* styles.css */
 
-/* Mevcut stiller (önceki mesajlardan) */
+/* Mevcut stiller */
 * {
     margin: 0;
     padding: 0;
@@ -121,8 +121,8 @@ nav a:hover {
 
 .slider {
     display: flex;
-    width: calc(100% * 3); /* 18 kart için güncellendi (9 benzersiz + 9 tekrar) */
-    animation: slide 36s linear infinite; /* Süre 36s’ye artırıldı */
+    width: calc(100% * 2); /* 6 kart için (3 benzersiz + 3 tekrar) */
+    animation: slide 20s linear infinite; /* 6 kart için 20s uygun */
 }
 
 .slider a.card {
@@ -133,6 +133,21 @@ nav a:hover {
 @keyframes slide {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+.more-button {
+    background-color: #FF6D00;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.more-button:hover {
+    background-color: #FF4500;
+    transform: translateY(-2px);
 }
 
 .whatsapp {
