@@ -18,7 +18,7 @@ body {
 header {
     background-color: #FF6D00; /* Varsayılan arka plan, resim yüklenmezse */
     background-image: url('images/bkled.png'); /* Logonun yeni adı */
-    background-size: contain; /* Logonun tamamını sığdırır */
+    background-size: cover; /* Logoyu header’a yayar, min-height ile dengelenir */
     background-position: center; /* Merkezi hizalama */
     background-repeat: no-repeat; /* Tekrar önleme */
     color: #fff;
@@ -27,7 +27,7 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 1400px;
     margin: 0 auto;
-    min-height: 200px; /* Logoya göre optimize edildi, gerekirse ayarla */
+    min-height: 300px; /* Artırıldı, logoya göre ayarlanabilir */
     position: relative;
 }
 
@@ -91,7 +91,7 @@ nav a:hover {
 @media (max-width: 768px) {
     header {
         padding: 1.5rem;
-        min-height: 150px; /* Mobil için küçültüldü */
+        min-height: 200px; /* Mobil için dengelendi */
     }
     nav ul {
         gap: 1rem;
@@ -106,7 +106,7 @@ nav a:hover {
 @media (max-width: 480px) {
     header {
         padding: 1rem;
-        min-height: 120px; /* Daha küçük ekranlar için */
+        min-height: 150px; /* Daha küçük ekranlar için */
     }
     nav a {
         font-size: 0.9rem;
