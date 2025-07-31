@@ -15,7 +15,7 @@
   .header-content {
     background-color: #FF6D00; /* Varsayılan arka plan, resim yüklenmezse */
     background-image: url('images/bklogo.png');
-    background-size: cover; /* Resmi header’a sığdırır */
+    background-size: contain; /* Logonun tamamını sığdırır, kesilme önler */
     background-position: center; /* Merkezi hizalama */
     background-repeat: no-repeat; /* Tekrar önleme */
     color: #fff;
@@ -24,7 +24,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 1400px;
     margin: 0 auto;
-    min-height: 240px; /* Minimum yükseklik, resme göre ayarlanabilir */
+    min-height: 200px; /* Logoya göre optimize edildi, gerekirse ayarla */
     position: relative;
     z-index: 1;
   }
@@ -98,7 +98,7 @@
   @media (max-width: 768px) {
     .header-content {
       padding: 1.5rem;
-      min-height: 200px; /* Küçültüldü */
+      min-height: 150px; /* Mobil için küçültüldü */
     }
     nav ul {
       gap: 1rem;
@@ -113,7 +113,7 @@
   @media (max-width: 480px) {
     .header-content {
       padding: 1rem;
-      min-height: 150px; /* Daha küçük ekranlar için */
+      min-height: 120px; /* Daha küçük ekranlar için */
     }
     nav a {
       font-size: 0.9rem;
