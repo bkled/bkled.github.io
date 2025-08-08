@@ -1,195 +1,85 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #FF6D00;
-    color: #333;
-    overflow-x: hidden;
-    line-height: 1.6;
-}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İç Mekan LED Ekran Sistemleri - BK LED</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content"></div>
+        <nav class="nav-container">
+            <ul>
+                <li><a href="index.html">Ürünler</a></li>
+                <li><a href="referanslar.html">Referanslar</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
 
-header {
-    background-color: #FF6D00;
-    padding: 1.5rem 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+    <!-- Main Content -->
+    <main>
+        <section class="container">
+            <h1 class="section-title">İç Mekan LED Ekran Sistemleri</h1>
+            <p>İç mekan LED ekranlar, yüksek çözünürlüklü görüntü kalitesi ve estetik tasarımlarıyla iç mekanlarda dikkat çekici bir görsel deneyim sunar. BK LED olarak, mağazalar, ofisler, konferans salonları ve daha birçok alanda kullanılmak üzere özelleştirilmiş iç mekan LED ekran çözümleri sunuyoruz.</p>
+            
+            <!-- Görsel ve Açıklama -->
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin: 2rem 0;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="images/icmekan-led.jpg" alt="İç Mekan LED Ekran" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 class="section-title" style="font-size: 1.75rem;">Neden İç Mekan LED Ekran?</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fas fa-check-circle" style="color: #FF4500; margin-right: 0.5rem;"></i> Ultra yüksek çözünürlük ve canlı renkler</li>
+                        <li><i class="fas fa-check-circle" style="color: #FF4500; margin-right: 0.5rem;"></i> İnce ve hafif tasarım, kolay montaj</li>
+                        <li><i class="fas fa-check-circle" style="color: #FF4500; margin-right: 0.5rem;"></i> Düşük enerji tüketimi</li>
+                        <li><i class="fas fa-check-circle" style="color: #FF4500; margin-right: 0.5rem;"></i> Özelleştirilebilir boyutlar ve şekiller</li>
+                    </ul>
+                    <a href="iletisim.html" class="more-button" style="margin-top: 1rem; display: inline-block;">Teklif Al</a>
+                </div>
+            </div>
 
-nav {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-}
+            <!-- Özellikler -->
+            <div class="container" style="background-color: #FFF5E6; padding: 2rem; border-radius: 10px;">
+                <h2 class="section-title">Teknik Özellikler</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div class="card" style="padding: 1.5rem; text-align: center;">
+                        <h3>Çözünürlük</h3>
+                        <p>P1.2, P1.5, P1.8, P2 piksel aralıkları ile ultra yüksek çözünürlük</p>
+                    </div>
+                    <div class="card" style="padding: 1.5rem; text-align: center;">
+                        <h3>Tasarım</h3>
+                        <p>İnce çerçeve ve şık tasarım, her mekana uyum</p>
+                    </div>
+                    <div class="card" style="padding: 1.5rem; text-align: center;">
+                        <h3>Parlaklık</h3>
+                        <p>800-1500 nit parlaklık, iç mekanlar için optimize edilmiş</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-nav .logo img {
-    height: 60px;
-    transition: transform 0.3s ease;
-}
-
-nav .logo img:hover {
-    transform: scale(1.1);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-nav a {
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-nav a:hover {
-    color: #FF4500;
-    transform: translateY(-2px);
-}
-
-.contact-btn {
-    background-color: #FF4500;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.contact-btn:hover {
-    background-color: #FF6347;
-    transform: translateY(-2px);
-}
-
-.banner {
-    position: relative;
-    width: 100%;
-    height: 600px;
-    background: url('images/indoor-led-banner.jpg') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 3rem;
-}
-
-.banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
-}
-
-.banner-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    padding: 2rem;
-}
-
-.banner h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.banner p {
-    font-size: 1.75rem;
-    font-weight: 600;
-    line-height: 1.4;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.card {
-    background-color: #FFFFFF;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    border-radius: 8px;
-    cursor: default;
-}
-.card:hover {
-    background-color: #FFF5E6;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-.whatsapp img {
-    width: 60px;
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-.section-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.25rem;
-    font-weight: 600;
-    color: #FFFFFF;
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background-color: #FF6D00;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-bottom: 1.5rem;
-}
-.section-title:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    background-color: #FF4500;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-}
-
-a {
-    color: #FF4500;
-    text-decoration: none;
-}
-a:hover {
-    color: #FF6347;
-}
-
-button {
-    background-color: #FF6D00;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #FF4500;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+    <!-- Footer -->
+    <div class="whatsapp">
+        <a href="https://wa.me/905438610057" target="_blank" aria-label="WhatsApp ile iletişime geç">
+            <img src="images/whatsapp.png" alt="WhatsApp">
+        </a>
+    </div>
+    <footer class="bg-orange-600 text-white text-center p-4">
+        <p>Copyright © BK LED Ekran Sistemleri</p>
+        <div class="contact-info mt-2">
+            <a href="mailto:info@bkled.com" class="text-white hover:text-orange-300"><i class="fas fa-envelope"></i> info@bkled.com</a>
+            <span class="mx-2">|</span>
+            <a href="https://www.instagram.com/bk_led?igsh=MXQ3MDIxZzMxcmw0ZQ==" target="_blank" class="text-white hover:text-orange-300"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/bkled" target="_blank" class="text-white hover:text-orange-300"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/share/16mZyKCkfD/?mibextid=qi2Omg" target="_blank" class="text-white hover:text-orange-300"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
