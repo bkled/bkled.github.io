@@ -1,6 +1,17 @@
 <header>
   <div class="header-content">
-    <!-- slogan kaldırıldı -->
+    <div class="header-info">
+      <div class="contact-info">
+        <p><i class="fas fa-map-marker-alt"></i> Örnek Mah. 123 Sk. No:45, İstanbul, Türkiye</p>
+        <p><i class="fas fa-phone-alt"></i> +90 212 555 1234</p>
+      </div>
+      <div class="social-media">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
   </div>
   <nav class="nav-container">
     <ul>
@@ -13,30 +24,67 @@
 
 <style>
   .header-content {
-    background-color: #FF6D00; /* Varsayılan arka plan, resim yüklenmezse */
+    background-color: #FF6D00;
     background-image: url('images/bklogo.png');
-    background-size: cover; /* Resmi header’a sığdırır */
-    background-position: center; /* Merkezi hizalama */
-    background-repeat: no-repeat; /* Tekrar önleme */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     padding: 2rem;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 1400px;
     margin: 0 auto;
-    min-height: 240px; /* Minimum yükseklik, resme göre ayarlanabilir */
+    min-height: 240px;
     position: relative;
     z-index: 1;
   }
 
+  .header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .contact-info p {
+    margin: 0.5rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .contact-info i {
+    font-size: 1.2rem;
+  }
+
+  .social-media {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-media a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-media a:hover {
+    color: #FF4500;
+  }
+
   .nav-container {
-    background-color: rgba(230, 81, 0, 0.9); /* Saydam turuncu */
+    background-color: rgba(230, 81, 0, 0.9);
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px); /* Modern cam efekti */
+    backdrop-filter: blur(5px);
   }
 
   nav ul {
@@ -98,7 +146,11 @@
   @media (max-width: 768px) {
     .header-content {
       padding: 1.5rem;
-      min-height: 200px; /* Küçültüldü */
+      min-height: 200px;
+    }
+    .header-info {
+      flex-direction: column;
+      gap: 1rem;
     }
     nav ul {
       gap: 1rem;
@@ -113,7 +165,13 @@
   @media (max-width: 480px) {
     .header-content {
       padding: 1rem;
-      min-height: 150px; /* Daha küçük ekranlar için */
+      min-height: 150px;
+    }
+    .contact-info p {
+      font-size: 0.9rem;
+    }
+    .social-media a {
+      font-size: 1.2rem;
     }
     nav a {
       font-size: 0.9rem;
