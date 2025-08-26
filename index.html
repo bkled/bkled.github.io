@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öyküm Toptan Parke</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Style.css bağlantısı -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="top-bar">
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="contact-info">
+            <span><i class="fas fa-map-marker-alt"></i> Örnek Mah., 123 Sk., İstanbul</span>
+            <span><i class="fas fa-phone"></i> +90 123 456 78 90</span>
+        </div>
+    </div>
+
+    <!-- Navigasyon -->
+    <div class="nav-container">
+        <div class="logo">
+            <img src="logo.png" alt="Öyküm Toptan Parke Logo">
+        </div>
+        <div class="nav-menu">
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </div>
+            <ul>
+                <li><a href="#anasayfa">Ana Sayfa</a></li>
+                <li><a href="#urunler">Ürünler</a></li>
+                <li><a href="#referanslar">Referanslar</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Ana İçerik -->
+    <main>
+        <section class="products-section">
+            <h1>Ürünlerimiz</h1>
+            <div class="products-container">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Laminat+Parke" alt="Laminat Parke">
+                    <h3>Laminat Parke</h3>
+                    <a href="#laminat-detay">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Masif+Parke" alt="Masif Parke">
+                    <h3>Masif Parke</h3>
+                    <a href="#masif-detay">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=LVT+Parke" alt="LVT Parke">
+                    <h3>LVT Parke</h3>
+                    <a href="#lvt-detay">Detaylı Bilgi</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Öyküm Toptan Parke. Tüm hakları saklıdır.</p>
+            <p class="design-credit">Tasarım: BBGG</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu ul');
+            const overlay = document.querySelector('.overlay');
+
+            if (hamburger && navMenu && overlay) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                });
+
+                overlay.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            } else {
+                console.error('Hamburger, navMenu veya overlay bulunamadı.');
+            }
+        });
+    </script>
+</body>
+</html>
