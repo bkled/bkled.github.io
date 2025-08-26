@@ -1,16 +1,96 @@
-<!-- footer.html -->
-<div class="whatsapp">
-  <a href="https://wa.me/905438610057" target="_blank" aria-label="WhatsApp ile iletişime geç">
-    <img src="images/whatsapp.png" alt="WhatsApp">
-  </a>
-</div>
-<footer class="bg-orange-600 text-white text-center p-4">
-  <p>Copyright © BK LED Ekran Sistemleri</p>
-  <div class="contact-info mt-2">
-    <a href="mailto:info@bkled.com" class="text-white hover:text-orange-300"><i class="fas fa-envelope"></i> info@bkled.com</a>
-    <span class="mx-2">|</span>
-    <a href="https://www.instagram.com/bk_led?igsh=MXQ3MDIxZzMxcmw0ZQ==" target="_blank" class="text-white hover:text-orange-300"><i class="fab fa-instagram"></i></a>
-    <a href="https://twitter.com/bkled" target="_blank" class="text-white hover:text-orange-300"><i class="fab fa-twitter"></i></a>
-    <a href="https://www.facebook.com/share/16mZyKCkfD/?mibextid=qi2Omg" target="_blank" class="text-white hover:text-orange-300"><i class="fab fa-facebook-f"></i></a>
-  </div>
-</footer>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK LED - Footer</title>
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Alt Kısım (Footer) */
+        .footer {
+            background-color: #d35400; /* Header ile uyumlu koyu turuncu */
+            color: #000;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer .social-media a {
+            color: #000;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .footer .social-media a:hover {
+            color: #fff;
+        }
+
+        .footer .copyright {
+            text-align: right;
+        }
+
+        .footer .copyright p {
+            margin: 5px 0;
+        }
+
+        .footer .design-credit {
+            font-size: 12px;
+            color: #333; /* Daha az dikkat çeken koyu gri ton */
+        }
+
+        /* Mobil Görünüm */
+        @media screen and (max-width: 768px) {
+            .footer {
+                flex-direction: column; /* Dikey hizala */
+                align-items: flex-start;
+                padding: 15px 20px;
+            }
+
+            .footer .social-media {
+                margin-bottom: 10px;
+            }
+
+            .footer .social-media a {
+                font-size: 16px; /* İkon boyutunu küçült */
+                margin-right: 10px;
+            }
+
+            .footer .copyright {
+                text-align: left;
+            }
+
+            .footer .copyright p {
+                font-size: 12px; /* Yazı boyutunu küçült */
+            }
+
+            .footer .design-credit {
+                font-size: 10px; /* Daha küçük yazı boyutu */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Alt Kısım: Sosyal Medya ve Copyright -->
+    <div class="footer">
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 BK LED. Tüm hakları saklıdır.</p>
+            <p class="design-credit">Tasarım: BBGG</p>
+        </div>
+    </div>
+</body>
+</html>
