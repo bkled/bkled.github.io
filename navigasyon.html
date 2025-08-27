@@ -30,11 +30,13 @@
 
         .logo img {
             width: 150px; /* Logo boyutunu ayarlayabilirsin */
-            background-color: #e67e22; /* Logonun arka planı navigasyonla eşleşiyor */
             display: block; /* Varsayılan boşlukları kaldırır */
             margin: 0; /* Çevresinde boşluk olmasın */
             padding: 0; /* Çevresinde boşluk olmasın */
             object-fit: contain; /* Logoyu bozmadan sığdırır */
+            background-color: transparent; /* Arka plan saydam */
+            max-width: 100%; /* Logo taşmasını önler */
+            height: auto; /* Oranı korur */
         }
 
         /* Menü Stili */
