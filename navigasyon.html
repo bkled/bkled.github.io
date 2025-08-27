@@ -20,10 +20,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            line-height: 1; /* Boşlukları azaltır */
+        }
+
+        .logo {
+            margin: 0; /* Çevresinde boşluk olmasın */
+            padding: 0;
         }
 
         .logo img {
             width: 150px; /* Logo boyutunu ayarlayabilirsin */
+            background-color: #e67e22; /* Logonun arka planı navigasyonla eşleşiyor */
+            display: block; /* Varsayılan boşlukları kaldırır */
+            margin: 0; /* Çevresinde boşluk olmasın */
+            padding: 0; /* Çevresinde boşluk olmasın */
+            object-fit: contain; /* Logoyu bozmadan sığdırır */
         }
 
         /* Menü Stili */
