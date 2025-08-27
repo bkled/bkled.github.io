@@ -119,12 +119,13 @@
                 top: 0;
                 right: 0;
                 height: 100vh;
-                width: 250px; /* Sabit genişlik, daha şık */
+                width: 250px; /* Daha küçük yan panel */
                 background-color: #e67e22; /* Koyu turuncu */
                 padding: 80px 20px 20px;
                 transform: translateX(100%); /* Sağda gizli */
                 transition: transform 0.3s ease-in-out;
                 z-index: 1000;
+                box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3); /* Gölge efekti */
             }
 
             .nav-menu ul.active {
@@ -153,9 +154,9 @@
             }
 
             .nav-menu a {
-                font-size: 20px; /* Daha büyük yazı */
+                font-size: 18px; /* Daha küçük yazı */
                 font-weight: normal; /* Yazılar kalın değil */
-                padding: 15px;
+                padding: 10px;
                 display: block;
                 color: #000;
                 transition: color 0.3s ease;
