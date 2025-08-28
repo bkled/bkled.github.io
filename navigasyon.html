@@ -29,7 +29,7 @@
         }
 
         .logo img {
-            width: 150px; /* Logo boyutunu ayarlayabilirsin */
+            width: 200px; /* Logo boyutunu masaüstü için büyüttük */
             display: block; /* Varsayılan boşlukları kaldırır */
             margin: 0; /* Çevresinde boşluk olmasın */
             padding: 0; /* Çevresinde boşluk olmasın */
@@ -180,6 +180,11 @@
 
             .nav-menu a:hover::after {
                 width: 50%; /* Alt çizgi efekti */
+            }
+
+            /* Mobil için logo boyutu */
+            .logo img {
+                width: 150px; /* Mobilde orijinal boyutu koru */
             }
         }
     </style>
