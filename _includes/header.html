@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK LED - Header</title>
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Üst Kısım (Sosyal Medya ve İletişim) */
+        .top-bar {
+            background-color: #d35400; /* Koyu turuncunun bir ton koyusu */
+            color: #000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .social-media a {
+            color: #000;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .social-media a:hover {
+            color: #fff;
+        }
+
+        .contact-info span {
+            margin-left: 20px;
+            color: #000; /* Yazı rengi siyah, sosyal ikonlarla uyumlu */
+            font-size: 16px; /* Sosyal medya ikonlarıyla daha uyumlu font boyutu */
+        }
+
+        /* Mobil Görünüm */
+        @media screen and (max-width: 768px) {
+            .top-bar {
+                flex-direction: column; /* Dikey hizala */
+                align-items: flex-start;
+                padding: 15px 20px;
+            }
+
+            .social-media {
+                margin-bottom: 10px;
+            }
+
+            .social-media a {
+                font-size: 16px; /* İkon boyutunu küçült */
+                margin-right: 10px;
+            }
+
+            .contact-info {
+                display: flex;
+                flex-direction: column; /* İletişim bilgileri dikey */
+            }
+
+            .contact-info span {
+                margin: 5px 0; /* Aralarında boşluk */
+                font-size: 14px; /* Mobil için biraz daha küçük ama uyumlu */
+                color: #000; /* Yazı rengi siyah */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Üst Kısım: Sosyal Medya ve İletişim -->
+    <div class="top-bar">
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/+905531263686" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="contact-info">
+            <span><i class="fas fa-map-marker-alt"></i> Örnek Mah., 123 Sk., İstanbul</span>
+            <span><i class="fas fa-phone"></i> +90553 126 36 86</span>
+        </div>
+    </div>
+</body>
+</html>
