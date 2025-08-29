@@ -1,0 +1,98 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK LED Ekran Teknolojileri</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Style.css bağlantısı -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div id="navigasyon"></div>
+    <main>
+        <section class="products-section">
+            <h1>Ürünlerimiz</h1>
+            <div class="products-container">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=İç+Mekan+LED+Ekran" alt="İç Mekan LED Ekran">
+                    <h3>İç Mekan LED Ekran</h3>
+                    <p>Dayanıklı ve yüksek çözünürlüklü iç mekan LED ekran çözümlerimizle mekanlarınızı aydınlatın.</p>
+                    <a href="#ic-mekan-detay">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Dış+Mekan+LED+Ekran" alt="Dış Mekan LED Ekran">
+                    <h3>Dış Mekan LED Ekran</h3>
+                    <p>Hava koşullarına dayanıklı dış mekan LED ekranlarımızla etkili reklam çözümleri.</p>
+                    <a href="#dis-mekan-detay">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=LED+Video+Wall" alt="LED Video Wall">
+                    <h3>LED Video Wall</h3>
+                    <p>Büyük ölçekli video wall sistemlerimizle etkileyici görsel deneyimler yaratın.</p>
+                    <a href="#video-wall-detay">Detaylı Bilgi</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+
+    <script>
+        // Header'i yükle
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        // Navigasyonu yükle
+        fetch('navigasyon.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('navigasyon').innerHTML = data);
+
+        // Footer'ı yükle
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>
