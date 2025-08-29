@@ -401,3 +401,61 @@ body {
         font-size: 25px; /* Mobilde daha küçük ikon */
     }
 }
+
+/* Hakkımızda Bölümü - Eksik Stilleri Ekle */
+.about-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.about-section p {
+    font-size: 16px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 20px 0 10px;
+}
+
+.about-content p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Mobil için Hakkımızda */
+@media screen and (max-width: 768px) {
+    .about-section {
+        padding: 40px 15px;
+    }
+
+    .about-section h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+}
