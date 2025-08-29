@@ -1,7 +1,7 @@
 ```yaml
 theme: minima
 baseurl: ""
-url: "https://username.github.io" # Kendi site URL’ni buraya yaz (örneğin, https://bk-led.github.io)
+url: "https://bkled.github.io" # Kendi site URL’ni buraya yaz (örneğin, https://bk-led.github.io)
 ```
 
 #### **_layouts/default.html**
