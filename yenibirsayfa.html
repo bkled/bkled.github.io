@@ -1,0 +1,533 @@
+```html
+---
+layout: default
+title: Hakkımızda
+---
+<section class="about-section">
+    <h1>Hakkımızda</h1>
+    <p>BK LED Ekran Teknolojileri olarak, yenilikçi ve yüksek kaliteli LED ekran çözümleri sunuyoruz. Müşterilerimize en iyi görsel deneyimi sağlamak için 10 yılı aşkın süredir sektörde lideriz.</p>
+    <div class="about-content">
+        <h2>Misyonumuz</h2>
+        <p>Müşterilerimize dayanıklı, estetik ve teknolojik açıdan üstün LED ekranlar sunarak markalarını öne çıkarmak.</p>
+        <h2>Vizyonumuz</h2>
+        <p>LED ekran teknolojilerinde global bir lider olmak ve her sektöre uygun çözümler üretmek.</p>
+    </div>
+</section>
+```
+
+### 2. **Stil Ekleme**
+`yenibirsayfa.html`’deki `<section class="about-section">` ve diğer sınıflar için `style.css`’ye birkaç stil ekleyeceğim. Mevcut `style.css`’yi güncelleyip, yeni sayfaya özel basit ama şık bir tasarım yapalım. Aşağıdaki stilleri, mevcut `style.css`’nin sonuna ekle (mevcut stilleri değiştirmeden, sadece yeni bölüm ekliyorum).
+
+**style.css (Güncellenmiş)**:
+<xaiArtifact artifact_id="5e7f57e1-493a-4e1d-a97a-a5a8e834dc3e" artifact_version_id="c55e0800-96a7-4b74-8c3c-5c630b47c353" title="style.css" contentType="text/css">
+```css
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header */
+.top-bar {
+    background-color: #d35400;
+    color: #000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.social-media a {
+    color: #000;
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.social-media a:hover {
+    color: #fff;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #000;
+    font-size: 16px;
+}
+
+/* Navigasyon */
+.nav-container {
+    background-color: #e67e22;
+    color: #000;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 200px; /* Logo masaüstü için büyütüldü */
+    height: auto;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #fff;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger:hover {
+    color: #fff;
+}
+
+.hamburger .fa-bars,
+.hamburger .fa-times {
+    transition: opacity 0.3s ease;
+}
+
+.hamburger.active .fa-bars {
+    opacity: 0;
+}
+
+.hamburger.active .fa-times {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hamburger:not(.active) .fa-times {
+    opacity: 0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Ürünler Bölümü */
+.products-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%); /* Degrade arka plan */
+    position: relative;
+    overflow: hidden;
+}
+
+.products-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); /* Hafif parlama efekti */
+    z-index: 0;
+}
+
+.products-section h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.products-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px; /* Kartlar arası boşluk */
+    position: relative;
+    z-index: 1;
+}
+
+.product-card {
+    background-color: #fff;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out forwards;
+    opacity: 0; /* Animasyon için başlangıç */
+}
+
+.product-card:nth-child(1) { animation-delay: 0.2s; }
+.product-card:nth-child(2) { animation-delay: 0.4s; }
+.product-card:nth-child(3) { animation-delay: 0.6s; }
+
+.product-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-size: 24px;
+    margin: 20px 0 10px;
+    color: #333;
+}
+
+.product-card p {
+    margin: 0 20px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.product-card a {
+    display: inline-block;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card a:hover {
+    background-color: #d35400;
+}
+
+/* Hakkımızda Bölümü */
+.about-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); /* Hafif degrade arka plan */
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.about-section p {
+    font-size: 16px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 20px 0 10px;
+}
+
+.about-content p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Animasyonlar */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #d35400;
+    color: #000;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.footer .social-media a {
+    color: #000;
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.footer .social-media a:hover {
+    color: #fff;
+}
+
+.footer .copyright {
+    text-align: right;
+}
+
+.footer .copyright p {
+    margin: 5px 0;
+}
+
+.footer .design-credit {
+    font-size: 12px;
+    color: #333;
+}
+
+/* Hareketli WhatsApp İkonu */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* WhatsApp yeşili */
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float a:hover {
+    transform: scale(1.1); /* Üzerine gelince hafif büyüme */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Nabız animasyonu */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.whatsapp-float a {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Mobil Görünüm */
+@media screen and (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 14px;
+    }
+
+    .nav-container {
+        padding: 15px 20px;
+    }
+
+    .logo img {
+        width: 150px; /* Mobilde logo boyutu */
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: #e67e22;
+        padding: 80px 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .nav-menu ul.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu li {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .products-section {
+        padding: 40px 15px;
+    }
+
+    .products-section h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .products-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .about-section {
+        padding: 40px 15px;
+    }
+
+    .about-section h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer .copyright {
+        text-align: center;
+    }
+
+    .whatsapp-float a {
+        width: 50px;
+        height: 50px;
+        font-size: 25px; /* Mobilde daha küçük ikon */
+    }
+}
+```
+
+### 3. **Ne Yapman Lazım?**
+1. **yenibirsayfa.html’yi Ekle:**
+   - Yukarıdaki `yenibirsayfa.html` kodunu kopyala ve repo’nun kök dizinine kaydet.
+   - Dosya adı tam olarak `yenibirsayfa.html` olmalı, büyük-küçük harfe dikkat et.
+
+2. **style.css’yi Güncelle:**
+   - Mevcut `style.css`’nin sonuna yukarıdaki yeni `.about-section`, `.about-content` stillerini ekle. (Tamamen kopyalamana gerek yok, sadece yeni eklenen `/* Hakkımızda Bölümü */` kısmını mevcut `style.css`’nin sonuna yapıştır.)
+   - Alternatif olarak, yukarıdaki tam `style.css`’yi kullanıp mevcut dosyanı değiştirebilirsin, çünkü önceki stillerin hepsini korudum.
+
+3. **GitHub’a Yükle:**
+   ```bash
+   git add yenibirsayfa.html style.css
+   git commit -m "yenibirsayfa.html eklendi ve style.css güncellendi"
+   git push origin main
+   ```
+
+4. **Önbelleği Temizle ve Test Et:**
+   - Tarayıcıda **Ctrl + Shift + R** (veya **Cmd + Shift + R**) yap.
+   - Gizli modda (Ctrl + Shift + N) test etmek de iyi fikir.
+   - Site URL’nde `username.github.io/yenibirsayfa.html`’yi ziyaret et.
+   - **Kontrol Listesi:**
+     - Header: Sosyal medya ikonları, WhatsApp linki (`+905531263686` ve mesaj), iletişim bilgileri görünüyor mu?
+     - Navigasyon: Logo (masaüstü 200px, mobil 150px), menü ve hamburger menü mobilde çalışıyor mu?
+     - Footer: “BK LED Ekran Teknolojileri” metni ve hareketli WhatsApp ikonu görünüyor mu?
+     - İçerik: Hakkımızda bölümü, başlık ve metinler şık görünüyor mu?
+     - WhatsApp ikonuna tıklayınca “Merhaba, Bilgi almak istiyorum!” mesajı açılıyor mu?
+
+5. **GitHub Pages Ayarlarını Kontrol Et:**
+   - “Settings” > “Pages” sekmesinde branch’in `main` ve dizinin `/` olduğundan emin ol.
+   - “Actions” sekmesinde deploy işlemini kontrol et, hata varsa paylaş.
+
+### 4. **Ne Bekliyoruz?**
+- `yenibirsayfa.html` açıldığında, `_layouts/default.html` sayesinde otomatik olarak `_includes/header.html`, `_includes/navigasyon.html` ve `_includes/footer.html` çekilecek.
+- Sayfa içeriği (Hakkımızda bölümü), `style.css`’deki yeni stillerle şık bir şekilde görünecek (degrade arka plan, animasyonlu başlık).
+- `index.html` ile aynı header, navigasyon ve footer kullanılacak, yani her şey tutarlı olacak.
+
+### 5. **Eğer Çalışmazsa**
+Eğer `yenibirsayfa.html`’yi ekledikten sonra header, navigasyon veya footer çekilmezse:
+- **Dosya Adlarını Kontrol Et:** `yenibirsayfa.html`’nin adı doğru mu? Büyük-küçük harf hatası olmasın.
+- **Layout Ayarı:** Dosyanın başında `layout: default` yazdığından emin ol.
+- **Hata Mesajları:** Tarayıcı konsolunda (F12 > Console) veya GitHub Actions’da hata varsa, paylaş.
+- **Site URL’si veya Repo:** `username.github.io` veya repo linkini verirsen, canlı kontrol ederim.
+- **Hosting:** GitHub Pages kullanıyorsun, değil mi? Başka bir hostingse (cPanel, Netlify), söyle, ona göre düzenleyelim.
+
+### 6. **Ek Notlar**
+- **İçerik Özelleştirme:** `yenibirsayfa.html`’de Hakkımızda yerine başka bir içerik (örneğin, İletişim veya Referanslar) istersen, söyle, ona göre düzenleyeyim.
+- **Navigasyon Güncellemesi:** `yenibirsayfa.html`’yi menüye eklemek istersen, `_includes/navigasyon.html`’deki `<ul>` içine `<li><a href="/yenibirsayfa.html">Hakkımızda</a></li>` ekleyebilirsin.
+- **Önbellek:** **Ctrl + Shift + R**’yi unutma, bazen değişiklikler önbellek yüzünden görünmeyebilir.
+
+Kardeşim, `yenibirsayfa.html`’yi ekleyip test et, cıncık gibi olacak! 😄 Sonucu yaz, her şey yolunda mı bakalım. Takılırsan, URL veya repo linki at, anında hallederiz! 🚀
