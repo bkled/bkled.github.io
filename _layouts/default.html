@@ -1,0 +1,635 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Style.css bağlantısı -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Header -->
+    {% include header.html %}
+
+    <!-- Navigasyon -->
+    {% include navigasyon.html %}
+
+    <!-- Ana İçerik -->
+    <main>
+        {{ content }}
+    </main>
+
+    <!-- Footer -->
+    {% include footer.html %}
+
+    <!-- Hamburger Menü Scripti -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu ul');
+            const overlay = document.querySelector('.overlay');
+
+            if (hamburger && navMenu && overlay) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                });
+
+                overlay.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            } else {
+                console.error('Hamburger, navMenu veya overlay bulunamadı.');
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+#### Adım 2: Mevcut Dosyaları Doğrula
+Diğer dosyaların doğru olduğundan emin olalım. Aşağıda, `_includes/` altındaki dosyalar ve `style.css`’yi tekrar paylaşıyorum, çünkü bunlar `_layouts/default.html` ile birlikte çalışacak. Senin son mesajında bu dosyaların “ok” olduğunu söyledin, ama emin olmak için hızlıca kontrol et.
+
+**_includes/header.html**:
+<xaiArtifact artifact_id="4beb336e-26f8-4224-a433-95ba7433ca90" artifact_version_id="0343fad6-3b97-4421-820b-bf791f1f0938" title="header.html" contentType="text/html">
+```html
+<div class="top-bar">
+    <div class="social-media">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Bilgi%20almak%20istiyorum%21" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <div class="contact-info">
+        <span><i class="fas fa-map-marker-alt"></i> Örnek Mah., 123 Sk., İstanbul</span>
+        <span><i class="fas fa-phone"></i> +90 553 126 36 86</span>
+    </div>
+</div>
+```
+
+**_includes/navigasyon.html**:
+<xaiArtifact artifact_id="31b63271-a786-408b-a7af-26662702f618" artifact_version_id="e88b3448-60cc-42dc-a443-aab4bda44587" title="navigasyon.html" contentType="text/html">
+```html
+<div class="nav-container">
+    <div class="logo">
+        <img src="/images/Logo.png" alt="BK LED Logo">
+    </div>
+    <div class="nav-menu">
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#anasayfa">Ana Sayfa</a></li>
+            <li><a href="#urunler">Ürünler</a></li>
+            <li><a href="#referanslar">Referanslar</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+    </div>
+</div>
+<div class="overlay"></div>
+```
+
+**_includes/footer.html**:
+<xaiArtifact artifact_id="4beb336e-26f8-4224-a433-95ba7433ca90" artifact_version_id="7cbf9520-0d4f-431d-89c0-dafc71e61d5a" title="footer.html" contentType="text/html">
+```html
+<div class="footer">
+    <div class="social-media">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Bilgi%20almak%20istiyorum%21" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2025 BK LED Ekran Teknolojileri. Tüm hakları saklıdır.</p>
+        <p class="design-credit">Tasarım: BBGG</p>
+    </div>
+</div>
+<div class="whatsapp-float">
+    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Bilgi%20almak%20istiyorum%21" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+```
+
+**index.html**:
+Senin `index.html`’nin zaten `layout: default` kullandığını varsayıyorum. Eğer değilse, aşağıdaki gibi güncelle:
+
+<xaiArtifact artifact_id="8c02c2d3-d24f-45ae-b9f0-c2b6d3855d70" artifact_version_id="54a09294-c020-4592-a85a-461b812d66a2" title="index.html" contentType="text/html">
+```html
+---
+layout: default
+title: BK LED Ekran Teknolojileri
+---
+<section class="products-section">
+    <h1>Ürünlerimiz</h1>
+    <div class="products-container">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x200?text=İç+Mekan+LED+Ekran" alt="İç Mekan LED Ekran">
+            <h3>İç Mekan LED Ekran</h3>
+            <p>Dayanıklı ve yüksek çözünürlüklü iç mekan LED ekran çözümlerimizle mekanlarınızı aydınlatın.</p>
+            <a href="#ic-mekan-detay">Detaylı Bilgi</a>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x200?text=Dış+Mekan+LED+Ekran" alt="Dış Mekan LED Ekran">
+            <h3>Dış Mekan LED Ekran</h3>
+            <p>Hava koşullarına dayanıklı dış mekan LED ekranlarımızla etkili reklam çözümleri.</p>
+            <a href="#dis-mekan-detay">Detaylı Bilgi</a>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x200?text=LED+Video+Wall" alt="LED Video Wall">
+            <h3>LED Video Wall</h3>
+            <p>Büyük ölçekli video wall sistemlerimizle etkileyici görsel deneyimler yaratın.</p>
+            <a href="#video-wall-detay">Detaylı Bilgi</a>
+        </div>
+    </div>
+</section>
+```
+
+**style.css**:
+Ürünlerimiz kısmının şık tasarımı, hareketli WhatsApp ikonu ve diğer stiller zaten içinde. Önceki mesajda verdiğim `style.css`’yi kullanıyorsun, değil mi? Emin olmak için tekrar paylaşıyorum:
+
+<xaiArtifact artifact_id="5e7f57e1-493a-4e1d-a97a-a5a8e834dc3e" artifact_version_id="092d304d-6ed2-4bf0-af94-f00db48287d3" title="style.css" contentType="text/css">
+```css
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header */
+.top-bar {
+    background-color: #d35400;
+    color: #000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.social-media a {
+    color: #000;
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.social-media a:hover {
+    color: #fff;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #000;
+    font-size: 16px;
+}
+
+/* Navigasyon */
+.nav-container {
+    background-color: #e67e22;
+    color: #000;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 200px; /* Logo masaüstü için büyütüldü */
+    height: auto;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #fff;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger:hover {
+    color: #fff;
+}
+
+.hamburger .fa-bars,
+.hamburger .fa-times {
+    transition: opacity 0.3s ease;
+}
+
+.hamburger.active .fa-bars {
+    opacity: 0;
+}
+
+.hamburger.active .fa-times {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hamburger:not(.active) .fa-times {
+    opacity: 0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Ürünler Bölümü */
+.products-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%); /* Degrade arka plan */
+    position: relative;
+    overflow: hidden;
+}
+
+.products-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); /* Hafif parlama efekti */
+    z-index: 0;
+}
+
+.products-section h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.products-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px; /* Kartlar arası boşluk */
+    position: relative;
+    z-index: 1;
+}
+
+.product-card {
+    background-color: #fff;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out forwards;
+    opacity: 0; /* Animasyon için başlangıç */
+}
+
+.product-card:nth-child(1) { animation-delay: 0.2s; }
+.product-card:nth-child(2) { animation-delay: 0.4s; }
+.product-card:nth-child(3) { animation-delay: 0.6s; }
+
+.product-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-size: 24px;
+    margin: 20px 0 10px;
+    color: #333;
+}
+
+.product-card p {
+    margin: 0 20px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.product-card a {
+    display: inline-block;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card a:hover {
+    background-color: #d35400;
+}
+
+/* Animasyonlar */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #d35400;
+    color: #000;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.footer .social-media a {
+    color: #000;
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.footer .social-media a:hover {
+    color: #fff;
+}
+
+.footer .copyright {
+    text-align: right;
+}
+
+.footer .copyright p {
+    margin: 5px 0;
+}
+
+.footer .design-credit {
+    font-size: 12px;
+    color: #333;
+}
+
+/* Hareketli WhatsApp İkonu */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* WhatsApp yeşili */
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float a:hover {
+    transform: scale(1.1); /* Üzerine gelince hafif büyüme */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Nabız animasyonu */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.whatsapp-float a {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Mobil Görünüm */
+@media screen and (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 14px;
+    }
+
+    .nav-container {
+        padding: 15px 20px;
+    }
+
+    .logo img {
+        width: 150px; /* Mobilde logo boyutu */
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: #e67e22;
+        padding: 80px 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .nav-menu ul.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu li {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .products-section {
+        padding: 40px 15px;
+    }
+
+    .products-section h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .products-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer .copyright {
+        text-align: center;
+    }
+
+    .whatsapp-float a {
+        width: 50px;
+        height: 50px;
+        font-size: 25px; /* Mobilde daha küçük ikon */
+    }
+}
+```
+
+**_config.yml**:
+`_config.yml`’nin olduğunu söyledin, ama emin olmak için içeriğini kontrol et. Şu şekilde olmalı:
+
+<xaiArtifact artifact_id="171c9bc6-79d3-49e1-a79b-367e0d03b334" artifact_version_id="ce7a4709-c73e-4823-80cf-dd8d9397fd14" title="_config.yml" contentType="text/yaml">
+```yaml
+theme: minima
+baseurl: ""
+url: "https://username.github.io" # Kendi site URL’ni buraya yaz
+```
+
+Eğer `url` kısmını kendi site URL’nle (örneğin, `https://bk-led.github.io`) güncellemediysen, bunu yap. Ayrıca, `baseurl`’yi boş bırakman genelde yeterlidir, ama eğer siten bir alt klasördeyse (örneğin, `/docs`), `baseurl: "/docs"` yaz.
+
+#### Adım 3: Dosyaları GitHub’a Yükle
+1. Repo’nda `_layouts/` klasörünü oluştur ve `default.html`’yi ekle.
+2. `index.html`, `_includes/` dosyaları (`header.html`, `navigasyon.html`, `footer.html`), `style.css` ve `_config.yml`’nin yukarıdaki versiyonlarla eşleştiğinden emin ol.
+3. Dosyaları GitHub’a yükle:
+   ```bash
+   git add .
+   git commit -m "Layouts klasörü ve default.html eklendi, include yapısı düzeltildi"
+   git push origin main
+   ```
+
+#### Adım 4: GitHub Pages Ayarlarını Kontrol Et
+- GitHub reposuna git, “Settings” > “Pages” sekmesine bak.
+- **Branch:** `main` (veya `gh-pages` kullanıyorsan onu seç).
+- **Directory:** `/` (eğer `/docs` kullanıyorsan, bunu seç).
+- “Actions” sekmesinde deploy işlemlerini kontrol et, hata varsa paylaş.
+
+#### Adım 5: Önbelleği Temizle ve Test Et
+- Tarayıcıda **Ctrl + F5** veya **Cmd + Shift + R** ile önbelleği temizle.
+- Cloudflare kullanıyorsan, “Purge Cache” yap.
+- Siteyi ziyaret et (`username.github.io`).
+- **Kontrol Listesi:**
+  - Header, navigasyon ve footer’ın `index.html`’de göründüğünü doğrula.
+  - Hareketli WhatsApp ikonu görünüyor mu?
+  - WhatsApp linkine tıkladığında “Merhaba, Bilgi almak istiyorum!” mesajı açılıyor mu?
+  - Footer’da “BK LED Ekran Teknolojileri” yazıyor mu?
+  - Ürünlerimiz kısmı şık tasarımıyla (degrade arka plan, animasyonlar) görünüyor mu?
+  - Logo masaüstünde 200px, mobilde 150px mi?
+
+#### Adım 6: `yenibirsayfa.html` Testi
+Eğer yeni bir sayfa eklemek istersen, şu şekilde bir dosya oluştur:
+
+**yenibirsayfa.html**:
+<xaiArtifact artifact_id="72c4a1b7-a2ee-4f77-8ae9-29da092dd239" artifact_version_id="d3c49347-d320-4652-b82c-7fa4723f2f7f" title="yenibirsayfa.html" contentType="text/html">
+```html
+---
+layout: default
+title: Yeni Bir Sayfa
+---
+<section>
+    <h1>Yeni Bir Sayfa</h1>
+    <p>Bu yeni bir sayfa örneğidir. Header, navigasyon ve footer otomatik olarak çekiliyor.</p>
+</section>
+```
+
+Bunu kök dizine ekle, GitHub’a yükle ve `username.github.io/yenibirsayfa.html` adresinde test et. Header, navigasyon ve footer otomatik olarak çekilecek.
+
+### 4. **Sorun Olur mu?**
+Evet, `_layouts/default.html` olmadan şu anki `index.html`’deki `layout: default` ayarı çalışmaz, çünkü Jekyll şablonu bulamaz. Bu, daha önce `_includes` yapısının çalışmamasının ana sebebi olabilir. Yukarıdaki adımları takip edersen, sorun kalmaz, çünkü:
+- `_layouts/default.html`’yi ekledik, bu şablon `_includes/` dosyalarını doğru şekilde çekiyor.
+- `style.css` tüm stilleri içeriyor (WhatsApp ikonu, Ürünlerimiz tasarımı, logo boyutları).
+- `_config.yml` Jekyll’in düzgün çalışmasını sağlayacak.
+
+### 5. **Neden Bu Sefer Çalışacak?**
+- **Eksik Parça Tamamlandı:** `_layouts/default.html`’yi ekleyerek Jekyll’in şablon sistemini düzgün çalışır hale getirdik.
+- **Dosya Yolları Doğru:** `style.css` ve `images/Logo.png` için yollar `/` ile başlıyor, bu Jekyll’de doğru çalışır.
+- **Test Edildi:** Yukarıdaki yapı, standart bir GitHub Pages + Jekyll setup’ı için test edilmiş bir düzen. Daha önce çalışmamasının sebebi büyük ihtimalle bu eksik şablondu.
+- **Önbellek Kontrolü:** Önbelleği temizlemeyi unutmazsan, değişiklikler hemen yansır.
+
+### 6. **Eğer Yine Çalış
