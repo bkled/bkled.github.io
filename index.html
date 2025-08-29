@@ -68,4 +68,98 @@
                     <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
                 </div>
                 <div class="product-card">
-                    <img src="https://via.placeholder
+                    <img src="https://via.placeholder.com/300x200?text=LED+Video+Wall" alt="LED Video Wall">
+                    <h3>LED Video Wall</h3>
+                    <p>Büyük ölçekli video wall sistemlerimizle etkileyici görsel deneyimler yaratın.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <h1>Referanslar</h1>
+            <div class="products-container">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Referans+1" alt="Referans 1">
+                    <h3>Referans 1</h3>
+                    <p>Başarılı projelerimizden bir örnek.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Referans+2" alt="Referans 2">
+                    <h3>Referans 2</h3>
+                    <p>Başarılı projelerimizden bir örnek.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Referans+3" alt="Referans 3">
+                    <h3>Referans 3</h3>
+                    <p>Başarılı projelerimizden bir örnek.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+
+    <script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+            return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+                try {
+                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                    var firstSheetName = workbook.SheetNames[0];
+                    var worksheet = workbook.Sheets[firstSheetName];
+                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                    var filteredData = jsonData.filter(row => row.some(filledCell));
+                    var headerRowIndex = filteredData.findIndex((row, index) =>
+                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                    );
+                    if (headerRowIndex === -1 || headerRowIndex > 25) headerRowIndex = 0;
+                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                    return csv;
+                } catch (e) {
+                    console.error(e);
+                    return "";
+                }
+            }
+            return gk_fileData[filename] || "";
+        }
+    </script>
+
+    <script>
+        // Header'i yükle
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Header dosyası bulunamadı');
+                return response.text();
+            })
+            .then(data => document.getElementById('header').innerHTML = data)
+            .catch(error => console.error('Header yükleme hatası:', error));
+
+        // Navigasyonu yükle
+        fetch('navigasyon.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Navigasyon dosyası bulunamadı');
+                return response.text();
+            })
+            .then(data => document.getElementById('navigasyon').innerHTML = data)
+            .catch(error => console.error('Navigasyon yükleme hatası:', error));
+
+        // Footer'ı yükle
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Footer dosyası bulunamadı');
+                return response.text();
+            })
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(error => console.error('Footer yükleme hatası:', error));
+    </script>
+</body>
+</html>
