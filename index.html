@@ -1,24 +1,16 @@
 <!-- index.html -->
+---
+layout: default
+---
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <title>Ana Sayfa</title>
-    <!-- jQuery kütüphanesini dahil et -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- Header'ın yükleneceği yer -->
-    <div id="header"></div>
+    {% include header.html %}
 
-    <!-- jQuery ile header.html dosyasını yükle -->
-    <script>
-        $(document).ready(function() {
-            $("#header").load("_includes/header.html");
-        });
-    </script>
-
-    <!-- Diğer içerik -->
     <h1>Hoş Geldiniz</h1>
 </body>
 </html>
