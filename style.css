@@ -5,106 +5,6 @@ body {
     color: #333;
 }
 
-/* Genel Section Stili */
-.section {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    z-index: 0;
-}
-
-.section h1 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #e67e22;
-    background: linear-gradient(to right, #e67e22, #d35400);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    animation: fadeInDown 1s ease-in-out;
-}
-
-/* Genel Kart Stili */
-.card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    position: relative;
-    z-index: 1;
-}
-
-.card {
-    background-color: #fff;
-    width: 300px;
-    min-height: 400px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    animation: slideIn 0.5s ease-in-out forwards;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card:nth-child(1) { animation-delay: 0.2s; }
-.card:nth-child(2) { animation-delay: 0.4s; }
-.card:nth-child(3) { animation-delay: 0.6s; }
-
-.card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Resmin kartı doldurmasını sağlar */
-    object-position: center; /* Resmin merkezi hizalanır */
-    display: block; /* Gereksiz boşlukları kaldırır */
-}
-
-.card h3 {
-    font-size: 24px;
-    margin: 20px 0 10px;
-    color: #333;
-}
-
-.card p {
-    margin: 0 20px 20px;
-    color: #666;
-    font-size: 14px;
-}
-
-.card a {
-    display: inline-block;
-    background-color: #e67e22;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.card a:hover {
-    background-color: #d35400;
-}
-
 /* Header */
 .top-bar {
     background-color: #d35400;
@@ -177,7 +77,7 @@ body {
 
 .hamburger {
     display: none;
-    font-size: 20px;
+    font-size: 20px; /* İkon boyutu */
     cursor: pointer;
     color: #fff;
     background-color: #d35400;
@@ -191,7 +91,7 @@ body {
 
 .hamburger:hover {
     background-color: #e67e22;
-    transform: rotate(90deg);
+    transform: rotate(90deg); /* Hafif animasyon */
 }
 
 .hamburger .fa-bars {
@@ -199,7 +99,7 @@ body {
 }
 
 .hamburger.active .fa-bars {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Açıldığında ikon döner */
 }
 
 .overlay {
@@ -217,6 +117,229 @@ body {
 .overlay.active {
     display: block;
     opacity: 1;
+}
+
+/* Ürünler Bölümü */
+.products-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.products-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.products-section h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+/* Referanslar Bölümü */
+.references-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.references-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.references-section h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.references-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.reference-card {
+    background-color: #fff;
+    width: 300px;
+    min-height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out forwards;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reference-card:nth-child(1) { animation-delay: 0.2s; }
+.reference-card:nth-child(2) { animation-delay: 0.4s; }
+.reference-card:nth-child(3) { animation-delay: 0.6s; }
+
+.reference-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.reference-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.reference-card h3 {
+    font-size: 24px;
+    margin: 20px 0 10px;
+    color: #333;
+}
+
+.reference-card p {
+    margin: 0 20px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.reference-link {
+    display: inline-block;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.reference-link:hover {
+    background-color: #d35400;
+}
+
+.products-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.product-card {
+    background-color: #fff;
+    width: 300px;
+    min-height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box Shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out forwards;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card:nth-child(1) { animation-delay: 0.2s; }
+.product-card:nth-child(2) { animation-delay: 0.4s; }
+.product-card:nth-child(3) { animation-delay: 0.6s; }
+
+.product-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.product-card h3 {
+    font-size: 24px;
+    margin: 20px 0 10px;
+    color: #333;
+}
+
+.product-card p {
+    margin: 0 20px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.product-card a {
+    display: inline-block;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card a:hover {
+    background-color: #d35400;
+}
+
+/* Animasyonlar */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Footer */
@@ -294,4 +417,152 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Nabız anim
+/* Nabız animasyonu */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.whatsapp-float a {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Mobil Görünüm */
+@media screen and (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 14px;
+    }
+
+    .nav-container {
+        padding: 15px 20px;
+        position: relative;
+        justify-content: flex-start;
+    }
+
+    .logo img {
+        width: 150px;
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+        color: #fff;
+        background-color: #d35400;
+        padding: 8px;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .hamburger:hover {
+        background-color: #e67e22;
+        transform: rotate(90deg);
+    }
+
+    .nav-menu ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: auto;
+        background: linear-gradient(135deg, #e67e22, #d35400);
+        padding: 50px 15px;
+        border-radius: 0 0 0 10px;
+        transform: scale(0.8);
+        transform-origin: top right;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+
+    .nav-menu ul.active {
+        display: flex;
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .nav-menu li {
+        margin: 8px 0;
+        text-align: left;
+    }
+
+    .nav-menu li a {
+        font-size: 13px;
+        color: #fff;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: background-color 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-menu li a i {
+        font-size: 14px;
+    }
+
+    .nav-menu li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .products-section,
+    .references-section {
+        padding: 40px 15px;
+    }
+
+    .products-section h1,
+    .references-section h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .products-container,
+    .references-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .product-card,
+    .reference-card {
+        width: 100%;
+        max-width: 300px;
+        min-height: 400px;
+    }
+
+    .product-card img,
+    .reference-card img {
+        height: 200px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer .copyright {
+        text-align: center;
+    }
+
+    .whatsapp-float a {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+    }
