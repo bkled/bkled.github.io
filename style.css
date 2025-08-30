@@ -77,35 +77,29 @@ body {
 
 .hamburger {
     display: none;
-    font-size: 24px;
+    font-size: 20px; /* İkon boyutu */
     cursor: pointer;
-    color: #000;
+    color: #fff;
+    background-color: #d35400;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
     position: relative;
     z-index: 1001;
 }
 
 .hamburger:hover {
-    color: #fff;
+    background-color: #e67e22;
+    transform: rotate(90deg); /* Hafif animasyon */
 }
 
-.hamburger .fa-bars,
-.hamburger .fa-times {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+.hamburger .fa-bars {
+    transition: transform 0.3s ease;
 }
 
 .hamburger.active .fa-bars {
-    opacity: 0;
-    transform: rotate(90deg);
-}
-
-.hamburger.active .fa-times {
-    opacity: 1;
-    transform: rotate(0deg);
-}
-
-.hamburger:not(.active) .fa-times {
-    opacity: 0;
-    transform: rotate(-90deg);
+    transform: rotate(180deg); /* Açıldığında ikon döner */
 }
 
 .overlay {
@@ -117,7 +111,7 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
-    transition: opacity 0.3s ease; /* Yumuşak geçiş */
+    transition: opacity 0.3s ease;
 }
 
 .overlay.active {
@@ -349,19 +343,20 @@ body {
     .hamburger {
         display: block;
         position: absolute;
-        top: 15px; /* Daha yakın konum */
-        right: 15px; /* Sağ üst köşe */
-        font-size: 20px; /* Daha küçük ikon */
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
         color: #fff;
-        background-color: #d35400; /* Modern bir arka plan */
+        background-color: #d35400;
         padding: 8px;
-        border-radius: 50%; /* Yuvarlak ikon */
+        border-radius: 50%;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .hamburger:hover {
         background-color: #e67e22;
+        transform: rotate(90deg);
     }
 
     .nav-menu ul {
@@ -370,12 +365,12 @@ body {
         position: fixed;
         top: 0;
         right: 0;
-        width: 180px; /* Daha küçük menü */
-        height: auto; /* İçeriğe göre yükseklik */
-        background: linear-gradient(135deg, #e67e22, #d35400); /* Degrade arka plan */
+        width: 180px;
+        height: auto;
+        background: linear-gradient(135deg, #e67e22, #d35400);
         padding: 50px 15px;
-        border-radius: 0 0 0 10px; /* Sol alt köşe yuvarlatılmış */
-        transform: scale(0.8); /* Başlangıçta küçültülmüş */
+        border-radius: 0 0 0 10px;
+        transform: scale(0.8);
         transform-origin: top right;
         transition: transform 0.3s ease, opacity 0.3s ease;
         opacity: 0;
@@ -385,25 +380,32 @@ body {
 
     .nav-menu ul.active {
         display: flex;
-        transform: scale(1); /* Açıldığında normal boyut */
+        transform: scale(1);
         opacity: 1;
     }
 
     .nav-menu li {
-        margin: 8px 0; /* Daha az boşluk */
-        text-align: left; /* Sola hizalı menü öğeleri */
+        margin: 8px 0;
+        text-align: left;
     }
 
     .nav-menu li a {
-        font-size: 13px; /* Daha küçük yazı */
+        font-size: 13px;
         color: #fff;
         padding: 8px 15px;
         border-radius: 5px;
         transition: background-color 0.2s ease;
+        display: flex; /* İkon ve yazı hizalaması için */
+        align-items: center;
+        gap: 10px; /* İkon ve yazı arasında boşluk */
+    }
+
+    .nav-menu li a i {
+        font-size: 14px; /* İkon boyutu */
     }
 
     .nav-menu li a:hover {
-        background-color: rgba(255, 255, 255, 0.1); /* Hafif hover efekti */
+        background-color: rgba(255, 255, 255, 0.1);
     }
 
     .products-section {
@@ -446,4 +448,4 @@ body {
         height: 50px;
         font-size: 25px;
     }
-            }
+}
