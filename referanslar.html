@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referanslar - BK LED Ekran Teknolojileri</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Style.css bağlantısı -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div id="navigasyon"></div>
+    <main>
+        <section class="references-section">
+            <h1>Referanslarımız</h1>
+            <div class="references-container">
+                <div class="reference-card">
+                    <img src="images/referans1.jpg" alt="Referans 1 - Alışveriş Merkezi">
+                    <h3>Alışveriş Merkezi LED Ekran Projesi</h3>
+                    <p>İzmir'deki büyük bir alışveriş merkezinde kurulan P3 Dış Mekan LED Ekran, yüksek parlaklık ve dayanıklılık ile dikkat çekiyor.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20projeleri%20hakkında%20bilgi%20almak%20istiyorum%21" class="reference-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="reference-card">
+                    <img src="images/referans2.jpg" alt="Referans 2 - Otel Lobisi">
+                    <h3>Otel Lobisi İç Mekan Ekran</h3>
+                    <p>Antalya'daki bir otel lobisinde kullanılan P2.5 İç Mekan LED Ekran, yüksek çözünürlük ile görsel şölen sunuyor.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20projeleri%20hakkında%20bilgi%20almak%20istiyorum%21" class="reference-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="reference-card">
+                    <img src="images/referans3.jpg" alt="Referans 3 - Stadyum">
+                    <h3>Stadyum Reklam Panosu</h3>
+                    <p>İstanbul'daki bir stadyumda kurulan P5 Dış Mekan LED Ekran, maç günlerinde yüksek kaliteli görseller sunuyor.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20projeleri%20hakkında%20bilgi%20almak%20istiyorum%21" class="reference-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+
+    <script>
+        // Header, navigasyon ve footer'ı yükle
+        fetch('header.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Header dosyası bulunamadı'))
+            .then(data => document.getElementById('header').innerHTML = data)
+            .catch(error => console.error('Header yükleme hatası:', error));
+
+        fetch('navigasyon.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Navigasyon dosyası bulunamadı'))
+            .then(data => {
+                document.getElementById('navigasyon').innerHTML = data;
+                // Hamburger menü işlevselliği
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu ul');
+                const overlay = document.querySelector('.overlay');
+
+                if (hamburger && navMenu && overlay) {
+                    hamburger.addEventListener('click', function () {
+                        hamburger.classList.toggle('active');
+                        navMenu.classList.toggle('active');
+                        overlay.classList.toggle('active');
+                    });
+
+                    overlay.addEventListener('click', function () {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                    });
+                } else {
+                    console.error('Hamburger, nav-menu veya overlay bulunamadı.');
+                }
+            })
+            .catch(error => console.error('Navigasyon yükleme hatası:', error));
+
+        fetch('footer.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Footer dosyası bulunamadı'))
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(error => console.error('Footer yükleme hatası:', error));
+    </script>
+</body>
+</html>
