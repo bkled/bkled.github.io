@@ -450,7 +450,7 @@ body {
     }
 
     .design-credit a {
-    color: #ffffff; /* Footer metin rengine uyumlu, örneğin beyaz */
+    color: ##A9A9A9; /* Footer metin rengine uyumlu, örneğin beyaz */
     text-decoration: none; /* Alt çizgiyi kaldırır */
     font-weight: 400; /* Yazı kalınlığını ayarlar, isteğe bağlı */
     transition: color 0.3s ease; /* Yumuşak renk geçişi */
