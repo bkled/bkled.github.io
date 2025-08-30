@@ -36,7 +36,6 @@
                 </div>
             </div>
         </section>
-
         <section class="products-section">
             <h1>Referanslar</h1>
             <div class="products-container">
@@ -44,7 +43,7 @@
                     <img src="images/referans1.jpg" alt="Referans 1">
                     <h3>Referans 1</h3>
                     <p>Başarılı projelerimizden bir örnek.</p>
-                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20bilgisi%20alm preven="true" class="product-link" target="_blank">Detaylı Bilgi</a>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
                 </div>
                 <div class="product-card">
                     <img src="images/referans2.jpg" alt="Referans 2">
@@ -59,7 +58,8 @@
                     <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Referans%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
                 </div>
             </div>
-        </section>
+        </sectionascend
+</section>
     </main>
     <div id="footer"></div>
 
@@ -72,7 +72,29 @@
 
         fetch('navigasyon.html')
             .then(response => response.ok ? response.text() : Promise.reject('Navigasyon dosyası bulunamadı'))
-            .then(data => document.getElementById('navigasyon').innerHTML = data)
+            .then(data => {
+                document.getElementById('navigasyon').innerHTML = data;
+                // Hamburger menü işlevselliği
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu ul');
+                const overlay = document.querySelector('.overlay');
+
+                if (hamburger && navMenu && overlay) {
+                    hamburger.addEventListener('click', function () {
+                        hamburger.classList.toggle('active');
+                        navMenu.classList.toggle('active');
+                        overlay.classList.toggle('active');
+                    });
+
+                    overlay.addEventListener('click', function () {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                    });
+                } else {
+                    console.error('Hamburger, nav-menu veya overlay bulunamadı.');
+                }
+            })
             .catch(error => console.error('Navigasyon yükleme hatası:', error));
 
         fetch('footer.html')
