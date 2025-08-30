@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header'ı dahil et -->
-  <div id="header"></div>
 
   <!-- Ana içerik -->
   <div class="container mx-auto px-4 py-12">
@@ -50,25 +48,44 @@
     </section>
   </div>
 
-  <!-- Footer'ı dahil et -->
-  <div id="footer"></div>
+<script>
+        // Header, navigasyon ve footer'ı yükle
+        fetch('header.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Header dosyası bulunamadı'))
+            .then(data => document.getElementById('header').innerHTML = data)
+            .catch(error => console.error('Header yükleme hatası:', error));
 
-  <!-- JavaScript ile header ve footer'ı yükle -->
-  <script>
-    fetch('header.html')
-      .then(response => {
-        if (!response.ok) throw new Error('header.html yüklenemedi');
-        return response.text();
-      })
-      .then(data => document.getElementById('header').innerHTML = data)
-      .catch(error => console.error('Hata:', error));
-    fetch('footer.html')
-      .then(response => {
-        if (!response.ok) throw new Error('footer.html yüklenemedi');
-        return response.text();
-      })
-      .then(data => document.getElementById('footer').innerHTML = data)
-      .catch(error => console.error('Hata:', error));
-  </script>
+        fetch('navigasyon.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Navigasyon dosyası bulunamadı'))
+            .then(data => {
+                document.getElementById('navigasyon').innerHTML = data;
+                // Hamburger menü işlevselliği
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu ul');
+                const overlay = document.querySelector('.overlay');
+
+                if (hamburger && navMenu && overlay) {
+                    hamburger.addEventListener('click', function () {
+                        hamburger.classList.toggle('active');
+                        navMenu.classList.toggle('active');
+                        overlay.classList.toggle('active');
+                    });
+
+                    overlay.addEventListener('click', function () {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                    });
+                } else {
+                    console.error('Hamburger, nav-menu veya overlay bulunamadı.');
+                }
+            })
+            .catch(error => console.error('Navigasyon yükleme hatası:', error));
+
+        fetch('footer.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Footer dosyası bulunamadı'))
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(error => console.error('Footer yükleme hatası:', error));
+</script>
 </body>
 </html>
