@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -68,8 +29,8 @@
                     <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
                 </div>
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200?text=P4+İç+Mekan" alt="P4 İç Mekan LED Ekran">
-                    <h3>P4 İç Mekan LED Ekran</h3>
+                    <img src="https://via.placeholder.com/300x200?text=P4+İç+Mekan" alt="P5 İç Mekan LED Ekran">
+                    <h3>P5 İç Mekan LED Ekran</h3>
                     <p>Daha büyük alanlar için uygun, yüksek parlaklık ve dayanıklılık ile iç mekanlarda popüler bir seçenektir.</p>
                     <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
                 </div>
@@ -78,20 +39,20 @@
             <h1>Dış Mekan LED Ekranlar</h1>
             <div class="products-container">
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200?text=P5+Dış+Mekan" alt="P5 Dış Mekan LED Ekran">
-                    <h3>P5 Dış Mekan LED Ekran</h3>
+                    <img src="https://via.placeholder.com/300x200?text=P5+Dış+Mekan" alt="P3 Dış Mekan LED Ekran">
+                    <h3>P3 Dış Mekan LED Ekran</h3>
                     <p>Su geçirmez IP65 korumalı, yüksek parlaklık ile dış reklam ve totemler için en yaygın modellerden biridir.</p>
                     <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
                 </div>
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200?text=P6.67+Dış+Mekan" alt="P6.67 Dış Mekan LED Ekran">
-                    <h3>P6.67 Dış Mekan LED Ekran</h3>
+                    <img src="https://via.placeholder.com/300x200?text=P6.67+Dış+Mekan" alt="P4 Dış Mekan LED Ekran">
+                    <h3>P4 Dış Mekan LED Ekran</h3>
                     <p>Bina cepheleri ve büyük ekranlar için dayanıklı, hava koşullarına karşı korunaklı ve popüler bir seçenektir.</p>
                     <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
                 </div>
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200?text=P10+Dış+Mekan" alt="P10 Dış Mekan LED Ekran">
-                    <h3>P10 Dış Mekan LED Ekran</h3>
+                    <img src="https://via.placeholder.com/300x200?text=P10+Dış+Mekan" alt="P5 Dış Mekan LED Ekran">
+                    <h3>P5 Dış Mekan LED Ekran</h3>
                     <p>Genel dış mekan kullanımları için en popüler model, su geçirmez ve yüksek ışık gücü ile totem ve reklam panolarında kullanılır.</p>
                     <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
                 </div>
