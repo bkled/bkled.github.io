@@ -448,4 +448,16 @@ body {
         height: 50px;
         font-size: 25px;
     }
+
+    .design-credit a {
+    color: #ffffff; /* Footer metin rengine uyumlu, örneğin beyaz */
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+    font-weight: 400; /* Yazı kalınlığını ayarlar, isteğe bağlı */
+    transition: color 0.3s ease; /* Yumuşak renk geçişi */
+}
+
+.design-credit a:hover {
+    color: #f0c14b; /* Hover'da altın sarısı veya başka bir renk */
+    text-decoration: underline; /* Hover'da alt çizgi ekler */
+}
 }
