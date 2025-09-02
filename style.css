@@ -253,7 +253,7 @@ body {
 .references-container {
     display: flex;
     justify-content: center; /* Yatayda ortalama */
-    align-items: center; /* Dikeyde ortalama */
+    align-items: stretch; /* Kartların yüksekliği eşitlenir */
     flex-wrap: wrap;
     gap: 30px;
     position: relative;
@@ -262,10 +262,10 @@ body {
 
 .reference-card {
     background-color: #fff;
-    width: 320px; /* Kart genişliğini biraz artırdık */
-    min-height: 420px; /* Kart yüksekliğini artırdık */
+    width: 320px; /* Kart genişliği */
+    height: 450px; /* Sabit yükseklik, tüm kartlar aynı boyutta */
     border-radius: 10px;
-    overflow: visible; /* Resimlerin kırpılmasını önler */
+    overflow: hidden; /* İçerik taşmasını önler */
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -296,14 +296,20 @@ body {
 
 .reference-card h3 {
     font-size: 24px;
-    margin: 20px 0 10px;
+    margin: 10px 0; /* Daha sıkı yerleşim için margin azaltıldı */
     color: #333;
+    flex-shrink: 0; /* Başlık boyutunun küçülmesini önler */
 }
 
 .reference-card p {
-    margin: 0 20px 20px;
+    margin: 0 20px 10px; /* Daha sıkı yerleşim için margin azaltıldı */
     color: #666;
     font-size: 14px;
+    flex-grow: 1; /* Metin alanını esnetir, eşit yükseklik sağlar */
+    overflow: hidden; /* Uzun metin taşmasını önler */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Maksimum 3 satır gösterir */
+    -webkit-box-orient: vertical; /* Dikey metin kesme */
 }
 
 .reference-link {
@@ -313,8 +319,9 @@ body {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Daha sıkı yerleşim için margin azaltıldı */
     transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Bağlantı boyutunun küçülmesini önler */
 }
 
 .reference-link:hover {
@@ -543,8 +550,8 @@ body {
     .product-card,
     .reference-card {
         width: 100%;
-        max-width: 320px; /* Mobil görünümde kart genişliğini artırdık */
-        min-height: 420px; /* Mobil görünümde kart yüksekliğini artırdık */
+        max-width: 320px; /* Mobil görünümde kart genişliği */
+        height: 450px; /* Mobil görünümde sabit yükseklik */
     }
 
     .product-card img {
@@ -552,9 +559,22 @@ body {
     }
 
     .reference-card img {
-        max-height: 250px; /* Mobil görünümde resmin boyutunu biraz daha büyük yapar */
+        max-height: 250px; /* Mobil görünümde resmin boyutunu korur */
         margin: 10px auto;
         padding: 5px;
+    }
+
+    .reference-card h3 {
+        margin: 10px 0;
+    }
+
+    .reference-card p {
+        margin: 0 20px 10px;
+        -webkit-line-clamp: 3; /* Maksimum 3 satır gösterir */
+    }
+
+    .reference-link {
+        margin-bottom: 10px;
     }
 
     .footer {
