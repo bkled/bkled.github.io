@@ -287,7 +287,7 @@ body {
 
 .reference-card img {
     max-width: 100%; /* Resmin kart genişliğini aşmamasını sağlar */
-    max-height: 180px; /* Resmin yüksekliğini sınırlar, orijinal oranı korur */
+    max-height: 220px; /* Resmi bir tık daha büyük yapmak için */
     object-fit: contain; /* Resmin tamamı görünür, kırpılmaz */
     display: block;
     margin: 10px auto; /* Resmi yatayda ve dikeyde ortalar */
@@ -552,7 +552,7 @@ body {
     }
 
     .reference-card img {
-        max-height: 180px; /* Mobil görünümde resmin boyutunu korur */
+        max-height: 220px; /* Mobil görünümde resmin boyutunu bir tık daha büyük yapar */
         margin: 10px auto;
         padding: 5px;
     }
