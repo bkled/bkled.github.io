@@ -99,3 +99,194 @@
     </script>
 </body>
 </html>
+
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+    
+        </script><!DOCTYPE html>
+<html lang="tr">
+<head>
+  <!-- Temel Meta Etiketleri -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BKLED Ekran Teknolojileri, iç mekan ve dış mekan LED ekran modelleri sunar. HD görüntü kalitesi, 6 yıl garanti ve anahtar teslim hizmetlerle LED ekran metrekare fiyatı avantajları. Işıklı tabela çözümleri de mevcut.">
+  <meta name="keywords" content="LED ekran, iç mekan LED ekran, dış mekan LED ekran, LED ekran fiyatı, LED ekran metrekare fiyatı, ışıklı tabela, BKLED, P10 LED ekran, P4 LED ekran">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="BKLED Ekran Teknolojileri">
+
+  <!-- Open Graph Protokolü (Sosyal Medya için) -->
+  <meta property="og:title" content="BKLED Ekran Teknolojileri - İç ve Dış Mekan LED Ekran Modelleri">
+  <meta property="og:description" content="Profesyonel LED ekran çözümleri: İç mekan P1.25 - P4, dış mekan P2.5 - P10 modelleri. 6 yıl garanti, HD görüntü ve kolay kurulum. LED ekran metrekare fiyatı için teklif alın!">
+  <meta property="og:image" content="https://bkledekran.com/images/Logo.png">
+  <meta property="og:url" content="https://bkledekran.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Etiketleri -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BKLED Ekran Teknolojileri - LED Ekran ve Işıklı Tabela Çözümleri">
+  <meta name="twitter:description" content="BKLED ile iç ve dış mekan LED ekranlar: Yüksek parlaklık, 100.000 saat ömür, 6 yıl garanti. LED ekran fiyatı ve metrekare hesaplaması için iletişime geçin.">
+  <meta name="twitter:image" content="https://bkledekran.com/images/Logo.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://bkledekran.com">
+
+  <!-- Sitemap ve Robots.txt -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://bkledekran.com/sitemap.xml">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Favikon -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+  <!-- Header ve Navigasyon (Mevcut dosyalarınızı dahil edin) -->
+  <div id="header"></div>
+  <div id="navigasyon"></div>
+
+  <main>
+    <!-- Ana İçerik Başlığı (H1) -->
+    <h1>BKLED Ekran Teknolojileri - Profesyonel LED Ekran Çözümleri</h1>
+
+    <!-- Optimize Edilmiş Giriş İçeriği -->
+    <p>BKLED Ekran Teknolojileri, iç mekan ve dış mekan LED ekran modelleri ile ışıklı tabela çözümleri sunar. HD görüntü kalitesi, yüksek parlaklık ve 100.000 saat ömürle tasarlanan LED ekranlarımız, her türlü hava şartına dayanıklıdır. 6 yıl garanti ve anahtar teslim hizmetlerimizle, LED ekran metrekare fiyatı avantajlarını yakalayın. AVM'ler, stadyumlar, mağazalar ve endüstriyel alanlar için ideal çözümlerimizle işinizi aydınlatın!</p>
+
+    <!-- LED Ekran Özellikleri Bölümü (H2) -->
+    <h2>LED Ekran Özellikleri ve Avantajları</h2>
+    <ul>
+      <li>100.000 saat ömür ve 6 yıl garanti ile uzun vadeli kullanım.</li>
+      <li>WiFi, Ethernet ve bulut sistemi ile kolay yönetim.</li>
+      <li>Gün ışığına göre otomatik parlaklık ayarı, ışık kirliliği önleme.</li>
+      <li>Fan sistemi ile aşırı ısınma koruması ve düşük güç tüketimi.</li>
+      <li>HD görüntü ve ses oynatma, yüksek kontrast ve parlaklık seviyesi.</li>
+      <li>CE, RoHS ve EMC sertifikalı, çevre dostu malzeme kullanımı.</li>
+      <li>Düşük arıza oranı ve hızlı teknik servis desteği.</li>
+    </ul>
+
+    <!-- İç Mekan LED Ekran Modelleri (H2) -->
+    <h2>İç Mekan LED Ekran Modelleri</h2>
+    <p>İç mekan LED ekranlarımız, yakın mesafe izleme için P1.25'ten P4'e kadar modeller sunar. m²'de 62.500 - 640.000 LED ile HD görüntü kalitesi sağlar.</p>
+    <ul>
+      <li><strong>İç Mekan P4 LED Ekran</strong>: m²'de 62.500 LED, HD görüntü, 6 yıl garanti, anahtar teslim.</li>
+      <li><strong>İç Mekan P3 LED Ekran</strong>: m²'de 111.111 LED, kolay kullanım, enerji tasarruflu.</li>
+      <li><strong>İç Mekan P2.5 LED Ekran</strong>: m²'de 160.000 LED, yüksek çözünürlük.</li>
+      <li><strong>İç Mekan P1.86 LED Ekran</strong>: m²'d 299.000 LED, profesyonel sunumlar için.</li>
+      <li><strong>İç Mekan P1.53 LED Ekran</strong>: m²'d 422.500 LED, titremesiz görüntü.</li>
+      <li><strong>İç Mekan P1.25 LED Ekran</strong>: m²'d 640.000 LED, ultra HD kalite.</li>
+    </ul>
+    <img src="/images/ic-mekan-led-ekran.jpg" alt="BKLED İç Mekan LED Ekran Modelleri" loading="lazy">
+
+    <!-- Dış Mekan LED Ekran Modelleri (H2) -->
+    <h2>Dış Mekan LED Ekran Modelleri</h2>
+    <p>Dış mekan LED ekranlarımız, hava koşullarına dayanıklı P2.5'ten P10'a kadar modellerle uzun mesafe izleme sağlar. m²'d 10.000 - 160.000 LED ile etkili reklam çözümleri.</p>
+    <ul>
+      <li><strong>Dış Mekan P10 LED Ekran</strong>: m²'d 10.000 LED, HD görüntü, 6 yıl garanti.</li>
+      <li><strong>Dış Mekan P6 LED Ekran</strong>: m²'d 27.777 LED, kolay kurulum.</li>
+      <li><strong>Dış Mekan P5 LED Ekran</strong>: m²'d 40.000 LED, yüksek parlaklık.</li>
+      <li><strong>Dış Mekan P4 LED Ekran</strong>: m²'d 62.500 LED, dayanıklı yapı.</li>
+      <li><strong>Dış Mekan P3 LED Ekran</strong>: m²'d 111.111 LED, profesyonel kullanım.</li>
+      <li><strong>Dış Mekan P2.5 LED Ekran</strong>: m²'d 160.000 LED, ultra net görüntü.</li>
+    </ul>
+    <img src="/images/dis-mekan-led-ekran.jpg" alt="BKLED Dış Mekan LED Ekran Modelleri" loading="lazy">
+
+    <!-- Işıklı Tabela Bölümü (H2) -->
+    <h2>Işıklı Tabela Çözümleri</h2>
+    <p>BKLED olarak, LED ekranlarla entegre ışıklı tabela hizmetleri sunarız. Mağaza vitrinleri, reklam panoları ve endüstriyel tabelalar için özelleştirilmiş çözümlerle markanızı öne çıkarın. Yüksek dayanıklılık ve düşük enerji tüketimiyle, dış mekan ışıklı tabelalarımız her türlü hava şartına uygundur.</p>
+    <img src="/images/isikli-tabela.jpg" alt="BKLED Işıklı Tabela Örnekleri" loading="lazy">
+
+   
+    <!-- Schema Markup (Yapılandırılmış Veri) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BKLED Ekran Teknolojileri",
+      "url": "https://bkledekran.com",
+      "description": "İç ve dış mekan LED ekran, ışıklı tabela çözümleri sunan profesyonel firma. 6 yıl garanti ve HD görüntü kalitesi.",
+      "sameAs": [
+        "https://www.facebook.com/bkled",
+        "https://www.instagram.com/bkled"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+90-533-126-3686",
+        "contactType": "Müşteri Hizmetleri"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "İstanbul",
+        "addressCountry": "TR"
+      },
+      "offers": {
+        "@type": "OfferCatalog",
+        "name": "LED Ekran Modelleri",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "İç Mekan P3 LED Ekran",
+              "description": "m²'d 111.111 LED, HD görüntü, 6 yıl garanti"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Dış Mekan P10 LED Ekran",
+              "description": "m²'d 10.000 LED, hava koşullarına dayanıklı"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Footer (Mevcut dosyanızı dahil edin) -->
+    <div id="footer"></div>
+  </main>
+
+  <!-- Script (Mevcut JavaScript'inizi dahil edin) -->
+  <script>
+    // Header, navigasyon ve footer'ı yükle (mevcut kodunuz)
+    fetch('header.html').then(response => response.text()).then(data => document.getElementById('header').innerHTML = data);
+    fetch('navigasyon.html').then(response => response.text()).then(data => document.getElementById('navigasyon').innerHTML = data);
+    fetch('footer.html').then(response => response.text()).then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+</body>
+</html>
