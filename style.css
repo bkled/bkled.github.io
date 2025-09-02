@@ -150,6 +150,106 @@ body {
     animation: fadeInDown 1s ease-in-out;
 }
 
+/* Referanslar Bölümü */
+.references-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.references-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.references-section h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.references-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.reference-card {
+    background-color: #fff;
+    width: 300px;
+    min-height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out forwards;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reference-card:nth-child(1) { animation-delay: 0.2s; }
+.reference-card:nth-child(2) { animation-delay: 0.4s; }
+.reference-card:nth-child(3) { animation-delay: 0.6s; }
+
+.reference-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.reference-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.reference-card h3 {
+    font-size: 24px;
+    margin: 20px 0 10px;
+    color: #333;
+}
+
+.reference-card p {
+    margin: 0 20px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.reference-link {
+    display: inline-block;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.reference-link:hover {
+    background-color: #d35400;
+}
+
 .products-container {
     display: flex;
     justify-content: center;
@@ -166,7 +266,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box Shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     animation: slideIn 0.5s ease-in-out forwards;
     opacity: 0;
@@ -216,115 +316,6 @@ body {
 }
 
 .product-card a:hover {
-    background-color: #d35400;
-}
-
-/* Referanslar Bölümü */
-.references-section {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%);
-    position: relative;
-    overflow: visible; /* Resimlerin taşmasını önlemek için */
-}
-
-.references-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    z-index: 0;
-}
-
-.references-section h1 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #e67e22;
-    background: linear-gradient(to right, #e67e22, #d35400);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    animation: fadeInDown 1s ease-in-out;
-}
-
-.references-container {
-    display: flex;
-    justify-content: center; /* Yatayda ortalama */
-    align-items: stretch; /* Kartların yüksekliği eşitlenir */
-    flex-wrap: wrap;
-    gap: 30px;
-    position: relative;
-    z-index: 1;
-}
-
-.reference-card {
-    background-color: #fff;
-    width: 320px; /* Kart genişliği */
-    height: 450px; /* Sabit yükseklik, tüm kartlar aynı boyutta */
-    border-radius: 10px;
-    overflow: hidden; /* İçerik taşmasını önler */
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    animation: slideIn 0.5s ease-in-out forwards;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.reference-card:nth-child(1) { animation-delay: 0.2s; }
-.reference-card:nth-child(2) { animation-delay: 0.4s; }
-.reference-card:nth-child(3) { animation-delay: 0.6s; }
-
-.reference-card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-}
-
-.reference-card img {
-    max-width: 100%; /* Resmin kart genişliğini aşmamasını sağlar */
-    max-height: 250px; /* Resmi biraz daha büyük yapmak için */
-    object-fit: contain; /* Resmin tamamı görünür, kırpılmaz */
-    display: block;
-    margin: 10px auto; /* Resmi yatayda ve dikeyde ortalar */
-    padding: 5px; /* Resim ile kart kenarı arasında hafif boşluk */
-}
-
-.reference-card h3 {
-    font-size: 24px;
-    margin: 10px 0; /* Daha sıkı yerleşim için margin azaltıldı */
-    color: #333;
-    flex-shrink: 0; /* Başlık boyutunun küçülmesini önler */
-}
-
-.reference-card p {
-    margin: 0 20px 10px; /* Daha sıkı yerleşim için margin azaltıldı */
-    color: #666;
-    font-size: 14px;
-    flex-grow: 1; /* Metin alanını esnetir, eşit yükseklik sağlar */
-    overflow: hidden; /* Uzun metin taşmasını önler */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Maksimum 3 satır gösterir */
-    -webkit-box-orient: vertical; /* Dikey metin kesme */
-}
-
-.reference-link {
-    display: inline-block;
-    background-color: #e67e22;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 10px; /* Daha sıkı yerleşim için margin azaltıldı */
-    transition: background-color 0.3s ease;
-    flex-shrink: 0; /* Bağlantı boyutunun küçülmesini önler */
-}
-
-.reference-link:hover {
     background-color: #d35400;
 }
 
@@ -550,31 +541,13 @@ body {
     .product-card,
     .reference-card {
         width: 100%;
-        max-width: 320px; /* Mobil görünümde kart genişliği */
-        height: 450px; /* Mobil görünümde sabit yükseklik */
+        max-width: 300px;
+        min-height: 400px;
     }
 
-    .product-card img {
-        height: 200px;
-    }
-
+    .product-card img,
     .reference-card img {
-        max-height: 250px; /* Mobil görünümde resmin boyutunu korur */
-        margin: 10px auto;
-        padding: 5px;
-    }
-
-    .reference-card h3 {
-        margin: 10px 0;
-    }
-
-    .reference-card p {
-        margin: 0 20px 10px;
-        -webkit-line-clamp: 3; /* Maksimum 3 satır gösterir */
-    }
-
-    .reference-link {
-        margin-bottom: 10px;
+        height: 200px;
     }
 
     .footer {
@@ -592,4 +565,4 @@ body {
         height: 50px;
         font-size: 25px;
     }
-}
+    }
