@@ -262,8 +262,8 @@ body {
 
 .reference-card {
     background-color: #fff;
-    width: 300px;
-    min-height: 400px;
+    width: 320px; /* Kart genişliğini biraz artırdık */
+    min-height: 420px; /* Kart yüksekliğini artırdık */
     border-radius: 10px;
     overflow: visible; /* Resimlerin kırpılmasını önler */
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -287,7 +287,7 @@ body {
 
 .reference-card img {
     max-width: 100%; /* Resmin kart genişliğini aşmamasını sağlar */
-    max-height: 220px; /* Resmi bir tık daha büyük yapmak için */
+    max-height: 250px; /* Resmi biraz daha büyük yapmak için */
     object-fit: contain; /* Resmin tamamı görünür, kırpılmaz */
     display: block;
     margin: 10px auto; /* Resmi yatayda ve dikeyde ortalar */
@@ -543,8 +543,8 @@ body {
     .product-card,
     .reference-card {
         width: 100%;
-        max-width: 300px;
-        min-height: 400px;
+        max-width: 320px; /* Mobil görünümde kart genişliğini artırdık */
+        min-height: 420px; /* Mobil görünümde kart yüksekliğini artırdık */
     }
 
     .product-card img {
@@ -552,7 +552,7 @@ body {
     }
 
     .reference-card img {
-        max-height: 220px; /* Mobil görünümde resmin boyutunu bir tık daha büyük yapar */
+        max-height: 250px; /* Mobil görünümde resmin boyutunu biraz daha büyük yapar */
         margin: 10px auto;
         padding: 5px;
     }
