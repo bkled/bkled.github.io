@@ -12,8 +12,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://bkledekran.com/led-ekran-fiyatlari</loc>
+    <url>
+    <loc>https://bkledekran.com/urunler.html</loc>
+    <lastmod>2025-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+   <url>
+    <loc>https://bkledekran.com/iletisim.html</loc>
     <lastmod>2025-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
