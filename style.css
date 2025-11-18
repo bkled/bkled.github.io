@@ -245,33 +245,61 @@ body {
 
 /* Referans kartları aynı stil ürün kartlarıyla aynı olduğu için tekrar yazmadım */
 
-/* ====================== FOOTER ====================== */
+/* ====================== FOOTER YENİ DÜZEN ====================== */
 .footer {
     background-color: #d35400;
     color: #000;
-    padding: 20px;
+    padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
     font-size: 14px;
 }
-
-.footer .social-media a {
+.footer-contact {
+    text-align: left;
+    line-height: 1.8;
+}
+.footer-contact .footer-title {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;
     color: #000;
-    margin-right: 15px;
+}
+.footer-contact i {
+    color: #000;
+    margin-right: 10px;
+    width: 18px;
+}
+.footer-contact a {
+    color: #000;
     text-decoration: none;
-    font-size: 18px;
+    font-weight: bold;
 }
-
-.footer .social-media a:hover {
+.footer-contact a:hover {
     color: #fff;
+    text-decoration: underline;
 }
 
-.footer .copyright {
+.footer-contact span {
+    margin-left: 28px; /* ikon hizası */
+}
+.social-media a {
+    color: #000;
+    font-size: 22px;
+    margin: 0 12px;
+    transition: all 0.3s ease;
+}
+.social-media a:hover {
+    color: #fff;
+    transform: translateY(-3px);
+}
+.copyright {
     text-align: right;
 }
 
-.footer .copyright p {
+.copyright p {
     margin: 5px 0;
 }
 
@@ -281,15 +309,12 @@ body {
 }
 
 .design-credit a {
-    color: #333333;
+    color: #333;
     text-decoration: none;
-    font-weight: 400;
-    transition: color 0.3s ease;
 }
 
 .design-credit a:hover {
     color: #f0c14b;
-    text-decoration: underline;
 }
 
 /* ====================== WHATSAPP İKONU ====================== */
@@ -410,12 +435,24 @@ body {
 
     .footer {
         flex-direction: column;
-        gap: 10px;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    .footer-contact,
+    .copyright {
         text-align: center;
     }
-
-    .footer .copyright {
-        text-align: center;
+    .footer-contact span {
+        margin-left: 0;
+        display: block;
+    }
+    .social-media {
+        order: -1;
+        margin-bottom: 20px;
+    }
+    .social-media a {
+        font-size: 26px;
+        margin: 0 15px;
     }
 
     .whatsapp-float a {
