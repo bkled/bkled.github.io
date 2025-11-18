@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK LED Ekran | Yenileniyoruz</title>
+    <meta name="description" content="Sitemiz yenileniyor, kısa süre içinde çok daha iyi bir deneyimle geri döneceğiz!">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 90%;
+            z-index: 2;
+        }
+        .icon {
+            font-size: 80px;
+            color: #d35400;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #d35400, #e67e22);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .contact {
+            font-size: 18px;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+        .contact a {
+            color: #d35400;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        .bg-animation {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('images/construction-bg.jpg') center/cover no-repeat; /* varsa arka plan fotoğrafı */
+            opacity: 0.15;
+            z-index: 1;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            p { font-size: 18px; }
+            .icon { font-size: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation"></div>
+
+    <div class="container">
+        <div class="icon">
+            <i class="fas fa-hard-hat"></i>
+        </div>
+
+        <h1>YENİLENİYORUZ!</h1>
+        
+        <p>
+            Sitemiz şu anda bakım ve yenileme çalışmalarında.<br>
+            Çok yakında çok daha güçlü, çok daha hızlı ve çok daha şık bir şekilde karşınızda olacağız.
+        </p>
+
+        <p>
+            Bizi takip etmeye devam edin, güzel şeyler geliyor!
+        </p>
+
+        <div class="contact">
+            Acil durumlarda ulaşabilirsiniz:<br>
+            <a href="tel:+905551234567">0555 123 45 67</a> 
+            • 
+            <a href="mailto:info@bkledekran.com">info@bkledekran.com</a>
+        </div>
+    </div>
+
+</body>
+</html>
