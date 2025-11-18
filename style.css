@@ -35,19 +35,39 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 30px;
+    gap: 15px;                    /* butonlar arası boşluk biraz azalttım, daha şık dursun */
 }
 
+.nav-menu li {
+    margin: 0;
+}
 .nav-menu li a {
     color: #000;
     text-decoration: none;
-    font-weight: normal;
+    font-weight: 600;
     font-size: 16px;
-    transition: color 0.3s ease;
+    padding: 12px 24px;           /* buton yüksekliği ve genişliği */
+    border-radius: 50px;          /* yuvarlak köşeler – tam da istediğin gibi */
+    transition: all 0.3s ease;
+    display: block;
 }
 
+/* Normal hali – şeffaf */
+.nav-menu li a {
+    background-color: transparent;
+}
+
+/* Hover – turuncu buton + beyaz yazı */
 .nav-menu li a:hover {
-    color: #d35400;
+    background-color: #d35400;    /* ana turuncu renk */
+    color: #fff !important;       /* beyaz yazı */
+    box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);  /* hafif gölge – premium hissi */
+}
+
+/* Aktif sayfa vurgusu istersen (isteğe bağlı) */
+.nav-menu li a.active {
+    background-color: #d35400;
+    color: #fff;
 }
 
 .hamburger {
@@ -403,4 +423,19 @@ body {
         height: 50px;
         font-size: 25px;
     }
-}
+    /* ======= BONUS BURAYA GELECEK ======= */
+    .nav-menu li a {
+        padding: 12px 20px !important;
+        font-size: 15px;
+        border-radius: 50px;
+        text-align: center;
+    }
+    
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+        background-color: #d35400 !important;
+        color: #fff !important;
+    }
+    /* ===================================== */
+}   /* <-- bu } medya sorgusunu kapatıyor */
+
