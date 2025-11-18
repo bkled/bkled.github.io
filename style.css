@@ -370,11 +370,9 @@ body {
         position: relative;
         justify-content: flex-start;
     }
-
     .logo img {
         width: 180px;
     }
-
     .hamburger {
         display: block;
         position: absolute;
@@ -382,57 +380,66 @@ body {
         right: 15px;
     }
 
+    /* Mobil menü paneli */
     .nav-menu ul {
         display: none;
         flex-direction: column;
         position: fixed;
         top: 0;
         right: 0;
-        width: 180px;
+        width: 200px;
         height: auto;
         background: linear-gradient(135deg, #e67e22, #d35400);
-        padding: 50px 15px;
-        border-radius: 0 0 0 10px;
-        transform: scale(0.8);
+        padding: 60px 20px 20px;
+        border-radius: 0 0 0 15px;
+        transform: scale(0.9);
         transform-origin: top right;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition: all 0.3s ease;
         opacity: 0;
-        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: -5px 5px 20px rgba(0,0,0,0.3);
         z-index: 1000;
     }
-
     .nav-menu ul.active {
         display: flex;
         transform: scale(1);
         opacity: 1;
     }
 
+    /* MOBİLDE DE TURUNCU BUTON OLSUN – İŞTE BURASI ÇOK ÖNEMLİ */
     .nav-menu li a {
-        font-size: 13px;
-        color: #fff;
-        padding: 8px 15px;
-        border-radius: 5px;
+        color: #000 !important;
+        font-weight: normal !important;
+        font-size: 15px !important;
+        padding: 14px 20px !important;
+        border-radius: 50px !important;
+        background-color: transparent !important;
+        text-align: center;
+        margin: 8px 0;
+        transition: all 0.3s ease;
     }
 
-    .nav-menu li a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+        background-color: #fff !important;
+        color: #d35400 !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
+    /* Diğer mobil ayarlar */
     .products-section,
     .references-section {
         padding: 40px 15px;
     }
-
     .products-section h1,
     .references-section h1 {
         font-size: 28px;
     }
-
     .product-card {
         width: 100%;
         max-width: 300px;
     }
 
+    /* Footer mobil */
     .footer {
         flex-direction: column;
         text-align: center;
@@ -454,27 +461,10 @@ body {
         font-size: 26px;
         margin: 0 15px;
     }
-
     .whatsapp-float a {
         width: 50px;
         height: 50px;
         font-size: 25px;
     }
-    /* ======= BONUS BURAYA GELECEK ======= */
-    .nav-menu li a {
-        padding: 12px 20px !important;
-        font-size: 15px;
-        border-radius: 50px;
-        color: #000;                    /* mobilde de siyah */
-        font-weight: normal;            /* mobilde de kalın değil */
-        text-align: center;
-    }
-    
-    .nav-menu li a:hover,
-    .nav-menu li a.active {
-        background-color: #e67e22 !important;
-        color: #000 !important;         /* hover’da da siyah kalıyor */
-    }
-    /* ===================================== */
-}   /* <-- bu } medya sorgusunu kapatıyor */
+}
 
