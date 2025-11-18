@@ -114,6 +114,17 @@ body {
     opacity: 1;
 }
 
+.logo video {
+    width: 200px;           /* istediğin boyuta göre ayarla (200px eskisiyle aynı) */
+    height: auto;
+    display: block;
+}
+
+.logo a {
+    display: block;
+    line-height: 0;         /* gereksiz boşlukları kaldırır */
+}
+
 /* ====================== ÜRÜNLER BÖLÜMÜ ====================== */
 .products-section {
     padding: 60px 20px;
