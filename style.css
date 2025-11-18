@@ -59,7 +59,7 @@ body {
 
 /* Hover – turuncu buton + beyaz yazı */
 .nav-menu li a:hover {
-    background-color: #d35400;    /* ana turuncu renk */
+    background-color: #e67e22;    /* ana turuncu renk */
     color: #fff !important;       /* beyaz yazı */
     box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);  /* hafif gölge – premium hissi */
 }
