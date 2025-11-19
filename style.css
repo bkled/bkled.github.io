@@ -23,7 +23,7 @@ body {
 }
 
 .logo img {
-    width: 100px;                           /* Masaüstünde logo genişliği */
+    width: 150px;                           /* Masaüstünde logo genişliği */
     height: auto;                           /* Oran bozulmasın auto */
     object-fit: contain;   /* Logo bozulmadan sığsın */
     display: block;
