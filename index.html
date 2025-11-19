@@ -99,39 +99,35 @@
     </main>
 
     <div id="footer"></div>
-
-    <!-- Navigasyon ve Footer Yükleme + Hamburger Menü -->
+        <!-- Navigasyon ve Footer yükleme script’i -->
     <script>
         fetch('navigasyon.html')
-            .then(response => response.ok ? response.text() : Promise.reject())
+            .then(r => r.ok ? r.text() : '')
             .then(data => {
                 document.getElementById('navigasyon').innerHTML = data;
-                // Hamburger menü
                 const hamburger = document.querySelector('.hamburger');
                 const navMenu = document.querySelector('.nav-menu ul');
                 const overlay = document.querySelector('.overlay');
                 if (hamburger && navMenu && overlay) {
-                    hamburger.addEventListener('click', () => {
+                    hamburger.onclick = () => {
                         hamburger.classList.toggle('active');
                         navMenu.classList.toggle('active');
                         overlay.classList.toggle('active');
-                    });
-                    overlay.addEventListener('click', () => {
+                    };
+                    overlay.onclick = () => {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
                         overlay.classList.remove('active');
-                    });
+                    };
                 }
-            })
-            .catch(err => console.error('Navigasyon yüklenemedi'));
+            });
 
         fetch('footer.html')
-            .then(response => response.ok ? response.text() : Promise.reject())
-            .then(data => document.getElementById('footer').innerHTML = data)
-            .catch(err => console.error('Footer yüklenemedi'));
+            .then(r => r.ok ? r.text() : '')
+            .then(data => document.getElementById('footer').innerHTML = data);
     </script>
 
-    <!-- SLİDER İÇİN JAVASCRIPT (EN ALTA EKLENDİ) -->
+    <!-- SLIDER İÇİN JAVASCRİPT – BURADA OLMALI! -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const slides = document.querySelectorAll(".slide");
@@ -141,7 +137,7 @@
             let currentSlide = 0;
             const totalSlides = slides.length;
 
-            // Dots (noktalar) oluştur
+            // Dots oluştur
             slides.forEach((_, i) => {
                 const dot = document.createElement("span");
                 dot.classList.add("dot");
@@ -160,17 +156,11 @@
                 dots[currentSlide].classList.add("active");
             }
 
-            prevBtn.addEventListener("click", () => goToSlide(currentSlide - 1));
-            nextBtn.addEventListener("click", () => goToSlide(currentSlide + 1));
+            prevBtn.onclick = () => goToSlide(currentSlide - 1);
+            nextBtn.onclick = () => goToSlide(currentSlide + 1);
 
-            // Otomatik geçiş (5 saniyede bir)
-            let autoSlide = setInterval(() => goToSlide(currentSlide + 1), 5000);
-
-            // Mouse üzerine gelince durdur, çıkınca devam et
-            document.querySelector(".slider-container").addEventListener("mouseenter", () => clearInterval(autoSlide));
-            document.querySelector(".slider-container").addEventListener("mouseleave", () => {
-                autoSlide = setInterval(() => goToSlide(currentSlide + 1), 5000);
-            });
+            // Otomatik kaydır (5 saniyede bir)
+            setInterval(() => goToSlide(currentSlide + 1), 5000);
         });
     </script>
 </body>
