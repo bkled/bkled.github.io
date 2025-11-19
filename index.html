@@ -12,47 +12,216 @@
 <body>
     <div id="navigasyon"></div>
 
-    <!-- ANA SAYFA SLİDER -->
-    <div class="slider-container">
-        <div class="slider">
-            <!-- SLIDE 1 -->
-            <div class="slide active">
-                <img src="images/slider1.jpeg" alt="LED Ekran Projesi 1">
-                <div class="slide-caption">
-                    <h2>Yüksek Kaliteli LED Ekran Çözümleri</h2>
-                    <p>İç ve dış mekan projeleriniz için en iyi teknoloji</p>
-                    <a href="iletisim.html" class="slider-btn">Hemen Teklif Al</a>
-                </div>
-            </div>
-            <!-- SLIDE 2 -->
-            <div class="slide">
-                <img src="images/slider2.jpeg" alt="Dış Mekan Totem LED">
-                <div class="slide-caption">
-                    <h2>Hava Koşullarına Dayanıklı Totem Ekranlar</h2>
-                    <p>Petrol istasyonları, AVM’ler, yol kenarları için ideal</p>
-                    <a href="iletisim.html" class="slider-btn">Detaylı Bilgi</a>
-                </div>
-            </div>
-            <!-- SLIDE 3 -->
-            <div class="slide">
-                <img src="images/slider3.jpeg" alt="İç Mekan LED Duvar">
-                <div class="slide-caption">
-                    <h2>Lobi ve Mağaza İçin Şık LED Duvarlar</h2>
-                    <p>Yüksek çözünürlük, göz alıcı renkler</p>
-                    <a href="iletisim.html" class="slider-btn">Proje Örneği Gör</a>
-                </div>
-            </div>
-            <!-- Daha fazla slide eklemek istersen buraya ekle -->
-        </div>
+    <!-- ----- SLIDER BAŞLANGIÇ (kopyala-yapıştır) ----- -->
 
-        <!-- Oklar -->
-        <button class="prev-btn">❮</button>
-        <button class="next-btn">❯</button>
+<!-- place this CSS in your <head> or style.css -->
+<style>
+  .slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 520px; /* ihtiyaca göre ayarla */
+    background: #000;
+  }
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .slide {
+    position: absolute;
+    inset: 0; /* top:0;right:0;bottom:0;left:0; */
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .slide.active { opacity: 1; z-index: 2; }
 
-        <!-- Dots -->
-        <div class="dots"></div>
+  .slide-caption {
+    position: absolute;
+    left: 5%;
+    bottom: 12%;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    z-index: 3;
+    max-width: 50%;
+  }
+  .slider-btn {
+    display:inline-block;
+    margin-top: 8px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  .prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 5;
+    border-radius: 50%;
+  }
+  .prev-btn { left: 12px; }
+  .next-btn { right: 12px; }
+
+  .dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 6;
+  }
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+  }
+  .dot.active { background: rgba(255,255,255,1); }
+</style>
+
+<!-- place this HTML where you want the slider to appear -->
+<div class="slider-container">
+  <div class="slider">
+    <!-- 1 -->
+    <div class="slide active">
+      <img src="images/slider1.jpeg" alt="LED Ekran Projesi 1">
+      <div class="slide-caption">
+        <h2>Yüksek Kaliteli LED Ekran Çözümleri</h2>
+        <p>İç ve dış mekan projeleriniz için en iyi teknoloji</p>
+        <a href="iletisim.html" class="slider-btn">Hemen Teklif Al</a>
+      </div>
     </div>
-    <!-- SLİDER BİTİŞ -->
+
+    <!-- 2 -->
+    <div class="slide">
+      <img src="images/slider2.jpeg" alt="Dış Mekan Totem LED">
+      <div class="slide-caption">
+        <h2>Hava Koşullarına Dayanıklı Totem Ekranlar</h2>
+        <p>Petrol istasyonları, AVM’ler, yol kenarları için ideal</p>
+        <a href="iletisim.html" class="slider-btn">Detaylı Bilgi</a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="slide">
+      <img src="images/slider3.jpeg" alt="İç Mekan LED Duvar">
+      <div class="slide-caption">
+        <h2>Lobi ve Mağaza İçin Şık LED Duvarlar</h2>
+        <p>Yüksek çözünürlük, göz alıcı renkler</p>
+        <a href="iletisim.html" class="slider-btn">Proje Örneği Gör</a>
+      </div>
+    </div>
+
+    <!-- Eğer daha fazla foto eklemek istersen aynısını tekrarlayın -->
+
+  </div>
+
+  <button class="prev-btn" aria-label="Önceki">❮</button>
+  <button class="next-btn" aria-label="Sonraki">❯</button>
+  <div class="dots"></div>
+</div>
+
+<!-- ----- SLIDER SONU ----- -->
+
+<!-- ---------- JS: bunu kesinlikle </body> kapanmadan hemen önce ekleyin ---------- -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector(".slider-container");
+  if (!container) return;
+
+  const slides = Array.from(container.querySelectorAll(".slide"));
+  if (slides.length < 1) return;
+
+  const prevBtn = container.querySelector(".prev-btn");
+  const nextBtn = container.querySelector(".next-btn");
+  const dotsContainer = container.querySelector(".dots");
+
+  let current = 0;
+  const total = slides.length;
+  const INTERVAL = 4000; // milisaniye: 4000 = 4 saniye
+  let timer = null;
+
+  // Dots oluştur
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement("span");
+    d.className = "dot";
+    d.dataset.index = i;
+    d.addEventListener("click", () => {
+      goTo(parseInt(d.dataset.index));
+      resetTimer();
+    });
+    dotsContainer.appendChild(d);
+  }
+  const dots = Array.from(dotsContainer.children);
+
+  function update() {
+    slides.forEach((s, i) => s.classList.toggle("active", i === current));
+    dots.forEach((d, i) => d.classList.toggle("active", i === current));
+  }
+
+  function goTo(n) {
+    current = (n + total) % total;
+    update();
+  }
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  if (nextBtn) nextBtn.addEventListener("click", () => { next(); resetTimer(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => { prev(); resetTimer(); });
+
+  // Otomatik döngü
+  function startTimer() {
+    if (timer) return;
+    timer = setInterval(next, INTERVAL);
+  }
+  function stopTimer() {
+    if (!timer) return;
+    clearInterval(timer);
+    timer = null;
+  }
+  function resetTimer() {
+    stopTimer();
+    startTimer();
+  }
+
+  // hover ile durdur (mobilde çalışmaz ama masaüstünde faydalı)
+  container.addEventListener("mouseenter", stopTimer);
+  container.addEventListener("mouseleave", startTimer);
+
+  // Başlat
+  update();
+  startTimer();
+
+  // Görsellerin yüklenmemesi durumu için uyarı (opsiyonel)
+  slides.forEach((s, idx) => {
+    const img = s.querySelector("img");
+    if (img) img.addEventListener("error", () => {
+      console.warn("Slider image yüklenemedi:", img.src);
+    });
+  });
+});
+</script>
 
     <main>
         <section class="products-section">
@@ -126,90 +295,5 @@
             .then(r => r.ok ? r.text() : '')
             .then(data => document.getElementById('footer').innerHTML = data);
     </script>
-
-   <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const sliderContainer = document.querySelector(".slider-container");
-    if (!sliderContainer) return; // slider yoksa çık
-
-    const slides = Array.from(document.querySelectorAll(".slide"));
-    if (slides.length === 0) return;
-
-    const dotsContainer = document.querySelector(".dots");
-    const prevBtn = document.querySelector(".prev-btn");
-    const nextBtn = document.querySelector(".next-btn");
-
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    let intervalId = null;
-    const INTERVAL_MS = 5000;
-
-    // Dots oluştur (dotsContainer yoksa oluştur)
-    let dotsEl = dotsContainer;
-    if (!dotsEl) {
-      dotsEl = document.createElement("div");
-      dotsEl.className = "dots";
-      sliderContainer.appendChild(dotsEl);
-    }
-    slides.forEach((_, i) => {
-        const dot = document.createElement("span");
-        dot.className = "dot";
-        dot.setAttribute("data-index", i);
-        dot.addEventListener("click", () => goToSlide(i));
-        dotsEl.appendChild(dot);
-    });
-
-    const dots = Array.from(dotsEl.querySelectorAll(".dot"));
-
-    function updateActive() {
-        slides.forEach((s, i) => s.classList.toggle("active", i === currentSlide));
-        dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
-    }
-
-    function goToSlide(n) {
-        currentSlide = (n + totalSlides) % totalSlides;
-        updateActive();
-    }
-
-    function next() { goToSlide(currentSlide + 1); }
-    function prev() { goToSlide(currentSlide - 1); }
-
-    if (prevBtn) prevBtn.addEventListener("click", () => { prev(); resetInterval(); });
-    if (nextBtn) nextBtn.addEventListener("click", () => { next(); resetInterval(); });
-
-    // Otomatik kaydırma
-    function startInterval() {
-        if (intervalId) return;
-        intervalId = setInterval(next, INTERVAL_MS);
-    }
-    function stopInterval() {
-        if (!intervalId) return;
-        clearInterval(intervalId);
-        intervalId = null;
-    }
-    function resetInterval() {
-        stopInterval();
-        startInterval();
-    }
-
-    // Hover ile durdur
-    sliderContainer.addEventListener("mouseenter", stopInterval);
-    sliderContainer.addEventListener("mouseleave", startInterval);
-
-    // İlk atama ve başlat
-    updateActive();
-    startInterval();
-
-    // Görüntü yol sorunlarını tespit etmek için: eksik görselse konsola uyarı
-    slides.forEach((s, idx) => {
-        const img = s.querySelector("img");
-        if (img) {
-            img.addEventListener("error", () => {
-                console.warn(`Slider image ${idx} yüklenemedi:`, img.src);
-            });
-        }
-    });
-});
-</script>
 </body>
 </html>
