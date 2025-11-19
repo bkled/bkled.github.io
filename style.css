@@ -293,4 +293,137 @@ body {
 .social-media a { color: #000; font-size: 22px; margin: 0 12px; transition: all 0.3s ease; }
 .social-media a:hover { color: #fff; transform: translateY(-3px); }
 .copyright { text-align: right; }
-.copyright
+.copyright p { margin: 5px 0; }
+.design-credit { font-size: 12px; color: #333; }
+.design-credit a { color: #333; text-decoration: none; }
+.design-credit a:hover { color: #f0c14b; }
+
+/* ====================== WHATSAPP İKONU ====================== */
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+.whatsapp-float a {
+    display: flex; align-items: center; justify-content: center;
+    width: 60px; height: 60px;
+    background-color: #25D366; color: #fff; border-radius: 50%;
+    text-decoration: none; font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite ease-in-out;
+}
+.whatsapp-float a:hover { transform: scale(1.1); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+
+@keyframes pulse { 0% { transform: scale(1);} 50% { transform: scale(1.05);} 100% { transform: scale(1);} }
+
+/* ====================== SLIDER (GLOBAL — DÜZELTİLDİ) ====================== */
+.slider-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 520px;
+}
+.slider { position: relative; width: 100%; height: 100%; }
+.slide {
+  position: absolute; inset:0;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.slide.active { opacity:1; z-index:2; }
+.slide-caption {
+  position: absolute; left:5%; bottom:10%; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.6); max-width:50%; z-index:3;
+}
+.slider-btn {
+  display:inline-block; margin-top:10px; background:rgba(255,255,255,0.15); color:white; padding:10px 16px; border-radius:6px; text-decoration:none; backdrop-filter: blur(4px);
+}
+.prev-btn, .next-btn {
+  position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.4); color:white; border:none; padding:10px 14px; font-size:20px; cursor:pointer; z-index:5; border-radius:50%;
+}
+.prev-btn { left:12px; } .next-btn { right:12px; }
+.dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:6; }
+.dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer; } 
+.dot.active { background:rgba(255,255,255,1); }
+
+/* ====================== ANIMASYONLAR ====================== */
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ====================== MOBİL GÖRÜNÜM ====================== */
+@media screen and (max-width: 768px) {
+    .nav-container { padding: 15px 20px; position: sticky; top: 0; left: 0; right: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    body { padding-top: 0px; }
+    .logo img { max-width: 180px; max-height: 50px; }
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+
+    .nav-menu ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: auto;
+        background: linear-gradient(135deg, #e67e22, #d35400);
+        padding: 60px 20px 20px;
+        border-radius: 0 0 0 15px;
+        transform: scale(0.9);
+        transform-origin: top right;
+        transition: all 0.3s ease;
+        opacity: 0;
+        box-shadow: -5px 5px 20px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
+    .nav-menu ul.active { display: flex; transform: scale(1); opacity: 1; }
+
+    .nav-menu li a {
+        color: #000 !important;
+        font-weight: normal !important;
+        font-size: 15px !important;
+        padding: 14px 20px !important;
+        border-radius: 50px !important;
+        background-color: transparent !important;
+        text-align: center;
+        margin: 8px 0;
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+        background-color: #fff !important;
+        color: #d35400 !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .products-section,
+    .references-section {
+        padding: 40px 15px;
+    }
+    .products-section h1,
+    .references-section h1 {
+        font-size: 28px;
+    }
+    .references-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .reference-card {
+        width: 100%;
+        max-width: 300px;
+        min-height: 400px;
+    }
+    .reference-card img { height: 200px; }
+    .product-card { width: 100%; max-width: 300px; }
+
+    .footer { flex-direction: column; text-align: center; padding: 30px 20px; }
+    .footer-contact, .copyright { text-align: center; }
+    .footer-contact span { margin-left: 0; display: block; }
+    .social-media { order: -1; margin-bottom: 20px; }
+    .social-media a { font-size: 26px; margin: 0 15px; }
+    .whatsapp-float a { width: 50px; height: 50px; font-size: 25px; }
+}
