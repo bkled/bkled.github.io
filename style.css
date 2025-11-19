@@ -13,14 +13,12 @@ body {
 .nav-container {
     background-color: #FFFFFF;                    /* Arka plan beyaz */
     color: #d35400;                               /* Genel yazı rengi (yedek) */
-    padding: 8px 40px;                           /* Üst-alt 20px, yanlar 40px iç boşluk → yüksekliği belirler */
+    padding: 20px 40px;                           /* Üst-alt 20px, yanlar 40px iç boşluk → yüksekliği belirler */
     display: flex;                                /* İçerikleri yan yana dizer */
     justify-content: space-between;               /* Logo sola, menü sağa */
     align-items: center;                          /* Dikeyde ortalar */
-    position: fixed;                              /* Her zaman en üstte sabit kalır */
+    position: sticky;                              /* Her zaman en üstte sabit kalır */
     top: 0;                                       /* En tepeye yapıştır */
-    left: 0;                                      /* Sol kenara dayar */
-    right: 0;                                     /* Sağ kenara dayar → tam genişlik */
     z-index: 998;                                 /* WhatsApp butonunun altında kalmasın */
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);       /* Hafif gölge → daha güzel durur */
 }
@@ -51,7 +49,7 @@ body {
     text-decoration: none;
     font-weight: normal;
     font-size: 16px;
-    padding: 6px 18px;           /* buton yüksekliği ve genişliği */
+    padding: 12px 24px;           /* buton yüksekliği ve genişliği */
     border-radius: 50px;          /* yuvarlak köşeler – tam da istediğin gibi */
     transition: all 0.3s ease;
     display: block;
@@ -371,15 +369,15 @@ body {
 /* ====================== MOBİL GÖRÜNÜM ====================== */
 @media screen and (max-width: 768px) {
     .nav-container {
-        padding: 8px 20px;
-        position: fixed;     /* mobilde de fixed */
+        padding: 15px 20px;
+        position: sticky;     /* mobilde de fixed */
         top: 0;
         left: 0;
         right: 0;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     body {
-        padding-top: 65px;   /* mobilde biraz daha az boşluk */
+        padding-top: 0px;   /* mobilde biraz daha az boşluk */
     }
     .logo img {
         width: 180px;
