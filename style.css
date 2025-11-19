@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
+    padding-top: 90px;        /* ← YENİ EKLENDİ */
+    /* veya 100px yapabilirsin, navigasyon yüksekliğine göre */
     /* Header kalktığı için istersen hafif boşluk bırakabilirsin */
     /* padding-top: 20px; */  
 }
@@ -15,9 +17,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 998;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* sabit olunca hafif gölge ekliyoruz, daha güzel durur */
 }
 
 .logo img {
@@ -367,8 +370,14 @@ body {
 @media screen and (max-width: 768px) {
     .nav-container {
         padding: 15px 20px;
-        position: relative;
-        justify-content: flex-start;
+        position: fixed;     /* mobilde de fixed */
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    body {
+        padding-top: 80px;   /* mobilde biraz daha az boşluk */
     }
     .logo img {
         width: 180px;
