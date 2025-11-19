@@ -24,7 +24,7 @@ body {
 
 .logo img {
     width: 180px;                           /* Masaüstünde logo genişliği */
-    height: 55px;                           /* Oran bozulmasın auto */
+    height: autopx;                           /* Oran bozulmasın auto */
     object-fit: contain;   /* Logo bozulmadan sığsın */
     display: block;
 }
