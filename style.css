@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;         /* Tüm sitede Arial yazı tipi */
     line-height: 1.6;                       /* Satır aralığı okunaklı olsun */
     color: #333;                            /* Genel yazı rengi koyu gri */
-    padding-top: 50px;                      /* Sticky navigasyon alta yapışmasın diye üstten boşluk */
+    padding-top: 80px;                      /* Sticky navigasyon alta yapışmasın diye üstten boşluk */
     /* Header kalktığı için istersen hafif boşluk bırakabilirsin */
     /* padding-top: 20px; */
 }
@@ -12,7 +12,7 @@ body {
 .nav-container {
    background-color: #FFFFFF;              /* Arka plan beyaz */
     color: #d35400;                         /* (yedek, pek kullanılmıyor) */
-    padding: 10px 40px;                     /* Üst-alt 20px, sağ-sol 40px → yükseklik buradan gelir */
+    padding: 8px 40px;                     /* Üst-alt 20px, sağ-sol 40px → yükseklik buradan gelir */
     display: flex;                          /* Logo ve menüyü yan yana dizer */
     justify-content: space-between;         /* Logo sola, menü sağa */
     align-items: center;                    /* Dikeyde tam ortaya hizalar */
@@ -23,8 +23,10 @@ body {
 }
 
 .logo img {
-    width: 200px;                           /* Masaüstünde logo genişliği */
-    height: auto;                           /* Oran bozulmasın */
+    width: 180px;                           /* Masaüstünde logo genişliği */
+    height: 55px;                           /* Oran bozulmasın auto */
+    object-fit: contain;   /* Logo bozulmadan sığsın */
+    display: block;
 }
 
 .nav-menu {
