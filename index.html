@@ -127,41 +127,89 @@
             .then(data => document.getElementById('footer').innerHTML = data);
     </script>
 
-    <!-- SLIDER İÇİN JAVASCRİPT – BURADA OLMALI! -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const slides = document.querySelectorAll(".slide");
-            const dotsContainer = document.querySelector(".dots");
-            const prevBtn = document.querySelector(".prev-btn");
-            const nextBtn = document.querySelector(".next-btn");
-            let currentSlide = 0;
-            const totalSlides = slides.length;
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const sliderContainer = document.querySelector(".slider-container");
+    if (!sliderContainer) return; // slider yoksa çık
 
-            // Dots oluştur
-            slides.forEach((_, i) => {
-                const dot = document.createElement("span");
-                dot.classList.add("dot");
-                if (i === 0) dot.classList.add("active");
-                dot.addEventListener("click", () => goToSlide(i));
-                dotsContainer.appendChild(dot);
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    if (slides.length === 0) return;
+
+    const dotsContainer = document.querySelector(".dots");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let intervalId = null;
+    const INTERVAL_MS = 5000;
+
+    // Dots oluştur (dotsContainer yoksa oluştur)
+    let dotsEl = dotsContainer;
+    if (!dotsEl) {
+      dotsEl = document.createElement("div");
+      dotsEl.className = "dots";
+      sliderContainer.appendChild(dotsEl);
+    }
+    slides.forEach((_, i) => {
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.setAttribute("data-index", i);
+        dot.addEventListener("click", () => goToSlide(i));
+        dotsEl.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsEl.querySelectorAll(".dot"));
+
+    function updateActive() {
+        slides.forEach((s, i) => s.classList.toggle("active", i === currentSlide));
+        dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
+    }
+
+    function goToSlide(n) {
+        currentSlide = (n + totalSlides) % totalSlides;
+        updateActive();
+    }
+
+    function next() { goToSlide(currentSlide + 1); }
+    function prev() { goToSlide(currentSlide - 1); }
+
+    if (prevBtn) prevBtn.addEventListener("click", () => { prev(); resetInterval(); });
+    if (nextBtn) nextBtn.addEventListener("click", () => { next(); resetInterval(); });
+
+    // Otomatik kaydırma
+    function startInterval() {
+        if (intervalId) return;
+        intervalId = setInterval(next, INTERVAL_MS);
+    }
+    function stopInterval() {
+        if (!intervalId) return;
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+    function resetInterval() {
+        stopInterval();
+        startInterval();
+    }
+
+    // Hover ile durdur
+    sliderContainer.addEventListener("mouseenter", stopInterval);
+    sliderContainer.addEventListener("mouseleave", startInterval);
+
+    // İlk atama ve başlat
+    updateActive();
+    startInterval();
+
+    // Görüntü yol sorunlarını tespit etmek için: eksik görselse konsola uyarı
+    slides.forEach((s, idx) => {
+        const img = s.querySelector("img");
+        if (img) {
+            img.addEventListener("error", () => {
+                console.warn(`Slider image ${idx} yüklenemedi:`, img.src);
             });
-
-            const dots = document.querySelectorAll(".dot");
-
-            function goToSlide(n) {
-                slides[currentSlide].classList.remove("active");
-                dots[currentSlide].classList.remove("active");
-                currentSlide = (n + totalSlides) % totalSlides;
-                slides[currentSlide].classList.add("active");
-                dots[currentSlide].classList.add("active");
-            }
-
-            prevBtn.onclick = () => goToSlide(currentSlide - 1);
-            nextBtn.onclick = () => goToSlide(currentSlide + 1);
-
-            // Otomatik kaydır (5 saniyede bir)
-            setInterval(() => goToSlide(currentSlide + 1), 5000);
-        });
-    </script>
+        }
+    });
+});
+</script>
 </body>
 </html>
