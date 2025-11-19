@@ -13,7 +13,7 @@ body {
 .nav-container {
     background-color: #FFFFFF;
     color: #d35400;
-    padding: 10px 40px;
+    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
