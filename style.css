@@ -13,7 +13,7 @@ body {
 .nav-container {
     background-color: #FFFFFF;                    /* Arka plan beyaz */
     color: #d35400;                               /* Genel yazı rengi (yedek) */
-    padding: 20px 40px;                           /* Üst-alt 20px, yanlar 40px iç boşluk → yüksekliği belirler */
+    padding: 10px 40px;                           /* Üst-alt 20px, yanlar 40px iç boşluk → yüksekliği belirler */
     display: flex;                                /* İçerikleri yan yana dizer */
     justify-content: space-between;               /* Logo sola, menü sağa */
     align-items: center;                          /* Dikeyde ortalar */
@@ -49,7 +49,7 @@ body {
     text-decoration: none;
     font-weight: normal;
     font-size: 16px;
-    padding: 12px 24px;           /* buton yüksekliği ve genişliği */
+    padding: 8px 20px;           /* buton yüksekliği ve genişliği */
     border-radius: 50px;          /* yuvarlak köşeler – tam da istediğin gibi */
     transition: all 0.3s ease;
     display: block;
