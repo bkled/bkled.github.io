@@ -11,16 +11,18 @@ body {
 
 /* ====================== NAVİGASYON ====================== */
 .nav-container {
-    background-color: #FFFFFF;
-    color: #d35400;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    z-index: 998;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* sabit olunca hafif gölge ekliyoruz, daha güzel durur */
+    background-color: #FFFFFF;                    /* Arka plan beyaz */
+    color: #d35400;                               /* Genel yazı rengi (yedek) */
+    padding: 20px 40px;                           /* Üst-alt 20px, yanlar 40px iç boşluk → yüksekliği belirler */
+    display: flex;                                /* İçerikleri yan yana dizer */
+    justify-content: space-between;               /* Logo sola, menü sağa */
+    align-items: center;                          /* Dikeyde ortalar */
+    position: fixed;                              /* Her zaman en üstte sabit kalır */
+    top: 0;                                       /* En tepeye yapıştır */
+    left: 0;                                      /* Sol kenara dayar */
+    right: 0;                                     /* Sağ kenara dayar → tam genişlik */
+    z-index: 998;                                 /* WhatsApp butonunun altında kalmasın */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);       /* Hafif gölge → daha güzel durur */
 }
 
 .logo img {
