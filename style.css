@@ -1,31 +1,30 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    padding-top: 70px;        /* ← YENİ EKLENDİ */
-    /* veya 100px yapabilirsin, navigasyon yüksekliğine göre */
+    margin: 0;                              /* Sayfanın kenarlarında boşluk kalmasın */
+    font-family: Arial, sans-serif;         /* Tüm sitede Arial yazı tipi */
+    line-height: 1.6;                       /* Satır aralığı okunaklı olsun */
+    color: #333;                            /* Genel yazı rengi koyu gri */
+    padding-top: 70px;                      /* Sticky navigasyon alta yapışmasın diye üstten boşluk */
     /* Header kalktığı için istersen hafif boşluk bırakabilirsin */
-    /* padding-top: 20px; */  
+    /* padding-top: 20px; */
 }
 
 /* ====================== NAVİGASYON ====================== */
 .nav-container {
-    background-color: #FFFFFF;                    /* Arka plan beyaz */
-    color: #d35400;                               /* Genel yazı rengi (yedek) */
-    padding: 10px 40px;                           /* Üst-alt 20px, yanlar 40px iç boşluk → yüksekliği belirler */
-    display: flex;                                /* İçerikleri yan yana dizer */
-    justify-content: space-between;               /* Logo sola, menü sağa */
-    align-items: center;                          /* Dikeyde ortalar */
-    position: sticky;                              /* Her zaman en üstte sabit kalır */
-    top: 0;                                       /* En tepeye yapıştır */
-    z-index: 998;                                 /* WhatsApp butonunun altında kalmasın */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);       /* Hafif gölge → daha güzel durur */
+   background-color: #FFFFFF;              /* Arka plan beyaz */
+    color: #d35400;                         /* (yedek, pek kullanılmıyor) */
+    padding: 20px 40px;                     /* Üst-alt 20px, sağ-sol 40px → yükseklik buradan gelir */
+    display: flex;                          /* Logo ve menüyü yan yana dizer */
+    justify-content: space-between;         /* Logo sola, menü sağa */
+    align-items: center;                    /* Dikeyde tam ortaya hizalar */
+    position: sticky;                       /* Kaydırınca en üstte kalır (fixed değil) */
+    top: 0;                                 /* En tepeye yapışır */
+    z-index: 998;                           /* WhatsApp butonunun (1000) altında kalmasın */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);  /* Hafif gölge → daha profesyonel durur *//
 }
 
 .logo img {
-    width: 200px;
-    height: auto;
+    width: 200px;                           /* Masaüstünde logo genişliği */
+    height: auto;                           /* Oran bozulmasın */
 }
 
 .nav-menu {
@@ -38,33 +37,29 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;                    /* butonlar arası boşluk biraz azalttım, daha şık dursun */
+    gap: 15px;                              /* Butonlar arası boşluk */
 }
 
 .nav-menu li {
     margin: 0;
 }
 .nav-menu li a {
-    color: #000;
+    color: #000;                  /* Normalde siyah yazı */
     text-decoration: none;
-    font-weight: normal;
+    font-weight: normal;           /* Kalın değil */
     font-size: 16px;
-    padding: 8px 20px;           /* buton yüksekliği ve genişliği */
-    border-radius: 50px;          /* yuvarlak köşeler – tam da istediğin gibi */
+    padding: 8px 20px;           /* Buton iç boşluğu → yüksekliği çok etkiler */
+    border-radius: 50px;          /* Yuvarlak köşeli buton */
     transition: all 0.3s ease;
-    display: block;
-}
-
-/* Normal hali – şeffaf */
-.nav-menu li a {
-    background-color: transparent;
+    display: block;               
+    background-color: transparent; /* Normalde şeffaf */
 }
 
 /* Hover – turuncu buton + beyaz yazı */
 .nav-menu li a:hover {
-    background-color: #e67e22;    /* ana turuncu renk */
+    background-color: #e67e22;   /* Üzerine gelince turuncu */
     color: #000 !important;       /* siyah yazı */
-    box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);  /* hafif gölge – premium hissi */
+    box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);  /* Gölge efekti */
 }
 
 /* Aktif sayfa vurgusu istersen (isteğe bağlı) */
@@ -369,21 +364,21 @@ body {
 /* ====================== MOBİL GÖRÜNÜM ====================== */
 @media screen and (max-width: 768px) {
     .nav-container {
-        padding: 15px 20px;
-        position: sticky;     /* mobilde de fixed */
+        padding: 15px 20px;   /* Mobilde daha az iç boşluk */
+        position: sticky;     /* Mobilde de sticky */
         top: 0;
         left: 0;
         right: 0;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     body {
-        padding-top: 0px;   /* mobilde biraz daha az boşluk */
+        padding-top: 0px;       /* mobilde biraz daha az boşluk */
     }
     .logo img {
-        width: 180px;
+        width: 180px;             /* Mobilde logo biraz küçülsün */
     }
     .hamburger {
-        display: block;
+        display: block;         /* Hamburger simgesi görünsün */
         position: absolute;
         top: 15px;
         right: 15px;
