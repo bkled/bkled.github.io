@@ -299,34 +299,33 @@ document.addEventListener("DOMContentLoaded", function () {
         <!-- Navigasyon ve Footer yükleme script’i -->
 <script>
     fetch('navigasyon.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navigasyon').innerHTML = data;
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById('navigasyon').innerHTML = html;
 
-            // 100ms bekle ki DOM tam yüklensin
+            // 50ms bekle, DOM tam otursun
             setTimeout(() => {
-                const hamburger = document.querySelector('.hamburger');
-                const menu      = document.querySelector('.nav-menu');
-                const overlay   = document.querySelector('.overlay');
+                const h = document.querySelector('.hamburger');
+                const m = document.querySelector('.nav-menu');
+                const o = document.querySelector('.overlay');
 
-                if (hamburger && menu && overlay) {
-                    hamburger.onclick = () => {
-                        hamburger.classList.toggle('active');
-                        menu.classList.toggle('active');
-                        overlay.classList.toggle('active');
-                    };
-                    overlay.onclick = () => {
-                        hamburger.classList.remove('active');
-                        menu.classList.remove('active');
-                        overlay.classList.remove('active');
-                    };
-                }
-            }, 100);
+                h.onclick = () => {
+                    h.classList.toggle('active');
+                    m.classList.toggle('active');
+                    o.classList.toggle('active');
+                };
+
+                o.onclick = () => {
+                    h.classList.remove('active');
+                    m.classList.remove('active');
+                    o.classList.remove('active');
+                };
+            }, 50);
         });
 
     fetch('footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footer').innerHTML = data);
+        .then(r => r.text())
+        .then(html => document.getElementById('footer').innerHTML = html);
 </script>
 </body>
 </html>
