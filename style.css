@@ -244,8 +244,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
     /* Ortalamak için eklenen kısımlar */
-    justify-items: center;   /* yatay ortalama */
-    align-items: center;     /* dikey ortalama */
+    align-items: stretch;
     }
 .info-card {
     text-align:center;
