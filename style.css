@@ -30,6 +30,21 @@ body {
     padding: 0 18px;
 }
 
+/* Info panel icon ayarları */
+.info-icon {
+  font-size: 36px;         /* ikon boyutu */
+  color: #fff;             /* ikon rengi */
+  background-color: #f7941d; /* turuncu kare */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;      /* istersen köşeleri yuvarla */
+  margin: 0 auto 12px auto; /* ortalama ve alt boşluk */
+}
+
+
 /* ======================
    NAVİGASYON
 ====================== */
