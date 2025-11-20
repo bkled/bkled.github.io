@@ -1,3 +1,13 @@
+/*
+  style-fixed.css
+  - Orijinal style.css dosyanız düzeltildi: sözdizimi hataları giderildi, eksik nokta (.) eklendi,
+    final fazladan kapanan süslü parantez kaldırıldı.
+  - Orijinal yorum satırları korunmuştur. Ayrıca ana bölümlere kısa açıklayıcı yorumlar eklendi
+    (bu yorumlar dosyayı anlamanıza yardımcı olur).
+  - Not: Ben kodu değiştirdim ama tasarım mantığını korudum; eğer özel bir davranış istersen söyleyin.
+*/
+
+/* ====================== GLOBAL ====================== */
 body {
     margin: 0;                              /* Sayfanın kenarlarında boşluk kalmasın */
     font-family: Arial, sans-serif;         /* Tüm sitede Arial yazı tipi */
@@ -19,12 +29,14 @@ body {
     position: sticky;                       /* Kaydırınca en üstte kalır (fixed değil) */
     top: 0;                                 /* En tepeye yapışır */
     z-index: 998;                           /* WhatsApp butonunun (1000) altında kalmasın */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);  /* Hafif gölge → daha profesyonel durur *//
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);  /* Hafif gölge → daha profesyonel durur */
 }
 
+/* NOTE: logo boyutlandırmasında "height" yerine max-height kullanmak oranı korur. */
 .logo img {
-    width: 200px;                           /* Masaüstünde logo genişliği */
-    height: 50px;                           /* Oran bozulmasın auto */
+    max-width: 200px;                       /* Masaüstünde logo genişliği */
+    max-height: 50px;                       /* Oran bozulmasın auto */
+    height: auto;
     object-fit: contain;   /* Logo bozulmadan sığsın */
     display: block;
 }
@@ -213,7 +225,8 @@ body {
 }
 
 /* ====================== REFERANSLAR BÖLÜMÜ ====================== */
-references-section {
+/* NOTE: nokta (.) unutulduğu için daha önce çalışmıyordu; düzeltildi */
+.references-section {
     padding: 60px 20px;
     background: linear-gradient(135deg, #f5f7fa 0%, #e2e7ee 100%);
     position: relative;
@@ -740,6 +753,7 @@ references-section {
   .info-card p { max-width: 100%; }
   .info-card { padding: 16px; }
 }
+
 /* FORCE: info-panel masaüstü için (en sona ekle, media query dışında) */
 .info-panel-section { padding: 32px 16px !important; background: linear-gradient(180deg,#f6f8fb,#f3f6fa) !important; }
 .info-panel-inner {
@@ -763,5 +777,4 @@ references-section {
 .info-link { padding:10px 16px; font-size:14px; border-radius:8px; background:#e67e22; color:#fff; text-decoration:none; display:inline-block; }
 @media (max-width: 992px) { .info-panel-inner { grid-template-columns: repeat(2,1fr) !important; } }
 @media (max-width: 640px) { .info-panel-inner { grid-template-columns: 1fr !important; padding:16px !important; } .info-card { padding:16px !important; } }
-}
 
