@@ -646,84 +646,81 @@ references-section {
   background: rgba(255,255,255,1);
 }
 
-    /* ====================== HAKKIMIZDA / VİZYON / MİSYON KARTLARI ====================== */
+   /* ====== Hakkımızda & Vizyon-Misyon Özet Kutuları (scoped) ====== */
     
-.about-cards-section {
-  padding: 36px 16px;
-  background: #ffffff;
-}
-.about-cards {
-  max-width: 1200px;
-  margin: 0 auto;
+#about-summary { padding: 42px 16px; background: linear-gradient(180deg,#fff,#fbfbfd); }
+#about-summary .container { max-width:1200px; margin:0 auto; }
+
+#about-summary .about-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
   align-items: stretch;
 }
 
-.about-card {
+/* Her kutu */
+#about-summary .about-box {
   display: flex;
-  gap: 14px;
-  align-items: center;
-  background: linear-gradient(180deg, #fff 0%, #fbfbfb 100%);
+  gap: 18px;
+  padding: 22px;
   border-radius: 12px;
-  padding: 18px;
+  background: linear-gradient(180deg, #ffffff, #fcfcfe);
+  box-shadow: 0 10px 30px rgba(30,30,30,0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 8px 24px rgba(12, 12, 12, 0.06);
-  transition: transform .18s ease, box-shadow .18s ease;
-  min-height: 120px;
-}
-.about-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(12, 12, 12, 0.12);
-}
-
-.about-icon {
-  flex: 0 0 72px;
-  width: 72px;
-  height: 72px;
-  border-radius: 12px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(230,126,34,0.12), rgba(211,84,0,0.08));
-  color: #d35400;
-  font-size: 28px;
+  min-height: 150px;
+}
+#about-summary .about-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 44px rgba(30,30,30,0.12);
 }
 
-.about-body h4 {
-  margin: 0 0 6px 0;
-  font-size: 18px;
-  color: #222;
-}
-.about-body p {
-  margin: 0;
-  color: #555;
-  font-size: 14px;
-  line-height: 1.4;
-}
-.about-link {
-  display: inline-block;
-  margin-top: 8px;
+/* Icon bölümü */
+#about-summary .about-left { flex:0 0 92px; display:flex; align-items:center; justify-content:center; }
+#about-summary .about-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
   color: #d35400;
-  font-weight: 600;
-  font-size: 13px;
+  background: linear-gradient(135deg, rgba(230,126,34,0.12), rgba(211,84,0,0.06));
+  box-shadow: inset 0 -4px 12px rgba(255,255,255,0.6);
 }
 
-/* Responsive: 3 sütun -> 2 sütun -> 1 sütun */
-@media (max-width: 992px) {
-  .about-cards { grid-template-columns: repeat(3, 1fr); }
+/* Metin bölümü */
+#about-summary .about-right { flex:1; }
+#about-summary .about-right h3 { margin: 0 0 8px; font-size:20px; color:#222; }
+#about-summary .about-right p { margin: 0 0 12px; color:#555; line-height:1.5; font-size:14.5px; }
+
+/* Butonlar */
+#about-summary .about-btn {
+  display:inline-block;
+  padding:10px 16px;
+  background:#e67e22;
+  color:#fff;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  transition: background .18s ease, transform .18s ease;
 }
-@media (max-width: 768px) {
-  .about-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .about-card { padding: 14px; min-height: 110px; }
-  .about-icon { width: 60px; height: 60px; font-size: 22px; }
-}
-@media (max-width: 480px) {
-  .about-cards { grid-template-columns: 1fr; }
-  .about-card { gap: 12px; }
-  .about-body p { font-size: 13px; }
+#about-summary .about-btn:hover { background:#d35400; transform: translateY(-2px); }
+#about-summary .about-btn.secondary { background:transparent; color:#d35400; border:1px solid rgba(211,84,0,0.12); }
+#about-summary .about-btn.secondary:hover { background: rgba(211,84,0,0.06); color:#d35400; }
+
+/* Mobil: tek sütun */
+@media (max-width: 860px) {
+  #about-summary .about-row { grid-template-columns: 1fr; }
+  #about-summary .about-left { justify-content:flex-start; padding-left:6px; }
+  #about-summary .about-box { padding:16px; min-height:120px; }
+  #about-summary .about-icon { width:64px; height:64px; font-size:24px; border-radius:10px; }
+  #about-summary .about-right h3 { font-size:18px; }
+  #about-summary .about-right p { font-size:14px; }
 }
 }
 
