@@ -243,8 +243,10 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
-    align-items: stretch;
-}
+    /* Ortalamak için eklenen kısımlar */
+    justify-items: center;   /* yatay ortalama */
+    align-items: center;     /* dikey ortalama */
+    }
 .info-card {
     text-align:center;
     padding:18px;
