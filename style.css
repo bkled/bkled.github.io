@@ -432,6 +432,23 @@ body {
 /* ======================
    RESPONSIVE
 ====================== */
+/* ======================
+   MOBİL MENÜ - MASAÜSTÜ MENÜYÜ GİZLE
+====================== */
+@media (max-width: 992px) {
+    .nav-menu {
+        display: none !important;   /* Masaüstü menüyü tamamen gizle */
+    }
+    .hamburger {
+        display: block !important;  /* Hamburger’i göster */
+    }
+}
+
+@media (min-width: 993px) {
+    .hamburger {
+        display: none !important;   /* Masaüstünde hamburger olmasın */
+    }
+}
 @media(max-width:1024px){.site-slider .slider-container{height:56vh;max-height:480px;}.info-panel-inner{grid-template-columns:repeat(2,1fr);padding:20px;}.info-card p{max-width:280px;}}
 @media(max-width:768px){.nav-container{padding:15px 20px;}.logo img{width:180px;}.hamburger{display:block;top:15px;right:15px;}}
 @media(max-width:640px){
