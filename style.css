@@ -466,43 +466,35 @@ body{padding-top:64px;}
 .social-media a{font-size:26px;margin:0 15px;}
 .whatsapp-float a{width:50px;height:50px;font-size:25px;}
 }
-/* ================ MOBİL MENÜ (ÇALIŞAN VERSİYON) ================ */
+/* ====================== KESİN ÇALIŞAN MOBİL MENÜ ====================== */
 @media (max-width: 992px) {
     .nav-menu {
-        position: fixed;
+        position: fixed !important;
         top: 0;
-        right: -320px;                  /* başta gizli */
-        width: 320px;
+        right: -100%;
+        width: 280px;
         height: 100vh;
         background: #fff;
-        z-index: 1000;
-        padding: 100px 30px 50px;
-        transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        box-shadow: -8px 0 30px rgba(0,0,0,0.15);
-        overflow-y: auto;
+        z-index: 9999;
+        padding: 90px 20px 40px;
+        transition: right 0.35s ease;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.3);
     }
-
     .nav-menu.active {
-        right: 0;                       /* açılınca gelir */
+        right: 0 !important;
     }
-
     .nav-menu ul {
         flex-direction: column;
         gap: 8px;
     }
-
     .nav-menu li a {
-        display: block;
+        display: block !important;
         padding: 16px 20px !important;
-        font-size: 18px;
-        text-align: left;
-        border-radius: 12px;
+        font-size: 17px !important;
+        border-radius: 10px;
         background: #f8f9fa;
-        color: #333 !important;
     }
-
-    .nav-menu li a:hover,
-    .nav-menu li a.active {
+    .nav-menu li a:hover {
         background: #e67e22 !important;
         color: #fff !important;
     }
@@ -512,20 +504,15 @@ body{padding-top:64px;}
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.6);
-        z-index: 999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+        background: rgba(0,0,0,0.7);
+        z-index: 9998;
     }
-
     .overlay.active {
-        display: block;
-        opacity: 1;
+        display: block !important;
     }
 
-    /* Hamburger X olsun */
+    /* Hamburger → X */
     .hamburger.active .fa-bars::before {
-        content: "\f00d" !important;
+        content: "\f00d";
     }
-       }
-header { position: relative; }
+}
