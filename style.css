@@ -528,3 +528,4 @@ body{padding-top:64px;}
         content: "\f00d" !important;
     }
        }
+header { position: relative; }
