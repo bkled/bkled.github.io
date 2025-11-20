@@ -740,6 +740,28 @@ references-section {
   .info-card p { max-width: 100%; }
   .info-card { padding: 16px; }
 }
-
+/* FORCE: info-panel masaüstü için (en sona ekle, media query dışında) */
+.info-panel-section { padding: 32px 16px !important; background: linear-gradient(180deg,#f6f8fb,#f3f6fa) !important; }
+.info-panel-inner {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  width: calc(100% - 32px) !important;
+  box-sizing: border-box !important;
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 24px !important;
+  box-shadow: 0 18px 48px rgba(20,20,20,0.08) !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 22px !important;
+  align-items: stretch !important;
+}
+.info-card { text-align:center; padding:18px !important; border-radius:8px !important; display:flex !important; flex-direction:column !important; gap:12px !important; justify-content:flex-start !important; align-items:center !important; background:transparent !important; }
+.info-icon { width:22px; height:22px; border:2px solid #f5e84b; border-radius:4px; margin-bottom:6px; }
+.info-card h4 { font-size:20px; color:#153a5b; margin:6px 0; font-weight:700; }
+.info-card p { color:#55606a; font-size:14.5px; line-height:1.5; margin:0 auto; max-width:320px; }
+.info-link { padding:10px 16px; font-size:14px; border-radius:8px; background:#e67e22; color:#fff; text-decoration:none; display:inline-block; }
+@media (max-width: 992px) { .info-panel-inner { grid-template-columns: repeat(2,1fr) !important; } }
+@media (max-width: 640px) { .info-panel-inner { grid-template-columns: 1fr !important; padding:16px !important; } .info-card { padding:16px !important; } }
 }
 
