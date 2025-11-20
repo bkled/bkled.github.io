@@ -466,3 +466,54 @@ body{padding-top:64px;}
 .social-media a{font-size:26px;margin:0 15px;}
 .whatsapp-float a{width:50px;height:50px;font-size:25px;}
 }
+/* ============= MOBİL MENÜ AÇILINCA ============= */
+@media (max-width: 992px) {
+    /* Hamburger menüye tıkladığımızda açılacak mobil menü */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;               /* Başta sağda gizli */
+        width: 300px;
+        height: 100vh;
+        background: #fff;
+        z-index: 1000;
+        padding: 100px 30px 40px;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;                   /* Açılınca sağdan içeri girer */
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-menu li a {
+        padding: 14px 20px;
+        font-size: 18px;
+        border-radius: 12px;
+        text-align: center;
+        display: block;
+        background: #f8f9fa;
+    }
+
+    .nav-menu li a:hover {
+        background-color: #e67e22 !important;
+        color: #fff !important;
+    }
+
+    /* Overlay (arka plan karartma) */
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+}
+
+/* Hamburger aktifken X olsun */
+.hamburger.active .fa-bars::before {
+    content: "\f00d";   /* FontAwesome × işareti */
+}
