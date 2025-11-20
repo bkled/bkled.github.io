@@ -645,5 +645,85 @@ references-section {
 .dot.active {
   background: rgba(255,255,255,1);
 }
+
+    /* ====================== HAKKIMIZDA / VİZYON / MİSYON KARTLARI ====================== */
+    
+.about-cards-section {
+  padding: 36px 16px;
+  background: #ffffff;
+}
+.about-cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.about-card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: linear-gradient(180deg, #fff 0%, #fbfbfb 100%);
+  border-radius: 12px;
+  padding: 18px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 24px rgba(12, 12, 12, 0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+  min-height: 120px;
+}
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(12, 12, 12, 0.12);
+}
+
+.about-icon {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(230,126,34,0.12), rgba(211,84,0,0.08));
+  color: #d35400;
+  font-size: 28px;
+}
+
+.about-body h4 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  color: #222;
+}
+.about-body p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.about-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #d35400;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Responsive: 3 sütun -> 2 sütun -> 1 sütun */
+@media (max-width: 992px) {
+  .about-cards { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .about-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .about-card { padding: 14px; min-height: 110px; }
+  .about-icon { width: 60px; height: 60px; font-size: 22px; }
+}
+@media (max-width: 480px) {
+  .about-cards { grid-template-columns: 1fr; }
+  .about-card { gap: 12px; }
+  .about-body p { font-size: 13px; }
+}
 }
 
