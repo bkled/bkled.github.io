@@ -493,53 +493,59 @@ body{padding-top:64px;}
 .social-media a{font-size:26px;margin:0 15px;}
 .whatsapp-float a{width:50px;height:50px;font-size:25px;}
 }
-/* ====================== KESİN ÇALIŞAN MOBİL MENÜ ====================== */
-@media (max-width: 992px) {
-    .nav-menu {
-        position: fixed !important;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: #fff;
-        z-index: 9999;
-        padding: 90px 20px 40px;
-        transition: right 0.35s ease;
-        box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-    }
-    .nav-menu.active {
-        right: 0 !important;
-    }
-    .nav-menu ul {
-        flex-direction: column;
-        gap: 8px;
-    }
-    .nav-menu li a {
-        display: block !important;
-        padding: 16px 20px !important;
-        font-size: 17px !important;
-        border-radius: 10px;
-        background: #f8f9fa;
-    }
-    .nav-menu li a:hover {
-        background: #e67e22 !important;
-        color: #fff !important;
-    }
-
-    /* Overlay */
-    .overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.7);
-        z-index: 9998;
-    }
-    .overlay.active {
-        display: block !important;
-    }
-
-    /* Hamburger → X */
-    .hamburger.active .fa-bars::before {
-        content: "\f00d";
-    }
+/* ---------- MOBIL MENU UYUMLAMALARI (BESTAMI EKİ) ---------- */
+/* overlay — opacity ile yönet, display ile değil (daha stabil) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s ease, visibility .28s ease;
+  z-index: 9998; /* menu'dan bir seviye aşağı */
+  pointer-events: none;
 }
+.overlay.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* nav-menu (mobil panel) — kesin kurallar */
+@media (max-width: 992px) {
+  .nav-menu {
+    position: fixed !important;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    padding: 90px 20px 40px;
+    transition: right 0.35s ease;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.25);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-menu.active {
+    right: 0 !important;
+  }
+
+  /* Menü linkleri mobil görünümde daha ergonomik olsun */
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-menu li a {
+    display: block !important;
+    padding: 14px 18px !important;
+    font-size: 17px !important;
+    border-radius: 8px;
+    background: #f8f9fa;
+  }
+  .nav-menu li a:hover {
+    background: #e67e22 !important;
+    color: #fff !important;
+  }
+}
+
