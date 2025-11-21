@@ -227,12 +227,13 @@ body {
 .site-slider .dot.active { background: #fff; transform: scale(1.12); }
 
 /* ======================
-   INFO PANEL
+   INFO PANEL 
 ====================== */
 .info-panel-section {
     padding: 32px 16px;
     background: linear-gradient(180deg,#f6f8fb,#f3f6fa);
 }
+
 .info-panel-inner {
     max-width: 1180px;
     margin: 0 auto;
@@ -240,43 +241,69 @@ body {
     border-radius: 8px;
     padding: 24px;
     box-shadow: 0 18px 48px rgba(20,20,20,0.08);
+    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
-    /* Ortalamak için eklenen kısımlar */
-    align-items: stretch;
-    }
-.info-card {
-    text-align:center;
-    padding:18px;
-    border-radius:8px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    justify-content:flex-start;
-    align-items:center;
-    background:transparent;
+    align-items: stretch;           /* kartları eşit yükseklikte yapar */
 }
+
+.info-card {
+    text-align: center;
+    padding: 18px;
+    border-radius: 8px;
+    background: transparent;
+    
+    /* Flex ile iç içeriği kontrol ediyoruz */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   /* <<< EN ÖNEMLİ SATIR: butonu her zaman en alta iter */
+    gap: 12px;
+    height: 100%;                     /* grid içinde tam yüksekliği kaplar */
+}
+
 .info-icon {
-    width:22px; height:22px;
-    border:2px solid #f5e84b;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #f5e84b;
     background: rgba(245,232,75,0.06);
     box-shadow: 0 2px 8px rgba(245,232,75,0.12);
     border-radius: 4px;
     margin-bottom: 6px;
 }
-.info-card h4 { font-size:20px; color:#153a5b; margin:6px 0; font-weight:700; }
-.info-card p { color:#55606a; font-size:14.5px; line-height:1.5; margin:0 auto; max-width:320px; }
-.info-link {
-    padding:10px 16px;
-    font-size:14px;
-    border-radius:8px;
-    background:#e67e22;
-    color:#fff;
-    text-decoration:none;
-    display:inline-block;
+
+.info-card h4 {
+    font-size: 20px;
+    color: #153a5b;
+    margin: 6px 0;
+    font-weight: 700;
 }
-.info-link:hover { background:#d35400; transform:translateY(-2px); }
+
+.info-card p {
+    color: #55606a;
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 320px;
+    flex-grow: 1;                     /* paragraf boş alanı doldurur */
+}
+
+.info-link {
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+    background: #e67e22;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: auto;                 /* buton her zaman en altta kalır */
+    align-self: center;
+}
+
+.info-link:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+}
 
 /* ======================
    ÜRÜN KARTLARI
