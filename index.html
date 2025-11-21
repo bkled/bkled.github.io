@@ -336,5 +336,54 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(r => r.text())
         .then(html => document.getElementById('footer').innerHTML = html);
 </script>
+    
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const overlay = document.querySelector(".overlay");
+    const navMenu = document.querySelector(".nav-menu");
+
+    if (!hamburger || !overlay || !navMenu) {
+        // Gerekli elementlerden herhangi biri yoksa hata fırlatma yerine sessiz kalır
+        return;
+    }
+
+    function openMenu() {
+        hamburger.classList.add("active");
+        overlay.classList.add("active");
+        navMenu.classList.add("active");
+        document.body.style.overflow = "hidden"; // arka plan scroll kapat
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        overlay.classList.remove("active");
+        navMenu.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    hamburger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (navMenu.classList.contains("active")) closeMenu();
+        else openMenu();
+    });
+
+    // overlay tıklayınca kapat
+    overlay.addEventListener("click", closeMenu);
+
+    // Menü içindeki linke tıklanınca kapat
+    navMenu.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", closeMenu);
+    });
+
+    // ESC tuşuyla kapat
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && navMenu.classList.contains("active")) closeMenu();
+    });
+
+    // Dokunmatik cihazlarda menü dışında swipe gibi durumlarda çözüm istersen ekleyebilirim
+});
+</script>
+
 </body>
 </html>
