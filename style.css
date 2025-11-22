@@ -305,69 +305,67 @@ body {
     transform: translateY(-2px);
 }
 
-/* ===== ÜRÜN KARTLARI & KATEGORİLER ===== */
-.category-title {
-    font-size: 28px;
-    color: #e67e22;
-    margin: 40px 0 20px;
-    border-left: 4px solid #e67e22;
-    padding-left: 12px;
-    text-transform: uppercase;
-}
-
-.products-container {
-    display: grid;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.products-container.ic-mekan {
-    grid-template-columns: repeat(3, 1fr); /* 3 sütun masaüstü */
-}
-
-.products-container.dis-mekan {
-    grid-template-columns: repeat(3, 1fr); /* 3 sütun masaüstü */
-}
-
-.product-card {
-    background: #fff;
-    border-radius: 8px;
+/* ======================
+   ÜRÜN KARTLARI
+====================== */
+.products-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa, #e2e7ee);
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
 }
-
-.product-card:hover {
-    transform: translateY(-5px);
+.products-section::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    z-index:0;
 }
-
-.product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.products-section h1 {
+    text-align:center;
+    font-size:36px;
+    margin-bottom:40px;
+    color:#e67e22;
+    background: linear-gradient(to right, #e67e22, #d35400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
-
-.product-card h3 {
-    margin: 12px;
-    font-size: 20px;
+.products-container {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    position:relative;
+    z-index:1;
 }
-
-.product-card p {
-    margin: 0 12px 12px 12px;
-    font-size: 14px;
-    color: #555;
+.product-card {
+    background-color:#fff;
+    width:300px;
+    min-height:400px;
+    border-radius:10px;
+    overflow:hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
-
-.product-link {
-    display: inline-block;
-    margin: 0 12px 12px 12px;
-    padding: 6px 12px;
-    background-color: #e67e22;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
+.product-card:hover { box-shadow:0 8px 20px rgba(0,0,0,0.2); transform:translateY(-5px); }
+.product-card img { width:100%; height:200px; object-fit:cover; }
+.product-card h3 { font-size:24px; margin:20px 0 10px; color:#333; }
+.product-card p { margin:0 20px 20px; color:#666; font-size:14px; }
+.product-card a {
+    display:inline-block;
+    background-color:#e67e22;
+    color:#fff;
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:5px;
+    margin-bottom:20px;
 }
-
+.product-card a:hover { background-color:#d35400; }
 
 /* ======================
    REFERANSLAR
@@ -458,118 +456,97 @@ body {
 @keyframes slideIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
 /* ======================
-   RESPONSIVE (GENEL)
+   RESPONSIVE
 ====================== */
-
-/* Masaüstü için temel davranışlar zaten yukarıda tanımlı. */
-/* Aşağıda mobil/tablet kırılma noktaları ve nav-checkbox ile uyumlu kurallar yer alır. */
-
-/* -------------------------
-   Masaüstü: geniş ekranlar
-   ------------------------- */
-@media (min-width: 993px) {
-    /* Checkbox-based nav kullanıyoruz, masaüstünde butonu gizle */
-    .nav-toggle-btn { display: none !important; }
-    /* Eğer eski .nav-container varsa görünür kalsın, fakat nav-wrapper kullanılacak */
-    .nav-container { display: block; }
-}
-
-/* -------------------------
-   Tablet / küçük masaüstü
-   ------------------------- */
-@media (max-width: 1200px) {
-    .site-slider .slider-container{ height:56vh; max-height:480px; }
-    .info-panel-inner{ grid-template-columns: repeat(2,1fr); padding:20px; }
-    .info-card p{ max-width:280px; }
-    /* Ürün grid halen 3 sütun korur (1200px'e kadar) */
-    .products-container.ic-mekan,
-    .products-container.dis-mekan {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* -------------------------
-   Tablet küçük / mobil orta
-   ------------------------- */
+/* ======================
+   MOBİL MENÜ - MASAÜSTÜ MENÜYÜ GİZLE
+====================== */
 @media (max-width: 992px) {
-    /* Eski hamburger görünürlüğünü artık nav-toggle-btn ile kontrol ediyoruz */
-    .nav-toggle-btn { display: flex !important; } /* checkbox label (hamburger) görünür */
-    /* Eğer proje içinde .hamburger sınıfı kaldıysa gizle */
-    .hamburger { display: none !important; }
-
-    /* Eğer önceki .nav-container varsa (eskiden sticky kullanılan) onu gizle, nav-wrapper kullanılacak */
-    .nav-container { display: none !important; }
-
-    /* Menü paneli için grid 3 -> 3 (tablet üstünde 3 sütun) */
-    .products-container.ic-mekan,
-    .products-container.dis-mekan {
-        grid-template-columns: repeat(3, 1fr);
+    .nav-menu {
+        display: none !important;   /* Masaüstü menüyü tamamen gizle */
     }
-
-    /* Slider/Info panel ufak ayarlar */
-    .site-slider .slider-container{ height:56vh; max-height:480px; }
-    .info-panel-inner{ grid-template-columns: repeat(2,1fr); padding:20px; }
-}
-
-/* -------------------------
-   Küçük ekranlar (mobiller)
-   ------------------------- */
-@media (max-width: 900px) {
-    /* Ürün grid 2 sütuna iner */
-    .products-container.ic-mekan,
-    .products-container.dis-mekan {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Navbar mobil davranışları (checkbox ile sağdan açılan panel) */
-    /* nav-toggle-btn zaten gösteriliyor; nav-menu panel kuralları style.css'in nav-block'unda mevcut olmalı */
-}
-
-/* -------------------------
-   Çok küçük ekranlar
-   ------------------------- */
-@media (max-width: 768px) {
-    .nav-container { padding: 15px 20px; }
-    .logo img { width: 180px; }
-    /* Slider küçültebiliriz */
-    .site-slider .slider-container{ height:46vh; max-height:380px; }
-}
-
-@media (max-width: 640px) {
-    body{ padding-top:64px; }
-    .site-slider .slider-container{ height:46vh; max-height:380px; }
-    .info-panel-inner{ grid-template-columns: 1fr; padding:14px; gap:12px; }
-    .info-card{ padding:16px; }
-    .products-section, .references-section { padding:40px 15px; }
-    .products-section h1, .references-section h1 { font-size:28px; }
-    .references-container{ flex-direction: column; align-items:center; gap:20px; }
-    .reference-card, .product-card { width:100%; max-width:400px; } /* ürün kartları daha geniş mobilde */
-    .footer{ flex-direction: column; text-align:center; padding:30px 20px; }
-    .footer-contact, .copyright { text-align:center; }
-    .social-media{ order:-1; margin-bottom:20px; }
-    .social-media a{ font-size:26px; margin:0 15px; }
-    .whatsapp-float a{ width:50px; height:50px; font-size:25px; }
-
-    /* Mobilde ürün grid 1 sütun */
-    .products-container.ic-mekan,
-    .products-container.dis-mekan {
-        grid-template-columns: 1fr;
+    .hamburger {
+        display: block !important;  /* Hamburger’i göster */
     }
 }
 
-/* -------------------------
-   Ek notlar
-   ------------------------- */
-/* 1) Eğer halen style.css içinde eski .hamburger { ... } veya
-   .nav-menu { display:none } gibi kurallar varsa, yukarıdaki .hamburger display:none !important
-   ile onları devre dışı bırakıyoruz. Ancak en iyi yol eski kuralları tamamen silmektir. */
+@media (min-width: 993px) {
+    .hamburger {
+        display: none !important;   /* Masaüstünde hamburger olmasın */
+    }
+}
+@media(max-width:1024px){.site-slider .slider-container{height:56vh;max-height:480px;}.info-panel-inner{grid-template-columns:repeat(2,1fr);padding:20px;}.info-card p{max-width:280px;}}
+@media(max-width:768px){.nav-container{padding:15px 20px;}.logo img{width:180px;}.hamburger{display:block;top:15px;right:15px;}}
+@media(max-width:640px){
+body{padding-top:64px;}
+.site-slider .slider-container{height:46vh;max-height:380px;}
+.info-panel-inner{grid-template-columns:1fr;padding:14px;gap:12px;}
+.info-card{padding:16px;}
+.products-section,.references-section{padding:40px 15px;}
+.products-section h1,.references-section h1{font-size:28px;}
+.references-container{flex-direction:column;align-items:center;gap:20px;}
+.reference-card,.product-card{width:100%;max-width:300px;}
+.footer{flex-direction:column;text-align:center;padding:30px 20px;}
+.footer-contact,.copyright{text-align:center;}
+.footer-contact span{margin-left:0;display:block;}
+.social-media{order:-1;margin-bottom:20px;}
+.social-media a{font-size:26px;margin:0 15px;}
+.whatsapp-float a{width:50px;height:50px;font-size:25px;}
+}
+/* ---------- MOBIL MENU UYUMLAMALARI (BESTAMI EKİ) ---------- */
+/* overlay — opacity ile yönet, display ile değil (daha stabil) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s ease, visibility .28s ease;
+  z-index: 9998; /* menu'dan bir seviye aşağı */
+  pointer-events: none;
+}
+.overlay.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
 
-/* 2) Nav-checkbox yaklaşımı için .nav-wrapper / .nav-toggle / .nav-toggle-btn /
-   .nav-menu / .overlay kurallarının style.css içinde bulunması gerekiyor.
-   (Ben bunu daha önce sana verdiğim nav CSS bloğunda eklemiştim.) */
+/* nav-menu (mobil panel) — kesin kurallar */
+@media (max-width: 992px) {
+  .nav-menu {
+    position: fixed !important;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    padding: 90px 20px 40px;
+    transition: right 0.35s ease;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.25);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-menu.active {
+    right: 0 !important;
+  }
 
-/* 3) Tarayıcı önbelleğini temizleyip (Ctrl+F5) test et; eğer farklı sayfalarda
-   eski kurallar hala geçerliyse, ilgili dosyaların aynısını güncelledin mi kontrol et. */
-
+  /* Menü linkleri mobil görünümde daha ergonomik olsun */
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-menu li a {
+    display: block !important;
+    padding: 14px 18px !important;
+    font-size: 17px !important;
+    border-radius: 8px;
+    background: #f8f9fa;
+  }
+  .nav-menu li a:hover {
+    background: #e67e22 !important;
+    color: #fff !important;
+  }
+}
 
 
