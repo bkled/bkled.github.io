@@ -449,5 +449,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.product-card');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // active sınıfı güncelle
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.dataset.filter;
+            cards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = ''; // göster
+                } else {
+                    // data filter sınıfıyla eşleşiyorsa göster, yoksa gizle
+                    card.style.display = card.classList.contains(filter) ? '' : 'none';
+                }
+            });
+        });
+    });
+});
+</script>
 </body>
 </html>
