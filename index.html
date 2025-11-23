@@ -459,25 +459,23 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
      
     <!-- --- FILTER SCRIPT (BURAYA EKLE) --- -->
-   <script>
+  <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const filterWrap = document.getElementById('productsFilter'); // butonların container'ı
-  const productsContainer = document.getElementById('productsContainer'); // sadece burayı hedefle
+  const filterWrap = document.getElementById('productsFilter');
+  const productsContainer = document.getElementById('productsContainer');
   if (!filterWrap) { console.warn('[filter] productsFilter bulunamadı'); return; }
   if (!productsContainer) { console.warn('[filter] productsContainer bulunamadı'); return; }
 
-  // sadece Ürünlerimiz içindeki kartlar
   const cards = Array.from(productsContainer.querySelectorAll('.product-card'));
   console.log('[filter] script başladı — ürün kartı sayısı:', cards.length);
 
-  // kartlarda kategori yoksa bunu bildir
   const missingCategory = cards.filter(c => {
     const hasData = (c.dataset.category || '').trim();
     const hasClass = c.classList.contains('ic-mekan') || c.classList.contains('dis-mekan');
     return !(hasData || hasClass);
   });
   if (missingCategory.length) {
-    console.warn('[filter] Bazı ürün kartlarında kategori yok. Bu kartları "ic-mekan" veya "dis-mekan" sınıfı ile etiketle veya data-category ekle:', missingCategory);
+    console.warn('[filter] Bazı ürün kartlarında kategori yok. Etiketle:', missingCategory);
   }
 
   function showCardsByFilter(filter) {
@@ -494,21 +492,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // delegation
   filterWrap.addEventListener('click', function (e) {
     const btn = e.target.closest('.filter-btn');
     if (!btn) return;
-    // butonun form submit etmemesi için HTML'de type="button" olduğundan emin ol
     filterWrap.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const filter = (btn.dataset.filter || '').trim();
     showCardsByFilter(filter);
   });
 
-  // başta tümünü göster
   showCardsByFilter('all');
 });
 </script>
+
 
 
 </body>
