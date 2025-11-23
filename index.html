@@ -232,31 +232,31 @@
         timer = setInterval(next, 4000);
       }
 
-      // FİLTRE – KESİNLİKLE ÇALIŞIR
-      const filterBtns = document.querySelectorAll('#productsFilter .filter-btn');
-      const cards = document.querySelectorAll('#productsContainer .product-card');
+      // FİLTRE – KESİN ÇALIŞAN SON HAL
+const filterBtns = document.querySelectorAll('#productsFilter .filter-btn');
+const cards = document.querySelectorAll('#productsContainer .product-card');
 
-      console.log('Filtre aktif – Toplam kart:', cards.length); // 12 yazacak
+console.log('Filtre aktif – Toplam kart:', cards.length);
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-          const filter = this.dataset.filter;
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', function () {
+    const filter = this.dataset.filter;
 
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
+    filterBtns.forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
 
-          cards.forEach(card => {
-            if (filter === 'all') {
-              card.style.display = '';
-            } else {
-              card.style.display = card.classList.contains(filter) ? '' : 'none';
-            }
-          });
-        });
-      });
+    cards.forEach(card => {
+      if (filter === 'all' || card.classList.contains(filter)) {
+        card.style.display = 'flex';    // BURASI ÇOK ÖNEMLİ!
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
 
-      // Başlangıçta Tümü seçili olsun
-      document.querySelector('[data-filter="all"]').click();
+// Başlangıçta hepsi görünsün
+document.querySelector('[data-filter="all"]').click();
 
       // NAV & FOOTER YÜKLEME + MENU
       fetch('navigasyon.html')
