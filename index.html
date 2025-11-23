@@ -12,484 +12,291 @@
 <body>
     <div id="navigasyon"></div>
 
-    <!-- ----- SLIDER BAŞLANGIÇ (kopyala-yapıştır) ----- -->
+    <!-- SLIDER -->
+    <style>
+      .slider-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+        height: 520px;
+        background: #000;
+      }
+      .slider { position: relative; width: 100%; height: 100%; }
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .slide.active { opacity: 1; z-index: 2; }
+      .slide-caption {
+        position: absolute;
+        left: 5%; bottom: 12%; color: #fff;
+        text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+        z-index: 3; max-width: 50%;
+      }
+      .slider-btn {
+        display: inline-block; margin-top: 8px;
+        background: rgba(255,255,255,0.15); color: #fff;
+        padding: 8px 14px; border-radius: 6px; text-decoration: none;
+      }
+      .prev-btn, .next-btn {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background: rgba(0,0,0,0.5); color: white; border: none;
+        padding: 10px 12px; font-size: 22px; cursor: pointer;
+        z-index: 5; border-radius: 50%;
+      }
+      .prev-btn { left: 12px; }
+      .next-btn { right: 12px; }
+      .dots {
+        position: absolute; bottom: 12px; left: 50%;
+        transform: translateX(-50%); display: flex; gap: 8px; z-index: 6;
+      }
+      .dot {
+        width: 11px; height: 11px; border-radius: 50%;
+        background: rgba(255,255,255,0.5); cursor: pointer;
+      }
+      .dot.active { background: rgba(255,255,255,1); }
+    </style>
 
-<!-- place this CSS in your <head> or style.css -->
-<style>
-  .slider-container {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-    height: 520px; /* ihtiyaca göre ayarla */
-    background: #000;
-  }
-  .slider {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  .slide {
-    position: absolute;
-    inset: 0; /* top:0;right:0;bottom:0;left:0; */
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .slide.active { opacity: 1; z-index: 2; }
-
-  .slide-caption {
-    position: absolute;
-    left: 5%;
-    bottom: 12%;
-    color: #fff;
-    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
-    z-index: 3;
-    max-width: 50%;
-  }
-  .slider-btn {
-    display:inline-block;
-    margin-top: 8px;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-  }
-
-  .prev-btn, .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 10px 12px;
-    font-size: 22px;
-    cursor: pointer;
-    z-index: 5;
-    border-radius: 50%;
-  }
-  .prev-btn { left: 12px; }
-  .next-btn { right: 12px; }
-
-  .dots {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 6;
-  }
-  .dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    cursor: pointer;
-  }
-  .dot.active { background: rgba(255,255,255,1); }
-</style>
-
-<!-- place this HTML where you want the slider to appear -->
-<div class="slider-container">
-  <div class="slider">
-    <!-- 1 -->
-    <div class="slide active">
-      <img src="images/slider1.jpeg" alt="LED Ekran Projesi 1">
-      <div class="slide-caption">
-        <h2>Yüksek Kaliteli LED Ekran Çözümleri</h2>
-        <p>İç ve dış mekan projeleriniz için en iyi teknoloji</p>
-        <a href="iletisim.html" class="slider-btn">Hemen Teklif Al</a>
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide active">
+          <img src="images/slider1.jpeg" alt="LED Ekran Projesi 1">
+          <div class="slide-caption">
+            <h2>Yüksek Kaliteli LED Ekran Çözümleri</h2>
+            <p>İç ve dış mekan projeleriniz için en iyi teknoloji</p>
+            <a href="iletisim.html" class="slider-btn">Hemen Teklif Al</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="images/referans2.jpeg" alt="Dış Mekan Totem LED">
+          <div class="slide-caption">
+            <h2>Hava Koşullarına Dayanıklı Totem Ekranlar</h2>
+            <p>Petrol istasyonları, AVM’ler, yol kenarları için ideal</p>
+            <a href="iletisim.html" class="slider-btn">Detaylı Bilgi</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="images/icmekan4.jpg" alt="İç Mekan LED Duvar">
+          <div class="slide-caption">
+            <h2>Lobi ve Mağaza İçin Şık LED Duvarlar</h2>
+            <p>Yüksek çözünürlük, göz alıcı renkler</p>
+            <a href="iletisim.html" class="slider-btn">Proje Örneği Gör</a>
+          </div>
+        </div>
       </div>
+      <button class="prev-btn" aria-label="Önceki">Left</button>
+      <button class="next-btn" aria-label="Sonraki">Right</button>
+      <div class="dots"></div>
     </div>
 
-    <!-- 2 -->
-    <div class="slide">
-      <img src="images/referans2.jpeg" alt="Dış Mekan Totem LED">
-      <div class="slide-caption">
-        <h2>Hava Koşullarına Dayanıklı Totem Ekranlar</h2>
-        <p>Petrol istasyonları, AVM’ler, yol kenarları için ideal</p>
-        <a href="iletisim.html" class="slider-btn">Detaylı Bilgi</a>
+    <!-- BİLGİ PANELİ -->
+    <section id="info-panel" class="info-panel-section">
+      <div class="info-panel-inner">
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-circle-info"></i></div>
+          <h4>Hakkımızda</h4>
+          <p>BKLed; kaliteli LED çözümler sunar, iç ve dış mekan projelerinde deneyimli ekip ve müşteri odaklı hizmet anlayışıyla faaliyet göstermektedir.</p>
+          <a class="info-link" href="hakkimizda.html">Detaylı Bilgi</a>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-eye"></i></div>
+          <h4>Vizyon</h4>
+          <p>Vizyon: Yenilikçi LED çözümler sunmak.</p>
+          <a class="info-link" href="vizyon.html">Detaylı Bilgi</a>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-handshake"></i></div>
+          <h4>Misyon</h4>
+          <p>Misyon: Kalite, sürdürülebilirlik ve müşteri memnuniyeti ile değer yaratmak.</p>
+          <a class="info-link" href="misyon.html">Detaylı Bilgi</a>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- 3 -->
-    <div class="slide">
-      <img src="images/icmekan4.jpg" alt="İç Mekan LED Duvar">
-      <div class="slide-caption">
-        <h2>Lobi ve Mağaza İçin Şık LED Duvarlar</h2>
-        <p>Yüksek çözünürlük, göz alıcı renkler</p>
-        <a href="iletisim.html" class="slider-btn">Proje Örneği Gör</a>
-      </div>
-    </div>
+    <!-- ÜRÜNLER -->
+    <main>
+      <section class="products-section">
+        <div class="site-container">
+          <h1>Ürünlerimiz</h1>
 
-    <!-- Eğer daha fazla foto eklemek istersen aynısını tekrarlayın -->
+          <div class="products-filter" id="productsFilter">
+            <button type="button" class="filter-btn active" data-filter="all">Tümü</button>
+            <button type="button" class="filter-btn" data-filter="ic-mekan">İç Mekan</button>
+            <button type="button" class="filter-btn" data-filter="dis-mekan">Dış Mekan</button>
+          </div>
 
-  </div>
-
-  <button class="prev-btn" aria-label="Önceki">❮</button>
-  <button class="next-btn" aria-label="Sonraki">❯</button>
-  <div class="dots"></div>
-</div>
-
-<!-- ----- SLIDER SONU ----- -->
-
- <!-- ======= ÖNE ÇIKAN BİLGİ PANELİ (3 KUTU) ======= -->
-<section id="info-panel" class="info-panel-section">
-  <div class="info-panel-inner">
-    
-    <!-- HAKKIMIZDA -->
-    <div class="info-card">
-      <div class="info-icon" aria-hidden="true">
-        <i class="fas fa-circle-info"></i>
-      </div>
-      <h4>Hakkımızda</h4>
-      <p>BKLed; kaliteli LED çözümler sunar, iç ve dış mekan projelerinde deneyimli ekip ve müşteri odaklı hizmet anlayışıyla faaliyet göstermektedir.</p>
-      <a class="info-link" href="hakkimizda.html">Detaylı Bilgi</a>
-    </div>
-
-    <!-- VİZYON -->
-    <div class="info-card">
-      <div class="info-icon" aria-hidden="true">
-        <i class="fas fa-eye"></i>
-      </div>
-      <h4>Vizyon</h4>
-      <p>Vizyon: Yenilikçi LED çözümler sunmak.</p>
-      <a class="info-link" href="vizyon.html">Detaylı Bilgi</a>
-    </div>
-
-    <!-- MİSYON -->
-    <div class="info-card">
-      <div class="info-icon" aria-hidden="true">
-        <i class="fas fa-handshake"></i>
-      </div>
-      <h4>Misyon</h4>
-      <p>Misyon: Kalite, sürdürülebilirlik ve müşteri memnuniyeti ile değer yaratmak.</p>
-      <a class="info-link" href="misyon.html">Detaylı Bilgi</a>
-    </div>
-
-  </div>
-</section>
-<!-- ======= /ÖNE ÇIKAN BİLGİ PANELİ SONU ======= -->
-    <!-- ======= /ÜRÜNLER BAŞLANGIÇ ======= -->
-      <main>
-        <section class="products-section">
-    <div class="site-container">
-        <h1>Ürünlerimiz</h1>
-
-        <!-- Kategori filtre butonları -->
-   <div class="products-filter" id="productsFilter">
-  <button type="button" class="filter-btn active" data-filter="all">Tümü</button>
-  <button type="button" class="filter-btn" data-filter="ic-mekan">İç Mekan</button>
-  <button type="button" class="filter-btn" data-filter="dis-mekan">Dış Mekan</button>
-</div>
-
-
-
-        <!-- Ürün kartları container -->
-        <div class="products-container" id="productsContainer">
-            <!-- İç Mekan (6 kart) -->
+          <div class="products-container" id="productsContainer">
+            <!-- İÇ MEKAN -->
             <article class="product-card ic-mekan">
-                <img src="images/indoor1.jpg" alt="İç Mekan LED - P1.25">
-                <h3>İç Mekan LED - P-1.25</h3>
-                <p>P 1.25 İç Mekan LED Ekranlar; TV stüdyoları, konferans salonları, toplantı odaları, konser alanları..</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/indoor1.jpg" alt="İç Mekan LED - P1.25">
+              <h3>İç Mekan LED - P-1.25</h3>
+              <p>P 1.25 İç Mekan LED Ekranlar; TV stüdyoları, konferans salonları, toplantı odaları, konser alanları..</p>
+              <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card ic-mekan">
-                <img src="images/indoor2.webp" alt="İç Mekan LED - P1.53">
-                <h3>İç Mekan LED - P1.53</h3>
-                <p>P 1.53 İç Mekan LED Ekranlar; TV stüdyoları, konferans salonları, toplantı odaları..</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/indoor2.webp" alt="İç Mekan LED - P1.53"><h3>İç Mekan LED - P1.53</h3><p>P 1.53 İç Mekan LED Ekranlar...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card ic-mekan">
-                <img src="images/indoor3.jpg" alt="İç Mekan LED - P1.86">
-                <h3>İç Mekan LED - P1.86</h3>
-                <p>Dokunmatik uyumlu opsiyon, mağaza içi etkileşim için.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/indoor3.jpg" alt="İç Mekan LED - P1.86"><h3>İç Mekan LED - P1.86</h3><p>Dokunmatik uyumlu opsiyon...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card ic-mekan">
-                <img src="images/indoor4.jpg" alt="İç Mekan LED - P2.5">
-                <h3>İç Mekan LED - P2.5</h3>
-                <p>4K destekli paneller, sunum ve konferans salonları için.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/indoor4.jpg" alt="İç Mekan LED - P2.5"><h3>İç Mekan LED - P2.5</h3><p>4K destekli paneller...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card ic-mekan">
-                <img src="images/indoor5.jpg" alt="İç Mekan LED - P3">
-                <h3>İç Mekan LED - P3</h3>
-                <p>Modüler yapı, kolay kurulum ve servis erişimi.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/indoor5.jpg" alt="İç Mekan LED - P3"><h3>İç Mekan LED - P3</h3><p>Modüler yapı...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card ic-mekan">
-                <img src="images/indoor6.jpg" alt="İç Mekan LED - P4">
-                <h3>İç Mekan LED - P4</h3>
-                <p>Yüksek parlaklık ve geniş görüş açısı, AV uygulamaları için.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/indoor6.jpg" alt="İç Mekan LED - P4"><h3>İç Mekan LED - P4</h3><p>Yüksek parlaklık...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
 
-            <!-- Dış Mekan (6 kart) -->
+            <!-- DIŞ MEKAN -->
             <article class="product-card dis-mekan">
-                <img src="images/outdoor1.webp" alt="Dış Mekan LED - P2.5">
-                <h3>Dış Mekan LED - P2.5</h3>
-                <p>IP65 koruma, güçlü parlaklık ve otomatik parlaklık sensörü.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/outdoor1.webp" alt="Dış Mekan LED - P2.5"><h3>Dış Mekan LED - P2.5</h3><p>IP65 koruma...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card dis-mekan">
-                <img src="images/outdoor2.webp" alt="Dış Mekan LED - P3">
-                <h3>Dış Mekan LED - P3</h3>
-                <p>Rüzgâr ve yağmur dayanımı, reklam panoları için dayanıklı kasa.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/outdoor2.webp" alt="Dış Mekan LED - P3"><h3>Dış Mekan LED - P3</h3><p>Rüzgâr ve yağmur dayanımı...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card dis-mekan">
-                <img src="images/outdoor3.jpg" alt="Dış Mekan LED - P4">
-                <h3>Dış Mekan LED - P4</h3>
-                <p>Uzun menzilli içerik yönetimi ve enerji verimli sürücü modülleri.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/outdoor3.jpg" alt="Dış Mekan LED - P4"><h3>Dış Mekan LED - P4</h3><p>Uzun menzilli içerik yönetimi...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card dis-mekan">
-                <img src="images/outdoor4.webp" alt="Dış Mekan LED - P5">
-                <h3>Dış Mekan LED - P5</h3>
-                <p>Rüzgâr ve yağmur dayanımı, reklam panoları için dayanıklı kasa.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/outdoor4.webp" alt="Dış Mekan LED - P5"><h3>Dış Mekan LED - P5</h3><p>Rüzgâr ve yağmur dayanımı...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card dis-mekan">
-                <img src="images/outdoor5.jpg" alt="Dış Mekan LED - P8">
-                <h3>Dış Mekan LED - P8</h3>
-                <p>Rüzgâr ve yağmur dayanımı, reklam panoları için dayanıklı kasa.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/outdoor5.jpg" alt="Dış Mekan LED - P8"><h3>Dış Mekan LED - P8</h3><p>Rüzgâr ve yağmur dayanımı...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
-
             <article class="product-card dis-mekan">
-                <img src="images/outdoor6.webp" alt="Dış Mekan LED - P10 RGB">
-                <h3>Dış Mekan LED - P10 RGB</h3>
-                <p>Rüzgâr ve yağmur dayanımı, reklam panoları için dayanıklı kasa.</p>
-                <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+              <img src="images/outdoor6.webp" alt="Dış Mekan LED - P10 RGB"><h3>Dış Mekan LED - P10 RGB</h3><p>Rüzgâr ve yağmur dayanımı...</p><a href="urunler.html" class="product-link">Detaylı Bilgi</a>
             </article>
+          </div>
+        </div>
+      </section>
 
-            </div>
-    </div>
-</section>
-
-        <section class="products-section">
-            <h1>Referanslar</h1>
-            <div class="products-container">
-                <div class="product-card">
-                    <img src="images/referans.jpg" alt="Cep Telefonu İşyeri Projesi">
-                    <h3>İşyeri Projesi</h3>
-                    <p>Başarılı işyeri projelerimizden bir örnek.</p>
-                    <a href="referanslar.html" class="product-link" target="_blank">Daha Fazla</a>
-                </div>
-                <div class="product-card">
-                    <img src="images/referans1.jpeg" alt="AVM Projesi">
-                    <h3>AVM Projesi</h3>
-                    <p>Başarılı AVM projelerimizden bir örnek.</p>
-                    <a href="referanslar.html" class="product-link" target="_blank">Daha Fazla</a>
-                </div>
-                <div class="product-card">
-                    <img src="images/referans2.jpeg" alt="Belediye Projesi">
-                    <h3>Belediye Projesi</h3>
-                    <p>Başarılı Belediye projelerimizden bir örnek.</p>
-                    <a href="referanslar.html" class="product-link" target="_blank">Daha Fazla</a>
-                </div>
-            </div>
-        </section>
+      <section class="products-section">
+        <h1>Referanslar</h1>
+        <div class="products-container">
+          <div class="product-card"><img src="images/referans.jpg" alt="İşyeri Projesi"><h3>İşyeri Projesi</h3><p>Başarılı işyeri projelerimizden bir örnek.</p><a href="referanslar.html" class="product-link" target="_blank">Daha Fazla</a></div>
+          <div class="product-card"><img src="images/referans1.jpeg" alt="AVM Projesi"><h3>AVM Projesi</h3><p>Başarılı AVM projelerimizden bir örnek.</p><a href="referanslar.html" class="product-link" target="_blank">Daha Fazla</a></div>
+          <div class="product-card"><img src="images/referans2.jpeg" alt="Belediye Projesi"><h3>Belediye Projesi</h3><p>Başarılı Belediye projelerimizden bir örnek.</p><a href="referanslar.html" class="product-link" target="_blank">Daha Fazla</a></div>
+        </div>
+      </section>
     </main>
 
     <div id="footer"></div>
 
-    <!-- Navigasyon ve Footer yükleme + initMenu fonksiyonu -->
-<script>
-/**
- * navigasyon.html dinamik yüklendikten sonra
- * hamburger / overlay / nav-menu eventlerini bağlayan fonksiyon.
- */
-function initMenu() {
-    const h = document.querySelector('.hamburger');
-    const m = document.querySelector('.nav-menu');
-    const o = document.querySelector('.overlay');
+    <!-- TEK VE SON SCRIPT – HER ŞEY BURADA -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
 
-    if (!h || !m || !o) return; // elemanlar yoksa çık
+      // SLIDER
+      const sliderContainer = document.querySelector('.slider-container');
+      if (sliderContainer) {
+        const slides = sliderContainer.querySelectorAll('.slide');
+        const prevBtn = sliderContainer.querySelector('.prev-btn');
+        const nextBtn = sliderContainer.querySelector('.next-btn');
+        const dotsContainer = sliderContainer.querySelector('.dots');
+        let current = 0;
+        const total = slides.length;
+        let timer = null;
 
-    // aç/kapat fonksiyonları
-    function openMenu() {
-        h.classList.add('active');
-        m.classList.add('active');
-        o.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeMenu() {
-        h.classList.remove('active');
-        m.classList.remove('active');
-        o.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+        // Dots oluştur
+        for (let i = 0; i < total; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'dot' + (i === 0 ? ' active' : '');
+          dot.addEventListener('click', () => { current = i; update(); resetTimer(); });
+          dotsContainer.appendChild(dot);
+        }
+        const dots = dotsContainer.querySelectorAll('.dot');
 
-    // toggle on click
-    h.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (m.classList.contains('active')) closeMenu();
-        else openMenu();
-    });
+        function update() {
+          slides.forEach((s, i) => s.classList.toggle('active', i === current));
+          dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+        function next() { current = (current + 1) % total; update(); }
+        function prev() { current = (current + total - 1) % total; update(); }
+        function resetTimer() { clearInterval(timer); timer = setInterval(next, 4000); }
 
-    // overlay tıklayınca kapat
-    o.addEventListener('click', closeMenu);
+        prevBtn?.addEventListener('click', () => { prev(); resetTimer(); });
+        nextBtn?.addEventListener('click', () => { next(); resetTimer(); });
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(timer));
+        sliderContainer.addEventListener('mouseleave', resetTimer);
 
-    // menü içindeki linklere tıklanınca kapat
-    m.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', closeMenu);
-    });
+        update();
+        timer = setInterval(next, 4000);
+      }
 
-    // ESC ile kapat
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && m.classList.contains('active')) closeMenu();
-    });
-}
+      // FİLTRE – KESİNLİKLE ÇALIŞIR
+      const filterBtns = document.querySelectorAll('#productsFilter .filter-btn');
+      const cards = document.querySelectorAll('#productsContainer .product-card');
 
-/* --- navigasyon ve footer fetch işlemleri --- */
-fetch('navigasyon.html')
-    .then(r => r.text())
-    .then(html => {
-        document.getElementById('navigasyon').innerHTML = html;
-        // navigasyon DOM eklendikten hemen sonra initMenu çağır
-        initMenu();
-    })
-    .catch(err => console.error('navigasyon yüklenemedi:', err));
+      console.log('Filtre aktif – Toplam kart:', cards.length); // 12 yazacak
 
-fetch('footer.html')
-    .then(r => r.text())
-    .then(html => document.getElementById('footer').innerHTML = html)
-    .catch(err => console.error('footer yüklenemedi:', err));
-</script>
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          const filter = this.dataset.filter;
 
-<!-- Slider JS: (mevcut kodunu korudum) -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const container = document.querySelector(".slider-container");
-  if (!container) return;
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
 
-  const slides = Array.from(container.querySelectorAll(".slide"));
-  if (slides.length < 1) return;
-
-  const prevBtn = container.querySelector(".prev-btn");
-  const nextBtn = container.querySelector(".next-btn");
-  const dotsContainer = container.querySelector(".dots");
-
-  let current = 0;
-  const total = slides.length;
-  const INTERVAL = 4000; // milisaniye: 4000 = 4 saniye
-  let timer = null;
-
-  // Dots oluştur
-  for (let i = 0; i < total; i++) {
-    const d = document.createElement("span");
-    d.className = "dot";
-    d.dataset.index = i;
-    d.addEventListener("click", () => {
-      goTo(parseInt(d.dataset.index));
-      resetTimer();
-    });
-    dotsContainer.appendChild(d);
-  }
-  const dots = Array.from(dotsContainer.children);
-
-  function update() {
-    slides.forEach((s, i) => s.classList.toggle("active", i === current));
-    dots.forEach((d, i) => d.classList.toggle("active", i === current));
-  }
-
-  function goTo(n) {
-    current = (n + total) % total;
-    update();
-  }
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
-
-  if (nextBtn) nextBtn.addEventListener("click", () => { next(); resetTimer(); });
-  if (prevBtn) prevBtn.addEventListener("click", () => { prev(); resetTimer(); });
-
-  // Otomatik döngü
-  function startTimer() {
-    if (timer) return;
-    timer = setInterval(next, INTERVAL);
-  }
-  function stopTimer() {
-    if (!timer) return;
-    clearInterval(timer);
-    timer = null;
-  }
-  function resetTimer() {
-    stopTimer();
-    startTimer();
-  }
-
-  // hover ile durdur (mobilde çalışmaz ama masaüstünde faydalı)
-  container.addEventListener("mouseenter", stopTimer);
-  container.addEventListener("mouseleave", startTimer);
-
-  // Başlat
-  update();
-  startTimer();
-
-  // Görsellerin yüklenmemesi durumu için uyarı (opsiyonel)
-  slides.forEach((s, idx) => {
-    const img = s.querySelector("img");
-    if (img) img.addEventListener("error", () => {
-      console.warn("Slider image yüklenemedi:", img.src);
-    });
-  });
-});
-</script>
-
-// FİLTRE SİSTEMİ – %100 ÇALIŞAN VERSİYON
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const filterButtons = document.querySelectorAll('#productsFilter .filter-btn');
-    const productCards = document.querySelectorAll('#productsContainer .product-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const filterValue = this.getAttribute('data-filter');
-
-            // aktif buton
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-
-            // kartları filtrele
-            productCards.forEach(card => {
-                if (filterValue === 'all') {
-                    card.style.display = '';           // CSS’in orijinal halini koru
-                } else {
-                    if (card.classList.contains(filterValue)) {
-                        card.style.display = '';       // görünür yap
-                    } else {
-                        card.style.display = 'none';   // gizle
-                    }
-                }
-            });
+          cards.forEach(card => {
+            if (filter === 'all') {
+              card.style.display = '';
+            } else {
+              card.style.display = card.classList.contains(filter) ? '' : 'none';
+            }
+          });
         });
-    });
+      });
 
-    // başlangıçta hepsi görünsün
-    document.querySelector('[data-filter="all"]').click();
-});
-</script>
+      // Başlangıçta Tümü seçili olsun
+      document.querySelector('[data-filter="all"]').click();
+
+      // NAV & FOOTER YÜKLEME + MENU
+      fetch('navigasyon.html')
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('navigasyon').innerHTML = html;
+          initMenu();
+        })
+        .catch(() => console.error('navigasyon yüklenemedi'));
+
+      fetch('footer.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('footer').innerHTML = html)
+        .catch(() => console.error('footer yüklenemedi'));
+
+      function initMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const overlay = document.querySelector('.overlay');
+        if (!hamburger || !navMenu || !overlay) return;
+
+        const open = () => {
+          hamburger.classList.add('active');
+          navMenu.classList.add('active');
+          overlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        };
+        const close = () => {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        };
+
+        hamburger.addEventListener('click', e => { e.stopPropagation(); navMenu.classList.contains('active') ? close() : open(); });
+        overlay.addEventListener('click', close);
+        navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+      }
+    });
+    </script>
 </body>
 </html>
