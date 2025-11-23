@@ -1,27 +1,37 @@
 /* =========================================================
-   BKLed - Modern Responsive CSS
-   Tüm site için genel stil, slider, info panel, ürünler, referanslar, footer ve mobil
-   ========================================================= */
+   BKLed - Modern Responsive CSS (GÜNCELLENMİŞ)
+   - Bu dosya, orijinal style.css'in düzenlenmiş ve açıklama satırları
+     eklenmiş halidir. Her bölümün başında ne işe yaradığını kısa açıklama
+     olarak yazdım (Türkçe). Dosyada ayrıca:
+     * info-panel ortalama düzeltmesi
+     * ürünler bölümü için ızgara + filtre butonları
+     * fazla/çakışan tanımlamalar birleştirildi (info-icon, overlay vb.)
+     * responsive düzen korunup küçük geliştirmeler yapıldı
+
+   Not: Dosyayı projene kopyalarken görsel (images/...) isimlerini doğrula.
+*/
 
 /* ======================
    GLOBAL RESET & TEMEL
+   (Tüm sayfa genel ayarları)
 ====================== */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
 
 body {
     margin: 0;                              /* Sayfanın kenarlarında boşluk kalmasın */
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif; /* okunabilir font */
     line-height: 1.6;
     color: #333;
     background: #f6f8fb;
-    padding-top: 80px;                      /* Sticky nav boşluğu */
+    padding-top: 80px;                      /* Sticky nav için boşluk */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* ======================
    CONTAINER
+   (Merkezde tutulan sayfa içi container)
 ====================== */
 .site-container {
     width: 100%;
@@ -30,23 +40,28 @@ body {
     padding: 0 18px;
 }
 
-/* Info panel icon ayarları */
+/* ======================
+   INFO PANEL ICON AYARLARI
+   (Tek bir .info-icon tanımı yeterli. Önceki dosyada iki kez vardı,
+    birleştirildi ve açıklama eklendi.)
+====================== */
 .info-icon {
-  font-size: 36px;         /* ikon boyutu */
-  color: #fff;             /* ikon rengi */
-  background-color: #f7941d; /* turuncu kare */
+  /* ikon görünümü ve ortalama */
+  font-size: 36px;
+  color: #fff;
+  background-color: #f7941d;
   width: 60px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;      /* istersen köşeleri yuvarla */
-  margin: 0 auto 12px auto; /* ortalama ve alt boşluk */
+  border-radius: 8px;
+  margin: 0 auto 12px auto; /* yatay merkezleme + alt boşluk */
 }
-
 
 /* ======================
    NAVİGASYON
+   (Üst menü, logo, hamburger vb.)
 ====================== */
 .nav-container {
     background-color: #fff;
@@ -99,7 +114,7 @@ body {
     color: #fff;
 }
 
-/* Hamburger */
+/* Hamburger (mobil) */
 .hamburger {
     display: none;
     font-size: 20px;
@@ -115,19 +130,30 @@ body {
 .hamburger:hover { background-color: #e67e22; transform: rotate(90deg); }
 .hamburger.active .fa-bars { transform: rotate(180deg); }
 
-/* Overlay mobil menü */
+/* ======================
+   OVERLAY (GENEL)
+   (Tek, stabil overlay tanımı — display ile yönetmek yerine
+    opacity/visibility ile kontrol etmek daha akıcıdır.)
+====================== */
 .overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 999;
-    transition: opacity 0.3s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s ease, visibility .28s ease;
+  z-index: 9998; /* menu/diğer öğelerin altında/üstünde ayarlamak için */
+  pointer-events: none;
 }
-.overlay.active { display: block; opacity: 1; }
+.overlay.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
 
 /* ======================
    SLIDER / ANA SAYFA
+   (Ana görsel slider ayarları)
 ====================== */
 .site-slider {
     width: 100%;
@@ -189,7 +215,7 @@ body {
     box-shadow: 0 8px 24px rgba(230,90,0,0.14);
 }
 
-/* Prev/Next */
+/* Prev/Next düğmeleri */
 .site-slider .prev-btn, .site-slider .next-btn {
     position: absolute;
     top: 50%;
@@ -209,7 +235,7 @@ body {
 .site-slider .prev-btn { left: 12px; }
 .site-slider .next-btn { right: 12px; }
 
-/* Dots */
+/* Slider dots */
 .site-slider .dots {
     position: absolute;
     bottom: 12px;
@@ -227,7 +253,10 @@ body {
 .site-slider .dot.active { background: #fff; transform: scale(1.12); }
 
 /* ======================
-   INFO PANEL 
+   INFO PANEL
+   (Hakkımızda / misyon & vizyon alanı)
+   - Burada önemli değişiklik: kart içeriğini hem yatay hem dikey ortaladım
+     ve butonun her zaman karta dipte kalmasını sağladım.
 ====================== */
 .info-panel-section {
     padding: 32px 16px;
@@ -241,11 +270,14 @@ body {
     border-radius: 8px;
     padding: 24px;
     box-shadow: 0 18px 48px rgba(20,20,20,0.08);
-    
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
-    align-items: stretch;           /* kartları eşit yükseklikte yapar */
+
+    /* DEĞİŞTİRİLDİ: kart içeriğini yatay+dikey ortalamak için */
+    justify-items: center; /* grid hücre içindeki elemanları yatayda ortala */
+    align-items: center;   /* grid hücre içindeki elemanları dikeyde ortala */
 }
 
 .info-card {
@@ -253,200 +285,104 @@ body {
     padding: 18px;
     border-radius: 8px;
     background: transparent;
-    
+
     /* Flex ile iç içeriği kontrol ediyoruz */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;   /* <<< EN ÖNEMLİ SATIR: butonu her zaman en alta iter */
+    justify-content: space-between;   /* buton her zaman en altta kalır */
     gap: 12px;
     height: 100%;                     /* grid içinde tam yüksekliği kaplar */
 }
 
-.info-icon {
-    width: 22px;
-    height: 22px;
-    border: 2px solid #f5e84b;
-    background: rgba(245,232,75,0.06);
-    box-shadow: 0 2px 8px rgba(245,232,75,0.12);
-    border-radius: 4px;
-    margin-bottom: 6px;
-}
-
-.info-card h4 {
-    font-size: 20px;
-    color: #153a5b;
-    margin: 6px 0;
-    font-weight: 700;
-}
-
-.info-card p {
-    color: #55606a;
-    font-size: 14.5px;
-    line-height: 1.5;
-    margin: 0 auto;
-    max-width: 320px;
-    flex-grow: 1;                     /* paragraf boş alanı doldurur */
-}
-
-.info-link {
-    padding: 10px 16px;
-    font-size: 14px;
-    border-radius: 8px;
-    background: #e67e22;
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: auto;                 /* buton her zaman en altta kalır */
-    align-self: center;
-}
-
-.info-link:hover {
-    background: #d35400;
-    transform: translateY(-2px);
-}
+.info-card h4 { font-size: 20px; color: #153a5b; margin: 6px 0; font-weight: 700; }
+.info-card p { color: #55606a; font-size: 14.5px; line-height: 1.5; margin: 0 auto; max-width: 320px; flex-grow: 1; }
+.info-link { padding: 10px 16px; font-size: 14px; border-radius: 8px; background: #e67e22; color: #fff; text-decoration: none; display: inline-block; margin-top: auto; align-self: center; }
+.info-link:hover { background: #d35400; transform: translateY(-2px); }
 
 /* ======================
-   ÜRÜN KARTLARI
+   ÜRÜN KARTLARI (GÜNCELLENDİ)
+   - Artık grid tabanlı (daha düzenli)
+   - ayrıca filtre butonları için stiller eklendi
 ====================== */
 .products-section {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #f5f7fa, #e2e7ee);
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f5f7fa, #eaf0f6);
     position: relative;
     overflow: hidden;
 }
-.products-section::before {
-    content:'';
-    position:absolute;
-    inset:0;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    z-index:0;
-}
-.products-section h1 {
-    text-align:center;
-    font-size:36px;
-    margin-bottom:40px;
-    color:#e67e22;
-    background: linear-gradient(to right, #e67e22, #d35400);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
+.products-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); z-index: 0; }
+.products-section h1 { text-align: center; font-size: 36px; margin-bottom: 18px; color: #e67e22; }
+
+/* Kategori filtre butonları */
+.products-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 26px; z-index: 1; }
+.filter-btn { border: 1px solid rgba(0,0,0,0.06); background: #fff; padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 600; transition: all .18s ease; }
+.filter-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+.filter-btn.active { background: linear-gradient(90deg,#ff8a00,#e65a00); color: #fff; border-color: transparent; }
+
+/* Ürün ızgarası (3 sütun) */
 .products-container {
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:30px;
-    position:relative;
-    z-index:1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    justify-items: center;
+    align-items: stretch;
+    padding: 0 18px;
+    position: relative;
+    z-index: 1;
 }
+
 .product-card {
-    background-color:#fff;
-    width:300px;
-    min-height:400px;
-    border-radius:10px;
-    overflow:hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+    width: 100%;
+    max-width: 340px;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(30,30,30,0.06);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 18px;
 }
-.product-card:hover { box-shadow:0 8px 20px rgba(0,0,0,0.2); transform:translateY(-5px); }
-.product-card img { width:100%; height:200px; object-fit:cover; }
-.product-card h3 { font-size:24px; margin:20px 0 10px; color:#333; }
-.product-card p { margin:0 20px 20px; color:#666; font-size:14px; }
-.product-card a {
-    display:inline-block;
-    background-color:#e67e22;
-    color:#fff;
-    padding:10px 20px;
-    text-decoration:none;
-    border-radius:5px;
-    margin-bottom:20px;
-}
-.product-card a:hover { background-color:#d35400; }
+.product-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.product-card h3 { font-size: 20px; margin: 8px 12px; color: #153a5b; }
+.product-card p { font-size: 14px; color: #55606a; margin: 0 14px; flex-grow: 1; }
+.product-card .product-link { margin-top: 8px; display: inline-block; background: #e67e22; color: #fff; text-decoration: none; padding: 10px 16px; border-radius: 8px; }
+.product-card .product-link:hover { background: #d35400; transform: translateY(-2px); }
+
+/* eski flex-wrap ürün container tanımı kaldırıldı (grid ile değiştirildi) */
 
 /* ======================
    REFERANSLAR
 ====================== */
-.references-section {
-    padding: 60px 20px;
-    background: linear-gradient(135deg, #f5f7fa, #e2e7ee);
-    position: relative;
-    overflow: hidden;
-}
-.references-container {
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:30px;
-    position:relative;
-    z-index:1;
-}
-.reference-card {
-    background-color:#fff;
-    width:300px;
-    min-height:400px;
-    border-radius:10px;
-    overflow:hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-.reference-card:hover { box-shadow:0 8px 20px rgba(0,0,0,0.2); transform:translateY(-5px); }
-.reference-card img { width:100%; height:200px; object-fit:cover; }
-.reference-card h3 { font-size:24px; margin:20px 0 10px; color:#333; }
-.reference-card p { margin:0 20px 20px; color:#666; font-size:14px; }
-.reference-link { display:inline-block; background-color:#e67e22; color:#fff; padding:10px 20px; border-radius:5px; text-decoration:none; margin-bottom:20px; }
-.reference-link:hover { background-color:#d35400; }
+.references-section { padding: 60px 20px; background: linear-gradient(135deg, #f5f7fa, #e2e7ee); position: relative; overflow: hidden; }
+.references-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; position: relative; z-index: 1; }
+.reference-card { background-color: #fff; width: 300px; min-height: 400px; border-radius: 10px; overflow: hidden; transition: box-shadow 0.3s ease, transform 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+.reference-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.2); transform: translateY(-5px); }
+.reference-card img { width: 100%; height: 200px; object-fit: cover; }
+.reference-card h3 { font-size: 24px; margin: 20px 0 10px; color: #333; }
+.reference-card p { margin: 0 20px 20px; color: #666; font-size: 14px; }
+.reference-link { display: inline-block; background-color: #e67e22; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-bottom: 20px; }
+.reference-link:hover { background-color: #d35400; }
 
 /* ======================
    FOOTER
 ====================== */
-.footer {
-    background-color: #d35400;
-    color: #000;
-    padding: 30px 40px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap:20px;
-    font-size:14px;
-}
-.footer-contact { text-align:left; line-height:1.8; }
-.footer-contact a { color:#000; font-weight:bold; text-decoration:none; }
-.footer-contact a:hover { color:#fff; text-decoration:underline; }
-.social-media a { color:#000; font-size:22px; margin:0 12px; transition:all .3s ease; }
-.social-media a:hover { color:#fff; transform:translateY(-3px); }
-.copyright, .design-credit { text-align:right; font-size:12px; color:#333; }
-.design-credit a:hover { color:#f0c14b; }
+.footer { background-color: #d35400; color: #000; padding: 30px 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; font-size: 14px; }
+.footer-contact { text-align: left; line-height: 1.8; }
+.footer-contact a { color: #000; font-weight: bold; text-decoration: none; }
+.footer-contact a:hover { color: #fff; text-decoration: underline; }
+.social-media a { color: #000; font-size: 22px; margin: 0 12px; transition: all .3s ease; }
+.social-media a:hover { color: #fff; transform: translateY(-3px); }
+.copyright, .design-credit { text-align: right; font-size: 12px; color: #333; }
+.design-credit a:hover { color: #f0c14b; }
 
 /* ======================
    WHATSAPP BUTONU
 ====================== */
-.whatsapp-float {
-    position:fixed;
-    bottom:20px; right:20px;
-    z-index:1000;
-}
-.whatsapp-float a {
-    display:flex; align-items:center; justify-content:center;
-    width:60px; height:60px;
-    background-color:#25D366;
-    color:#fff;
-    border-radius:50%;
-    text-decoration:none;
-    font-size:30px;
-    box-shadow:0 4px 8px rgba(0,0,0,0.2);
-    transition: transform .3s ease, box-shadow .3s ease;
-    animation:pulse 2s infinite ease-in-out;
-}
-.whatsapp-float a:hover { transform:scale(1.1); box-shadow:0 6px 12px rgba(0,0,0,0.3); }
-
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+.whatsapp-float a { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background-color: #25D366; color: #fff; border-radius: 50%; text-decoration: none; font-size: 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: transform .3s ease, box-shadow .3s ease; animation: pulse 2s infinite ease-in-out; }
+.whatsapp-float a:hover { transform: scale(1.1); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
 @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);} }
 
 /* ======================
@@ -457,61 +393,51 @@ body {
 
 /* ======================
    RESPONSIVE
-====================== */
-/* ======================
-   MOBİL MENÜ - MASAÜSTÜ MENÜYÜ GİZLE
+   (Mobil ve tablet için düzenlemeler)
 ====================== */
 @media (max-width: 992px) {
-    .nav-menu {
-        display: none !important;   /* Masaüstü menüyü tamamen gizle */
-    }
-    .hamburger {
-        display: block !important;  /* Hamburger’i göster */
-    }
+    /* Masaüstü menüyü gizle, hamburger göster */
+    .nav-menu { display: none !important; }
+    .hamburger { display: block !important; }
 }
-
 @media (min-width: 993px) {
-    .hamburger {
-        display: none !important;   /* Masaüstünde hamburger olmasın */
-    }
-}
-@media(max-width:1024px){.site-slider .slider-container{height:56vh;max-height:480px;}.info-panel-inner{grid-template-columns:repeat(2,1fr);padding:20px;}.info-card p{max-width:280px;}}
-@media(max-width:768px){.nav-container{padding:15px 20px;}.logo img{width:180px;}.hamburger{display:block;top:15px;right:15px;}}
-@media(max-width:640px){
-body{padding-top:64px;}
-.site-slider .slider-container{height:46vh;max-height:380px;}
-.info-panel-inner{grid-template-columns:1fr;padding:14px;gap:12px;}
-.info-card{padding:16px;}
-.products-section,.references-section{padding:40px 15px;}
-.products-section h1,.references-section h1{font-size:28px;}
-.references-container{flex-direction:column;align-items:center;gap:20px;}
-.reference-card,.product-card{width:100%;max-width:300px;}
-.footer{flex-direction:column;text-align:center;padding:30px 20px;}
-.footer-contact,.copyright{text-align:center;}
-.footer-contact span{margin-left:0;display:block;}
-.social-media{order:-1;margin-bottom:20px;}
-.social-media a{font-size:26px;margin:0 15px;}
-.whatsapp-float a{width:50px;height:50px;font-size:25px;}
-}
-/* ---------- MOBIL MENU UYUMLAMALARI (BESTAMI EKİ) ---------- */
-/* overlay — opacity ile yönet, display ile değil (daha stabil) */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .28s ease, visibility .28s ease;
-  z-index: 9998; /* menu'dan bir seviye aşağı */
-  pointer-events: none;
-}
-.overlay.active {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
+    /* Masaüstünde hamburger olmasın */
+    .hamburger { display: none !important; }
 }
 
-/* nav-menu (mobil panel) — kesin kurallar */
+@media (max-width:1024px) {
+    .site-slider .slider-container { height: 56vh; max-height: 480px; }
+    .info-panel-inner { grid-template-columns: repeat(2,1fr); padding: 20px; }
+    .info-card p { max-width: 280px; }
+    .products-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width:768px) {
+    .nav-container { padding: 15px 20px; }
+    .logo img { width: 180px; }
+    .hamburger { display: block; top: 15px; right: 15px; }
+}
+@media (max-width:640px) {
+    body { padding-top: 64px; }
+    .site-slider .slider-container { height: 46vh; max-height: 380px; }
+    .info-panel-inner { grid-template-columns: 1fr; padding: 14px; gap: 12px; }
+    .info-card { padding: 16px; }
+    .products-section, .references-section { padding: 40px 15px; }
+    .products-section h1, .references-section h1 { font-size: 28px; }
+    .references-container { flex-direction: column; align-items: center; gap: 20px; }
+    .reference-card, .product-card { width: 100%; max-width: 300px; }
+    .footer { flex-direction: column; text-align: center; padding: 30px 20px; }
+    .footer-contact, .copyright { text-align: center; }
+    .footer-contact span { margin-left: 0; display: block; }
+    .social-media { order: -1; margin-bottom: 20px; }
+    .social-media a { font-size: 26px; margin: 0 15px; }
+    .whatsapp-float a { width: 50px; height: 50px; font-size: 25px; }
+}
+
+/* ======================
+   MOBİL MENU UYUMLAMALARI (BESTAMI EKİ)
+   - Mobil menü paneli sağdan kayan bir panel olarak davranır
+   - overlay.active ile birlikte .nav-menu.active -> right:0 yapılır
+====================== */
 @media (max-width: 992px) {
   .nav-menu {
     position: fixed !important;
@@ -527,26 +453,20 @@ body{padding-top:64px;}
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .nav-menu.active {
-    right: 0 !important;
-  }
+  .nav-menu.active { right: 0 !important; }
 
-  /* Menü linkleri mobil görünümde daha ergonomik olsun */
-  .nav-menu ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .nav-menu li a {
-    display: block !important;
-    padding: 14px 18px !important;
-    font-size: 17px !important;
-    border-radius: 8px;
-    background: #f8f9fa;
-  }
-  .nav-menu li a:hover {
-    background: #e67e22 !important;
-    color: #fff !important;
-  }
+  .nav-menu ul { flex-direction: column; gap: 10px; }
+  .nav-menu li a { display: block !important; padding: 14px 18px !important; font-size: 17px !important; border-radius: 8px; background: #f8f9fa; }
+  .nav-menu li a:hover { background: #e67e22 !important; color: #fff !important; }
 }
 
+/* ---------- Son notlar ----------
+ - Eğer istersen bu dosyadaki "products-container" grid ayarını
+   4 sütuna kadar çıkartabiliriz (büyük ekranlar için). Şu an 3 sütun
+   olarak ayarlı ve mobilde 2/1 sütuna düşüyor.
+ - Görsellerin isimlerini projenle eşleştir ; örn icmekan-1.jpg vb.
+ - Filtre JS'si eklemek istersen önerebilirim (az önce gönderdiğim kısa
+   script iş görecektir).
 
+ Dosya: style-updated.css — hazırdır. 
+*/
