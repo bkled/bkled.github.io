@@ -456,52 +456,60 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+     
+    <!-- --- FILTER SCRIPT (BURAYA EKLE) --- -->
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const buttons = Array.from(document.querySelectorAll('.filter-btn'));
-  const cards = Array.from(document.querySelectorAll('.product-card'));
+    /* Güçlü filtreleme: delegation + type="button" öngörür.
+       Kopyala ve var olan filtre script'ini tamamen bununla değiştir. */
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterWrap = document.getElementById('productsFilter'); // delegasyon root
+      const cards = Array.from(document.querySelectorAll('.product-card'));
 
-  console.log('Filter script başladı. Buton sayısı:', buttons.length, 'Kart sayısı:', cards.length);
+      console.log('[filter] script başladı — kart sayısı:', cards.length, 'filterWrap:', !!filterWrap);
 
-  if (!buttons.length) {
-    console.warn('Filter butonları bulunamadı: .filter-btn yok.');
-    return;
-  }
-  if (!cards.length) {
-    console.warn('Ürün kartları bulunamadı: .product-card yok.');
-    return;
-  }
+      if (!filterWrap) {
+        console.warn('[filter] productsFilter (id) bulunamadı. Buton container id ile eşleştiğinden emin ol.');
+        return;
+      }
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // active sınıfı yönetimi
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      function showCardsByFilter(filter) {
+        console.log('[filter] apply:', filter);
+        cards.forEach(card => {
+          const cardData = (card.dataset.category || '').trim();
+          const byData = cardData ? (cardData === filter) : null;
+          const byClass = card.classList.contains(filter);
 
-      const filter = (btn.dataset.filter || '').trim();
-      console.log('Filtre seçildi:', filter);
+          let visible = false;
+          if (filter === 'all' || !filter) visible = true;
+          else if (cardData) visible = byData;
+          else visible = byClass;
 
-      cards.forEach(card => {
-        const cardCategory = (card.dataset.category || '').trim(); // data-category varsa al
-        const matchesByData = cardCategory && cardCategory === filter;
-        const matchesByClass = card.classList.contains(filter);
-        let show = false;
+          card.style.display = visible ? '' : 'none';
+        });
+      }
 
-        if (filter === 'all' || !filter) {
-          show = true;
-        } else if (cardCategory) {
-          show = matchesByData;
-        } else {
-          show = matchesByClass;
-        }
+      filterWrap.addEventListener('click', function (e) {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
 
-        // Göster/gizle: transition veya accessiblity istersen class toggle tercih et
-        card.style.display = show ? '' : 'none';
+        filterWrap.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = (btn.dataset.filter || '').trim();
+        showCardsByFilter(filter);
       });
+
+      // başlangıç olarak 'all' uygula
+      showCardsByFilter('all');
+
+      console.log('[filter] butonlar:', Array.from(filterWrap.querySelectorAll('.filter-btn')).map(b => b.dataset.filter));
+      cards.forEach((c, i) => console.log('[filter] card', i, c.className, 'data-category=' + (c.dataset.category || '')));
     });
-  });
-});
-</script>
+    </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
