@@ -460,13 +460,54 @@ body {
   .nav-menu li a:hover { background: #e67e22 !important; color: #fff !important; }
 }
 
-/* ---------- Son notlar ----------
- - Eğer istersen bu dosyadaki "products-container" grid ayarını
-   4 sütuna kadar çıkartabiliriz (büyük ekranlar için). Şu an 3 sütun
-   olarak ayarlı ve mobilde 2/1 sütuna düşüyor.
- - Görsellerin isimlerini projenle eşleştir ; örn icmekan-1.jpg vb.
- - Filtre JS'si eklemek istersen önerebilirim (az önce gönderdiğim kısa
-   script iş görecektir).
+/* KATEGORİ BAŞLIKLARI - ŞIK TASARIM */
+.category-header {
+    text-align: center;
+    margin: 50px 0 30px;
+    padding: 20px 0;
+}
 
- Dosya: style-updated.css — hazırdır. 
-*/
+.category-header h2 {
+    font-size: 32px;
+    color: #153a5b;
+    margin: 0 0 12px 0;
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.category-header h2::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    right: -100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #e67e22, transparent);
+    z-index: 1;
+}
+
+.header-line {
+    width: 80px;
+    height: 4px;
+    background: #e67e22;
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.category-header p {
+    color: #666;
+    font-size: 16px;
+    margin: 10px 0 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Section başlığı */
+.section-title {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 20px;
+    color: #153a5b;
+}
