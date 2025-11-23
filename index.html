@@ -195,6 +195,7 @@
 </div>
 
 
+
         <!-- Ürün kartları container -->
         <div class="products-container" id="productsContainer">
             <!-- İç Mekan (6 kart) -->
@@ -458,57 +459,56 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
      
     <!-- --- FILTER SCRIPT (BURAYA EKLE) --- -->
-    <script>
-    /* Güçlü filtreleme: delegation + type="button" öngörür.
-       Kopyala ve var olan filtre script'ini tamamen bununla değiştir. */
-    document.addEventListener('DOMContentLoaded', function () {
-      const filterWrap = document.getElementById('productsFilter'); // delegasyon root
-      const cards = Array.from(document.querySelectorAll('.product-card'));
+   <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const filterWrap = document.getElementById('productsFilter'); // butonların container'ı
+  const productsContainer = document.getElementById('productsContainer'); // sadece burayı hedefle
+  if (!filterWrap) { console.warn('[filter] productsFilter bulunamadı'); return; }
+  if (!productsContainer) { console.warn('[filter] productsContainer bulunamadı'); return; }
 
-      console.log('[filter] script başladı — kart sayısı:', cards.length, 'filterWrap:', !!filterWrap);
+  // sadece Ürünlerimiz içindeki kartlar
+  const cards = Array.from(productsContainer.querySelectorAll('.product-card'));
+  console.log('[filter] script başladı — ürün kartı sayısı:', cards.length);
 
-      if (!filterWrap) {
-        console.warn('[filter] productsFilter (id) bulunamadı. Buton container id ile eşleştiğinden emin ol.');
-        return;
-      }
+  // kartlarda kategori yoksa bunu bildir
+  const missingCategory = cards.filter(c => {
+    const hasData = (c.dataset.category || '').trim();
+    const hasClass = c.classList.contains('ic-mekan') || c.classList.contains('dis-mekan');
+    return !(hasData || hasClass);
+  });
+  if (missingCategory.length) {
+    console.warn('[filter] Bazı ürün kartlarında kategori yok. Bu kartları "ic-mekan" veya "dis-mekan" sınıfı ile etiketle veya data-category ekle:', missingCategory);
+  }
 
-      function showCardsByFilter(filter) {
-        console.log('[filter] apply:', filter);
-        cards.forEach(card => {
-          const cardData = (card.dataset.category || '').trim();
-          const byData = cardData ? (cardData === filter) : null;
-          const byClass = card.classList.contains(filter);
-
-          let visible = false;
-          if (filter === 'all' || !filter) visible = true;
-          else if (cardData) visible = byData;
-          else visible = byClass;
-
-          card.style.display = visible ? '' : 'none';
-        });
-      }
-
-      filterWrap.addEventListener('click', function (e) {
-        const btn = e.target.closest('.filter-btn');
-        if (!btn) return;
-
-        filterWrap.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = (btn.dataset.filter || '').trim();
-        showCardsByFilter(filter);
-      });
-
-      // başlangıç olarak 'all' uygula
-      showCardsByFilter('all');
-
-      console.log('[filter] butonlar:', Array.from(filterWrap.querySelectorAll('.filter-btn')).map(b => b.dataset.filter));
-      cards.forEach((c, i) => console.log('[filter] card', i, c.className, 'data-category=' + (c.dataset.category || '')));
+  function showCardsByFilter(filter) {
+    console.log('[filter] apply:', filter);
+    cards.forEach(card => {
+      const cardData = (card.dataset.category || '').trim();
+      const byData = cardData ? (cardData === filter) : null;
+      const byClass = card.classList.contains(filter);
+      let visible = false;
+      if (filter === 'all' || !filter) visible = true;
+      else if (cardData) visible = byData;
+      else visible = byClass;
+      card.style.display = visible ? '' : 'none';
     });
-    </script>
+  }
 
-</body>
-</html>
+  // delegation
+  filterWrap.addEventListener('click', function (e) {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    // butonun form submit etmemesi için HTML'de type="button" olduğundan emin ol
+    filterWrap.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = (btn.dataset.filter || '').trim();
+    showCardsByFilter(filter);
+  });
+
+  // başta tümünü göster
+  showCardsByFilter('all');
+});
+</script>
 
 
 </body>
