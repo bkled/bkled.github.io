@@ -460,54 +460,80 @@ body {
   .nav-menu li a:hover { background: #e67e22 !important; color: #fff !important; }
 }
 
-/* KATEGORİ BAŞLIKLARI - ŞIK TASARIM */
+/* ======= Ürünlerimiz Başlık ve Kutu Düzeni ======= */
+
+/* category-header genel stil */
 .category-header {
-    text-align: center;
-    margin: 50px 0 30px;
-    padding: 20px 0;
+    text-align: center;       /* başlık ve açıklamayı ortala */
+    margin: 40px 0 20px 0;    /* üst-alt boşluk */
 }
 
+/* H2 başlık */
 .category-header h2 {
-    font-size: 32px;
-    color: #153a5b;
-    margin: 0 0 12px 0;
-    position: relative;
-    display: inline-block;
-    padding: 0 20px;
+    font-size: 28px;          /* başlık boyutu */
+    font-weight: 600;         /* kalın yazı */
+    color: #000;              /* yazı rengi */
+    margin: 0;                /* üst-alt margin sıfırla */
+    padding: 0;               /* padding sıfırla */
+    text-decoration: none;    /* üstü çiziliyi kaldır */
 }
 
-.category-header h2::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -100px;
-    right: -100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #e67e22, transparent);
-    z-index: 1;
+/* Başlık altındaki çizgi */
+.category-header .header-line {
+    width: 60px;              /* çizgi genişliği */
+    height: 4px;              /* çizgi kalınlığı */
+    background-color: #f00;   /* istediğin renk */
+    margin: 8px auto;         /* üst-alt boşluk, ortala */
+    border-radius: 2px;       /* hafif yuvarlat */
 }
 
-.header-line {
-    width: 80px;
-    height: 4px;
-    background: #e67e22;
-    margin: 15px auto;
-    border-radius: 2px;
-}
-
+/* Başlık altındaki paragraf */
 .category-header p {
-    color: #666;
     font-size: 16px;
-    margin: 10px 0 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    color: #555;              /* paragraf rengi */
+    margin-top: 10px;         /* başlıktan biraz boşluk bırak */
 }
 
-/* Section başlığı */
-.section-title {
+/* Ürün kartları container (kartlar başlıktan çok fazla kaymasın) */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;          /* satırlar halinde diz */
+    gap: 20px;                /* kartlar arası boşluk */
+    justify-content: center;  /* ortala */
+}
+
+/* Kartların genişliği ve görsel düzeni */
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    width: 280px;             /* kart genişliği */
+    box-sizing: border-box;
     text-align: center;
-    font-size: 38px;
-    margin-bottom: 20px;
-    color: #153a5b;
+    transition: transform 0.3s;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+/* Hover efekti (opsiyonel) */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
