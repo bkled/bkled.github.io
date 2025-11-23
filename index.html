@@ -457,45 +457,37 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-     
-    <!-- --- FILTER SCRIPT (BURAYA EKLE) --- -->
-<script>
+
 // FİLTRE SİSTEMİ – %100 ÇALIŞAN VERSİYON
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const filterButtons = document.querySelectorAll('#productsFilter .filter-btn');
     const productCards = document.querySelectorAll('#productsContainer .product-card');
-
-    if (filterButtons.length === 0 || productCards.length === 0) {
-        console.warn('Filtre elemanları bulunamadı!');
-        return;
-    }
-
-    console.log('Filtre aktif – Kart sayısı:', productCards.length); // bunu kontrol et
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function () {
             const filterValue = this.getAttribute('data-filter');
 
-            // aktif sınıfı değiştir
+            // aktif buton
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
             // kartları filtrele
             productCards.forEach(card => {
                 if (filterValue === 'all') {
-                    card.style.display = 'block';
+                    card.style.display = '';           // CSS’in orijinal halini koru
                 } else {
                     if (card.classList.contains(filterValue)) {
-                        card.style.display = 'block';
+                        card.style.display = '';       // görünür yap
                     } else {
-                        card.style.display = 'none';
+                        card.style.display = 'none';   // gizle
                     }
                 }
             });
         });
     });
 
-    // sayfa ilk yüklendiğinde tümü gösterilsin
+    // başlangıçta hepsi görünsün
     document.querySelector('[data-filter="all"]').click();
 });
 </script>
