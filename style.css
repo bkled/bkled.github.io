@@ -460,80 +460,13 @@ body {
   .nav-menu li a:hover { background: #e67e22 !important; color: #fff !important; }
 }
 
-/* ======= Ürünlerimiz Başlık ve Kutu Düzeni ======= */
+/* ---------- Son notlar ----------
+ - Eğer istersen bu dosyadaki "products-container" grid ayarını
+   4 sütuna kadar çıkartabiliriz (büyük ekranlar için). Şu an 3 sütun
+   olarak ayarlı ve mobilde 2/1 sütuna düşüyor.
+ - Görsellerin isimlerini projenle eşleştir ; örn icmekan-1.jpg vb.
+ - Filtre JS'si eklemek istersen önerebilirim (az önce gönderdiğim kısa
+   script iş görecektir).
 
-/* category-header genel stil */
-.category-header {
-    text-align: center;       /* başlık ve açıklamayı ortala */
-    margin: 40px 0 20px 0;    /* üst-alt boşluk */
-}
-
-/* H2 başlık */
-.category-header h2 {
-    font-size: 28px;          /* başlık boyutu */
-    font-weight: 600;         /* kalın yazı */
-    color: #000;              /* yazı rengi */
-    margin: 0;                /* üst-alt margin sıfırla */
-    padding: 0;               /* padding sıfırla */
-    text-decoration: none;    /* üstü çiziliyi kaldır */
-}
-
-/* Başlık altındaki çizgi */
-.category-header .header-line {
-    width: 60px;              /* çizgi genişliği */
-    height: 4px;              /* çizgi kalınlığı */
-    background-color: #f00;   /* istediğin renk */
-    margin: 8px auto;         /* üst-alt boşluk, ortala */
-    border-radius: 2px;       /* hafif yuvarlat */
-}
-
-/* Başlık altındaki paragraf */
-.category-header p {
-    font-size: 16px;
-    color: #555;              /* paragraf rengi */
-    margin-top: 10px;         /* başlıktan biraz boşluk bırak */
-}
-
-/* Ürün kartları container (kartlar başlıktan çok fazla kaymasın) */
-.products-container {
-    display: flex;
-    flex-wrap: wrap;          /* satırlar halinde diz */
-    gap: 20px;                /* kartlar arası boşluk */
-    justify-content: center;  /* ortala */
-}
-
-/* Kartların genişliği ve görsel düzeni */
-.product-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 12px;
-    width: 280px;             /* kart genişliği */
-    box-sizing: border-box;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 12px;
-}
-
-.product-card h3 {
-    font-size: 18px;
-    margin: 8px 0;
-}
-
-.product-card p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 12px;
-}
-
-/* Hover efekti (opsiyonel) */
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+ Dosya: style-updated.css — hazırdır. 
+*/
