@@ -171,41 +171,78 @@ body {
     content: ""; width:80px; height:3px; background:var(--accent-2); display:block; margin:10px auto 0; border-radius:5px;
 }
 
-/* ======================
-   REFERANSLAR BÖLÜMÜ
-   (MEVCUT ÖLÇÜLER KORUNDU)
-   ====================== */
-.references-section {
-    padding: 60px 20px; background: linear-gradient(135deg,#f5f7fa,#e2e7ee);
-    position: relative; overflow: hidden;
-}
+/* ===== Referans başlığı ve kart boyutlarını ürünlerle eşitleme ===== */
 .references-title {
-    font-size:32px; font-weight:700; margin-bottom:18px; color:var(--text-dark); text-align:center; position:relative; padding-bottom:8px;
+    color: var(--accent);   /* Ürün başlığı rengini kullan (turuncu) */
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 8px;
 }
-.references-title::after { content:""; width:80px; height:4px; background:var(--accent); display:block; margin:10px auto 0; border-radius:4px; }
 
+.references-title::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: var(--accent);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 4px;
+}
+
+/* Kartların ürün kartlarıyla aynı genişlik/yükseklik olması */
 .references-container {
-    display:flex; justify-content:center; flex-wrap:wrap; gap:30px; position:relative; z-index:1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px; /* ürün ızgarasındaki gap ile uyumlu */
+    position: relative;
+    z-index: 1;
 }
 
-/* Referans kartı: SENİN MEVCUT ÖLÇÜLERİN KORUNDU */
+/* Ürün kartlarıyla birebir eşit görünüm */
 .reference-card {
     background-color: var(--card-bg);
-    width: 300px;
-    min-height: 400px;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 340px;   /* ürün kartı ile aynı */
+    min-height: 360px;  /* ürün kartı yüksekliğine yakın ve hizalı */
+    border-radius: 12px;/* ürün kartlarındaki radius ile uyum */
     overflow: hidden;
     transition: box-shadow .3s ease, transform .3s ease;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 10px 30px rgba(30,30,30,0.06); /* ürün kart gölgesi ile uyum */
     text-align: center;
-    display:flex; flex-direction:column; justify-content:space-between;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 18px;
 }
-.reference-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); }
-.reference-card img { width:100%; height:200px; object-fit:cover; }
-.reference-card h3 { font-size:24px; margin:20px 0 10px; color:#333; }
-.reference-card p { margin:0 20px 20px; color:var(--muted); font-size:14px; }
-.reference-link { display:inline-block; background-color:var(--accent); color:#fff; padding:10px 20px; border-radius:5px; text-decoration:none; margin-bottom:20px; font-weight:600; }
-.reference-link:hover { background-color:#d35400; }
+
+/* Görsel boyutu ürün görselleriyle aynı */
+.reference-card img {
+    width: 100%;
+    height: 200px;  /* ürün görsel yüksekliği ile uyumlu */
+    object-fit: cover;
+}
+
+/* Başlık / açıklama stilleri hizalı olsun */
+.reference-card h3 { font-size: 20px; margin: 8px 12px; color: #153a5b; }
+.reference-card p { font-size: 14px; color: #55606a; margin: 0 14px; flex-grow: 1; }
+
+/* Link butonu ürünlerle aynı stil */
+.reference-link {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.reference-link:hover { background: #d35400; transform: translateY(-2px); }
+
 
 /* ======================
    FOOTER
