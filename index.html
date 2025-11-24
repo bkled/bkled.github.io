@@ -314,24 +314,24 @@
 
     </div>
 </section>
-
+    
 <!-- ======================
    LED EKRAN BİLGİLERİ (ACCORDION)
 ====================== -->
 <section class="led-info-section">
-  <div class="site-container">
-    <div class="led-card" onclick="toggleAccordion(this)">
-      <h3>Led Ekran Nedir?</h3>
-      <p>LED ekran, ışık yayan diyotlardan oluşan bir ekran teknolojisidir. İç ve dış mekanlarda reklam, bilgilendirme ve gösterim amaçlı kullanılır. Yüksek parlaklık ve enerji verimliliği ile dikkat çeker.</p>
-    </div>
-    <div class="led-card" onclick="toggleAccordion(this)">
-      <h3>Led Ekran Çeşitleri</h3>
-      <p>LED ekranlar iç mekan ve dış mekan olmak üzere iki ana gruba ayrılır. İç mekan LED ekranlar daha düşük parlaklıkta ve yüksek çözünürlüklü olurken, dış mekan LED ekranlar yüksek parlaklık ve dayanıklılıkla tasarlanır. Ayrıca sabit ve hareketli (mobil) çeşitleri mevcuttur.</p>
-    </div>
-    <div class="led-card" onclick="toggleAccordion(this)">
-      <h3>Led Ekran Seçerken Nelere Dikkat Etmeliyiz?</h3>
-      <p>LED ekran seçerken; piksel pitch (çözünürlük), parlaklık, enerji tüketimi, montaj alanı, hava koşullarına dayanıklılık ve kullanım amacı dikkate alınmalıdır. İç mekan için küçük pitch, dış mekan için yüksek parlaklık önceliklidir.</p>
-    </div>
+  <div class="led-card" onclick="toggleCard(this)">
+    <h3>Led Ekran nedir?</h3>
+    <p>LED ekran, ışık yayan diyotlar kullanılarak görüntü sağlayan elektronik ekrandır. Genellikle reklam, tabela ve sahne ekranlarında kullanılır.</p>
+  </div>
+
+  <div class="led-card" onclick="toggleCard(this)">
+    <h3>Led Ekran çeşitleri</h3>
+    <p>LED ekranlar genel olarak iç mekan ve dış mekan olmak üzere ikiye ayrılır. Ayrıca P piksel aralığına göre çözünürlükleri değişir (örn. P2.5, P5, P10).</p>
+  </div>
+
+  <div class="led-card" onclick="toggleCard(this)">
+    <h3>Led Ekran seçerken nelere dikkat etmeliyiz?</h3>
+    <p>Boyut, çözünürlük, parlaklık, kullanım alanı ve enerji tüketimi LED ekran seçiminde önemlidir. Ayrıca montaj ve bakım kolaylığı da göz önünde bulundurulmalıdır.</p>
   </div>
 </section>
 
@@ -361,6 +361,12 @@ accordionItems.forEach(item => {
         }
     });
 });
+</script>
+    <script>
+// Accordion toggle
+function toggleAccordion(card) {
+  card.classList.toggle('active');
+}
 </script>
 
 
