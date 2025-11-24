@@ -337,13 +337,10 @@ body {
    ====================== */
 .product-link:focus, .reference-link:focus { outline: 3px solid rgba(230,126,34,0.15); outline-offset: 2px; }
 
-/* ======================
-   LED EKRAN BİLGİLENDİRME BÖLÜMÜ
-====================== */
-/* LED FAQ / Accordion */
+/* LED FAQ / Accordion Modern Kart */
 .led-faq-section {
     padding: 60px 0;
-    background: linear-gradient(135deg, #f5f7fa, #eaf0f6);
+    background: linear-gradient(135deg,#f5f7fa,#eaf0f6);
 }
 
 .led-faq-section h1 {
@@ -360,38 +357,62 @@ body {
 }
 
 .accordion-item {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(30,30,30,0.06);
+    background: linear-gradient(145deg, #fff, #f8f9fa);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
 }
 
 /* Accordion başlığı */
 .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: var(--accent);
     color: #fff;
     font-size: 20px;
     font-weight: 600;
     padding: 18px 24px;
-    text-align: left;
     width: 100%;
     border: none;
     outline: none;
     cursor: pointer;
     transition: background 0.3s ease;
+    position: relative;
 }
 
 .accordion-header:hover {
     background: #d35400;
 }
 
+.accordion-header span {
+    display: inline-block;
+}
+
+/* Accordion ikon */
+.accordion-icon {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+/* Açıldığında ikon dönsün */
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
 /* Accordion içeriği */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    background: #fff;
-    transition: max-height 0.35s ease;
+    transition: max-height 0.35s ease, padding 0.35s ease;
     padding: 0 24px;
+    background: #fff;
 }
 
 .accordion-content p {
@@ -399,6 +420,13 @@ body {
     color: #55606a;
     line-height: 1.7;
 }
+
+/* Mobil uyumluluk */
+@media (max-width: 640px) {
+    .accordion-header { font-size: 18px; padding: 16px 20px; }
+    .accordion-content { padding: 0 20px; }
+}
+
 
 
 
