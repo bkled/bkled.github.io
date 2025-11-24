@@ -337,6 +337,46 @@ body {
    ====================== */
 .product-link:focus, .reference-link:focus { outline: 3px solid rgba(230,126,34,0.15); outline-offset: 2px; }
 
+/* ======================
+   LED EKRAN BİLGİLENDİRME BÖLÜMÜ
+====================== */
+.led-info-section {
+    padding: 60px 0;
+    background: linear-gradient(180deg, #f6f8fb, #f3f6fa);
+}
+
+.led-info-title {
+    text-align: center;
+    font-size: 36px;      /* Referans/Ürün başlıklarıyla uyumlu */
+    margin-bottom: 32px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.led-info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 18px 48px rgba(20,20,20,0.08);
+    text-align: center;
+}
+
+.led-info-card h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #153a5b;
+}
+
+.led-info-card p {
+    font-size: 16px;
+    color: #55606a;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+
 /* ---------- Son notlar ----------
  - Bu dosya, senin gönderdiğin mevcut stilin tüm davranışlarını korur:
    * reference-card: width:300px, min-height:400px, img:200px
@@ -345,3 +385,5 @@ body {
    :root üzerindeki değişkenleri düzenlemen yeterli.
  - Yedeğini almayı unutma.
 */
+
+
