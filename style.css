@@ -387,7 +387,7 @@ body {
   flex-grow: 1;
 }
 .led-card.active p {
-  max-height: 500px; /* yeterli uzunluk */
+  max-height: 1000px; /* yeterince büyük bir değer */
 }
 
 /* Hover efekti */
