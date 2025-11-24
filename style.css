@@ -337,9 +337,8 @@ body {
    ====================== */
 .product-link:focus, .reference-link:focus { outline: 3px solid rgba(230,126,34,0.15); outline-offset: 2px; }
 
-/* ======================
-   LED INFO / FAQ KARTEKST
-====================== */
+
+/* LED INFO SECTION */
 .led-info-section {
   padding: 60px 20px;
   background: linear-gradient(135deg,#f5f7fa,#eaf0f6);
@@ -383,11 +382,8 @@ body {
 }
 
 /* Açıldığında */
-.led-card.active {
-  flex-grow: 1;
-}
 .led-card.active p {
-  max-height: 1000px; /* yeterince büyük bir değer */
+  max-height: 500px; /* yeterli uzunluk */
 }
 
 /* Hover efekti */
