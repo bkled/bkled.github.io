@@ -268,7 +268,15 @@ body {
 .social-media a { color:#000; font-size:22px; margin:0 12px; transition: all .3s ease; }
 .social-media a:hover { color:#fff; transform: translateY(-3px); }
 .copyright, .design-credit { text-align:right; font-size:12px; color:#333; }
-.design-credit a:hover { color:#f0c14b; }
+.design-credit a {
+    color: #fff; /* istediğin renk kodunu buraya yazabilirsin, örneğin #fff beyaz */
+    text-decoration: none;
+    font-weight: bold; /* istersen kalın yapabilirsin */
+}
+
+.design-credit a:hover {
+    color: #f0c14b; /* hover rengi */
+}
 
 /* ======================
    WHATSAPP BUTONU
