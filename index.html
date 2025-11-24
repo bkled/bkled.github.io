@@ -315,20 +315,6 @@
     </div>
 </section>
     
-<!-- ======================
-   LED EKRAN BİLGİLERİ (ACCORDION)
-====================== -->
-
-<script>
-  const ledCards = document.querySelectorAll('.led-card');
-
-  ledCards.forEach(card => {
-    card.addEventListener('click', () => {
-      card.classList.toggle('active'); // tıklayınca aç/kapa
-    });
-  });
-</script>
-
     <!-- LED INFO SECTION -->
 <section class="led-info-section">
   <div class="led-card">
@@ -345,7 +331,15 @@
   </div>
 </section>
 
+<script>
+  const ledCards = document.querySelectorAll('.led-card');
 
+  ledCards.forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('active'); // tıklayınca aç/kapa
+    });
+  });
+</script>
 
     <div id="footer"></div>
 
