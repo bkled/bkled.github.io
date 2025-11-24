@@ -318,56 +318,31 @@
 <!-- ======================
    LED EKRAN BİLGİLERİ (ACCORDION)
 ====================== -->
-<section class="led-info-section">
-  <div class="led-card" onclick="toggleCard(this)">
-    <h3>Led Ekran nedir?</h3>
-    <p>LED ekran, ışık yayan diyotlar kullanılarak görüntü sağlayan elektronik ekrandır. Genellikle reklam, tabela ve sahne ekranlarında kullanılır.</p>
-  </div>
-
-  <div class="led-card" onclick="toggleCard(this)">
-    <h3>Led Ekran çeşitleri</h3>
-    <p>LED ekranlar genel olarak iç mekan ve dış mekan olmak üzere ikiye ayrılır. Ayrıca P piksel aralığına göre çözünürlükleri değişir (örn. P2.5, P5, P10).</p>
-  </div>
-
-  <div class="led-card" onclick="toggleCard(this)">
-    <h3>Led Ekran seçerken nelere dikkat etmeliyiz?</h3>
-    <p>Boyut, çözünürlük, parlaklık, kullanım alanı ve enerji tüketimi LED ekran seçiminde önemlidir. Ayrıca montaj ve bakım kolaylığı da göz önünde bulundurulmalıdır.</p>
-  </div>
-</section>
-
 
 <script>
-const accordionItems = document.querySelectorAll('.accordion-item');
-
-accordionItems.forEach(item => {
-    const header = item.querySelector('.accordion-header');
-    header.addEventListener('click', () => {
-        // Diğer açık item'ları kapat
-        accordionItems.forEach(i => {
-            if(i !== item) {
-                i.classList.remove('active');
-                i.querySelector('.accordion-content').style.maxHeight = null;
-            }
-        });
-
-        // Aç / Kapa
-        const content = item.querySelector('.accordion-content');
-        if(item.classList.contains('active')){
-            item.classList.remove('active');
-            content.style.maxHeight = null;
-        } else {
-            item.classList.add('active');
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-    });
+// LED accordion aç/kapa
+const ledCards = document.querySelectorAll('.led-card');
+ledCards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('active');
+  });
 });
 </script>
-    <script>
-// Accordion toggle
-function toggleAccordion(card) {
-  card.classList.toggle('active');
-}
-</script>
+    <!-- LED INFO SECTION -->
+<section class="led-info-section">
+  <div class="led-card">
+    <h3>Led Ekran nedir?</h3>
+    <p>LED ekran, ışık yayan diyotların (LED) bir araya gelmesiyle oluşturulan görüntüleme sistemidir. Genellikle reklam panoları, spor salonları ve sahnelerde kullanılır. Yüksek parlaklık ve enerji verimliliği sağlar.</p>
+  </div>
+  <div class="led-card">
+    <h3>Led Ekran çeşitleri</h3>
+    <p>LED ekranlar; iç mekan ve dış mekan olarak ikiye ayrılır. Piksel aralığına göre P2, P3, P4 vb. çeşitler vardır. İç mekan ekranları daha düşük parlaklıkta ve yakın izleme mesafesi için uygundur, dış mekan ekranları ise yüksek parlaklık ve dayanıklılık sağlar.</p>
+  </div>
+  <div class="led-card">
+    <h3>Led Ekran seçerken nelere dikkat etmeliyiz</h3>
+    <p>LED ekran seçiminde piksel aralığı, parlaklık, çözünürlük, izleme mesafesi ve kullanım alanı çok önemlidir. Ayrıca enerji tüketimi ve montaj kolaylığı da göz önünde bulundurulmalıdır.</p>
+  </div>
+</section>
 
 
 
