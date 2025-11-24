@@ -355,26 +355,32 @@
 
 
 <script>
-const accordionHeaders = document.querySelectorAll('.accordion-header');
+const accordionItems = document.querySelectorAll('.accordion-item');
 
-accordionHeaders.forEach(header => {
+accordionItems.forEach(item => {
+    const header = item.querySelector('.accordion-header');
     header.addEventListener('click', () => {
-        const content = header.nextElementSibling;
-
-        // Açık olan diğer accordion'u kapatma
-        document.querySelectorAll('.accordion-content').forEach(c => {
-            if(c !== content) c.style.maxHeight = null;
+        // Diğer açık item'ları kapat
+        accordionItems.forEach(i => {
+            if(i !== item) {
+                i.classList.remove('active');
+                i.querySelector('.accordion-content').style.maxHeight = null;
+            }
         });
 
-        // Tıklanan accordion aç/kapa
-        if(content.style.maxHeight){
+        // Aç / Kapa
+        const content = item.querySelector('.accordion-content');
+        if(item.classList.contains('active')){
+            item.classList.remove('active');
             content.style.maxHeight = null;
         } else {
+            item.classList.add('active');
             content.style.maxHeight = content.scrollHeight + "px";
         }
     });
 });
 </script>
+
 
 
     <div id="footer"></div>
