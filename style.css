@@ -171,16 +171,27 @@ body {
     content: ""; width:80px; height:3px; background:var(--accent-2); display:block; margin:10px auto 0; border-radius:5px;
 }
 
-/* ===== Referans başlığı ve kart boyutlarını ürünlerle eşitleme ===== */
-.references-title {
-    color: var(--accent);   /* Ürün başlığı rengini kullan (turuncu) */
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 18px;
-    text-align: center;
+/* ======================
+   REFERANSLAR BÖLÜMÜ
+====================== */
+.references-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f5f7fa, #e2e7ee);
     position: relative;
-    padding-bottom: 8px;
+    overflow: hidden;
 }
+
+/* Referanslar başlığı (Ürünlerimiz başlığı ile aynı) */
+.references-title {
+    text-align: center;
+    font-size: 36px;      /* Ürünlerimiz ile aynı */
+    margin-bottom: 18px;  /* Aynı boşluk */
+    color: var(--accent); /* Turuncu renk */
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0;    /* Alt çizgi kaldırıldı */
+}
+.references-title::after { content: none; } /* Alt çizgi kaldırıldı */
 
 /* Kartların ürün kartlarıyla aynı genişlik/yükseklik olması */
 .references-container {
@@ -217,8 +228,17 @@ body {
 }
 
 /* Başlık / açıklama stilleri hizalı olsun */
-.reference-card h3 { font-size: 20px; margin: 8px 12px; color: #153a5b; }
-.reference-card p { font-size: 14px; color: #55606a; margin: 0 14px; flex-grow: 1; }
+.reference-card h3 {
+    font-size: 20px;
+    margin: 8px 12px;
+    color: #153a5b;
+}
+.reference-card p {
+    font-size: 14px;
+    color: #55606a;
+    margin: 0 14px;
+    flex-grow: 1;
+}
 
 /* Link butonu ürünlerle aynı stil */
 .reference-link {
@@ -231,7 +251,11 @@ body {
     border-radius: 8px;
     font-weight: 600;
 }
-.reference-link:hover { background: #d35400; transform: translateY(-2px); }
+.reference-link:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+}
+
 
 
 /* ======================
