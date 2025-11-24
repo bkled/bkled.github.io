@@ -470,3 +470,25 @@ body {
 
  Dosya: style-updated.css — hazırdır. 
 */
+
+/* Ürünler bölümündeki alt kategori başlıkları */
+.category-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 40px 0 20px;
+    text-align: center;
+    color: #222;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Alt başlık altı çizgi */
+.category-title::after {
+    content: "";
+    width: 80px;
+    height: 3px;
+    background: #ff0000; /* kırmızı çizgi */
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
