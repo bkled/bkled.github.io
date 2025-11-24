@@ -340,41 +340,66 @@ body {
 /* ======================
    LED EKRAN BİLGİLENDİRME BÖLÜMÜ
 ====================== */
-.led-info-section {
+/* LED FAQ / Accordion */
+.led-faq-section {
     padding: 60px 0;
-    background: linear-gradient(180deg, #f6f8fb, #f3f6fa);
+    background: linear-gradient(135deg, #f5f7fa, #eaf0f6);
 }
 
-.led-info-title {
+.led-faq-section h1 {
     text-align: center;
-    font-size: 36px;      /* Referans/Ürün başlıklarıyla uyumlu */
-    margin-bottom: 32px;
+    font-size: 36px;
+    margin-bottom: 40px;
     color: var(--accent);
-    font-weight: 700;
 }
 
-.led-info-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 28px;
-    box-shadow: 0 18px 48px rgba(20,20,20,0.08);
-    text-align: center;
-}
-
-.led-info-card h3 {
-    font-size: 24px;
-    margin-bottom: 12px;
-    color: #153a5b;
-}
-
-.led-info-card p {
-    font-size: 16px;
-    color: #55606a;
-    line-height: 1.6;
+/* Accordion genel */
+.accordion {
+    max-width: 900px;
     margin: 0 auto;
-    max-width: 720px;
 }
+
+.accordion-item {
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(30,30,30,0.06);
+}
+
+/* Accordion başlığı */
+.accordion-header {
+    background: var(--accent);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 18px 24px;
+    text-align: left;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: #d35400;
+}
+
+/* Accordion içeriği */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #fff;
+    transition: max-height 0.35s ease;
+    padding: 0 24px;
+}
+
+.accordion-content p {
+    margin: 16px 0;
+    color: #55606a;
+    line-height: 1.7;
+}
+
 
 
 /* ---------- Son notlar ----------
