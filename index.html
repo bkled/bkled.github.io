@@ -320,16 +320,15 @@
 ====================== -->
 
 <script>
-// LED accordion aç/kapa
-const ledCards = document.querySelectorAll('.led-card');
+  const ledCards = document.querySelectorAll('.led-card');
 
-ledCards.forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('active');
+  ledCards.forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('active'); // tıklayınca aç/kapa
+    });
   });
-});
-
 </script>
+
     <!-- LED INFO SECTION -->
 <section class="led-info-section">
   <div class="led-card">
