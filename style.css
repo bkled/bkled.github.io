@@ -341,56 +341,60 @@ body {
 /* LED INFO SECTION */
 .led-info-section {
   padding: 60px 20px;
-  background: linear-gradient(135deg,#f5f7fa,#eaf0f6);
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 28px;
-  flex-wrap: wrap;
 }
 
 .led-card {
-  background-color: #fff;
+  background: #fff;
   width: 100%;
   max-width: 340px;
-  aspect-ratio: 1/1; /* kare kutu */
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(30,30,30,0.06);
-  cursor: pointer;
   padding: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  position: relative;
 }
 
 .led-card h3 {
   font-size: 20px;
   color: #153a5b;
-  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.toggle-icon {
+  font-weight: bold;
+  transition: transform 0.3s ease;
 }
 
 .led-card p {
+  max-height: 0;
+  overflow: hidden;
   margin-top: 12px;
   color: #55606a;
   font-size: 14px;
   line-height: 1.5;
-  max-height: 0;
-  overflow: hidden;
   transition: max-height 0.4s ease;
 }
 
 /* Açıldığında */
 .led-card.active p {
-  max-height: 500px; /* yeterli uzunluk */
+  max-height: 500px;
 }
 
-/* Hover efekti */
-.led-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 36px rgba(30,30,30,0.1);
+.led-card.active .toggle-icon {
+  transform: rotate(45deg); /* + işareti x gibi döner */
 }
+
 
 /* Mobil uyumluluk */
 @media (max-width: 640px) {
