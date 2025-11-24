@@ -344,6 +344,27 @@
     </div>
 </section>
 
+<script>
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+
+        // Açık olan diğer accordion'u kapatma
+        document.querySelectorAll('.accordion-content').forEach(c => {
+            if(c !== content) c.style.maxHeight = null;
+        });
+
+        // Tıklanan accordion aç/kapa
+        if(content.style.maxHeight){
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+});
+</script>
 
 
     <div id="footer"></div>
