@@ -417,7 +417,7 @@ body {
   .product-card {
     max-width: 100% !important;
     width: 100% !important;
-    height: 260px !important;        /* sabit kart yüksekliği — gerekirse 240/260/280 ile dene */
+    height: 280px !important;        /* sabit kart yüksekliği — gerekirse 240/260/280 ile dene */
     padding: 8px !important;
     overflow: hidden !important;
     display: flex !important;
@@ -427,7 +427,7 @@ body {
   }
 
   .product-card img {
-    height: 100px !important;        /* görsel yüksekliğini kısaltır, kartın taşmasını önler */
+    height: 120px !important;        /* görsel yüksekliğini kısaltır, kartın taşmasını önler */
     object-fit: cover !important;
     border-radius: 8px !important;
   }
