@@ -30,6 +30,9 @@
   </style>
 </head>
 <body>
+  <!-- NAV İÇİN YER (index.html ile aynı id'yi kullanın) -->
+  <div id="navigasyon"></div>
+
   <main>
     <section class="products-section">
       <div class="site-container">
@@ -136,88 +139,107 @@
     </section>
   </main>
 
+  <!-- FOOTER İÇİN YER (index.html ile aynı id'yi kullanın) -->
+  <footer id="footer"></footer>
+
   <script>
-    (function(){
-      const itemsPerPage = 2; // her sayfada gösterilecek kart sayısı
-      const containers = [document.getElementById('indoor'), document.getElementById('outdoor')];
-      const allCards = [];
+    // Tüm DOM yüklendiğinde hem sayfalama hem de fetch çalışsın
+    document.addEventListener('DOMContentLoaded', () => {
 
-      // toplayalım: önce iç mekan kartları sonra dış mekan kartları — sayfalama tüm karta göre yapılır
-      containers.forEach(c => {
-        c.querySelectorAll('.product-card').forEach(card => allCards.push(card));
-      });
+      /* ---------------------------
+         Pagination (her sayfada 2 kart)
+         --------------------------- */
+      (function(){
+        const itemsPerPage = 2; // her sayfada gösterilecek kart sayısı
+        const containers = [document.getElementById('indoor'), document.getElementById('outdoor')];
+        const allCards = [];
 
-      const totalItems = allCards.length;
-      const totalPages = Math.ceil(totalItems / itemsPerPage);
-      const paginationRoot = document.getElementById('pagination');
+        containers.forEach(c => {
+          if (!c) return;
+          c.querySelectorAll('.product-card').forEach(card => allCards.push(card));
+        });
 
-      let currentPage = 1;
+        const totalItems = allCards.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+        const paginationRoot = document.getElementById('pagination');
 
-      function renderPage(page){
-        currentPage = page;
-        const start = (page - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
+        let currentPage = 1;
 
-        // Önce tüm kartları gizle
-        allCards.forEach(card => card.style.display = 'none');
-        // İlgili aralığı göster
-        allCards.slice(start, end).forEach(card => card.style.display = 'flex');
+        function renderPage(page){
+          currentPage = Math.max(1, Math.min(page, totalPages));
+          const start = (currentPage - 1) * itemsPerPage;
+          const end = start + itemsPerPage;
 
-        renderPagination();
+          allCards.forEach(card => card.style.display = 'none');
+          allCards.slice(start, end).forEach(card => card.style.display = 'flex');
 
-        // Scroll yukarı almak istersen uncomment
-        // window.scrollTo({top: document.querySelector('.products-section').offsetTop - 20, behavior: 'smooth'});
-      }
-
-      function renderPagination(){
-        paginationRoot.innerHTML = '';
-
-        const prevBtn = document.createElement('button');
-        prevBtn.textContent = 'Önceki';
-        prevBtn.disabled = currentPage === 1;
-        prevBtn.addEventListener('click', () => renderPage(currentPage - 1));
-        paginationRoot.appendChild(prevBtn);
-
-        for(let i=1;i<=totalPages;i++){
-          const btn = document.createElement('button');
-          btn.textContent = i;
-          if(i===currentPage) btn.classList.add('active');
-          btn.addEventListener('click', ()=> renderPage(i));
-          paginationRoot.appendChild(btn);
+          renderPagination();
         }
 
-        const nextBtn = document.createElement('button');
-        nextBtn.textContent = 'Sonraki';
-        nextBtn.disabled = currentPage === totalPages;
-        nextBtn.addEventListener('click', () => renderPage(currentPage + 1));
-        paginationRoot.appendChild(nextBtn);
-      }
+        function renderPagination(){
+          if (!paginationRoot) return;
+          paginationRoot.innerHTML = '';
 
-      // Başlangıçta sayfa 1'i render et
-      renderPage(1);
+          const prevBtn = document.createElement('button');
+          prevBtn.textContent = 'Önceki';
+          prevBtn.disabled = currentPage === 1;
+          prevBtn.addEventListener('click', () => renderPage(currentPage - 1));
+          paginationRoot.appendChild(prevBtn);
 
-      // Eğer sayfa yenilendiğinde URL parametresi ?page=3 gibi olursa onu da okuyalım
-      const urlParams = new URLSearchParams(window.location.search);
-      const pageParam = parseInt(urlParams.get('page'));
-      if(pageParam && pageParam>=1 && pageParam<= totalPages) renderPage(pageParam);
+          for(let i=1;i<=totalPages;i++){
+            const btn = document.createElement('button');
+            btn.textContent = i;
+            if(i===currentPage) btn.classList.add('active');
+            btn.addEventListener('click', ()=> renderPage(i));
+            paginationRoot.appendChild(btn);
+          }
 
-    })();
+          const nextBtn = document.createElement('button');
+          nextBtn.textContent = 'Sonraki';
+          nextBtn.disabled = currentPage === totalPages;
+          nextBtn.addEventListener('click', () => renderPage(currentPage + 1));
+          paginationRoot.appendChild(nextBtn);
+        }
+
+        // Başlangıçta sayfa 1'i render et
+        renderPage(1);
+
+        // URL parametre sayfa desteği
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageParam = parseInt(urlParams.get('page'));
+        if(pageParam && pageParam>=1 && pageParam<= totalPages) renderPage(pageParam);
+
+      })();
+
+      /* ---------------------------
+         Navigasyon ve Footer fetch
+         --------------------------- */
+      const loadFragment = async (url, selectorId) => {
+        try {
+          const res = await fetch(url, {cache: 'no-store'});
+          if (!res.ok) throw new Error(`${url} yüklenemedi: ${res.status}`);
+          const html = await res.text();
+          const el = document.getElementById(selectorId);
+          if (!el) throw new Error(`#${selectorId} element bulunamadı`);
+          el.innerHTML = html;
+          return true;
+        } catch (e) {
+          console.error(e);
+          return false;
+        }
+      };
+
+      // index.html ile aynı klasörde olduklarını varsayıyoruz
+      loadFragment('navigasyon.html', 'navigasyon').then(ok => {
+        if (ok) {
+          // navigasyon.js ya da initMenu fonksiyonu varsa çalıştır (hata için try-catch)
+          try { if (typeof initMenu === 'function') initMenu(); } catch(e){ console.warn('initMenu hata:', e); }
+        }
+      });
+
+      loadFragment('footer.html', 'footer');
+
+    }); // DOMContentLoaded end
   </script>
-/* --- navigasyon ve footer fetch işlemleri --- */
-fetch('navigasyon.html')
-    .then(r => r.text())
-    .then(html => {
-        document.getElementById('navigasyon').innerHTML = html;
-        // navigasyon DOM eklendikten hemen sonra initMenu çağır
-        initMenu();
-    })
-    .catch(err => console.error('navigasyon yüklenemedi:', err));
-
-fetch('footer.html')
-    .then(r => r.text())
-    .then(html => document.getElementById('footer').innerHTML = html)
-    .catch(err => console.error('footer yüklenemedi:', err));
-</script>
-  
 </body>
 </html>
