@@ -362,46 +362,39 @@ body {
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(30,30,30,0.06);
   padding: 20px;
-  cursor: pointer;
   overflow: hidden;
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  cursor: default; /* tıklanabilir görünmesin */
 }
 
+/* Başlıktaki + işaretini kaldırdık */
 .led-card h3 {
   font-size: 20px;
   color: #153a5b;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 0;
+  display: block; /* spacing için standart yapı */
 }
 
+/* + ikonunu tamamen kaldırıyoruz */
 .toggle-icon {
-  font-weight: bold;
-  transition: transform 0.3s ease;
+  display: none !important;
 }
 
+/* Paragraflar her zaman açık */
 .led-card p {
-  max-height: 0;
-  overflow: hidden;
+  max-height: none !important;
+  overflow: visible !important;
   margin-top: 12px;
   color: #55606a;
   font-size: 14px;
   line-height: 1.5;
-  transition: max-height 0.4s ease;
+  transition: none !important; /* animasyonları iptal */
 }
 
-/* Açıldığında */
-.led-card.active p {
-  max-height: 500px;
-}
+/* Artık aktif sınıfı kullanılmıyor ama istersen kalabilir, sorun olmaz */
 
-.led-card.active .toggle-icon {
-  transform: rotate(45deg); /* + işareti x gibi döner */
-}
 
 
 /* Mobil uyumluluk */
