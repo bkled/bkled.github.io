@@ -193,6 +193,56 @@ body {
 }
 .reference-link:hover { background:#d35400; transform: translateY(-2px); }
 
+/* LED INFO SECTION */
+.led-info-section {
+  padding: 60px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+
+.led-card {
+  background: #fff;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(30,30,30,0.06);
+  padding: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  cursor: default; /* tıklanabilir görünmesin */
+}
+
+/* Başlıktaki + işaretini kaldırdık */
+.led-card h3 {
+  font-size: 20px;
+  color: #153a5b;
+  margin: 0;
+  display: block; /* spacing için standart yapı */
+}
+
+/* + ikonunu tamamen kaldırıyoruz */
+.toggle-icon {
+  display: none !important;
+}
+
+/* Paragraflar her zaman açık */
+.led-card p {
+  max-height: none !important;
+  overflow: visible !important;
+  margin-top: 12px;
+  color: #55606a;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: none !important; /* animasyonları iptal */
+}
+
+/* Artık aktif sınıfı kullanılmıyor ama istersen kalabilir, sorun olmaz */
+
+
 /* ======================
    FOOTER
 ====================== */
