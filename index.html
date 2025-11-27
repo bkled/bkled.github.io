@@ -336,51 +336,6 @@
 
     <!-- Navigasyon ve Footer yükleme + initMenu fonksiyonu -->
 <script>
-/**
- * navigasyon.html dinamik yüklendikten sonra
- * hamburger / overlay / nav-menu eventlerini bağlayan fonksiyon.
- */
-function initMenu() {
-    const h = document.querySelector('.hamburger');
-    const m = document.querySelector('.nav-menu');
-    const o = document.querySelector('.overlay');
-
-    if (!h || !m || !o) return; // elemanlar yoksa çık
-
-    // aç/kapat fonksiyonları
-    function openMenu() {
-        h.classList.add('active');
-        m.classList.add('active');
-        o.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeMenu() {
-        h.classList.remove('active');
-        m.classList.remove('active');
-        o.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // toggle on click
-    h.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (m.classList.contains('active')) closeMenu();
-        else openMenu();
-    });
-
-    // overlay tıklayınca kapat
-    o.addEventListener('click', closeMenu);
-
-    // menü içindeki linklere tıklanınca kapat
-    m.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', closeMenu);
-    });
-
-    // ESC ile kapat
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && m.classList.contains('active')) closeMenu();
-    });
-}
 
 /* --- navigasyon ve footer fetch işlemleri --- */
 fetch('navigasyon.html')
