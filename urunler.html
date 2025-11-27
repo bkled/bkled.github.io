@@ -1,172 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ürünler - BKLed</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    :root{--container:1200px;--accent:#153a5b;--muted:#55606a}
-    body{font-family:Inter, Arial, sans-serif;margin:0;background:#f7f8fa;color:#222}
-    .site-container{max-width:var(--container);margin:0 auto;padding:40px}
-    .section-title{font-size:32px;color:var(--accent);margin-bottom:18px}
-    .category-title{font-size:20px;color:var(--accent);margin:28px 0 12px}
-    .products-container{display:flex;flex-wrap:wrap;gap:20px}
-    .product-card{background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(30,30,30,0.06);padding:18px;flex:1 1 calc(50% - 20px);max-width:calc(50% - 20px);display:flex;flex-direction:column;gap:12px}
-    .product-card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
-    .product-card h3{margin:0;color:var(--accent);font-size:18px}
-    .product-card p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
-    .product-link{display:inline-block;margin-top:auto;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-size:14px}
-    .pagination{display:flex;gap:8px;justify-content:center;margin:28px 0}
-    .pagination button{background:#fff;border:1px solid #e3e6ea;padding:8px 12px;border-radius:8px;cursor:pointer}
-    .pagination button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .pagination button:disabled{opacity:.5;cursor:not-allowed}
-    @media (max-width:900px){.product-card{flex:1 1 100%;max-width:100%}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler - BK LED Ekran Teknolojileri</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Style.css bağlantısı -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="navigasyon"></div>
-<main>
-  <section class="products-section">
-    <div class="site-container">
-      <h1 class="section-title">Ürünlerimiz</h1>
+     <!-- Header'ı tamamen kaldırdık -->
+    <!-- <div id="header"></div> -->  <!-- YORUM SATIRINA ALDIK / SİEBİLİRSİN -->
+    <div id="navigasyon"></div>
+    <main>
+        <section class="products-section">
+            <h1>İç Mekan LED Ekranlar</h1>
+            <div class="products-container">
+                <div class="product-card">
+                    <img src="images/icmekan2.webp" alt="P2.5 İç Mekan LED Ekran">
+                    <h3>P2.5 İç Mekan LED Ekran</h3>
+                    <p>Yüksek çözünürlük ve piksel yoğunluğu ile iç mekan yakın görüntüleme için ideal, toplantı odaları ve mağazalarda yaygın kullanılır.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="images/icmekan3.jpg" alt="P3 İç Mekan LED Ekran">
+                    <h3>P3 İç Mekan LED Ekran</h3>
+                    <p>Orta piksel aralığı ile iyi görüntü kalitesi sunar, iç mekan reklam ve sunumlar için en yaygın modellerden biridir.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="images/icmekan4.jpg" alt="P5 İç Mekan LED Ekran">
+                    <h3>P5 İç Mekan LED Ekran</h3>
+                    <p>Daha büyük alanlar için uygun, yüksek parlaklık ve dayanıklılık ile iç mekanlarda popüler bir seçenektir.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+            </div>
 
-      <!-- İç mekan ürün kartları -->
-      <div id="indoor" class="products-container">
-        <article class="product-card">
-          <img src="images/indoor1.jpg" alt="İç Mekan LED - P1.25">
-          <h3>İç Mekan LED - P1.25</h3>
-          <p>P1.25 piksel aralığına sahip iç mekan LED ekranlarımız; TV stüdyoları, yayın odaları ve yakın mesafe izleme gerektiren konferans salonları için özel olarak tasarlanmıştır.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/indoor2.webp" alt="İç Mekan LED - P1.53">
-          <h3>İç Mekan LED - P1.53</h3>
-          <p>P1.53 panellerimiz düşük izleme mesafesi ile mağaza içi görsellerde, sergi ve fuar uygulamalarında üstün performans sağlar.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/indoor3.jpg" alt="İç Mekan LED - P1.86">
-          <h3>İç Mekan LED - P1.86</h3>
-          <p>P1.86 çözünürlüklü iç mekan ekranlarımız dokunmatik uyumlu opsiyon ile interaktif kiosk uygulamalarında kullanılabilir.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/indoor4.jpg" alt="İç Mekan LED - P2.5">
-          <h3>İç Mekan LED - P2.5</h3>
-          <p>P2.5 panellerimiz 4K kaynaklarla uyumlu yapılandırma sunar ve kurumsal toplantı salonları, eğitim merkezleri ile etkinlik sahneleri için optimize edilmiştir.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/indoor5.jpg" alt="İç Mekan LED - P3">
-          <h3>İç Mekan LED - P3</h3>
-          <p>P3 modüler sistemimiz, mağaza vitrinleri ve kurumsal lobilerde kullanılmak üzere estetik ve fonksiyonel bir çözüm sunar.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/indoor6.jpg" alt="İç Mekan LED - P4">
-          <h3>İç Mekan LED - P4</h3>
-          <p>P4 panellerimiz yüksek parlaklık ve geniş görüş açısı sağlayarak geniş alanlarda tek panel veya birleşik çözümler için kullanılır.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-      </div>
-
-      <!-- Dış mekan ürün kartları -->
-      <div id="outdoor" class="products-container">
-        <article class="product-card">
-          <img src="images/outdoor1.webp" alt="Dış Mekan LED - P2.5">
-          <h3>Dış Mekan LED - P2.5</h3>
-          <p>P2.5 dış mekan ekranlarımız IP65 sınıfında su ve toz koruması sunar; yüksek parlaklık değerleri ile doğrudan güneş altında bile görünürlük sağlar.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/outdoor2.webp" alt="Dış Mekan LED - P3">
-          <h3>Dış Mekan LED - P3</h3>
-          <p>P3 dış mekan ekranlar rüzgâr ve yağmur koşullarına dayanıklı sağlam kasaya sahiptir.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/outdoor3.jpg" alt="Dış Mekan LED - P4">
-          <h3>Dış Mekan LED - P4</h3>
-          <p>P4 dış mekan modüllerimiz enerji verimli sürücü devreleri ve uzun ömürlü LED'ler kullanır.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/outdoor4.webp" alt="Dış Mekan LED - P5">
-          <h3>Dış Mekan LED - P5</h3>
-          <p>P5 panellerimiz özellikle dış cephe kaplamaları ve bina yüzeyi reklamlarında tercih edilir.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/outdoor5.jpg" alt="Dış Mekan LED - P8">
-          <h3>Dış Mekan LED - P8</h3>
-          <p>P8 ekranlarımız uzun mesafe görünürlüğü ve düşük bakım gereksinimi sunar.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-        <article class="product-card">
-          <img src="images/outdoor6.webp" alt="Dış Mekan LED - P10 RGB">
-          <h3>Dış Mekan LED - P10 RGB</h3>
-          <p>P10 RGB dış mekan panolarımız geniş renk paleti ve yüksek parlaklık ile gece gündüz etkileyici görseller sunar.</p>
-          <a class="product-link" href="#">Detaylı Bilgi</a>
-        </article>
-      </div>
-
-      <!-- Pagination -->
-      <nav class="pagination" id="pagination"></nav>
-    </div>
-  </section>
-</main>
-
-<div id="footer"></div>
+            <h1>Dış Mekan LED Ekranlar</h1>
+            <div class="products-container">
+                <div class="product-card">
+                    <img src="images/dismekan2.jpg" alt="P3 Dış Mekan LED Ekran">
+                    <h3>P3 Dış Mekan LED Ekran</h3>
+                    <p>Su geçirmez IP65 korumalı, yüksek parlaklık ile dış reklam ve totemler için en yaygın modellerden biridir.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="images/dismekan3.webp" alt="P4 Dış Mekan LED Ekran">
+                    <h3>P4 Dış Mekan LED Ekran</h3>
+                    <p>Bina cepheleri ve büyük ekranlar için dayanıklı, hava koşullarına karşı korunaklı ve popüler bir seçenektir.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+                <div class="product-card">
+                    <img src="images/dismekan4.jpg" alt="P5 Dış Mekan LED Ekran">
+                    <h3>P5 Dış Mekan LED Ekran</h3>
+                    <p>Genel dış mekan kullanımları için en popüler model, su geçirmez ve yüksek ışık gücü ile totem ve reklam panolarında kullanılır.</p>
+                    <a href="https://wa.me/+905531263686?text=Merhaba%2C%20Ürün%20bilgisi%20almak%20istiyorum%21" class="product-link" target="_blank">Detaylı Bilgi</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const itemsPerPage = 4;
-  const indoorCards = Array.from(document.querySelectorAll('#indoor .product-card'));
-  const outdoorCards = Array.from(document.querySelectorAll('#outdoor .product-card'));
-  const allCards = [...indoorCards, ...outdoorCards];
+        // Header, navigasyon ve footer'ı yükle
+        fetch('header.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Header dosyası bulunamadı'))
+            .then(data => document.getElementById('header').innerHTML = data)
+            .catch(error => console.error('Header yükleme hatası:', error));
 
-  const paginationRoot = document.getElementById('pagination');
-  const totalPages = Math.ceil(allCards.length / itemsPerPage);
-  let currentPage = 1;
+        fetch('navigasyon.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Navigasyon dosyası bulunamadı'))
+            .then(data => {
+                document.getElementById('navigasyon').innerHTML = data;
+                // Hamburger menü işlevselliği
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu ul');
+                const overlay = document.querySelector('.overlay');
 
-  function renderPage(page) {
-    currentPage = Math.max(1, Math.min(page, totalPages));
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
+                if (hamburger && navMenu && overlay) {
+                    hamburger.addEventListener('click', function () {
+                        hamburger.classList.toggle('active');
+                        navMenu.classList.toggle('active');
+                        overlay.classList.toggle('active');
+                    });
 
-    allCards.forEach(card => card.style.display = 'none');
-    allCards.slice(start, end).forEach(card => card.style.display = 'flex');
+                    overlay.addEventListener('click', function () {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                    });
+                } else {
+                    console.error('Hamburger, nav-menu veya overlay bulunamadı.');
+                }
+            })
+            .catch(error => console.error('Navigasyon yükleme hatası:', error));
 
-    renderPagination();
-  }
-
-  function renderPagination() {
-    paginationRoot.innerHTML = '';
-
-    const prevBtn = document.createElement('button');
-    prevBtn.textContent = 'Önceki';
-    prevBtn.disabled = currentPage === 1;
-    prevBtn.addEventListener('click', () => renderPage(currentPage - 1));
-    paginationRoot.appendChild(prevBtn);
-
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement('button');
-      btn.textContent = i;
-      if (i === currentPage) btn.classList.add('active');
-      btn.addEventListener('click', () => renderPage(i));
-      paginationRoot.appendChild(btn);
-    }
-
-    const nextBtn = document.createElement('button');
-    nextBtn.textContent = 'Sonraki';
-    nextBtn.disabled = currentPage === totalPages;
-    nextBtn.addEventListener('click', () => renderPage(currentPage + 1));
-    paginationRoot.appendChild(nextBtn);
-  }
-
-  renderPage(1);
-});
+        fetch('footer.html')
+            .then(response => response.ok ? response.text() : Promise.reject('Footer dosyası bulunamadı'))
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(error => console.error('Footer yükleme hatası:', error));
 </script>
 </body>
 </html>
