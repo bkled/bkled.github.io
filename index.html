@@ -334,23 +334,61 @@
 
     <div id="footer"></div>
 
-    <!-- Navigasyon ve Footer yükleme + initMenu fonksiyonu -->
+  <!-- Navigasyon ve Footer yükleme + initMenu fonksiyonu -->
 <script>
+/* --- initMenu fonksiyonunu global hale getiriyoruz --- */
+window.initMenu = function() {
+    const h = document.querySelector('.hamburger');
+    const m = document.querySelector('.nav-menu');
+    const o = document.querySelector('.overlay');
 
-/* --- navigasyon ve footer fetch işlemleri --- */
-fetch('navigasyon.html')
-    .then(r => r.text())
-    .then(html => {
-        document.getElementById('navigasyon').innerHTML = html;
-        // navigasyon DOM eklendikten hemen sonra initMenu çağır
-        initMenu();
-    })
-    .catch(err => console.error('navigasyon yüklenemedi:', err));
+    if (!h || !m || !o) return;
 
-fetch('footer.html')
-    .then(r => r.text())
-    .then(html => document.getElementById('footer').innerHTML = html)
-    .catch(err => console.error('footer yüklenemedi:', err));
+    function openMenu() {
+        h.classList.add('active');
+        m.classList.add('active');
+        o.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        h.classList.remove('active');
+        m.classList.remove('active');
+        o.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    h.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(m.classList.contains('active')) closeMenu();
+        else openMenu();
+    });
+
+    o.addEventListener('click', closeMenu);
+
+    m.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && m.classList.contains('active')) closeMenu();
+    });
+};
+
+/* --- navigasyon ve footer fetch işlemleri DOMContentLoaded içinde --- */
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('navigasyon.html')
+        .then(r => r.text())
+        .then(html => {
+            document.getElementById('navigasyon').innerHTML = html;
+            initMenu(); // navigasyon yüklendikten sonra çağır
+        })
+        .catch(err => console.error('navigasyon yüklenemedi:', err));
+
+    fetch('footer.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('footer').innerHTML = html)
+        .catch(err => console.error('footer yüklenemedi:', err));
+});
 </script>
 
 <!-- Slider JS: (mevcut kodunu korudum) -->
