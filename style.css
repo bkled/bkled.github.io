@@ -81,6 +81,39 @@ body {
 }
 .nav-menu li a:hover { background-color: #e67e22; color: #000 !important; box-shadow: 0 4px 15px rgba(211,84,0,0.4); }
 .nav-menu li a.active { background-color: #d35400; color: #fff; }
+/* Dropdown menü gizli */
+.nav-menu li.dropdown {
+    position: relative;
+}
+.nav-menu li .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 180px;
+    z-index: 999;
+}
+.nav-menu li .dropdown-menu li a {
+    display: block;
+    padding: 10px 16px;
+    color: #000;
+    font-weight: normal;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.nav-menu li .dropdown-menu li a:hover {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+/* Hover ile açılmasını sağla */
+.nav-menu li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 
 /* ======================
    SLIDER / ANA SAYFA
