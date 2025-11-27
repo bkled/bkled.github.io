@@ -1,229 +1,184 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ürünler - BKLed</title>
-  <style>
-    :root{--container:1200px;--accent:#153a5b;--muted:#55606a}
-    body{font-family:Inter, Arial, sans-serif;margin:0;background:#f7f8fa;color:#222}
-    .site-container{max-width:var(--container);margin:0 auto;padding:40px}
-    .section-title{font-size:32px;color:var(--accent);margin-bottom:18px}
-    .category-title{font-size:20px;color:var(--accent);margin:28px 0 12px}
-
-    /* Grid */
-    .products-container{display:flex;flex-wrap:wrap;gap:20px}
-    .product-card{background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(30,30,30,0.06);padding:18px;flex:1 1 calc(50% - 20px);max-width:calc(50% - 20px);display:flex;flex-direction:column;gap:12px}
-    .product-card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
-    .product-card h3{margin:0;color:var(--accent);font-size:18px}
-    .product-card p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
-    .product-link{display:inline-block;margin-top:auto;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-size:14px}
-
-    /* Pagination */
-    .pagination{display:flex;gap:8px;justify-content:center;margin:28px 0}
-    .pagination button{background:#fff;border:1px solid #e3e6ea;padding:8px 12px;border-radius:8px;cursor:pointer}
-    .pagination button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .pagination button:disabled{opacity:.5;cursor:not-allowed}
-
-    /* Nav/footer placeholders style (hafif görünür) */
-    #navigasyon, footer#footer {min-height: 56px; background: transparent;}
-
-    /* Responsive */
-    @media (max-width:900px){.product-card{flex:1 1 100%;max-width:100%}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler - BKLED</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Style.css bağlantısı -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAV: index.html ile aynı id kullanılıyor -->
-  <div id="navigasyon" aria-hidden="true"></div>
-
-  <main>
+    <!-- ======= /ÖNE ÇIKAN BİLGİ PANELİ SONU ======= -->
+   <!-- ======= /ÜRÜNLER BAŞLANGIÇ ======= -->
+<main>
     <section class="products-section">
-      <div class="site-container">
-        <h1 class="section-title">Ürünlerimiz</h1>
+        <div class="site-container">
+            <h1 class="section-title">Ürünlerimiz</h1>
 
-        <h2 class="category-title">İç Mekan LED Ekranlar</h2>
-        <div id="indoor" class="products-container">
+            <!-- İç Mekan Başlığı -->
+            <h2 class="category-title">İç Mekan LED Ekranlar</h2>
 
-          <article class="product-card">
-            <img src="images/indoor1.jpg" alt="İç Mekan LED - P1.25">
-            <h3>İç Mekan LED - P1.25</h3>
-            <p>P1.25 piksel aralığına sahip iç mekan LED ekranlarımız; TV stüdyoları, yayın odaları ve yakın mesafe izleme gerektiren konferans salonları için özel olarak tasarlanmıştır. Üst düzey renk doygunluğu, saniyede yüksek kare hızı ve sanal kamera ile uyumlu gölgelenme kontrolü sunar. İnce çerçeve yapısı sayesinde birden çok panelin birleşimiyle neredeyse kesintisiz büyük yüzeyler oluşturulabilir; kolay kalibrasyon araçları ile profesyonel yayın akışlarına hızlıca entegre edilir.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
+            <div class="products-container">
+                <!-- İç Mekan (6 kart) -->
+                <article class="product-card ic-mekan">
+                    <img src="images/indoor1.jpg" alt="İç Mekan LED - P1.25">
+                    <h3>İç Mekan LED - P1.25</h3>
+                    <p>P 1.25 İç Mekan LED Ekranlar; TV stüdyoları, konferans salonları...</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
 
-          <article class="product-card">
-            <img src="images/indoor2.webp" alt="İç Mekan LED - P1.53">
-            <h3>İç Mekan LED - P1.53</h3>
-            <p>P1.53 panellerimiz düşük izleme mesafesi ile mağaza içi görsellerde, sergi ve fuar uygulamalarında üstün performans sağlar. Gelişmiş kontrast kontrolü ve geniş renk gamı sayesinde ürün sunumlarını daha etkileyici hale getirir. Modüler montaj sistemi servis ve yedek parça müdahalelerini kolaylaştırır; entegre kablo yönetimi sayesinde arka tarafta düzenli bir kurulum sunar.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
+                <article class="product-card ic-mekan">
+                    <img src="images/indoor2.webp" alt="İç Mekan LED - P1.53">
+                    <h3>İç Mekan LED - P1.53</h3>
+                    <p>P 1.53 İç Mekan LED Ekranlar; TV stüdyoları, konferans salonları..</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
 
-          <article class="product-card">
-            <img src="images/indoor3.jpg" alt="İç Mekan LED - P1.86">
-            <h3>İç Mekan LED - P1.86</h3>
-            <p>P1.86 çözünürlüklü iç mekan ekranlarımız dokunmatik uyumlu opsiyon ile interaktif kiosk uygulamalarında kullanılabilir. Çoklu sensör desteği ve düşük gecikmeli kontrol ünitesi sayesinde etkileşimli sunumlar, eğitim uygulamaları ve showroom deneyimleri için idealdir. Isı yönetimi optimize edilmiştir; uzun süreli kullanımda renk stabilitesi korunur.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
+                <article class="product-card ic-mekan">
+                    <img src="images/indoor3.jpg" alt="İç Mekan LED - P1.86">
+                    <h3>İç Mekan LED - P1.86</h3>
+                    <p>Dokunmatik uyumlu opsiyon, mağaza içi etkileşim için.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
 
-          <article class="product-card">
-            <img src="images/indoor4.jpg" alt="İç Mekan LED - P2.5">
-            <h3>İç Mekan LED - P2.5</h3>
-            <p>P2.5 panellerimiz 4K kaynaklarla uyumlu yapılandırma sunar ve kurumsal toplantı salonları, eğitim merkezleri ile etkinlik sahneleri için optimize edilmiştir. Yüksek parlaklık kontrolü, HDR içerik desteği ve profesyonel sinyal işleme kombinasyonu ile net, canlı görseller ortaya çıkarır. Montaj hızını artıran hızlı kilit mekanizmaları ile zaman maliyeti düşürülür.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
+                <article class="product-card ic-mekan">
+                    <img src="images/indoor4.jpg" alt="İç Mekan LED - P2.5">
+                    <h3>İç Mekan LED - P2.5</h3>
+                    <p>4K destekli paneller, sunum ve konferans salonları için.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
 
-          <article class="product-card">
-            <img src="images/indoor5.jpg" alt="İç Mekan LED - P3">
-            <h3>İç Mekan LED - P3</h3>
-            <p>P3 modüler sistemimiz, mağaza vitrinleri ve kurumsal lobilerde kullanılmak üzere estetik ve fonksiyonel bir çözüm sunar. İnce kasa tasarımı, düşük enerji tüketimi ve entegre aydınlatma kontrolü ile birlikte gelir. Renk tutarlılığı için fabrikasyon kalibrasyonu yapılmış panellerle uzun ömürlü projeksiyon sağlar.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
+                <article class="product-card ic-mekan">
+                    <img src="images/indoor5.jpg" alt="İç Mekan LED - P3">
+                    <h3>İç Mekan LED - P3</h3>
+                    <p>Modüler yapı, kolay kurulum ve servis erişimi.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
 
-          <article class="product-card">
-            <img src="images/indoor6.jpg" alt="İç Mekan LED - P4">
-            <h3>İç Mekan LED - P4</h3>
-            <p>P4 panellerimiz yüksek parlaklık ve geniş görüş açısı sağlayarak geniş alanlarda tek panel veya birleşik çözümler için kullanılır. Dayanıklı malzeme seçimi ve kolay servis erişimi ile işletme maliyetlerini azaltır. Renk yönetimi yazılımı ile farklı kaynaklardan gelen görüntülerin tutarlı şekilde gösterilmesine olanak tanır.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
+                <article class="product-card ic-mekan">
+                    <img src="images/indoor6.jpg" alt="İç Mekan LED - P4">
+                    <h3>İç Mekan LED - P4</h3>
+                    <p>Yüksek parlaklık ve geniş görüş açısı.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
+            </div>
 
+            <!-- Dış Mekan Başlığı -->
+            <h2 class="category-title">Dış Mekan LED Ekranlar</h2>
+
+            <div class="products-container">
+                <!-- Dış Mekan (6 kart) -->
+                <article class="product-card dis-mekan">
+                    <img src="images/outdoor1.webp" alt="Dış Mekan LED - P2.5">
+                    <h3>Dış Mekan LED - P2.5</h3>
+                    <p>IP65 koruma, güçlü parlaklık ve otomatik parlaklık sensörü.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
+
+                <article class="product-card dis-mekan">
+                    <img src="images/outdoor2.webp" alt="Dış Mekan LED - P3">
+                    <h3>Dış Mekan LED - P3</h3>
+                    <p>Rüzgâr ve yağmur dayanımı, reklam panoları için dayanıklı kasa.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
+
+                <article class="product-card dis-mekan">
+                    <img src="images/outdoor3.jpg" alt="Dış Mekan LED - P4">
+                    <h3>Dış Mekan LED - P4</h3>
+                    <p>Enerji verimli sürücü modülleri, uzun menzil.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
+
+                <article class="product-card dis-mekan">
+                    <img src="images/outdoor4.webp" alt="Dış Mekan LED - P5">
+                    <h3>Dış Mekan LED - P5</h3>
+                    <p>Rüzgâr ve yağmur dayanımı.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
+
+                <article class="product-card dis-mekan">
+                    <img src="images/outdoor5.jpg" alt="Dış Mekan LED - P8">
+                    <h3>Dış Mekan LED - P8</h3>
+                    <p>Dış mekânda maksimum görünürlük.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
+
+                <article class="product-card dis-mekan">
+                    <img src="images/outdoor6.webp" alt="Dış Mekan LED - P10 RGB">
+                    <h3>Dış Mekan LED - P10 RGB</h3>
+                    <p>Reklam panoları için dayanıklı kasa.</p>
+                    <a href="urunler.html" class="product-link">Detaylı Bilgi</a>
+                </article>
+            </div>
         </div>
-
-        <h2 class="category-title">Dış Mekan LED Ekranlar</h2>
-        <div id="outdoor" class="products-container">
-
-          <article class="product-card">
-            <img src="images/outdoor1.webp" alt="Dış Mekan LED - P2.5">
-            <h3>Dış Mekan LED - P2.5</h3>
-            <p>P2.5 dış mekan ekranlarımız IP65 sınıfında su ve toz koruması sunar; yüksek parlaklık değerleri ile doğrudan güneş altında bile görünürlük sağlar. Otomatik parlaklık sensörü ve hava koşullarına dayanıklı sürücü modülleri sayesinde şehir içi reklam panoları ve meydan uygulamaları için güvenilirdir. Koruyucu kaplamalar UV ışınlarına karşı direnç gösterir ve renk solmasını engeller.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
-
-          <article class="product-card">
-            <img src="images/outdoor2.webp" alt="Dış Mekan LED - P3">
-            <h3>Dış Mekan LED - P3</h3>
-            <p>P3 dış mekan ekranlar rüzgâr ve yağmur koşullarına dayanıklı sağlam kasaya sahiptir. Yansıtma önleyici ön cam ve gelişmiş soğutma sistemi ile 7/24 çalışma için uygundur. Enerji optimizasyonu sayesinde geniş yüzeylerde daha düşük işletme maliyeti sağlar; reklam kampanyalarında yüksek renk doygunluğu için sahne yönetim yazılımı ile entegre çalışır.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
-
-          <article class="product-card">
-            <img src="images/outdoor3.jpg" alt="Dış Mekan LED - P4">
-            <h3>Dış Mekan LED - P4</h3>
-            <p>P4 dış mekan modüllerimiz enerji verimli sürücü devreleri ve uzun ömürlü LED'ler kullanır; özellikle otoyol kenarı ve spor tesisleri gibi geniş ölçekli uygulamalar için tasarlanmıştır. Dayanıklı montaj ayakları ve bakım kapakları sayesinde sahada bakım süreci hızlıdır. Uzaktan izleme ve hata tespiti özellikleri ile operatör müdahalesi kolaylaşır.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
-
-          <article class="product-card">
-            <img src="images/outdoor4.webp" alt="Dış Mekan LED - P5">
-            <h3>Dış Mekan LED - P5</h3>
-            <p>P5 panellerimiz özellikle dış cephe kaplamaları ve bina yüzeyi reklamlarında tercih edilir. Modüler bağlantı sistemleri sayesinde büyük yüzeylerin hızlıca kaplanmasına olanak verir. Isıya dayanıklı bileşenler ve su izolasyonlu kontroller ile ekstrem hava koşullarında bile güvenli çalışma sağlar.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
-
-          <article class="product-card">
-            <img src="images/outdoor5.jpg" alt="Dış Mekan LED - P8">
-            <h3>Dış Mekan LED - P8</h3>
-            <p>P8 ekranlarımız uzun mesafe görünürlüğü ve düşük bakım gereksinimi sunar; şehir meydanları, stadyum dış cepheleri ve otoyol reklam panoları için idealdir. Gelişmiş koruyucu kaplamaları ve paslanmaya dayanıklı malzeme seçimi projenin ömrünü uzatır. Opsiyonel enerji yönetim sistemi ile işletme maliyetleri optimize edilebilir.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
-
-          <article class="product-card">
-            <img src="images/outdoor6.webp" alt="Dış Mekan LED - P10 RGB">
-            <h3>Dış Mekan LED - P10 RGB</h3>
-            <p>P10 RGB dış mekan panolarımız geniş renk paleti ve yüksek parlaklık ile gece gündüz etkileyici görseller sunar. Reklam ajansları için dinamik içerik desteği, programlanabilir gösterim zamanlaması ve uzaktan içerik yönetimi özellikleri sağlar. Sağlam kasa ve kolay montaj profilleri ile projeye hızlı entegrasyon sağlar.</p>
-            <a class="product-link" href="#">Detaylı Bilgi</a>
-          </article>
-
-        </div>
-
-        <!-- Pagination controls (iki kart / sayfa) -->
-        <nav class="pagination" aria-label="Ürün sayfaları" id="pagination"></nav>
-
-      </div>
     </section>
-  </main>
+</main>
+    <div id="footer"></div>
 
-  <footer id="footer" aria-hidden="true"></footer>
+    <!-- Navigasyon ve Footer yükleme + initMenu fonksiyonu -->
+<script>
+/**
+ * navigasyon.html dinamik yüklendikten sonra
+ * hamburger / overlay / nav-menu eventlerini bağlayan fonksiyon.
+ */
+function initMenu() {
+    const h = document.querySelector('.hamburger');
+    const m = document.querySelector('.nav-menu');
+    const o = document.querySelector('.overlay');
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    if (!h || !m || !o) return; // elemanlar yoksa çık
 
-      /* ---------- Pagination (her sayfada 2 kart) ---------- */
-      (function(){
-        const itemsPerPage = 2;
-        const containers = [document.getElementById('indoor'), document.getElementById('outdoor')];
-        const allCards = [];
+    // aç/kapat fonksiyonları
+    function openMenu() {
+        h.classList.add('active');
+        m.classList.add('active');
+        o.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        h.classList.remove('active');
+        m.classList.remove('active');
+        o.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
-        containers.forEach(c => { if (!c) return; c.querySelectorAll('.product-card').forEach(card => allCards.push(card)); });
+    // toggle on click
+    h.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (m.classList.contains('active')) closeMenu();
+        else openMenu();
+    });
 
-        const totalItems = allCards.length;
-        const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
-        const paginationRoot = document.getElementById('pagination');
-        let currentPage = 1;
+    // overlay tıklayınca kapat
+    o.addEventListener('click', closeMenu);
 
-        function renderPage(page){
-          currentPage = Math.max(1, Math.min(page, totalPages));
-          const start = (currentPage - 1) * itemsPerPage;
-          const end = start + itemsPerPage;
-          allCards.forEach(card => card.style.display = 'none');
-          allCards.slice(start, end).forEach(card => card.style.display = 'flex');
-          renderPagination();
-        }
+    // menü içindeki linklere tıklanınca kapat
+    m.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeMenu);
+    });
 
-        function renderPagination(){
-          if (!paginationRoot) return;
-          paginationRoot.innerHTML = '';
-          const prev = document.createElement('button'); prev.textContent = 'Önceki'; prev.disabled = currentPage===1; prev.addEventListener('click', ()=> renderPage(currentPage-1)); paginationRoot.appendChild(prev);
-          for(let i=1;i<=totalPages;i++){ const b=document.createElement('button'); b.textContent=i; if(i===currentPage) b.classList.add('active'); b.addEventListener('click', ()=> renderPage(i)); paginationRoot.appendChild(b); }
-          const next = document.createElement('button'); next.textContent='Sonraki'; next.disabled = currentPage===totalPages; next.addEventListener('click', ()=> renderPage(currentPage+1)); paginationRoot.appendChild(next);
-        }
+    // ESC ile kapat
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && m.classList.contains('active')) closeMenu();
+    });
+}
 
-        renderPage(1);
-        const urlParams = new URLSearchParams(window.location.search);
-        const pageParam = parseInt(urlParams.get('page'));
-        if(pageParam && pageParam>=1 && pageParam<=totalPages) renderPage(pageParam);
+/* --- navigasyon ve footer fetch işlemleri --- */
+fetch('navigasyon.html')
+    .then(r => r.text())
+    .then(html => {
+        document.getElementById('navigasyon').innerHTML = html;
+        // navigasyon DOM eklendikten hemen sonra initMenu çağır
+        initMenu();
+    })
+    .catch(err => console.error('navigasyon yüklenemedi:', err));
 
-      })();
-
-      /* ---------- Fragment loader for nav & footer ---------- */
-      const isFile = location.protocol === 'file:';
-
-      const loadFragment = async (url, id) => {
-        const el = document.getElementById(id);
-        if (!el) {
-          console.warn(`#${id} bulunamadı, ${url} yüklenemedi.`);
-          return false;
-        }
-
-        // Eğer file:// ile açılmışsa fetch çoğu tarayıcıda başarısız olur.
-        if (isFile) {
-          el.innerHTML = `<div style="padding:12px;background:#fff3cd;border:1px solid #ffeeba;border-radius:6px;color:#856404">Uyarı: Bu dosya doğrudan dosya sisteminden açılıyor (file://). Navigasyon/footer yüklemesi için lütfen bir HTTP sunucusu kullanın (ör: python -m http.server) veya index.html üzerinden erişin.</div>`;
-          console.warn(`Sayfa file:// protokolü ile açıldı — ${url} fetch ile yüklenemez.`);
-          return false;
-        }
-
-        try {
-          const res = await fetch(url, {cache:'no-store'});
-          if (!res.ok) throw new Error(`${url} yüklenemedi (status ${res.status})`);
-          const html = await res.text();
-          el.innerHTML = html;
-          return true;
-        } catch (e) {
-          console.error(e);
-          el.innerHTML = `<div style="padding:12px;background:#f8d7da;border:1px solid #f5c6cb;border-radius:6px;color:#721c24">Navigasyon/footer yüklenirken hata oluştu. Konsolu kontrol et.</div>`;
-          return false;
-        }
-      };
-
-      // Aynı klasörde olduklarını varsayıyoruz:
-      loadFragment('navigasyon.html', 'navigasyon').then(ok => {
-        if (ok) {
-          // Eğer navigasyonla birlikte bir init fonksiyonu varsa çalıştır (güvenli)
-          try { if (typeof initMenu === 'function') initMenu(); } catch(e){ console.warn('initMenu hata:', e); }
-        }
-      });
-      loadFragment('footer.html', 'footer');
-
-    }); // DOMContentLoaded end
-  </script>
+fetch('footer.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('footer').innerHTML = html)
+    .catch(err => console.error('footer yüklenemedi:', err));
+</script>
 </body>
 </html>
