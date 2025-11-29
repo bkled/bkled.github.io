@@ -110,8 +110,6 @@ body {
 .info-card { text-align:center; padding:18px; border-radius:8px; display:flex; flex-direction:column; justify-content:space-between; gap:12px; height:100%; }
 .info-card h4 { font-size:20px; color:#153a5b; margin:6px 0; font-weight:700; }
 .info-card p { color:#55606a; font-size:14.5px; line-height:1.5; margin:0 auto; max-width:320px; flex-grow:1; }
-.info-link { padding:10px 16px; font-size:14px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; display:inline-block; margin-top:auto; align-self:center; }
-.info-link:hover { background:#d35400; transform: translateY(-2px); }
 
 /* ======================
    ÜRÜNLER BÖLÜMÜ
