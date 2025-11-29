@@ -209,8 +209,9 @@ body {
 @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
 @keyframes slideIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
+
 /* ======================
-   RESPONSIVE
+   RESPONSIVE MOBİL GÜNCELLEME
 ====================== */
 @media (max-width: 1024px) {
     .site-slider .slider-container { height:56vh; max-height:480px; }
@@ -218,77 +219,59 @@ body {
     .info-card p { max-width:280px; }
     .products-container { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 768px) {
+    /* Header ve logo */
     .nav-container { padding: 15px 20px; }
-    .logo img { width:180px; }
-}
-/* ======================
-   MOBİL ÜRÜN KARTLARI AYARLARI
-====================== */
-.products-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Her sırada 1 kart */
-    gap: 15px;
-    padding: 0 10px;
-}
+    .logo img { width:160px; }
 
-.product-card {
-    font-size: 14px;       /* Kart içeriği küçültüldü */
-    padding: 12px;         /* Kart iç boşluğu azaltıldı */
-    text-align: center;
-    max-width: 100%;
-}
+    /* Slider ayarı */
+    .site-slider .slider-container { height:46vh; max-height:380px; }
 
-.product-card img {
-    width: 100%;           /* Kart resmi kart genişliğine uyumlu */
-    height: auto;          /* Orantılı resim */
-    max-height: 160px;     /* Mobilde küçük resim */
-    object-fit: cover;
-    border-radius: 8px;
-}
+    /* Hakkımızda / Vizyon / Misyon */
+    .about-section { padding: 60px 15px; }
+    .about-section h1 { font-size:24px; }
+    .about-section h2 { font-size:20px; }
+    .about-text { font-size:15px; line-height:1.6; padding:10px; }
+    .about-text i { font-size:16px; } /* ikonlar küçüldü */
+    .about-text ul { display:block; text-align:left; margin:15px 0; }
+    .about-text ul li { font-size:14px; }
 
-.product-card h3 {
-    font-size: 16px;       /* Kart başlıkları küçültüldü */
-    margin: 8px 0;
-}
+    /* Info panel ayarı */
+    .info-panel-inner { grid-template-columns: 1fr; padding:14px; gap:12px; }
+    .info-card { padding:16px; }
 
-.product-card p {
-    font-size: 13px;       /* Kart açıklamaları küçültüldü */
-    line-height: 1.4;
-}
+    /* Ürünler / Referanslar */
+    .products-section, .references-section { padding:30px 15px; }
+    .products-section h1, .references-section h1 { font-size:24px; text-align:center; margin-bottom:15px; }
 
-.product-card i {
-    font-size: 18px;       /* Kart ikonları küçültüldü */
-}
+    /* Ürün kartları mobil: her sırada 1 kart */
+    .products-container, .references-container { display:grid; grid-template-columns:1fr; gap:15px; }
+    .product-card, .reference-card { width:100%; max-width:100%; font-size:14px; padding:12px; text-align:center; }
+    .product-card img, .reference-card img { width:100%; max-height:160px; object-fit:cover; border-radius:8px; }
+    .product-card h3, .reference-card h3 { font-size:16px; margin:8px 0; }
+    .product-card p, .reference-card p { font-size:13px; line-height:1.4; }
+    .product-card i, .reference-card i { font-size:18px; }
 
-/* Başlıklar */
-.products-section h1, .products-section h2 {
-    font-size: 20px;       /* Ürünler başlığı mobilde küçültüldü */
-    text-align: center;
-    margin-bottom: 20px;
+    /* Footer mobil */
+    .footer { flex-direction:column; text-align:center; padding:20px; gap:15px; }
+    .footer-contact, .copyright { text-align:center; }
+    .social-media { order:-1; margin-bottom:15px; }
+    .social-media a { font-size:24px; margin:0 10px; }
+    .whatsapp-float a { width:50px; height:50px; font-size:25px; }
 }
 
 @media (max-width: 640px) {
     body { padding-top:64px; }
-    .site-slider .slider-container { height:46vh; max-height:380px; }
-    .info-panel-inner { grid-template-columns: 1fr; padding:14px; gap:12px; }
-    .info-card { padding:16px; }
-    .products-section, .references-section { padding:40px 15px; }
-    .products-section h1, .references-section h1 { font-size:28px; }
-    .references-container { flex-direction: column; align-items: center; gap:20px; }
-    .reference-card, .product-card { width:100%; max-width:300px; }
-    .footer { flex-direction:column; text-align:center; padding:30px 20px; }
-    .footer-contact, .copyright { text-align:center; }
-    .social-media { order:-1; margin-bottom:20px; }
-    .social-media a { font-size:26px; margin:0 15px; }
-    .whatsapp-float a { width:50px; height:50px; font-size:25px; }
-    .product-card img, .reference-card img { height:160px; }
+    .site-slider .slider-container { height:42vh; max-height:320px; }
 }
+
 @media (max-width: 360px) {
-    .references-title { font-size:26px; }
-    .reference-card h3 { font-size:20px; }
-    .product-card h3 { font-size:18px; }
+    .references-title { font-size:22px; }
+    .reference-card h3, .product-card h3 { font-size:14px; }
+    .product-card p, .reference-card p { font-size:12px; }
 }
+
 
 /* ===== BKLed Mobile Hamburger ===== */
 
