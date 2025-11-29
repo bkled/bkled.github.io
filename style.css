@@ -1,13 +1,14 @@
 /* ========================================================= 
    BKLed - Birleştirilmiş & Temizlenmiş style.css
-   - Hamburger menü kaldırıldı
+   - Gereksiz mobil kodlar kaldırıldı
+   - Hamburger menü düzgün çalışır
    - Ürünler.html “Detaylı Bilgi” butonları index ile aynı boyutta
    ========================================================= */
 
 /* ========== Değişkenler (tema kolaylığı) ========== */
 :root{
-    --accent: #e67e22;       /* buton rengi */
-    --accent-2: #ff0000;     /* kategori çizgisi */
+    --accent: #e67e22;       
+    --accent-2: #ff0000;     
     --text-dark: #222;
     --muted: #666;
     --card-bg: #fff;
@@ -19,7 +20,7 @@
 
 /* ======================
    GLOBAL RESET & TEMEL
-   ====================== */
+====================== */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
@@ -35,7 +36,7 @@ body {
 
 /* ======================
    CONTAINER
-   ====================== */
+====================== */
 .site-container {
     width: 100%;
     max-width: var(--site-max);
@@ -45,23 +46,23 @@ body {
 
 /* ======================
    INFO ICON
-   ====================== */
+====================== */
 .info-icon {
-  font-size: 36px;
-  color: #fff;
-  background-color: var(--accent);
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  margin: 0 auto 12px auto;
+    font-size: 36px;
+    color: #fff;
+    background-color: var(--accent);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 0 auto 12px auto;
 }
 
 /* ======================
    NAVİGASYON
-   ====================== */
+====================== */
 .nav-container {
     background-color: #fff;
     padding: 8px 40px;
@@ -82,10 +83,9 @@ body {
 .nav-menu li a:hover { background-color: #e67e22; color: #000 !important; box-shadow: 0 4px 15px rgba(211,84,0,0.4); }
 .nav-menu li a.active { background-color: #d35400; color: #fff; }
 
-
 /* ======================
    SLIDER / ANA SAYFA
-   ====================== */
+====================== */
 .site-slider { width: 100%; margin: 0 auto 28px; }
 .site-slider .slider-container {
     position: relative; width: 100%; height: 520px; max-height: 68vh;
@@ -99,7 +99,7 @@ body {
 
 /* ======================
    INFO PANEL
-   ====================== */
+====================== */
 .info-panel-section { padding: 32px 16px; background: linear-gradient(180deg,#f6f8fb,#f3f6fa); }
 .info-panel-inner {
     max-width: 1180px; margin: 0 auto; background: #fff; border-radius: 8px; padding: 24px;
@@ -107,7 +107,7 @@ body {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
     justify-items: center; align-items: center;
 }
-.info-card { text-align:center; padding:18px; border-radius:8px; background:transparent; display:flex; flex-direction:column; justify-content:space-between; gap:12px; height:100%; }
+.info-card { text-align:center; padding:18px; border-radius:8px; display:flex; flex-direction:column; justify-content:space-between; gap:12px; height:100%; }
 .info-card h4 { font-size:20px; color:#153a5b; margin:6px 0; font-weight:700; }
 .info-card p { color:#55606a; font-size:14.5px; line-height:1.5; margin:0 auto; max-width:320px; flex-grow:1; }
 .info-link { padding:10px 16px; font-size:14px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; display:inline-block; margin-top:auto; align-self:center; }
@@ -115,7 +115,7 @@ body {
 
 /* ======================
    ÜRÜNLER BÖLÜMÜ
-   ====================== */
+====================== */
 .products-section {
     padding: 60px 0; background: linear-gradient(135deg,#f5f7fa,#eaf0f6); position:relative; overflow:hidden;
 }
@@ -132,7 +132,6 @@ body {
     justify-items: center; align-items: stretch; padding: 0 18px; position: relative; z-index:1;
 }
 
-/* Ürün kartı */
 .product-card {
     width: 100%; max-width: 340px; background-color: var(--card-bg); border-radius:12px;
     overflow: hidden; box-shadow: 0 10px 30px rgba(30,30,30,0.06); text-align:center;
@@ -141,25 +140,12 @@ body {
 .product-card img { width:100%; height:200px; object-fit:cover; display:block; }
 .product-card h3 { font-size:20px; margin:8px 12px; color:#153a5b; }
 .product-card p { font-size:14px; color:#55606a; margin:0 14px; flex-grow:1; }
-
-/* Detaylı Bilgi Butonu (index ile aynı boyutta) */
 .product-card .product-link {
-    margin-top: 8px;
-    display: inline-block;
-    background: #e67e22;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    margin-top: 8px; display: inline-block; background: #e67e22; color: #fff;
+    text-decoration: none; padding: 10px 16px; border-radius: 8px; font-size: 16px; font-weight: 600;
 }
-.product-card .product-link:hover {
-    background: #d35400;
-    transform: translateY(-2px);
-}
+.product-card .product-link:hover { background: #d35400; transform: translateY(-2px); }
 
-/* Ürün kategori başlığı */
 .category-title {
     font-size:28px; font-weight:700; margin:40px 0 20px; text-align:center; color:var(--text-dark);
     position:relative; padding-bottom:10px;
@@ -172,13 +158,9 @@ body {
    REFERANSLAR BÖLÜMÜ
 ====================== */
 .references-section {
-    padding: 60px 0;
-    background: linear-gradient(135deg, #f5f7fa, #e2e7ee);
-    position: relative;
-    overflow: hidden;
+    padding: 60px 0; background: linear-gradient(135deg, #f5f7fa, #e2e7ee); position: relative; overflow: hidden;
 }
 .references-title { text-align:center; font-size:36px; margin-bottom:18px; color: var(--accent); font-weight:700; }
-.references-title::after { content:none; }
 .references-container { display:flex; justify-content:center; flex-wrap:wrap; gap:28px; position:relative; z-index:1; }
 .reference-card {
     background-color: var(--card-bg); width:100%; max-width:340px; min-height:360px;
@@ -188,61 +170,17 @@ body {
 .reference-card img { width:100%; height:200px; object-fit:cover; }
 .reference-card h3 { font-size:20px; margin:8px 12px; color:#153a5b; }
 .reference-card p { font-size:14px; color:#55606a; margin:0 14px; flex-grow:1; }
-.reference-link {
-    display:inline-block; margin-top:8px; background:var(--accent); color:#fff;
-    text-decoration:none; padding:10px 16px; border-radius:8px; font-weight:600;
-}
+.reference-link { display:inline-block; margin-top:8px; background:var(--accent); color:#fff; text-decoration:none; padding:10px 16px; border-radius:8px; font-weight:600; }
 .reference-link:hover { background:#d35400; transform: translateY(-2px); }
 
-/* LED INFO SECTION */
-.led-info-section {
-  padding: 60px 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 28px;
-}
-
-.led-card {
-  background: #fff;
-  width: 100%;
-  max-width: 340px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(30,30,30,0.06);
-  padding: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  cursor: default; /* tıklanabilir görünmesin */
-}
-
-/* Başlıktaki + işaretini kaldırdık */
-.led-card h3 {
-  font-size: 20px;
-  color: #153a5b;
-  margin: 0;
-  display: block; /* spacing için standart yapı */
-}
-
-/* + ikonunu tamamen kaldırıyoruz */
-.toggle-icon {
-  display: none !important;
-}
-
-/* Paragraflar her zaman açık */
-.led-card p {
-  max-height: none !important;
-  overflow: visible !important;
-  margin-top: 12px;
-  color: #55606a;
-  font-size: 14px;
-  line-height: 1.5;
-  transition: none !important; /* animasyonları iptal */
-}
-
-/* Artık aktif sınıfı kullanılmıyor ama istersen kalabilir, sorun olmaz */
-
+/* ======================
+   LED INFO SECTION
+====================== */
+.led-info-section { padding: 60px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; }
+.led-card { background: #fff; width: 100%; max-width: 340px; border-radius: 12px; box-shadow: 0 10px 30px rgba(30,30,30,0.06); padding: 20px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-start; cursor: default; }
+.led-card h3 { font-size: 20px; color: #153a5b; margin: 0; display: block; }
+.toggle-icon { display: none !important; }
+.led-card p { max-height: none !important; overflow: visible !important; margin-top: 12px; color: #55606a; font-size: 14px; line-height: 1.5; transition: none !important; }
 
 /* ======================
    FOOTER
@@ -274,101 +212,53 @@ body {
 /* ======================
    RESPONSIVE
 ====================== */
-
-/* ===== BKLed Mobile Hamburger & Responsive ===== */
-
-/* Varsayılan: gizli (masaüstü) */
-.nav-hamburger { display: none; }
-#mobile-menu-toggle { display: none; } /* görünmez checkbox */
-
-/* Hamburger butonu stilleri */
-.hamburger-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  cursor: pointer;
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  background: transparent;
-  color: #d35400; /* BKLed turuncu */
-  position: relative;
-  z-index: 50;
+@media (max-width: 1024px) {
+    .site-slider .slider-container { height:56vh; max-height:480px; }
+    .info-panel-inner { grid-template-columns: repeat(2,1fr); padding:20px; }
+    .info-card p { max-width:280px; }
+    .products-container { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* Mobil menü kutusu (kapalı) */
-.nav-mobile {
-  display: none;
-  position: absolute;
-  top: 60px; /* header yüksekliğine göre ayarla */
-  left: 0;
-  right: 0;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  z-index: 40;
-  padding: 14px 12px;
-  border-top: 4px solid #f7f2ef;
-  flex-direction: column;
-}
-
-/* Menü linkleri */
-.nav-mobile a {
-  display: block;
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #333;
-  text-decoration: none;
-  border-radius: 6px;
-  margin-bottom: 6px;
-}
-.nav-mobile a:hover {
-  background: #fff6f1;
-  color: #d35400;
-}
-
-/* Checkbox işaretlendiğinde menüyü göster */
-#mobile-menu-toggle:checked ~ .nav-mobile {
-  display: block;
-}
-
-/* Mobil görünüm */
-@media (max-width: 992px) {
-  .nav-hamburger { display: block; position: relative; padding: 12px 18px; background: transparent; }
-  .nav-menu { display: none !important; } /* masaüstü menü gizle */
-  .hamburger-btn { font-size: 24px; color: #d35400; }
-  .nav-mobile { top: 58px; padding: 18px 12px; }
-  .nav-mobile a { font-size: 18px; padding: 14px 18px; }
-}
-
-/* Daha küçük ekranlar için responsive ayarlar */
 @media (max-width: 768px) {
-  .nav-container { padding: 15px 20px; }
-  .logo img { width:180px; }
+    .nav-container { padding: 15px 20px; }
+    .logo img { width:180px; }
 }
 @media (max-width: 640px) {
-  body { padding-top:64px; }
-  .site-slider .slider-container { height:46vh; max-height:380px; }
-  .info-panel-inner { grid-template-columns: 1fr; padding:14px; gap:12px; }
-  .info-card { padding:16px; }
-  .products-section, .references-section { padding:40px 15px; }
-  .products-section h1, .references-section h1 { font-size:28px; }
-  .references-container { flex-direction: column; align-items: center; gap:20px; }
-  .reference-card, .product-card { width:100%; max-width:300px; }
-  .footer { flex-direction:column; text-align:center; padding:30px 20px; }
-  .footer-contact, .copyright { text-align:center; }
-  .social-media { order:-1; margin-bottom:20px; }
-  .social-media a { font-size:26px; margin:0 15px; }
-  .whatsapp-float a { width:50px; height:50px; font-size:25px; }
-  .product-card img, .reference-card img { height:160px; }
+    body { padding-top:64px; }
+    .site-slider .slider-container { height:46vh; max-height:380px; }
+    .info-panel-inner { grid-template-columns: 1fr; padding:14px; gap:12px; }
+    .info-card { padding:16px; }
+    .products-section, .references-section { padding:40px 15px; }
+    .products-section h1, .references-section h1 { font-size:28px; }
+    .references-container { flex-direction: column; align-items: center; gap:20px; }
+    .reference-card, .product-card { width:100%; max-width:300px; }
+    .footer { flex-direction:column; text-align:center; padding:30px 20px; }
+    .footer-contact, .copyright { text-align:center; }
+    .social-media { order:-1; margin-bottom:20px; }
+    .social-media a { font-size:26px; margin:0 15px; }
+    .whatsapp-float a { width:50px; height:50px; font-size:25px; }
+    .product-card img, .reference-card img { height:160px; }
 }
 @media (max-width: 360px) {
-  .references-title { font-size:26px; }
-  .reference-card h3 { font-size:20px; }
-  .product-card h3 { font-size:18px; }
-}
-@media (min-width: 993px) {
-  .nav-hamburger { display: none; } /* masaüstünde gizle */
+    .references-title { font-size:26px; }
+    .reference-card h3 { font-size:20px; }
+    .product-card h3 { font-size:18px; }
 }
 
+/* ======================
+   BKLed Mobile Hamburger
+====================== */
+.nav-hamburger { display: none; }
+.hamburger-btn { display: inline-flex; align-items:center; justify-content:center; font-size:26px; cursor:pointer; width:48px; height:48px; border-radius:8px; background:transparent; color:#d35400; position: relative; z-index:50; }
+.nav-mobile { display:none; position:absolute; top:60px; left:0; right:0; background:#fff; box-shadow:0 8px 20px rgba(0,0,0,0.08); z-index:40; padding:14px 12px; border-top:4px solid #f7f2ef; flex-direction: column; }
+.nav-mobile a { display:block; padding:12px 16px; font-size:16px; color:#333; text-decoration:none; border-radius:6px; margin-bottom:6px; }
+.nav-mobile a:hover { background:#fff6f1; color:#d35400; }
+#mobile-menu-toggle:checked ~ .nav-mobile { display:block; }
 
+@media (max-width: 992px) {
+  .nav-hamburger { display:block; position:relative; padding:12px 18px; background:transparent; }
+  .nav-menu { display:none !important; }
+  .hamburger-btn { font-size:24px; color:#d35400; }
+  .nav-mobile { top:58px; padding:18px 12px; }
+  .nav-mobile a { font-size:18px; padding:14px 18px; }
+}
+@media (min-width: 993px) { .nav-hamburger { display:none; } }
