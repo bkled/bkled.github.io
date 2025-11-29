@@ -390,3 +390,14 @@ body {
   .nav-mobile a { font-size: 18px; padding: 14px 18px; }
 }
 
+/* Masaüstü menü mobilde gizlensin */
+@media (max-width: 992px) {
+  .nav-menu { display: none !important; }
+  .nav-hamburger { display: block; }
+}
+
+@media (min-width: 993px) {
+  .nav-hamburger { display: none; }
+}
+
+
