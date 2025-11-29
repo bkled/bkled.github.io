@@ -244,21 +244,99 @@ body {
     .product-card h3 { font-size:18px; }
 }
 
-/* ======================
-   BKLed Mobile Hamburger
-====================== */
-.nav-hamburger { display: none; }
-.hamburger-btn { display: inline-flex; align-items:center; justify-content:center; font-size:26px; cursor:pointer; width:48px; height:48px; border-radius:8px; background:transparent; color:#d35400; position: relative; z-index:50; }
-.nav-mobile { display:none; position:absolute; top:60px; left:0; right:0; background:#fff; box-shadow:0 8px 20px rgba(0,0,0,0.08); z-index:40; padding:14px 12px; border-top:4px solid #f7f2ef; flex-direction: column; }
-.nav-mobile a { display:block; padding:12px 16px; font-size:16px; color:#333; text-decoration:none; border-radius:6px; margin-bottom:6px; }
-.nav-mobile a:hover { background:#fff6f1; color:#d35400; }
-#mobile-menu-toggle:checked ~ .nav-mobile { display:block; }
+/* ===== BKLed Mobile Hamburger ===== */
 
-@media (max-width: 992px) {
-  .nav-hamburger { display:block; position:relative; padding:12px 18px; background:transparent; }
-  .nav-menu { display:none !important; }
-  .hamburger-btn { font-size:24px; color:#d35400; }
-  .nav-mobile { top:58px; padding:18px 12px; }
-  .nav-mobile a { font-size:18px; padding:14px 18px; }
+/* Hamburger kapsayıcısı varsayılan: gizli (masaüstü) */
+.nav-hamburger { 
+  display: none; 
 }
-@media (min-width: 993px) { .nav-hamburger { display:none; } }
+
+/* Checkbox (tik) tamamen gizlendi */
+#mobile-menu-toggle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hamburger butonu stilleri */
+.hamburger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: transparent;
+  color: #d35400; /* BKLed turuncu */
+  position: relative;
+  z-index: 50;
+}
+
+/* Mobil menü kutusu (kapalı) */
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 60px; /* header/menü yüksekliğine göre ayarla */
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  z-index: 40;
+  padding: 14px 12px;
+  border-top: 4px solid #f7f2ef; /* hafif ayırıcı */
+}
+
+/* Menü linkleri */
+.nav-mobile a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+.nav-mobile a:hover {
+  background: #fff6f1; /* hafif turuncu ton hover */
+  color: #d35400;
+}
+
+/* Checkbox işaretlendiğinde menüyü göster */
+#mobile-menu-toggle:checked ~ .nav-mobile {
+  display: block;
+}
+
+/* ----------- Mobil görünüm ayarları ---------- */
+@media (max-width: 992px) {
+
+  /* Hamburger göster */
+  .nav-hamburger {
+    display: block;
+    position: relative;
+    padding: 12px 18px;
+    background: transparent;
+  }
+
+  /* Masaüstü menüyü gizle */
+  .nav-menu { display: none !important; }
+
+  /* Buton boyutu */
+  .hamburger-btn {
+    color: #d35400;
+    font-size: 24px;
+  }
+
+  /* Menü linkleri için dokunmatik alan büyütme */
+  .nav-mobile { top: 58px; padding: 18px 12px; }
+  .nav-mobile a { font-size: 18px; padding: 14px 18px; }
+}
+
+/* Masaüstü için hamburger gizle */
+@media (min-width: 993px) {
+  .nav-hamburger { display: none; }
+}
+
