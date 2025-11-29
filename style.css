@@ -274,46 +274,12 @@ body {
 /* ======================
    RESPONSIVE
 ====================== */
-@media (max-width: 1024px) {
-    .site-slider .slider-container { height:56vh; max-height:480px; }
-    .info-panel-inner { grid-template-columns: repeat(2,1fr); padding:20px; }
-    .info-card p { max-width:280px; }
-    .products-container { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
-    .nav-container { padding: 15px 20px; }
-    .logo img { width:180px; }
-}
-@media (max-width: 640px) {
-    body { padding-top:64px; }
-    .site-slider .slider-container { height:46vh; max-height:380px; }
-    .info-panel-inner { grid-template-columns: 1fr; padding:14px; gap:12px; }
-    .info-card { padding:16px; }
-    .products-section, .references-section { padding:40px 15px; }
-    .products-section h1, .references-section h1 { font-size:28px; }
-    .references-container { flex-direction: column; align-items: center; gap:20px; }
-    .reference-card, .product-card { width:100%; max-width:300px; }
-    .footer { flex-direction:column; text-align:center; padding:30px 20px; }
-    .footer-contact, .copyright { text-align:center; }
-    .social-media { order:-1; margin-bottom:20px; }
-    .social-media a { font-size:26px; margin:0 15px; }
-    .whatsapp-float a { width:50px; height:50px; font-size:25px; }
-    .product-card img, .reference-card img { height:160px; }
-}
-@media (max-width: 360px) {
-    .references-title { font-size:26px; }
-    .reference-card h3 { font-size:20px; }
-    .product-card h3 { font-size:18px; }
-}
 
-/* ===== BKLed Mobile Hamburger ===== */
+/* ===== BKLed Mobile Hamburger & Responsive ===== */
+
 /* Varsayılan: gizli (masaüstü) */
 .nav-hamburger { display: none; }
-
-/* Görünmez checkbox */
-#mobile-menu-toggle {
-  display: none;
-}
+#mobile-menu-toggle { display: none; } /* görünmez checkbox */
 
 /* Hamburger butonu stilleri */
 .hamburger-btn {
@@ -335,14 +301,15 @@ body {
 .nav-mobile {
   display: none;
   position: absolute;
-  top: 60px;            /* header/menü yüksekliğine göre ayarla */
+  top: 60px; /* header yüksekliğine göre ayarla */
   left: 0;
   right: 0;
-  background: #fff;     /* beyaz arka plan */
+  background: #fff;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   z-index: 40;
   padding: 14px 12px;
-  border-top: 4px solid #f7f2ef; /* hafif ayırıcı */
+  border-top: 4px solid #f7f2ef;
+  flex-direction: column;
 }
 
 /* Menü linkleri */
@@ -356,7 +323,7 @@ body {
   margin-bottom: 6px;
 }
 .nav-mobile a:hover {
-  background: #fff6f1;          /* hafif turuncu ton hover */
+  background: #fff6f1;
   color: #d35400;
 }
 
@@ -365,39 +332,43 @@ body {
   display: block;
 }
 
-/* ----------- Mobil için görünür yap ---------- */
+/* Mobil görünüm */
 @media (max-width: 992px) {
-
-  /* Göster: hamburger kapsayıcısı */
-  .nav-hamburger {
-    display: block;
-    position: relative;
-    padding: 12px 18px;
-    background: transparent; /* header ile uyumlu bırak */
-  }
-
-  /* Masaüstü normal menüyü gizle (sitenin masaüstü menüsü .nav-menu ise) */
-  .nav-menu { display: none !important; }
-
-  /* Butonu sağa/sola konumlandır istersen ayarla */
-  .hamburger-btn {
-    color: #d35400;
-    font-size: 24px;
-  }
-
-  /* Menü içinde daha büyük dokunmatik alan */
+  .nav-hamburger { display: block; position: relative; padding: 12px 18px; background: transparent; }
+  .nav-menu { display: none !important; } /* masaüstü menü gizle */
+  .hamburger-btn { font-size: 24px; color: #d35400; }
   .nav-mobile { top: 58px; padding: 18px 12px; }
   .nav-mobile a { font-size: 18px; padding: 14px 18px; }
 }
 
-/* Masaüstü menü mobilde gizlensin */
-@media (max-width: 992px) {
-  .nav-menu { display: none !important; }
-  .nav-hamburger { display: block; }
+/* Daha küçük ekranlar için responsive ayarlar */
+@media (max-width: 768px) {
+  .nav-container { padding: 15px 20px; }
+  .logo img { width:180px; }
 }
-
+@media (max-width: 640px) {
+  body { padding-top:64px; }
+  .site-slider .slider-container { height:46vh; max-height:380px; }
+  .info-panel-inner { grid-template-columns: 1fr; padding:14px; gap:12px; }
+  .info-card { padding:16px; }
+  .products-section, .references-section { padding:40px 15px; }
+  .products-section h1, .references-section h1 { font-size:28px; }
+  .references-container { flex-direction: column; align-items: center; gap:20px; }
+  .reference-card, .product-card { width:100%; max-width:300px; }
+  .footer { flex-direction:column; text-align:center; padding:30px 20px; }
+  .footer-contact, .copyright { text-align:center; }
+  .social-media { order:-1; margin-bottom:20px; }
+  .social-media a { font-size:26px; margin:0 15px; }
+  .whatsapp-float a { width:50px; height:50px; font-size:25px; }
+  .product-card img, .reference-card img { height:160px; }
+}
+@media (max-width: 360px) {
+  .references-title { font-size:26px; }
+  .reference-card h3 { font-size:20px; }
+  .product-card h3 { font-size:18px; }
+}
 @media (min-width: 993px) {
-  .nav-hamburger { display: none; }
+  .nav-hamburger { display: none; } /* masaüstünde gizle */
 }
 
 
