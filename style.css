@@ -278,16 +278,14 @@ body {
 
 /* Mobil menü kutusu (kapalı) */
 .nav-mobile {
-  display: none;
-  position: absolute;
-  top: 60px; /* header/menü yüksekliğine göre ayarla */
-  left: 0;
-  right: 0;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  z-index: 40;
+  position: fixed; /* absolute yerine fixed yaparak ekranın sol üstünden başlat */
+  top: 60px;       /* header yüksekliğine göre ayarla */
+  left: 0;         /* sol kenara sıfır */
+  width: 100vw;    /* tam ekran genişliği */
+  box-sizing: border-box; /* padding dahil genişlik hesapla */
   padding: 14px 12px;
-  border-top: 4px solid #f7f2ef; /* hafif ayırıcı */
+  background: #fff;
+  z-index: 40;
 }
 
 /* Menü linkleri */
