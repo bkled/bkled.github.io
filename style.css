@@ -305,3 +305,88 @@ body {
     .reference-card h3 { font-size:20px; }
     .product-card h3 { font-size:18px; }
 }
+
+/* ===== BKLed Mobile Hamburger ===== */
+/* Varsayılan: gizli (masaüstü) */
+.nav-hamburger { display: none; }
+
+/* Görünmez checkbox */
+#mobile-menu-toggle {
+  display: none;
+}
+
+/* Hamburger butonu stilleri */
+.hamburger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: transparent;
+  color: #d35400; /* BKLed turuncu */
+  position: relative;
+  z-index: 50;
+}
+
+/* Mobil menü kutusu (kapalı) */
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 60px;            /* header/menü yüksekliğine göre ayarla */
+  left: 0;
+  right: 0;
+  background: #fff;     /* beyaz arka plan */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  z-index: 40;
+  padding: 14px 12px;
+  border-top: 4px solid #f7f2ef; /* hafif ayırıcı */
+}
+
+/* Menü linkleri */
+.nav-mobile a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+.nav-mobile a:hover {
+  background: #fff6f1;          /* hafif turuncu ton hover */
+  color: #d35400;
+}
+
+/* Checkbox işaretlendiğinde menüyü göster */
+#mobile-menu-toggle:checked ~ .nav-mobile {
+  display: block;
+}
+
+/* ----------- Mobil için görünür yap ---------- */
+@media (max-width: 992px) {
+
+  /* Göster: hamburger kapsayıcısı */
+  .nav-hamburger {
+    display: block;
+    position: relative;
+    padding: 12px 18px;
+    background: transparent; /* header ile uyumlu bırak */
+  }
+
+  /* Masaüstü normal menüyü gizle (sitenin masaüstü menüsü .nav-menu ise) */
+  .nav-menu { display: none !important; }
+
+  /* Butonu sağa/sola konumlandır istersen ayarla */
+  .hamburger-btn {
+    color: #d35400;
+    font-size: 24px;
+  }
+
+  /* Menü içinde daha büyük dokunmatik alan */
+  .nav-mobile { top: 58px; padding: 18px 12px; }
+  .nav-mobile a { font-size: 18px; padding: 14px 18px; }
+}
+
