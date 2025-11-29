@@ -233,7 +233,7 @@ body {
     .about-section h1 { font-size:24px; }
     .about-section h2 { font-size:20px; }
     .about-text { font-size:15px; line-height:1.6; padding:10px; }
-    .about-text i { font-size:16px; } /* ikonlar küçüldü */
+    .about-text i { font-size:10px; } /* ikonlar küçüldü */
     .about-text ul { display:block; text-align:left; margin:15px 0; }
     .about-text ul li { font-size:14px; }
 
