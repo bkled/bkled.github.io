@@ -272,15 +272,15 @@ body {
   z-index: 50;
 }
 
-/* Mobil menü kutusu (kapalı) */
+/* Mobil menü kutusu (başlangıçta gizli) */
 .nav-mobile {
-  display: none; /* Başlangıçta gizli */
-  position: absolute; /* header altına oturacak */
-  top: 58px; /* header yüksekliğine göre */
+  display: none;
+  position: absolute;      /* header altına oturacak */
+  top: 58px;               /* header yüksekliği */
   left: 0;
-  width: 100%; /* tam genişlik */
+  width: 100%;             /* tam ekran genişliği */
   max-height: calc(100vh - 58px); /* ekranı aşarsa scroll */
-  overflow-y: auto;
+  overflow-y: auto;        /* dikey scroll */
   padding: 14px 12px;
   background: #fff;
   z-index: 40;
@@ -307,7 +307,7 @@ body {
   display: block;
 }
 
-/* Mobil görünüm ayarları */
+/* ----------- Mobil görünüm ayarları ---------- */
 @media (max-width: 992px) {
   .nav-hamburger { display: block; }
   .nav-menu { display: none !important; }
