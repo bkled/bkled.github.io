@@ -222,6 +222,49 @@ body {
     .nav-container { padding: 15px 20px; }
     .logo img { width:180px; }
 }
+/* --- Hakkımızda / Vizyon / Misyon --- */
+.about-text h1 {
+    font-size: 24px;       /* Ana başlık küçültüldü */
+}
+
+.about-text h2 {
+    font-size: 20px;       /* Vizyon/Misyon başlıkları küçültüldü */
+}
+
+.about-text p,
+.about-text ul li {
+    font-size: 14px;       /* Paragraflar ve liste öğeleri küçültüldü */
+    line-height: 1.6;
+}
+
+.about-text ul li i {
+    font-size: 14px;       /* Liste ikonları küçültüldü */
+}
+
+/* --- Ürünlerimiz --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobilde her sırada 1 kart */
+    gap: 15px;
+    padding: 0 10px;
+}
+
+.product-card {
+    font-size: 14px;         /* Kart yazısı küçültüldü */
+    padding: 12px;           /* Kart iç boşluğu azaltıldı */
+    text-align: center;
+}
+
+/* Başlıklar ve ikonlar */
+.products-section h2,
+.products-section h3 {
+    font-size: 18px;        /* Başlıklar mobilde küçültüldü */
+}
+
+.product-card i {
+    font-size: 20px;        /* Kart ikonları küçültüldü */
+}
+
 @media (max-width: 640px) {
     body { padding-top:64px; }
     .site-slider .slider-container { height:46vh; max-height:380px; }
