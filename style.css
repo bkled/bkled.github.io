@@ -229,7 +229,7 @@ body {
     .info-panel-inner { grid-template-columns: repeat(2,1fr); padding:20px; gap:18px; }
     .info-card p { max-width:260px; }
 
-    /* Ürün kartları tablet: 2 kart / satır */
+    /* Ürün ve Referans kartları tablet: 2 kart / satır */
     .products-container, .references-container { display:grid; grid-template-columns: repeat(2,1fr); gap:15px; }
 }
 
@@ -254,7 +254,7 @@ body {
     .info-panel-inner { grid-template-columns: 1fr; padding:14px; gap:12px; }
     .info-card { padding:14px; }
 
-    /* Ürün / Referans kartları mobil: her satır 1 kart, küçük boy */
+    /* Ürün / Referans kartları mobil: her satır 1 kart, aynı boy */
     .products-container, .references-container { display:grid; grid-template-columns:1fr; gap:12px; }
     .product-card, .reference-card { 
         width:100%; 
@@ -282,7 +282,7 @@ body {
     .whatsapp-float a { width:45px; height:45px; font-size:22px; }
 }
 
-/* Küçük telefonlar (360px altı) */
+/* Küçük telefonlar (640px altı) */
 @media (max-width: 640px) {
     body { padding-top:60px; }
     .site-slider .slider-container { height:40vh; max-height:300px; }
@@ -294,7 +294,7 @@ body {
     .about-text i { font-size:9px; }
     .about-text ul li { font-size:11px; }
 
-    /* Ürün / Referans kartları ekstra küçük */
+    /* Ürün / Referans kartları ekstra küçük, eşit boy */
     .product-card, .reference-card { padding:8px; font-size:12px; }
     .product-card img, .reference-card img { max-height:120px; border-radius:5px; }
     .product-card h3, .reference-card h3 { font-size:14px; margin:4px 0; }
@@ -308,6 +308,7 @@ body {
     .product-card p, .reference-card p { font-size:10px; }
     .product-card img, .reference-card img { max-height:100px; }
 }
+
 
 
 
