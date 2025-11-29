@@ -251,13 +251,9 @@ body {
   display: none; 
 }
 
-/* Checkbox (tik) tamamen gizlendi */
+/* Checkbox tamamen gizli */
 #mobile-menu-toggle {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
 /* Hamburger butonu stilleri */
@@ -271,21 +267,24 @@ body {
   height: 48px;
   border-radius: 8px;
   background: transparent;
-  color: #d35400; /* BKLed turuncu */
+  color: #d35400;
   position: relative;
   z-index: 50;
 }
 
 /* Mobil menü kutusu (kapalı) */
 .nav-mobile {
-  position: fixed; /* absolute yerine fixed yaparak ekranın sol üstünden başlat */
-  top: 60px;       /* header yüksekliğine göre ayarla */
-  left: 0;         /* sol kenara sıfır */
-  width: 100vw;    /* tam ekran genişliği */
-  box-sizing: border-box; /* padding dahil genişlik hesapla */
+  display: none; /* Başlangıçta gizli */
+  position: absolute; /* header altına oturacak */
+  top: 58px; /* header yüksekliğine göre */
+  left: 0;
+  width: 100%; /* tam genişlik */
+  max-height: calc(100vh - 58px); /* ekranı aşarsa scroll */
+  overflow-y: auto;
   padding: 14px 12px;
   background: #fff;
   z-index: 40;
+  box-sizing: border-box;
 }
 
 /* Menü linkleri */
@@ -299,7 +298,7 @@ body {
   margin-bottom: 6px;
 }
 .nav-mobile a:hover {
-  background: #fff6f1; /* hafif turuncu ton hover */
+  background: #fff6f1;
   color: #d35400;
 }
 
@@ -308,33 +307,14 @@ body {
   display: block;
 }
 
-/* ----------- Mobil görünüm ayarları ---------- */
+/* Mobil görünüm ayarları */
 @media (max-width: 992px) {
-
-  /* Hamburger göster */
-  .nav-hamburger {
-    display: block;
-    position: relative;
-    padding: 12px 18px;
-    background: transparent;
-  }
-
-  /* Masaüstü menüyü gizle */
+  .nav-hamburger { display: block; }
   .nav-menu { display: none !important; }
-
-  /* Buton boyutu */
-  .hamburger-btn {
-    color: #d35400;
-    font-size: 24px;
-  }
-
-  /* Menü linkleri için dokunmatik alan büyütme */
-  .nav-mobile { top: 58px; padding: 18px 12px; }
   .nav-mobile a { font-size: 18px; padding: 14px 18px; }
 }
 
-/* Masaüstü için hamburger gizle */
+/* Masaüstü gizle */
 @media (min-width: 993px) {
   .nav-hamburger { display: none; }
 }
-
