@@ -39,7 +39,9 @@
             border: none; border-radius: 25px; cursor: pointer;
         }
         button:hover { background: #4a1eaf; }
-        .status { text-align: center; padding: 10px; color: #666; }
+        .status { text-align: center; padding: 10px; color: #666; font-size: 14px; }
+        .error { color: #d32f2f; }
+        .success { color: #4caf50; }
     </style>
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -56,25 +58,42 @@
     </div>
 
     <script>
-    // Supabase config – BURAYI DEĞİŞTİR, GERİSİNE DOKUNMA
-    const SUPABASE_URL = 'https://rtaqxsecuvsncnoovare.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0YXF4c2VjdXZzbmNub292YXJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2ODcyODcsImV4cCI6MjA4MDI2MzI4N30.18BaKDnEyj97fS5Xl5ZeZsHSwQh6AexkEmMR5QgwUgw';
-        
+        // Senin config'in
+        const SUPABASE_URL = 'https://rtaqxsecuvsncnoovare.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0YXF4c2VjdXZzbmNub292YXJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2ODcyODcsImV4cCI6MjA4MDI2MzI4N30.18BaKDnEyj97fS5Xl5ZeZsHSwQh6AexkEmMR5QgwUgw';
+
         const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const messagesDiv = document.getElementById('messages');
         const msgInput = document.getElementById('msg');
         const nameInput = document.getElementById('name');
         const statusDiv = document.getElementById('status');
 
-        // Realtime subscription: Yeni mesaj gelince ekle
-        let channel = supabase.channel('messages')
-            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
-                const msg = payload.new;
-                addMessage(msg.username, msg.message, msg.created_at);
-            })
-            .subscribe((status) => {
-                statusDiv.textContent = status === 'SUBSCRIBED' ? 'Bağlandı!' : 'Bağlantı sorunu...';
-            });
+        statusDiv.textContent = 'Supabase başlatılıyor...';
+        console.log('Supabase URL:', SUPABASE_URL);  // Debug için
+
+        // Realtime subscription
+        let channel;
+        try {
+            channel = supabase.channel('messages')
+                .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
+                    const msg = payload.new;
+                    addMessage(msg.username, msg.message, msg.created_at);
+                })
+                .subscribe((status) => {
+                    if (status === 'SUBSCRIBED') {
+                        statusDiv.textContent = 'Bağlandı! 🎉';
+                        statusDiv.className = 'status success';
+                        loadMessages();  // Bağlanınca yükle
+                    } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
+                        statusDiv.textContent = 'Bağlantı hatası: ' + status;
+                        statusDiv.className = 'status error';
+                    }
+                });
+        } catch (error) {
+            statusDiv.textContent = 'Hata: ' + error.message;
+            statusDiv.className = 'status error';
+            console.error('Subscription error:', error);
+        }
 
         // Mesaj ekle
         function addMessage(username, text, time) {
@@ -92,8 +111,17 @@
 
         // Eski mesajları yükle
         async function loadMessages() {
-            const { data } = await supabase.from('messages').select().order('created_at', { ascending: true });
-            data?.forEach(msg => addMessage(msg.username, msg.message, msg.created_at));
+            try {
+                statusDiv.textContent = 'Mesajlar yükleniyor...';
+                const { data, error } = await supabase.from('messages').select().order('created_at', { ascending: true });
+                if (error) throw error;
+                data?.forEach(msg => addMessage(msg.username, msg.message, msg.created_at));
+                statusDiv.textContent = data?.length ? `${data.length} mesaj yüklendi.` : 'Henüz mesaj yok.';
+            } catch (error) {
+                statusDiv.textContent = 'Yükleme hatası: ' + error.message;
+                statusDiv.className = 'status error';
+                console.error('Load error:', error);
+            }
         }
 
         // Mesaj gönder
@@ -101,17 +129,23 @@
             let text = msgInput.value.trim();
             if (!text) return;
             let username = nameInput.value.trim() || 'Misafir';
+            statusDiv.textContent = 'Gönderiliyor...';
 
-            const { error } = await supabase.from('messages').insert({ username, message: text });
-            if (error) alert('Hata: ' + error.message);
-            msgInput.value = '';
+            try {
+                const { error } = await supabase.from('messages').insert({ username, message: text });
+                if (error) throw error;
+                msgInput.value = '';
+                statusDiv.textContent = 'Gönderildi!';
+                setTimeout(() => statusDiv.textContent = 'Bağlandı!', 2000);
+            } catch (error) {
+                statusDiv.textContent = 'Gönderim hatası: ' + error.message;
+                statusDiv.className = 'status error';
+                console.error('Send error:', error);
+            }
         }
 
         // Enter tuşu
         msgInput.addEventListener('keypress', e => { if (e.key === 'Enter') send(); });
-
-        // Başlat
-        loadMessages();
     </script>
 </body>
 </html>
