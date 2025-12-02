@@ -43,12 +43,10 @@
         .error { color: #d32f2f; }
         .success { color: #4caf50; }
     </style>
-    <!-- Supabase SDK -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <div class="container">
-        <div class="header">Canlı Sohbet Odası <span id="status" class="status">Bağlanıyor...</span></div>
+        <div class="header">Canlı Sohbet Odası <span id="status" class="status">Başlatılıyor...</span></div>
         <div id="messages"></div>
         <div class="input-area">
             <input type="text" id="name" placeholder="Adın (opsiyonel)" style="width:90px;margin-right:5px;">
@@ -57,48 +55,55 @@
         </div>
     </div>
 
-    <script>
-        // Senin config'in
+    <script type="module">
+        // Supabase'i dinamik import et (global tanımlama sorunu yok)
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+        // Config
         const SUPABASE_URL = 'https://rtaqxsecuvsncnoovare.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0YXF4c2VjdXZzbmNub292YXJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2ODcyODcsImV4cCI6MjA4MDI2MzI4N30.18BaKDnEyj97fS5Xl5ZeZsHSwQh6AexkEmMR5QgwUgw';
 
-        const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const messagesDiv = document.getElementById('messages');
         const msgInput = document.getElementById('msg');
         const nameInput = document.getElementById('name');
         const statusDiv = document.getElementById('status');
 
-        statusDiv.textContent = 'Supabase başlatılıyor...';
-        console.log('Supabase URL:', SUPABASE_URL);  // Debug için
+        statusDiv.textContent = 'Supabase import ediliyor...';
+        console.log('Supabase client oluşturuluyor...');
 
         // Realtime subscription
         let channel;
         try {
             channel = supabase.channel('messages')
                 .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
+                    console.log('Yeni mesaj realtime:', payload.new);
                     const msg = payload.new;
                     addMessage(msg.username, msg.message, msg.created_at);
                 })
                 .subscribe((status) => {
+                    console.log('Subscription status:', status);
                     if (status === 'SUBSCRIBED') {
-                        statusDiv.textContent = 'Bağlandı! 🎉';
+                        statusDiv.textContent = 'Bağlandı! Mesajlar yükleniyor...';
                         statusDiv.className = 'status success';
-                        loadMessages();  // Bağlanınca yükle
-                    } else if (status === 'CLOSED' || status === 'CHANNEL_ERROR') {
-                        statusDiv.textContent = 'Bağlantı hatası: ' + status;
+                        loadMessages();
+                    } else {
+                        statusDiv.textContent = 'Subscription Hatası: ' + status;
                         statusDiv.className = 'status error';
                     }
                 });
+            statusDiv.textContent = 'Subscription kuruldu, yükleniyor...';
         } catch (error) {
-            statusDiv.textContent = 'Hata: ' + error.message;
+            statusDiv.textContent = 'Realtime Hatası: ' + error.message;
             statusDiv.className = 'status error';
-            console.error('Subscription error:', error);
+            console.error('Realtime error:', error);
         }
 
         // Mesaj ekle
         function addMessage(username, text, time) {
             const timeStr = new Date(time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            const isYou = username === (nameInput.value.trim() || 'Misafir');
+            const usernameNow = nameInput.value.trim() || 'Misafir';
+            const isYou = username === usernameNow;
             const msgClass = isYou ? 'you' : 'other';
             const msgHTML = `
                 <div class="message ${msgClass}">
@@ -112,37 +117,39 @@
         // Eski mesajları yükle
         async function loadMessages() {
             try {
-                statusDiv.textContent = 'Mesajlar yükleniyor...';
-                const { data, error } = await supabase.from('messages').select().order('created_at', { ascending: true });
+                const { data, error } = await supabase.from('messages').select('*').order('created_at', { ascending: true });
+                console.log('Yüklenen mesajlar:', data, 'Hata:', error);
                 if (error) throw error;
+                messagesDiv.innerHTML = '';  // Temizle
                 data?.forEach(msg => addMessage(msg.username, msg.message, msg.created_at));
-                statusDiv.textContent = data?.length ? `${data.length} mesaj yüklendi.` : 'Henüz mesaj yok.';
+                statusDiv.textContent = data?.length ? `Bağlandı! ${data.length} mesaj var.` : 'Bağlandı! Henüz mesaj yok.';
             } catch (error) {
-                statusDiv.textContent = 'Yükleme hatası: ' + error.message;
+                statusDiv.textContent = 'Yükleme Hatası: ' + error.message;
                 statusDiv.className = 'status error';
                 console.error('Load error:', error);
             }
         }
 
         // Mesaj gönder
-        async function send() {
+        window.send = async () => {  // Global yap (buton onclick için)
             let text = msgInput.value.trim();
             if (!text) return;
             let username = nameInput.value.trim() || 'Misafir';
-            statusDiv.textContent = 'Gönderiliyor...';
-
             try {
                 const { error } = await supabase.from('messages').insert({ username, message: text });
+                console.log('Gönderim sonucu:', error);
                 if (error) throw error;
                 msgInput.value = '';
-                statusDiv.textContent = 'Gönderildi!';
-                setTimeout(() => statusDiv.textContent = 'Bağlandı!', 2000);
+                statusDiv.textContent = 'Gönderildi! (Realtime bekle)';
+                setTimeout(() => {
+                    if (statusDiv.className.includes('success')) statusDiv.textContent = 'Bağlandı!';
+                }, 2000);
             } catch (error) {
-                statusDiv.textContent = 'Gönderim hatası: ' + error.message;
+                statusDiv.textContent = 'Gönderim Hatası: ' + error.message;
                 statusDiv.className = 'status error';
                 console.error('Send error:', error);
             }
-        }
+        };
 
         // Enter tuşu
         msgInput.addEventListener('keypress', e => { if (e.key === 'Enter') send(); });
