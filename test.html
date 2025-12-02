@@ -18,10 +18,9 @@
             display: flex; justify-content: center; align-items: flex-start;
         }
 
-        /* DESKTOP genişletildi: mobil etkilenmez (media query altında davranış aynı kalır) */
         .container {
             width: 100%;
-            max-width: 900px; /* masaüstünde geniş görünmesi için arttırıldı */
+            max-width: 900px; /* masaüstünde geniş görünmesi için */
             background: white;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
@@ -44,7 +43,6 @@
             justify-content: center;
         }
 
-        /* Radyo çalar alanı (header altı) */
         .radio-bar {
             display:flex;
             gap:8px;
@@ -54,7 +52,7 @@
             background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.01));
             flex-wrap:wrap;
         }
-        .radio-bar select, .radio-bar input[type="text"] {
+        .radio-bar select {
             flex: 1;
             padding:6px 8px;
             border-radius:8px;
@@ -64,13 +62,12 @@
         .radio-bar button { padding:8px 12px; border-radius:8px; border:none; background:var(--primary); color:#fff; cursor:pointer; }
         .radio-status { font-size:12px; color:#666; margin-left:6px; min-width:110px; }
 
-        /* Mesaj alanı */
         #messages {
             padding: 15px;
             background: #f8f9fa;
             overflow-y: auto;
             flex:1;
-            min-height:0; /* allow flex child to shrink on mobile */
+            min-height:0;
         }
         .message {
             margin: 8px 0;
@@ -85,7 +82,6 @@
         .other { background: #e0e0e0; color: #333; margin-right: auto; border-bottom-left-radius: 6px; }
         .message small { opacity: 0.8; font-size: 11px; display: block; margin-top: 6px; }
 
-        /* Girdi alanı */
         .input-area {
             display: flex;
             padding: 10px;
@@ -99,15 +95,9 @@
         #msg { flex: 1; padding: 10px 14px; border: 1px solid #ddd; border-radius: 30px; outline: none; min-width:0; }
         button { padding: 8px 14px; background: var(--primary); color: white; border: none; border-radius: 30px; cursor: pointer; }
         button:hover { background: var(--primary-dark); }
-        .emoji-btn { font-size: 20px; cursor: pointer; background: none; border: none; }
-        .emoji-picker { display: none; background: white; border: 1px solid #ddd; border-radius: 12px; padding: 10px; max-width: 320px; flex-wrap: wrap; gap: 6px; position: absolute; bottom: 70px; left: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 50; }
-        .emoji-picker.show { display: flex; }
-        .emoji-picker span { font-size: 22px; cursor: pointer; }
-        .emoji-picker span:hover { transform: scale(1.2); }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-        /* Responsive - küçük ekranlarda */
         @media (max-width: 480px) {
             body { padding: 12px; }
             .container { max-width: 100%; border-radius: 14px; }
@@ -115,16 +105,11 @@
             .radio-bar { padding:8px; gap:6px; flex-direction:column; align-items:stretch; }
             #name { width: 100%; order:1; }
             .input-area { gap:6px; flex-wrap:wrap; padding:8px; }
-            .emoji-btn { order:2; }
             #msg { order:3; width:100%; }
             .input-area button:last-child { order:4; width:100%; border-radius: 12px; padding:10px; }
-            .emoji-picker { left: 8px; bottom: 96px; max-width: 92%; }
             .message { font-size: 15px; }
         }
 
-        .status { font-size: 13px; color: #4caf50; }
-
-        /* Radyo gösterimleri */
         .radio-embed { width: 100%; display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:10px 14px; border-top:1px solid #eee; }
         .radio-embed iframe { border:0; width:345px; height:65px; max-width:100%; }
         .radio-embed .audio-wrap { width:100%; max-width:640px; }
@@ -134,34 +119,24 @@
     <div class="container">
         <div class="header">Canlı Sohbet Odası</div>
 
-        <!-- Radyo çalar alanı: hem iframe hem audio için butonlar ve görünür alan -->
+        <!-- Radyo çalar alanı: Kalp FM varsayılan seçili olacak -->
         <div class="radio-bar" aria-hidden="false">
             <select id="stationSelect">
-                <option value="">Hazır radyo seçin veya altına yapıştırın</option>
-                <!-- Senin verdiğin iframe kaynak harici embed; iframe yüklenebilir -->
+                <option value="audio:https://yayin.kalpfm.com:8080/stream">Kalp FM (varsayılan)</option>
                 <option value="iframe:radyod">Radyod (iframe embed)</option>
-                <!-- audio stream örneği senin verdiğin stream URL -->
-                <option value="audio:https://yayin.kalpfm.com:8080/stream">Kalp FM (audio stream)</option>
             </select>
 
-            <!-- kullanıcı kendi stream URL'sini yapıştırabilmesi için input -->
-            <input type="text" id="customStation" placeholder="Veya kendi stream URL'nizi yapıştırın (http...)" />
-
-            <button onclick="applyStation()">Yükle</button>
-            <button onclick="toggleRadio()">Çal / Duraklat</button>
-            <div class="radio-status" id="radioStatus">Duruyor</div>
+            <button id="toggleBtn" onclick="toggleRadio()">Çal / Duraklat</button>
+            <div class="radio-status" id="radioStatus">Yükleniyor...</div>
         </div>
 
         <!-- Radyo gömme / oynatma alanı -->
         <div class="radio-embed" id="radioEmbed" aria-hidden="true" style="display:none;">
-            <!-- iframe yer tutucu (senin verdiğin iframe) -->
             <div id="iframeHolder" style="display:none;">
                 <iframe id="radyodIframe" src="https://www.radyod.com/iframe-small" width="345" height="65" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <!-- audio player (kullanıcının verdiği audio stream için) -->
             <div class="audio-wrap" id="audioHolder" style="display:none;">
                 <audio id="radioPlayer" controls style="width:100%;" crossorigin="anonymous">
-                    <!-- source dinamik olarak eklenecek -->
                     Tarayıcınız bu ses oynatıcıyı desteklemiyor.
                 </audio>
             </div>
@@ -171,12 +146,9 @@
 
         <div class="input-area">
             <input type="text" id="name" placeholder="Adın" value="">
-            <button class="emoji-btn" onclick="toggleEmoji()">😊</button>
             <input type="text" id="msg" placeholder="Mesaj yaz...">
             <button onclick="send()">Gönder</button>
         </div>
-
-        <div class="emoji-picker" id="emojiPicker" aria-hidden="true"></div>
 
         <audio id="notifySound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-remove-2578.mp3" preload="auto"></audio>
     </div>
@@ -191,25 +163,9 @@
         const messagesDiv = document.getElementById('messages')
         const msgInput = document.getElementById('msg')
         const nameInput = document.getElementById('name')
-        const emojiPicker = document.getElementById('emojiPicker')
         const sound = document.getElementById('notifySound')
 
-        // Adı hatırla
         nameInput.value = localStorage.getItem('chatName') || ''
-
-        // Emoji listesi
-        const emojis = "😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 😎 🤓 🧐 🤨 🤩 🥳 😏 😒 😞 😔 😟 😕 🙁 😣 😖 😫 😤 😠 😡 🤬 😭 😢 😩 😰 😨 😱 😳 😵 😲 🤯 🤔 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😴 🤤 😪 😵‍💫 🤢 🤮 🤧 🤒 🤕 🥴 🤑 🤠 😸 😹 😺 😻 😼 😽 🙀 😿 😾"
-        emojis.split(' ').forEach(e => {
-            const span = document.createElement('span')
-            span.textContent = e
-            span.onclick = () => { msgInput.value += e; msgInput.focus() }
-            emojiPicker.appendChild(span)
-        })
-
-        function toggleEmoji() {
-            const showing = emojiPicker.classList.toggle('show')
-            emojiPicker.setAttribute('aria-hidden', !showing)
-        }
 
         // --- Supabase realtime + eski mesajları yükle ---
         try {
@@ -265,35 +221,21 @@
                 addMessage(username, text, new Date().toISOString(), false)
             }
             msgInput.value = ''
-            emojiPicker.classList.remove('show')
         }
 
         msgInput.addEventListener('keypress', e => { if (e.key === 'Enter') send() })
         loadMessages()
 
-        // -------- Radyo mantığı: iframe ve audio streamleri yönetme --------
+        // -------- Radyo mantığı (Kalp FM varsayılan) --------
         const stationSelect = document.getElementById('stationSelect')
-        const customStation = document.getElementById('customStation')
         const radioStatus = document.getElementById('radioStatus')
         const radioEmbed = document.getElementById('radioEmbed')
         const iframeHolder = document.getElementById('iframeHolder')
         const audioHolder = document.getElementById('audioHolder')
         const radioPlayer = document.getElementById('radioPlayer')
-        const radyodIframe = document.getElementById('radyodIframe')
 
         function applyStation(){
-            // öncelik: custom input doluysa onu kullan
-            const custom = (customStation.value || '').trim()
-            let val = stationSelect.value
-            if (custom) {
-                // Eğer kullanıcı http... ile iframe embed değilse, audio olarak dene
-                if (custom.startsWith('http')) {
-                    val = 'audio:' + custom
-                } else {
-                    val = custom
-                }
-            }
-
+            const val = stationSelect.value || ''
             if (!val) {
                 radioEmbed.style.display = 'none'
                 iframeHolder.style.display = 'none'
@@ -304,83 +246,61 @@
                 return
             }
 
-            // iframe yükle
             if (val === 'iframe:radyod') {
                 radioEmbed.style.display = 'flex'
                 iframeHolder.style.display = 'block'
                 audioHolder.style.display = 'none'
-                // iframe src hazır (önceden set)
                 radioStatus.textContent = 'Iframe yüklendi'
                 return
             }
 
-            // audio yükle
             if (val.startsWith('audio:')) {
                 const url = val.replace('audio:','')
                 radioEmbed.style.display = 'flex'
                 iframeHolder.style.display = 'none'
                 audioHolder.style.display = 'block'
-                // kaynak ekle
-                // önce pause + src temizle
+                // temizle önceki kaynaklar
                 radioPlayer.pause()
-                // remove existing sources
                 while (radioPlayer.firstChild) radioPlayer.removeChild(radioPlayer.firstChild)
                 const srcEl = document.createElement('source')
                 srcEl.src = url
                 srcEl.type = 'audio/mpeg'
                 radioPlayer.appendChild(srcEl)
-                // yüklemeyi dene
                 radioPlayer.load()
                 radioPlayer.play().then(()=> {
                     radioStatus.textContent = 'Çalıyor'
                 }).catch(err=>{
                     console.warn('Radyo oynatma hatası:', err)
-                    radioStatus.textContent = 'Çalma hatası'
+                    radioStatus.textContent = 'Çalma engellendi — butona basın'
                 })
                 return
-            }
-
-            // fallback: eğer kullanıcı doğrudan iframe url koyduysa (nadiren)
-            if (val.startsWith('http')) {
-                // iframe kullanmayı dene
-                try {
-                    radyodIframe.src = val
-                    radioEmbed.style.display = 'flex'
-                    iframeHolder.style.display = 'block'
-                    audioHolder.style.display = 'none'
-                    radioStatus.textContent = 'Iframe yüklendi'
-                } catch (e) {
-                    console.warn(e)
-                    radioStatus.textContent = 'Yükleme hatası'
-                }
             }
         }
 
         function toggleRadio(){
-            // eğer audio visible ise toggle et
             if (audioHolder.style.display === 'block') {
                 if (radioPlayer.paused) {
-                    radioPlayer.play().then(()=> radioStatus.textContent = 'Çalıyor').catch(()=> radioStatus.textContent = 'Çalma hatası')
+                    radioPlayer.play().then(()=> radioStatus.textContent = 'Çalıyor').catch(()=> radioStatus.textContent = 'Çalma engellendi')
                 } else {
                     radioPlayer.pause()
                     radioStatus.textContent = 'Durdu'
                 }
                 return
             }
-            // iframe için toggle: göster/gizle
             if (iframeHolder.style.display === 'block') {
-                // iframe kalıcı olarak gizle
                 iframeHolder.style.display = 'none'
                 radioStatus.textContent = 'Durdu'
                 return
             }
-            // değilse applyStation ile mevcut seçeneği yükle
             applyStation()
         }
 
-        // Hızlı kullanım: select değiştiğinde apply et
-        stationSelect.addEventListener('change', applyStation)
+        // sayfa yüklendiğinde Kalp FM'i yükle ve çalmayı dene
+        window.addEventListener('load', () => {
+            // Kalp FM default olarak select'te ilk seçenek, yine de set edip apply ediyoruz
+            stationSelect.value = 'audio:https://yayin.kalpfm.com:8080/stream'
+            applyStation()
+        })
     </script>
 </body>
 </html>
-
