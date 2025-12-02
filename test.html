@@ -28,8 +28,8 @@
             border-radius: 18px; max-width: 80%;
             word-wrap: break-word;
         }
-        .you { background: #5f27cd; color: white; align-self: flex-end; margin-left: auto; }
-        .other { background: #e0e0e0; color: #333; align-self: flex-start; }
+        .you { background: #5f27cd; color: white; margin-left: auto; }
+        .other { background: #e0e0e0; color: #333; }
         .input-area {
             display: flex; padding: 10px; background: #fff; border-top: 1px solid #eee;
         }
@@ -39,11 +39,14 @@
             border: none; border-radius: 25px; cursor: pointer;
         }
         button:hover { background: #4a1eaf; }
+        .status { text-align: center; padding: 10px; color: #666; }
     </style>
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <div class="container">
-        <div class="header">Canlı Sohbet Odası</div>
+        <div class="header">Canlı Sohbet Odası <span id="status" class="status">Bağlanıyor...</span></div>
         <div id="messages"></div>
         <div class="input-area">
             <input type="text" id="name" placeholder="Adın (opsiyonel)" style="width:90px;margin-right:5px;">
@@ -53,53 +56,61 @@
     </div>
 
     <script>
+    // Supabase config – BURAYI DEĞİŞTİR, GERİSİNE DOKUNMA
+    const SUPABASE_URL = 'https://rtaqxsecuvsncnoovare.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0YXF4c2VjdXZzbmNub292YXJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2ODcyODcsImV4cCI6MjA4MDI2MzI4N30.18BaKDnEyj97fS5Xl5ZeZsHSwQh6AexkEmMR5QgwUgw';
+        
+        const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         const messagesDiv = document.getElementById('messages');
         const msgInput = document.getElementById('msg');
         const nameInput = document.getElementById('name');
+        const statusDiv = document.getElementById('status');
 
-        // Sayfa açılınca adı localStorage’dan al (tekrar yazmasın)
-        if (localStorage.getItem('chatName')) {
-            nameInput.value = localStorage.getItem('chatName');
+        // Realtime subscription: Yeni mesaj gelince ekle
+        let channel = supabase.channel('messages')
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
+                const msg = payload.new;
+                addMessage(msg.username, msg.message, msg.created_at);
+            })
+            .subscribe((status) => {
+                statusDiv.textContent = status === 'SUBSCRIBED' ? 'Bağlandı!' : 'Bağlantı sorunu...';
+            });
+
+        // Mesaj ekle
+        function addMessage(username, text, time) {
+            const timeStr = new Date(time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const isYou = username === (nameInput.value.trim() || 'Misafir');
+            const msgClass = isYou ? 'you' : 'other';
+            const msgHTML = `
+                <div class="message ${msgClass}">
+                    <strong>${username}</strong> <small>${timeStr}</small><br>
+                    ${text}
+                </div>`;
+            messagesDiv.innerHTML += msgHTML;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
 
-        // Mesajları localStorage’dan yükle
-        function loadMessages() {
-            const saved = localStorage.getItem('chatMessages');
-            if (saved) messagesDiv.innerHTML = saved;
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        // Eski mesajları yükle
+        async function loadMessages() {
+            const { data } = await supabase.from('messages').select().order('created_at', { ascending: true });
+            data?.forEach(msg => addMessage(msg.username, msg.message, msg.created_at));
         }
 
         // Mesaj gönder
-        function send() {
+        async function send() {
             let text = msgInput.value.trim();
             if (!text) return;
+            let username = nameInput.value.trim() || 'Misafir';
 
-            let name = nameInput.value.trim() || "Misafir";
-            if (!localStorage.getItem('chatName')) {
-                localStorage.setItem('chatName', name);
-            }
-
-            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-
-            const msgHTML = `
-                <div class="message you">
-                    <strong>${name}</strong> <small>${time}</small><br>
-                    ${text}
-                </div>`;
-
-            messagesDiv.innerHTML += msgHTML;
-            localStorage.setItem('chatMessages', messagesDiv.innerHTML);
-
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            const { error } = await supabase.from('messages').insert({ username, message: text });
+            if (error) alert('Hata: ' + error.message);
             msgInput.value = '';
         }
 
-        // Enter tuşu ile gönder
-        msgInput.addEventListener('keypress', e => {
-            if (e.key === 'Enter') send();
-        });
+        // Enter tuşu
+        msgInput.addEventListener('keypress', e => { if (e.key === 'Enter') send(); });
 
-        // Sayfa yüklendiğinde eski mesajları göster
+        // Başlat
         loadMessages();
     </script>
 </body>
