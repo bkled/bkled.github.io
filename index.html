@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
   slides.forEach((s, idx) => {
     const img = s.querySelector("img");
     if (img) img.addEventListener("error", () => {
-      console.warn("Slider image yüklenemedi:", img.src);
+      console.warn("Slider image loading failed:", img.src);
     });
   });
 });
